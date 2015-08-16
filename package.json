@@ -1,0 +1,25 @@
+{
+  "name": "div-wang",
+  "version": "1.0.0",
+  "description": "div-wang的技术随想录",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/div-wang/div-wang.github.io.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/div-wang/div-wang.github.io/issues"
+  },
+  "homepage": "https://github.com/div-wang/div-wang.github.io#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
+    "gulp-serve": "^1.0.0",
+    "gulp-swig": "^0.7.4",
+    "gulp-markdown": "^0.3.5"
+  }
+}
