@@ -1,7 +1,7 @@
 var gulp = require('gulp'),
   sass = require('gulp-sass'),
   swig = require('gulp-swig'),
-  serve = require('gulp-serve')
+  serve = require('gulp-serve'),
   markdown = require('gulp-markdown');
 
 gulp.task('serve', serve({
