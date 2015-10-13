@@ -1,7 +1,0 @@
-#XMLHttpRequest 详解
-
-
-
-
-
-
