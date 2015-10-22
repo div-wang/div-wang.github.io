@@ -12,7 +12,7 @@ div-wang的技术随想录😄
 * 进入项目目录执行 `npm install`;   
 * 终端输入 `gulp` 即可开始  
 
-Project page: https://div-wang.github.io/ 
+Project page: http://div-wang.com/
 
 ## License
 
