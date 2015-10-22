@@ -8,7 +8,7 @@ div-wang的技术随想录😄
 
 * 本地有 Node.JS 和 Python 2.7 环境;  
 * 全局安装了 gulp，如果没有请 `npm i -g gulp`;  
-* 克隆本项目`git clone https://github.com/div-wang/div-wang.github.io.git`; 
+* 克隆本项目`https://github.com/div-wang/div-wang.com.git`; 
 * 进入项目目录执行 `npm install`;   
 * 终端输入 `gulp` 即可开始  
 
