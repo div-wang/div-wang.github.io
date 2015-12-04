@@ -2,17 +2,18 @@ var gulp = require('gulp'),
   sass = require('gulp-sass'),
   swig = require('gulp-swig'),
   serve = require('gulp-serve'),
-  markdown = require('gulp-markdown');
+  markdown = require('gulp-markdown'),
+  markdownDocs = require('gulp-markdown-docs');
 
 gulp.task('serve', serve({
   port: '3000',
-  root: ['.']
+  root: ['./div-wang']
 }))
 
 gulp.task('css', function() {
-  gulp.src('./src/scss/main.scss')
+  gulp.src('./src/scss/*.scss')
     .pipe(sass())
-    .pipe(gulp.dest('./build/css'))
+    .pipe(gulp.dest('./div-wang/static/css'))
 })
 
 gulp.task('html', function() {
@@ -22,27 +23,28 @@ gulp.task('html', function() {
       defaults: {
         cache: false,
         locals: {
-          time: time
+          time: time,
+          blog: false
         }
       }
     }))
-    .pipe(gulp.dest('.'))
+    .pipe(gulp.dest('./div-wang'))
 })
 
 gulp.task('blog', function() {
   var time = new Date().getTime()
-  gulp.src('./src/blog/index.html')
+  gulp.src('./src/html/blog/*.html')
     .pipe(swig({
       defaults: {
         cache: false,
         locals: {
-          time: time
+          time: time,
+          blog: true
         }
       }
     }))
-    .pipe(gulp.dest('./blog'))
+    .pipe(gulp.dest('./div-wang/blog'))
 })
-
 
 gulp.task('md', function () {
     gulp.src('./src/blog/*.md')
@@ -56,6 +58,6 @@ gulp.task('watch', function() {
   gulp.watch('./src/blog/*.md', ['html'])
 })
 
-gulp.task('build', ['css', 'blog', 'html'])
+gulp.task('build', ['css', 'blog', 'html', 'md'])
 
 gulp.task('default', ['build', 'watch', 'serve'])

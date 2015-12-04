@@ -7,12 +7,6 @@ a {
   color: #333;
   text-decoration: none; }
 
-.container {
-  max-width: 980px;
-  padding: 0 10px;
-  margin: 0 auto;
-  position: relative; }
-
 .clearfix:after {
   content: '';
   display: block;
@@ -20,9 +14,11 @@ a {
   clear: both;
   height: 0; }
 
-.sitename {
-  float: left;
-  margin: 0; }
+.container {
+  max-width: 980px;
+  padding: 0 10px;
+  margin: 0 auto;
+  position: relative; }
 
 .nav-right {
   float: right;
@@ -37,6 +33,8 @@ a {
       border-bottom: 2px solid transparent; }
       .nav-right li a:hover {
         border-color: #333; }
+      .nav-right li a.cur {
+        border-color: #333; }
   .nav-right li + li {
     margin-left: 30px; }
 
@@ -46,6 +44,10 @@ a {
   line-height: 50px;
   padding-top: 20px;
   border-bottom: solid 2px #dd514c; }
+
+.sitename {
+  float: left;
+  margin: 0; }
 
 .welcome {
   padding: 40px 0;
@@ -67,6 +69,11 @@ a {
       .welcome h2 a img {
         width: 20px;
         height: 20px; }
+      .welcome h2 a .icon {
+        position: relative;
+        top: -2px;
+        left: 3px;
+        opacity: .65; }
   .welcome h3 {
     font: bold 30px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.4; }
@@ -98,7 +105,7 @@ a {
 .member .member-skills {
   color: #999; }
   .member .member-skills span + span:before {
-    content: '·';
+    content: '路';
     margin: 0 3px; }
 
 .member .icon {
@@ -114,12 +121,6 @@ a {
   padding: 100px 0 50px 0;
   font-size: 15px;
   color: #999; }
-
-.icon {
-  position: relative;
-  top: -2px;
-  left: 3px;
-  opacity: .65; }
 
 #welcome {
   -webkit-animation-delay: .5s;
