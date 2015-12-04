@@ -1014,31 +1014,72 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>手机网页实现分享到本地微信微博等应用中?</title></head><body><article class="markdown-body"><h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>手机网页实现分享到本地微信微博等应用中?</h2>
-<p>目前来说只能借助第三方应用的分享接口来调用，主要原因是各app闭环，限制 URL Scheme接口。不过在web越来越火，javascript已经超神的今天，网页调用app是大势所趋，</p>
-<h5 id="facebook-app-links-"><a name="user-content-facebook-app-links-" href="#facebook-app-links-" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>看这个：<a href="http://www.zhihu.com/question/23609812">Facebook 推出 App Links 开发者工具意在解决什么问题？ - 应用（软件）</a></h5>
-<h5 id="google"><a name="user-content-google" href="#google" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>google也已经有动作了：</h5>
-<p><img alt="App Links" src="http://pic1.zhimg.com/1c5ca088b262d06ce08f4bc25b95b0b4_r.jpg" /><br />
-我等骚年只能期待标准早日确定啦！<br />
-另外uc浏览器下分享请移步：<a href="http://www.zhihu.com/question/24577266/answer/41498951?group_id=564848166613225472">HTML5网页端如何调用手机浏览器分享功能？ - Div wang 的回答</a></p>
-<h5 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>这是代码实现</h5>
-<pre><code class="javascript">/* 39yst.com：uc分享*/
-var weixinShareBtn//微信分享按钮，默认隐藏
-var weixin;//新建微信分享方法
-var Browser=new Object(); 
-Browser.ios=/iphone/.test(Browser.userAgent); //判断ios系统
-if(/UCBrowser/gi.test(navigator.userAgent)){  //判断uc浏览器
-    weixinShareBtn.style.display = 'block';   //微信分享按钮
-    weixin = function(){                      //微信分享方法
-        var title = shareData.desc;
-        var img = shareData.imgUrl;
-        var url = location.href+(location.search?&quot;&amp;&quot;:&quot;?&quot;)+&quot;uc_39yst&quot;;
-        if(Browser.ios){
-            ucbrowser.web_share(title, img, url, 'kWeixinFriend', '', '@39yst', '');
-        }else{
-            ucweb.startRequest(&quot;shell.page_share&quot;,[title,img,url,'WechatTimeline','','',''])
-        };
-        // gaevent('event','uc_share',Browser.ios?'ios':'android');
-    }
-};
-</code></pre></article></body></html>
+</style><title>JavaScript DOM节点操作</title></head><body><article class="markdown-body"><h1 id="javascript-dom"><a name="user-content-javascript-dom" href="#javascript-dom" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JavaScript DOM节点操作</h1>
+<h4 id="html-dom"><a name="user-content-html-dom" href="#html-dom" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一些常用的 HTML DOM 方法：</h4>
+<p><em>getElementById(id) - 获取带有指定 id 的节点（元素） <br />
+</em>appendChild(node) - 插入新的子节点（元素） <br />
+*removeChild(node) - 删除子节点（元素）</p>
+<h4 id="html-dom_1"><a name="user-content-html-dom_1" href="#html-dom_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一些常用的 HTML DOM 属性：</h4>
+<p><em>innerHTML - 节点（元素）的文本值<br />
+</em>parentNode - 节点（元素）的父节点<br />
+<em>childNodes - 节点（元素）的子节点<br />
+</em>attributes - 节点（元素）的属性节点</p>
+<h5 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getElementById()</td>
+<td>返回带有指定 ID 的元素。</td>
+</tr>
+<tr>
+<td>getElementsByTagName()</td>
+<td>返回包含带有指定标签名称的所有元素的节点列表（集合/节点数组）。</td>
+</tr>
+<tr>
+<td>getElementsByClassName()</td>
+<td>返回包含带有指定类名的所有元素的节点列表。</td>
+</tr>
+<tr>
+<td>appendChild()</td>
+<td>把新的子节点添加到指定节点。</td>
+</tr>
+<tr>
+<td>removeChild()</td>
+<td>删除子节点。</td>
+</tr>
+<tr>
+<td>replaceChild()</td>
+<td>替换子节点。</td>
+</tr>
+<tr>
+<td>insertBefore()</td>
+<td>在指定的子节点前面插入新的子节点。</td>
+</tr>
+<tr>
+<td>createAttribute()</td>
+<td>创建属性节点。</td>
+</tr>
+<tr>
+<td>createElement()</td>
+<td>创建元素节点。</td>
+</tr>
+<tr>
+<td>createTextNode()</td>
+<td>创建文本节点。</td>
+</tr>
+<tr>
+<td>getAttribute()</td>
+<td>返回指定的属性值。</td>
+</tr>
+<tr>
+<td>setAttribute()</td>
+<td>把指定属性设置或修改为指定的值。</td>
+</tr>
+</tbody>
+</table></article></body></html>

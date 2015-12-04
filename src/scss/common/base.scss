@@ -1,0 +1,26 @@
+body {
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  margin: 0;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.clearfix {
+  &:after {
+    content: '';
+    display: block;
+    visibility: hidden;
+    clear: both;
+    height: 0;
+  }
+}
+
+.container {
+  max-width: 980px;
+  padding: 0 10px;
+  margin: 0 auto;
+  position: relative;
+}

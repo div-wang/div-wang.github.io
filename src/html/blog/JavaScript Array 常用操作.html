@@ -1014,113 +1014,361 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>CSS 选择器性能求解</title></head><body><article class="markdown-body"><h1 id="css"><a name="user-content-css" href="#css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>CSS 选择器性能求解</h1>
-<p>上周去360面试，有这么一个面试题：</p>
-<pre><code>1.写出下列最后输出文字的颜色的值? 
-&lt;style&gt;  
-a{color:#000}  
-#header a{color:pink}  
-.logo a{color:pink}  
-h1 a{color:pink}  
-&lt;/style&gt;
-&lt;h1 clss="#header"&gt;  
-    &lt;div class="logo"&gt;&lt;a&gt;360&lt;/a&gt;&lt;/div&gt;  
-&lt;/h1&gt;
+</style><title>JavaScript Array 常用操作</title></head><body><article class="markdown-body"><h1 id="javascript-array"><a name="user-content-javascript-array" href="#javascript-array" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JavaScript Array 常用操作</h1>
+<h2 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>概要</h2>
+<p>在JavaScript中，数组以 Array 为构造函数，是一个高阶的类似有序列表的数据类型。</p>
+<h2 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>声明语法</h2>
+<pre><code class="javascript">    var arr1 = []; //建议使用［］声明数组对象;
+    var arr2 = new Array();
+    var arr3 = new Array(5); //new个数组对象，length是5
 </code></pre>
-<p>这么简单的题，我顺手就回答出来了～～科科</p>
-<h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>优先级顺序</h3>
-<p>选择器列表优先级逐级增加：  </p>
-<p>＊通用选择器（*）<br />
-＊元素(类型)选择器<br />
-＊类选择器<br />
-＊属性选择器<br />
-＊伪类<br />
-＊ID 选择器<br />
-＊内联样式</p>
-<p>但是，接下来面试官提问又来了：优先级你知道，那他们的性能谁的最高你知道吗？<br />
-这下我就哔了个🐶了，css选择器也有性能一说，真实开眼界了！<br />
-回来马上开始查文档，看文章！</p>
-<h3 id="css_1"><a name="user-content-css_1" href="#css_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>CSS 选择器性能损耗来自哪里？</h3>
-<p>我们中的大多数人都是从左到右的阅读习惯，会习惯性的设定浏览器也是从左到右的方式进行匹配规则，推测这条规则的开销并不高。事实上，却恰恰相反，CSS选择器是从右到左进行规则匹配。<br />
-可怜我以前一直的写法都是左到右多级寻找:<br />
-<pre><code class="css">    #header .shouc a {...}
-    #header .shouc a i {...}
+
+<h5 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>元素列</h5>
+<p>向 Array 构造函数传递以 ”,“ 分号分割的一组数据（即元素列）时，将返回一个以这些数据为数组元素的数组对象（当元素列仅有一个数据且为数值时除外，这是接下来要说的内容）。数据的个数为元素个数，即数组长度。</p>
+<h5 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数组长度</h5>
+<p>向 Array 构造函数传递一个在 0 到 232-1 之间的整数，将返回一个以此为长度的数组对象。通过length属性可以访问这个值。如果传入的参数不是有效的数值，则抛出RangeError异常。如果传入的参数不是数值，则创建一个长度为1的数组，传入的参数即为数组的第一个元素。</p>
+<h5 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数组索引</h5>
+<p>每个元素列会有个单独的Length索引值，JavaScript 数组的索引值（index）从0开始，即数组第一个元素的索引值为0。最后一个元素的索引值等于该数组的长度减1（Array.length -1）。<br />
+<pre><code class="javascript">    var arr = [1,2,3,4,5];
+    console.log(arr[0]) // 1
+    console.log(arr[arr.length-1]) // 5
 </code></pre></p>
-<h3 id="css_2"><a name="user-content-css_2" href="#css_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>如何减少 CSS 选择器性能损耗？</h3>
-<p>Google 资深web开发工程师 <a href="http://stevesouders.com/">Steve Souders</a> 对 CSS 选择器的执行效率从高到低做了一个排序：</p>
-<pre><code>1.id选择器（#myid）
-2.类选择器（.myclassname）
-3.标签选择器（div,h1,p）
-4.相邻选择器（h1+p）
-5.子选择器（ul &lt; li）
-6.后代选择器（li a）
-7.通配符选择器（*）
-8.属性选择器（a[rel="external"]）
-9.伪类选择器（a:hover, li:nth-child）
-</code></pre>
-<p><a href="http://www.jianshu.com/users/vCyqyQ/latest_articles">阿树</a>的一篇文章－<a href="http://www.jianshu.com/p/268c7f3dd7a6">如何提升 CSS 选择器性能</a>详细介绍了关于css性能的优化</p>
-<h5 id="1"><a name="user-content-1" href="#1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>1、避免使用通用选择器</h5>
-<p><pre><code class="css">    .content * {color: red;}
-</code></pre><br />
-    浏览器匹配文档中所有的元素后分别向上逐级匹配 class 为 content 的元素，直到文档的根节点。因此其匹配开销是非常大的，所以应避免使用关键选择器是通配选择器的情况。</p>
-<h5 id="2-class-id"><a name="user-content-2-class-id" href="#2-class-id" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>2、避免使用标签或 class 选择器限制 id 选择器</h5>
-<pre><code class="css">    BAD
-    button#backButton {…}
-    BAD
-    .menu-left#newMenuIcon {…}
-    GOOD
-    #backButton {…}
-    GOOD
-    #newMenuIcon {…}
+<h2 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>方法</h2>
+<h3 id="mutator"><a name="user-content-mutator" href="#mutator" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Mutator 方法</h3>
+<p>这些方法可以改变数组自身:  </p>
+<h4 id="pop"><a name="user-content-pop" href="#pop" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>pop</h4>
+<p>移除数组的最后一个元素，返回值是被删除的元素。<br />
+<pre><code class="javascript">    Array.pop()
+</code></pre></p>
+<h5 id="javascript"><a name="user-content-javascript" href="#javascript" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [1, 2, 3];
+    arr.pop();
+    console.log(arr)  // [1, 2]
 </code></pre>
 
-<h5 id="3-class"><a name="user-content-3-class" href="#3-class" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>3、避免使用标签限制 class 选择器</h5>
-<pre><code class="css">    BAD
-    treecell.indented {…}
-    GOOD
-    .treecell-indented {…}
-    BEST
-    .hierarchy-deep {…}
+<h4 id="push"><a name="user-content-push" href="#push" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>push</h4>
+<p>在数组的末尾添加一个或者多个元素，返回值是新的数组的长度。<br />
+<pre><code class="javascript">    Array.push(element1, element2, ..., elementN)
+</code></pre></p>
+<h5 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>必需。向数组添加的第一个元素。</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>可选。向数组添加的第二个元素。</td>
+</tr>
+<tr>
+<td>arguments[n]</td>
+<td>可选。可添加若干个元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_1"><a name="user-content-javascript_1" href="#javascript_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [2, 3, 4];
+    arr.push(0);
+    console.log(arr)  // [2, 3, 4, 0]
 </code></pre>
 
-<h5 id="4-class-css"><a name="user-content-4-class-css" href="#4-class-css" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>4、避免使用多层标签选择器。使用 class 选择器替换，减少css查找</h5>
-<pre><code class="css">    BAD
-    treeitem[mailfolder=&quot;true&quot;] &gt; treerow &gt; treecell {…}
-    GOOD
-    .treecell-mailfolder {…}
+<h4 id="reverse"><a name="user-content-reverse" href="#reverse" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>reverse</h4>
+<p>颠倒数组中元素的顺序，原先第一个元素现在变成最后一个，同样原先的最后一个元素变成了现在的第一个，也就是数组的索引发生了变化。<br />
+<pre><code class="javascript">    Array.reverse()
+</code></pre></p>
+<h5 id="javascript_2"><a name="user-content-javascript_2" href="#javascript_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [1, 2, 3, 4];
+    arr.reverse();
+    console.log(arr)  // [4, 3, 2, 1]
 </code></pre>
 
-<h5 id="5"><a name="user-content-5" href="#5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>5、避免使用子选择器</h5>
-<pre><code class="css">    BAD
-    treehead treerow treecell {…}
-    BETTER, BUT STILL BAD 
-    treehead &gt; treerow &gt; treecell {…}
-    GOOD
-    .treecell-header {…}
+<h4 id="shift"><a name="user-content-shift" href="#shift" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>shift</h4>
+<p>删除数组的第一个元素，返回值是删除的元素。<br />
+<pre><code class="javascript">    Array.shift()
+</code></pre></p>
+<h5 id="javascript_3"><a name="user-content-javascript_3" href="#javascript_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [2, 3, 4];
+    arr.shift();
+    console.log(arr)  // [3, 4]
 </code></pre>
 
-<h5 id="6"><a name="user-content-6" href="#6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>6、使用继承</h5>
-<p><pre><code class="css">    BAD 
-    #bookmarkMenuItem &gt; .menu-left { list-style-image: url(blah) }
-    GOOD
-    #bookmarkMenuItem { list-style-image: url(blah) }
-</code></pre><br />
-<a href="http://www.alloyteam.com/2012/10/high-performance-css/">高性能CSS</a>一文中还指出：</p>
-<h5 id="alphaimageloader"><a name="user-content-alphaimageloader" href="#alphaimageloader" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>避免AlphaImageLoader滤镜</h5>
-<p>IE独有属性AlphaImageLoader用于修正7.0以下版本中显示PNG图片的半透明效果。这个滤镜的问题在于浏览器加载图片时它会终止内容的呈现并且冻结浏览器。在每一个元素（不仅仅是图片）它都会运算一次，增加了内存开支，因此它的问题是多方面的。完全避免使用AlphaImageLoader的最好方法就是使用PNG8格式来代替，这种格式能在IE中很好地工作。如果你确实需要使用AlphaImageLoader，请使用下划线_filter又使之对IE7以上版本的用户无效。</p>
-<h5 id="css_3"><a name="user-content-css_3" href="#css_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>避免CSS表达式</h5>
-<p>CSS表达式是动态设置CSS属性的强大（但危险）方法。Internet Explorer从第5个版本开始支持CSS表达式。下面的例子中，使用CSS表达式可以实现隔一个小时切换一次背景颜色：<br />
-<pre><code class="css">    background-color: expression((new Date()).getHours()%2?&quot;#FFFFFF&quot;: &quot;#000000&quot; );
-</code></pre><br />
-如上所示，expression中使用了JavaScript表达式。CSS属性根据JavaScript表达式的计算结果来设置。expression方法在其它浏览器中不起作用，因此在跨浏览器的设计中单独针对Internet Explorer设置时会比较有用。<br />
-表达式的问题就在于它的计算频率要比我们想象的多。不仅仅是在页面显示和缩放时，就是在页面滚动、乃至移动鼠标时都会要重新计算一次。给CSS表达式增加一个计数器可以跟踪表达式的计算频率。在页面中随便移动鼠标都可以轻松达到10000次以上的计算量。一个减少CSS表达式计算次数的方法就是使用一次性的表达式，它在第一次运行时将结果赋给指定的样式属性，并用这个属性来代替CSS表达式。如果样式属性必须在页面周期内动态地改变，使用事件句柄来代替CSS表达式是一个可行办法。如果必须使用CSS表达式，一定要记住它们要计算成千上万次并且可能会对你页面的性能产生影响。</p>
-<h5 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>避免类正则的属性选择器</h5>
-<p>CSS3添加了复杂的属性选择器，可以通过类正则表达式的方式对元素的属性值进行匹配。当然这些类型的选择器定是会影响性能的，正则表达式匹配会比基于类别的匹配会慢很多。大部分情况下我们应尽量避免使用 *=， |=， ^=， $=， 和 ~=语法的属性选择器。</p>
-<h5 id="import"><a name="user-content-import" href="#import" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>避免使用@import</h5>
-<p>有两种方式加载样式文件，一种是link元素，另一种是CSS 2.1加入@import。而在外部的CSS文件中使用@import会使得页面在加载时增加额外的延迟。虽然规则允许在样式中调用@import来导入其它的CSS，但浏览器不能并行下载样式，就会导致页面增添了额外的往返耗时。比如，第一个CSS文件first.css包含了以下内容：@import url(“second.css”)。那么浏览器就必须先把first.css下载、解析和执行后，才发现及处理第二个文件second.css。简单的解决方法是使用<link>标记来替代@import;</p>
-<h5 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>移除无匹配的样式</h5>
-<p>移除无匹配的样式，有两个好处：<br />
-第一，删除无用的样式后可以缩减样式文件的体积，加快资源下载速度；<br />
-第二，对于浏览器而言，所有的样式规则的都会被解析后索引起来，即使是当前页面无匹配的规则。移除无匹配的规则，减少索引项，加快浏览器查找速度；</p>
-<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>总结</h3>
-<p>作为一名前端工程师，应该具有「提升 CSS 选择器性能」的意识，但实际应用中，是否需要完全贯彻这些原则呢？我认为在「可维护性」前提下，提升 CSS 选择器性能是有必要的，但绝不追求「高性能」而牺牲「可维护性」。</p></article></body></html>
+<h4 id="sort"><a name="user-content-sort" href="#sort" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>sort</h4>
+<p>对数组中的元素进行排序。<br />
+<pre><code class="javascript">    Array.sort()
+</code></pre></p>
+<h5 id="javascript_4"><a name="user-content-javascript_4" href="#javascript_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [1, 11, 0, 99, 67, 100];
+    arr.sort();
+    console.log(arr)  // [0, 1, 100, 11, 67, 99]
+</code></pre>
+
+<h4 id="splice"><a name="user-content-splice" href="#splice" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>splice</h4>
+<p>添加或删除数组中的一个或多个元素。<br />
+<pre><code class="javascript">    Array.splice(index, length, element1, element2, ..., elementN)
+</code></pre></p>
+<h5 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>必需。从数组的哪一位开始修改内容。如果超出了数组的长度，则自动从数组末尾开始添加内容；如果是负值，则表示从数组末位开始的第几位。</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>必需。整数，表示要移除的数组元素的个数。如果 howmany 是 0，则不移除元素。这种情况下，至少应添加一个新元素。</td>
+</tr>
+<tr>
+<td>arguments[2]</td>
+<td>可选。要添加进数组的元素。如果不指定，则 splice 只删除数组元素。</td>
+</tr>
+<tr>
+<td>arguments[N]</td>
+<td>可选。要添加进数组的元素。如果不指定，则 splice 只删除数组元素。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_5"><a name="user-content-javascript_5" href="#javascript_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [1, 11, 0, 99, 67, 100];
+    arr.splice(5,1);
+    console.log(arr)  // [0, 1, 100, 11, 67, 99]
+    arr.splice(3,3,2,4,5);
+    console.log(arr)  // [1, 11, 0, 2, 4, 5]
+</code></pre>
+
+<h4 id="unshift"><a name="user-content-unshift" href="#unshift" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>unshift</h4>
+<p>添加一个或者多个元素在数组的开头，返回值是新的数组的长度。<br />
+<pre><code class="javascript">    Array.unshift(element1, element2, ..., elementN)
+</code></pre></p>
+<h5 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>必需。向数组添加的第一个元素。</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>可选。向数组添加的第二个元素。</td>
+</tr>
+<tr>
+<td>arguments[n]</td>
+<td>可选。可添加若干个元素</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_6"><a name="user-content-javascript_6" href="#javascript_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = [2, 3, 4];
+    arr.unshift(0,1,5);
+    console.log(arr)  // [0, 1, 5, 2, 3, 4]
+</code></pre>
+
+<h3 id="accessor"><a name="user-content-accessor" href="#accessor" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Accessor 方法</h3>
+<p>这些过程不改变数组自身:</p>
+<h4 id="concat"><a name="user-content-concat" href="#concat" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>concat</h4>
+<p>返回一个包含此数组和其他数组和/或值的结合的新数组<br />
+<pre><code class="javascript">    Array.concat(Array1, Array2, ..., ArrayN )
+</code></pre></p>
+<h5 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>可选。向数组合并的第一个数组。</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>可选。向数组合并的第二个数组。</td>
+</tr>
+<tr>
+<td>arguments[n]</td>
+<td>可选。可添加若干个数组</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_7"><a name="user-content-javascript_7" href="#javascript_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例示例：</h5>
+<pre><code class="javascript">    var arr1 = [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;];
+    var arr2 = [1, 2, 3];
+    var arr3 = arr1.concat(arr2);
+    console.log(arr3) //[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, 1, 2, 3]
+    var arr4 = arr2.concat(arr3);
+    console.log(arr4) //[1, 2, 3, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;, 1, 2, 3]
+</code></pre>
+
+<h4 id="indexof"><a name="user-content-indexof" href="#indexof" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>indexOf</h4>
+<p>返回第一个与给定参数相等的数组元素的索引，没有找到则返回-1。<br />
+<pre><code class="javascript">    Array.indexOf(searchElement,fromIndex)
+</code></pre></p>
+<h5 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>必需。位于数组中的元素。</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>可选。默认值: 0 (即在整个数组中查找指定元素)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_8"><a name="user-content-javascript_8" href="#javascript_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例示例：</h5>
+<pre><code class="javascript">    var arr = ['a', 'b', 'c', 'b'];
+    var index1 = arr.indexOf('a');
+    console.log(index1); // 0
+    var index2 = arr.indexOf('b',1);
+    console.log(index2); // 1
+    var index3 = arr.indexOf('b',2);
+    console.log(index3); // 3
+    var index4 = arr.indexOf('d');
+    console.log(index4); // -1
+</code></pre>
+
+<h4 id="join"><a name="user-content-join" href="#join" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>join</h4>
+<p>将所有的数组元素连接成一个字符串。<br />
+<pre><code class="javascript">    Array.join(string)
+</code></pre></p>
+<h5 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>可选。于指定连接每个数组元素的分隔符。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_9"><a name="user-content-javascript_9" href="#javascript_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = ['a', 'b', 'c', 'b'];
+    var str1 = arr.join();
+    console.log(str1)  // 'a,b,c,b'
+    var str2 = arr.join('');
+    console.log(str2)  // 'abcb'
+    var str3 = arr.join(' + ');
+    console.log(str3)  // 'a + b + c + b'
+</code></pre>
+
+<h4 id="lastindexof"><a name="user-content-lastindexof" href="#lastindexof" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>lastIndexOf</h4>
+<p>返回在数组中搜索到的与给定参数相等的元素的最后（最大）索引。<br />
+<pre><code class="javascript">    Array.lastIndexOf(searchElement,fromIndex)
+</code></pre></p>
+<h5 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>必需。位于数组中的元素。</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>可选。默认值: arr.length - 1] (从此位置开始逆向查找)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_10"><a name="user-content-javascript_10" href="#javascript_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例示例：</h5>
+<pre><code class="javascript">    var arr = ['a', 'b', 'c', 'b'];
+    var index1 = arr.lastIndexOf('a');
+    console.log(index1); // 0
+    var index2 = arr.lastIndexOf('b',1);
+    console.log(index2); // 1
+    var index3 = arr.lastIndexOf('b',3);
+    console.log(index3); // 3
+    var index4 = arr.lastIndexOf('d');
+    console.log(index4); // -1
+</code></pre>
+
+<h4 id="slice"><a name="user-content-slice" href="#slice" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>slice</h4>
+<p>返回数组中的一段。<br />
+<pre><code class="javascript">    Array.slice(begin,end)
+</code></pre></p>
+<h5 id="_14"><a name="user-content-_14" href="#_14" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a><span name="table"/></h5>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>arguments[0]</td>
+<td>可选。从该索引处开始提取原数组中的元素（如果省略 arguments[0]从0开始，如果该参数为负数，则表示从原数组中的倒数第几个元素开始提取）</td>
+</tr>
+<tr>
+<td>arguments[1]</td>
+<td>可选。在该索引处结束提取原数组元素（从0开始，slice会提取原数组中索引不包含到arguments[1]）</td>
+</tr>
+</tbody>
+</table>
+<h5 id="javascript_11"><a name="user-content-javascript_11" href="#javascript_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例示例：</h5>
+<pre><code class="javascript">    var arr = ['a', 'b', 'c', 'b'];
+    var arr1 = arr.slice();
+    console.log(arr1); // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;b&quot;]
+    var arr2 = arr.slice(-2);
+    console.log(arr2); // [&quot;c&quot;, &quot;b&quot;]
+    var arr3 = arr.slice(2,3);
+    console.log(arr3); // [&quot;c&quot;]
+    var arr4 = arr.slice(-3,-1);
+    console.log(arr4); // [&quot;b&quot;, &quot;c&quot;]
+</code></pre>
+
+<h4 id="tostring"><a name="user-content-tostring" href="#tostring" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>toString</h4>
+<p>返回代表该数组及其元素的字符,重写Object.toString 过程.<br />
+<pre><code class="javascript">    Array.toString()
+</code></pre></p>
+<h5 id="javascript_12"><a name="user-content-javascript_12" href="#javascript_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = ['a', 'b', 'c', 'b'];
+    var str1 = arr.toString();
+    console.log(str1)  // 'a,b,c,b'
+</code></pre>
+
+<h4 id="valueof"><a name="user-content-valueof" href="#valueof" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>valueOf</h4>
+<p>返回 Array 对象的原始值。<br />
+<pre><code class="javascript">    Array.valueOf()
+</code></pre></p>
+<h5 id="javascript_13"><a name="user-content-javascript_13" href="#javascript_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>javascript 代码示例：</h5>
+<pre><code class="javascript">    var arr = ['a', 'b', 'c', 'b'];
+    var str1 = arr.valueOf();
+    console.log(str1)  // [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;b&quot;]
+</code></pre></article></body></html>
