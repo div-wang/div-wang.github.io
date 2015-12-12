@@ -1,6 +1,6 @@
 {
     "name": "div-wang.com",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "div-wang的技术随想录",
     "main": "gulpfile.js",
     "scripts": {

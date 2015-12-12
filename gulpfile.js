@@ -21,48 +21,48 @@ gulp.task('img', function() {
         .pipe(gulp.dest('./div-wang/static/'))
 })
 
-gulp.task('html', function() {
-    var time = new Date().getTime()
+gulp.task('index', function() {
+    var data = {
+        time: new Date().getTime(),
+        blog: ''
+    }
     gulp.src('./src/html/index.html')
         .pipe(swig({
             defaults: {
                 cache: false,
-                locals: {
-                    time: time,
-                    blog: false
-                }
+                locals: data
             }
         }))
         .pipe(gulp.dest('./div-wang'))
 })
 
 gulp.task('md', function() {
-    var time = new Date().getTime()
+    var data = {
+        time: new Date().getTime(),
+        blog: 'cur'
+    }
     gulp.src('./src/html/blog/*.md')
         .pipe(markdown())
         .pipe(mdTpl())
         .pipe(swig({
             defaults: {
                 cache: false,
-                locals: {
-                    time: time,
-                    blog: true
-                }
+                locals: data
             }
         }))
         .pipe(gulp.dest('./div-wang/blog'))
 });
 
 gulp.task('blog', ['md'], function() {
-    var time = new Date().getTime()
+    var data = {
+        time: new Date().getTime(),
+        blog: 'cur'
+    }
     gulp.src('./src/html/blog/*.html')
         .pipe(swig({
             defaults: {
                 cache: false,
-                locals: {
-                    time: time,
-                    blog: true
-                }
+                locals: data
             }
         }))
         .pipe(gulp.dest('./div-wang/blog'))
@@ -70,11 +70,11 @@ gulp.task('blog', ['md'], function() {
 
 gulp.task('watch', function() {
     gulp.watch('./src/scss/*.scss', ['css'])
-    gulp.watch('./src/html/*.html', ['html'])
+    gulp.watch('./src/html/*.html', ['index'])
     gulp.watch('./src/html/blog/*.md', ['blog'])
 })
 
-gulp.task('build', ['css', 'img', 'blog', 'html'])
+gulp.task('build', ['css', 'img', 'blog', 'index'])
 
 gulp.task('default', ['build', 'watch', 'serve'])
 
