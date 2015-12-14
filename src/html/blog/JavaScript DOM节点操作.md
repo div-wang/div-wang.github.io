@@ -1,17 +1,18 @@
-#JavaScript DOM节点操作
+JavaScript DOM节点操作
+=========
 
-####一些常用的 HTML DOM 方法：
-*getElementById(id) - 获取带有指定 id 的节点（元素） 
-*appendChild(node) - 插入新的子节点（元素） 
-*removeChild(node) - 删除子节点（元素）
+#### 一些常用的 HTML DOM 方法：
++ getElementById(id) - 获取带有指定 id 的节点（元素） 
++ appendChild(node) - 插入新的子节点（元素） 
++ removeChild(node) - 删除子节点（元素）
 
-####一些常用的 HTML DOM 属性：
-*innerHTML - 节点（元素）的文本值
-*parentNode - 节点（元素）的父节点
-*childNodes - 节点（元素）的子节点
-*attributes - 节点（元素）的属性节点
+#### 一些常用的 HTML DOM 属性：
++ innerHTML - 节点（元素）的文本值
++ parentNode - 节点（元素）的父节点
++ childNodes - 节点（元素）的子节点
++ attributes - 节点（元素）的属性节点
 
-#####<span name="table"/>
+##### <span name="table"/>
 | 方法  | 描述|
 | ------------- | ------------- |
 |getElementById()|	返回带有指定 ID 的元素。|

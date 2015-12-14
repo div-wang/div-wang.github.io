@@ -3,17 +3,22 @@ var gulp = require('gulp'),
     swig = require('gulp-swig'),
     serve = require('gulp-serve'),
     markdown = require('gulp-markdown'),
-    markdownDocs = require('gulp-markdown-docs');
+    mdTpl = require('./lib/markdownTpl.js')
 
 gulp.task('serve', serve({
     port: '3000',
-    root: ['./']
+    root: ['./div-wang']
 }))
 
 gulp.task('css', function() {
-    gulp.src('./src/scss/*.scss')
+    gulp.src('./src/static/scss/*.scss')
         .pipe(sass())
-        .pipe(gulp.dest('./static/css'))
+        .pipe(gulp.dest('./div-wang/static/css'))
+})
+
+gulp.task('img', function() {
+    gulp.src('./src/static/img/')
+        .pipe(gulp.dest('./div-wang/static/'))
 })
 
 gulp.task('html', function() {
@@ -28,10 +33,27 @@ gulp.task('html', function() {
                 }
             }
         }))
-        .pipe(gulp.dest('./'))
+        .pipe(gulp.dest('./div-wang'))
 })
 
-gulp.task('blog', function() {
+gulp.task('md', function() {
+    var time = new Date().getTime()
+    gulp.src('./src/html/blog/*.md')
+        .pipe(markdown())
+        .pipe(mdTpl())
+        .pipe(swig({
+            defaults: {
+                cache: false,
+                locals: {
+                    time: time,
+                    blog: true
+                }
+            }
+        }))
+        .pipe(gulp.dest('./div-wang/blog'))
+});
+
+gulp.task('blog', ['md'], function() {
     var time = new Date().getTime()
     gulp.src('./src/html/blog/*.html')
         .pipe(swig({
@@ -43,21 +65,16 @@ gulp.task('blog', function() {
                 }
             }
         }))
-        .pipe(gulp.dest('./blog'))
+        .pipe(gulp.dest('./div-wang/blog'))
 })
-
-gulp.task('md', function() {
-    gulp.src('./src/blog/*.md')
-        .pipe(markdown())
-        .pipe(gulp.dest('./blog'));
-});
 
 gulp.task('watch', function() {
     gulp.watch('./src/scss/*.scss', ['css'])
     gulp.watch('./src/html/*.html', ['html'])
-    gulp.watch('./src/blog/*.md', ['md'])
+    gulp.watch('./src/html/blog/*.md', ['blog'])
 })
 
-gulp.task('build', ['css', 'blog', 'html', 'md'])
+gulp.task('build', ['css', 'img', 'blog', 'html'])
 
 gulp.task('default', ['build', 'watch', 'serve'])
+
