@@ -1,13 +1,13 @@
 var gulp = require('gulp'),
     sass = require('gulp-sass'),
     swig = require('gulp-swig'),
-    serve = require('gulp-serve'),
     markdown = require('gulp-markdown'),
-    mdTpl = require('./lib/markdownTpl.js')
+    mdTpl = require('./lib/markdownTpl.js'),
+    getServe = require('./lib/app.js')
 
-gulp.task('serve', serve({
+gulp.task('serve', getServe({
     port: '3000',
-    root: ['./div-wang']
+    root: '/div-wang'
 }))
 
 gulp.task('css', function() {
@@ -16,9 +16,19 @@ gulp.task('css', function() {
         .pipe(gulp.dest('./div-wang/static/css'))
 })
 
+gulp.task('js', function() {
+    gulp.src('./src/static/js/**')
+        .pipe(gulp.dest('./div-wang/static/js'))
+})
+
 gulp.task('img', function() {
-    gulp.src('./src/static/img/')
-        .pipe(gulp.dest('./div-wang/static/'))
+    gulp.src('./src/static/img/**')
+        .pipe(gulp.dest('./div-wang/static/img'))
+})
+
+gulp.task('bower', function() {
+    gulp.src('./src/static/bower_components/**')
+        .pipe(gulp.dest('./div-wang/static/bower'))
 })
 
 gulp.task('index', function() {
@@ -74,7 +84,7 @@ gulp.task('watch', function() {
     gulp.watch('./src/html/blog/*.md', ['blog'])
 })
 
-gulp.task('build', ['css', 'img', 'blog', 'index'])
+gulp.task('build', ['css', 'js', 'img', 'bower', 'blog', 'index'])
 
 gulp.task('default', ['build', 'watch', 'serve'])
 
