@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 
 gulp.task('serve', getServe({
     port: '3000',
-    root: '/div-wang'
+    root: '/readme'
 }))
 
 gulp.task('css', function() {
