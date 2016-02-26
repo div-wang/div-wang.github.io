@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Div-wang</title>
+    {% include 'static/common.html' %}
+</head>
+
+<body>
+    {% include 'common/head.html' %}
+    <section class="welcome animate" id="welcome">
+        <div class="container">
+            <h2>Read Me {% include 'icons/github.html' %} {% include 'icons/sina.html' %} {% include 'icons/zhihu.html' %} {% include 'icons/google.html' %} </h2>
+            <h3>二流前端攻城狮，三流全栈，伪文艺青年</h3>
+            <h3>喜欢美食，喜欢跑步，喜欢骑行</h3>
+        </div>
+    </section>
+    <section class="section clearfix animate" id="about">
+        <div class="container">
+            <div class="section-left">
+                About
+            </div>
+            <div class="section-main">
+                <p>有丰富的web前端和H5开发经验，能解决各浏览器的兼容性、网页性能优化等问题；</p>
+                <p>熟悉cmd规范，做过基于seajs前端模块化开发，了解nodejs,angular,react等框架；</p>
+                <p> 善于总结、思考解决问题的各种方法和思路，能自己快速解决各种技术问题 。</p>
+            </div>
+        </div>
+    </section>
+    <section class="section clearfix animate" id="project">
+        <div class="container">
+            <div class="section-left">
+                Project
+            </div>
+            <div class="section-main">
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://go.39yst.com/"> 疯狂抢 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['javascript', 'Jquery' , 'Zepto' , 'FastClick' , 'seajs' , 'spm' , 'Node.js' , 'HTML5' , 'CSS3'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://www.39yst.com/bjsp"> 39养生堂－保健食品 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript' , 'Jquery' , 'Yscript'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://pad.39yst.com"> 39养生堂－pad版 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript' , 'Zepto' , 'FastClick' , 'HTML5' , 'CSS3'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://m.39yst.com"> 39养生堂－手机版 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript' , 'Zepto' , 'FastClick' , 'HTML5' , 'CSS3'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://div-wang.github.io/Project/page/2014worldcupsj/">Ebaidu-巴西世界杯手机版 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript', 'Jquery', 'PHP', 'HTML5' , 'CSS3'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://div-wang.github.io/Project/page/2014worldcup/">Ebaidu-巴西世界杯 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript', 'Jquery' , 'PHP'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://div-wang.github.io/Project/page/lyzsk/">Ebaidu-礼邀座上客 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript', 'Jquery' , 'PHP'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://div-wang.github.io/Project/page/xgdj/">Ebaidu-小鬼当家 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript', 'Jquery', 'Jquery.touchwipe', 'PHP', 'HTML5' , 'CSS3' ] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://div-wang.github.io/Project/page/transformers/">baidu-变形金刚大搜版 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['javascript', 'Jquery' ] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+                <div class="member">
+                    <a class="member-name" target="_blank" href="http://div-wang.github.io/Project/page/transformers-sj/">Ebaidu-变形金刚手机传播页 {% include 'icons/link.html' %}</a>
+                    <div class="member-skills">
+                        {% for c in ['JavaScript', 'Jquery', 'Jquery.touchwipe', 'PHP', 'HTML5', 'CSS3'] %}
+                        <span>{{ c }}</span> {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'common/foot.html' %}
+</body>
+
+</html>
