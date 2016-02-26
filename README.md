@@ -28,7 +28,7 @@ div-wang的技术随想录😄
 
 ## 项目地址
 
-[div-wang.com](http://div-wang.com): 
+[blog.div-wang.com](http://blog.div-wang.com/): 
 
 ## License
 
