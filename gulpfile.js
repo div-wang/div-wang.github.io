@@ -66,7 +66,7 @@ gulp.task('blog', ['md'], function() {
 gulp.task('watch', function() {
     gulp.watch('./src/scss/*.scss', ['css'])
     gulp.watch('./src/html/*.html', ['blog'])
-    gulp.watch('./src/html/blog/*.md', ['md'])
+    gulp.watch('./src/html/blog/*.md', ['md']) 
 })
 
 gulp.task('build', ['css', 'js', 'img', 'bower', 'blog'])
