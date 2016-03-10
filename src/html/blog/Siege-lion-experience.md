@@ -21,4 +21,4 @@
 
 &emsp;&emsp;也是去年5月份我从39离职，和朋友一起做海底捞的外包项目，那4个月算是比较痛苦的日子，因为些特殊的原因，海底捞拖了3个月的项目款，有两周我只花了100块钱。但是技术上的进步还是可以的，从杭州回来我就开始研究react和angular，最后还是把重心放在了nodejs上。买了本深入浅出nodejs，看了一遍，算是深入了解一下。项目吃紧的时候我开始做java的开发工作，对java算是有个初步的了解。在海底捞结清了项目款之后，我加入了朋友的创业公司，也就是我现在所在的公司。在新公司学了angular，这次因为有java的基础学的特别快，angular的有很多地方都是借鉴的java。因为公司业务还搞了一段时间shell自动化。  
 
-&emsp;&emsp;总结在北京这两年多来，自己从一个只会切图美工，成长到现在会php、java、nodes三门后端语言，jquery、bootstarp、AMD、CMD、react、angular、vue等前端框架的前端。自己的努力是基础，更多的还是方法。善用搜索引擎：尤其是google（[hosts翻墙上google](http://blog.div-wang.com/blog/hosts-to-google.html)），学点高级的搜索技巧，我一般搜索问题时都会site:zhihu.com或一些前端社区v2ex；经常浏览github的源码，借鉴别人的经验；最后就是看书：读书可以增长自己的知识储备，在遇到问题之后可以让自己更快的解决问题。
+&emsp;&emsp;总结在北京这两年多来，自己从一个只会切图美工，成长到现在能独立完成一个网站的前端。善用搜索引擎：尤其是google（[hosts翻墙上google](http://blog.div-wang.com/blog/hosts-to-google.html)），学点高级的搜索技巧，我一般搜索问题时都会site:zhihu.com或一些前端社区v2ex；经常浏览github的源码，借鉴别人的经验；最后就是看书：读书可以增长自己的知识储备，在遇到问题之后可以让自己更快的解决问题。
