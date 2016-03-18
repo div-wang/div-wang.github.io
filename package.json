@@ -1,6 +1,6 @@
 {
     "name": "div-wang.com",
-    "version": "0.2.0",
+    "version": "1.0.0",
     "description": "div-wang的技术随想录",
     "main": "gulpfile.js",
     "scripts": {
@@ -14,7 +14,7 @@
     "bugs": {
         "url": "https://github.com/div-wang/div-wang.github.io/issues"
     },
-    "homepage": "http://div-wang.com",
+    "homepage": "http://blog.div-wang.com",
     "devDependencies": {
         "gulp": "^3.9.0",
         "gulp-sass": "^2.1.1",

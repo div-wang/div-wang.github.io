@@ -1,5 +1,6 @@
-mysql常用操作指南
-========
+# mysql常用操作指南
+
+>集合一些常用的mysql操作，覆盖增删改查。
 
 ## 数据库&表
 
@@ -66,3 +67,15 @@ mysql常用操作指南
 
 ##### 更新字段内容
 `update person set name='test1' where id=1;`
+
+##### 删除字段
+`alter table person drop column id;`
+
+##### 新增id为自增主键
+`alert table card add id int auto_increment primary key;`
+
+##### 修改id为自增主键
+`alert table card modify id int auto_increment primary key;`
+
+##### 自增id从1开始
+TRUNCATE TABLE card 

@@ -1,5 +1,6 @@
-JavaScript Array 常用操作
-========
+# JavaScript Array 常用操作
+
+>基本数组的常用操作，做个备份。
 
 ### 概要
 在JavaScript中，数组以 Array 为构造函数，是一个高阶的类似有序列表的数据类型。

@@ -1,5 +1,6 @@
-JavaScript DOM节点操作
-=========
+# JavaScript DOM节点操作
+
+>javascript的操作dom的语法。
 
 #### 一些常用的 HTML DOM 方法：
 + getElementById(id) - 获取带有指定 id 的节点（元素） 
