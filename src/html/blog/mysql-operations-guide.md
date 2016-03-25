@@ -72,10 +72,10 @@
 `alter table person drop column id;`
 
 ##### 新增id为自增主键
-`alert table card add id int auto_increment primary key;`
+`alter table card add id int auto_increment primary key;`
 
 ##### 修改id为自增主键
-`alert table card modify id int auto_increment primary key;`
+`alter table card modify id int auto_increment primary key;`
 
 ##### 自增id从1开始
 TRUNCATE TABLE card 

@@ -1,0 +1,30 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../static/css/blog.css?time=1458903349733"> <title>将网页变灰的CSS代码</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-css-">将网页变灰的CSS代码</h1>
+<p>今天无意之中看到了阿烈叔的<a href="https://www.baidufe.com/item/4eb2e626e62749df88e2.html">css filter</a>文章。</p>
+<blockquote>
+<p>IE中可以直接使用CSS Filter实现，但非IE浏览器，却没有直接的提供类似方法。
+好在CSS3出现了，可以通过filter:graysacle实现，但是目前仅支持chrome（18 dev+），
+其他浏览器好像暂时没有支持的打算！
+不过没关系，在中国，目前IE（6/7/8/9）+ Chrome（18 dev+）基本能覆盖了绝大部分浏览器（包括360、Maxthon、Sougou等）。
+<code>-webkit-filter</code>，严格意义上将，这个都不是CSS3的一部分，充其量算得上chrome浏览器的私有css，</p>
+</blockquote>
+<p>试了下，感觉效果碉堡了！</p>
+<p><strong> 代码: </strong>  </p>
+<pre><code class="lang-css">html {
+    filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+    -webkit-filter:grayscale(1.0);
+}
+</code></pre>
+<p><strong> effect可取下列值：</strong>  </p>
+<ul>
+<li><code>grayscale</code>           灰度，值为数值，x∈[0,1]  </li>
+<li><code>sepia</code>                  褐色，值为数值，x∈[0,1]  </li>
+<li><code>saturate</code>             饱和度，值为数值，默认是1，可以是小于1的小数，也可以大于1,x∈[0,+∞)  </li>
+<li><code>hue-rotate</code>         色相旋转，值为角度，x∈[0,360]，单位deg  </li>
+<li><code>invert</code>                  反色，值为数值，x∈[0,1]  </li>
+<li><code>opacity</code>               透明度，值为数值，x∈[0,1]  </li>
+<li><code>brightness</code>          亮度，值为数值，默认是1，可以小于1(变暗)，可以大于1(变亮)；  </li>
+<li><code>contrast</code>              对比度，值为数字，默认是1，可以大于1，也可以小于1；  </li>
+<li><code>blur</code>                     模糊，值为length，表示模糊半径，比如filter:blur(2px)  </li>
+<li><code>drop-shadow</code>     阴影，值为shadow()，写法类似css3 box-shadow，比如filter:drop-shadow(0,0,10px,black)  </li>
+</ul>
+</article><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
