@@ -11,20 +11,18 @@
     font: bold 60px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.4;
     a{
-      width: 24px;
-      height: 24px;
-      padding:8px;
-      border-radius: 20px;
+      padding: 6px;
+      border-radius: 6px;
       background-color: #dd514c;
       display: inline-block;
       margin-left: 10px;
       line-height:0px;
       img{
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
       }
       .icon {
-        opacity: .65;
+        opacity: 1;
       }
     }
   }

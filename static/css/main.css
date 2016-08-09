@@ -58,19 +58,17 @@ a {
     font: bold 60px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.4; }
     .welcome h2 a {
-      width: 24px;
-      height: 24px;
-      padding: 8px;
-      border-radius: 20px;
+      padding: 6px;
+      border-radius: 6px;
       background-color: #dd514c;
       display: inline-block;
       margin-left: 10px;
       line-height: 0px; }
       .welcome h2 a img {
-        width: 20px;
-        height: 20px; }
+        width: 18px;
+        height: 18px; }
       .welcome h2 a .icon {
-        opacity: .65; }
+        opacity: 1; }
   .welcome h3 {
     font: bold 30px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.4; }

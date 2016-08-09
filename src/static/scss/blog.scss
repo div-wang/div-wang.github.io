@@ -3,7 +3,7 @@
 @import 'common/foot';
 
     body .markdown-body {
-        width: 45em;
+        max-width: 45em;
         border-bottom: 1px solid #ddd;
         margin: 16px auto;
         padding: 30px;

@@ -10,9 +10,5 @@ gulp.task('serve', getServe({
 
 gulp.task('build', setProcess)
 
-gulp.task('watch', function(){
-	gulp.watch('./src/html/blog/*.md',setProcess)
-})
-
-gulp.task('default', ['build', 'serve', 'watch'])
+gulp.task('default', ['build', 'serve'])
 
