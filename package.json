@@ -1,27 +1,27 @@
 {
-    "name": "div-wang.com",
-    "version": "1.0.0",
-    "description": "div-wang的技术随想录",
-    "main": "gulpfile.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/div-wang/div-wang.github.io.git"
-    },
-    "author": "div-wang",
-    "bugs": {
-        "url": "https://github.com/div-wang/div-wang.github.io/issues"
-    },
-    "homepage": "http://blog.div-wang.com",
-    "devDependencies": {
-        "gulp": "^3.9.0",
-        "gulp-sass": "^2.1.1",
-        "gulp-swig": "^0.7.4",
-        "gulp-markdown": "^1.2.0",
-        "express": "^4.13.0",
-        "through2": "2.0.0",
-        "mysql": "latest"
-    }
+  "name": "div-wang.com",
+  "version": "1.0.0",
+  "description": "div-wang的技术随想录",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/div-wang/div-wang.github.io.git"
+  },
+  "author": "div-wang",
+  "bugs": {
+    "url": "https://github.com/div-wang/div-wang.github.io/issues"
+  },
+  "homepage": "http://blog.div-wang.com",
+  "devDependencies": {
+    "express": "^4.13.0",
+    "gulp": "^3.9.0",
+    "gulp-markdown": "^1.2.0",
+    "gulp-sass": "^2.1.1",
+    "gulp-swig": "^0.7.4",
+    "mysql": "latest",
+    "through2": "2.0.0"
+  }
 }
