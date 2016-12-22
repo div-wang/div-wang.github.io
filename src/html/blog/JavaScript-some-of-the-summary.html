@@ -1,0 +1,1329 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>JavaScript-some-of-the-summary</title></head><body><article class="markdown-body"><h1 id="javascript"><a name="user-content-javascript" href="#javascript" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>关于JavaScript的一些总结</h1>
+<blockquote>
+<p>众所周知，JavaScript是动态的面向对象的编程语言，能够实现以下效果：</p>
+<blockquote>
+<ol>
+<li>丰富Web 网页功能</li>
+<li>丰富Web界面</li>
+<li>实现本地或远程存储。</li>
+<li>实现分布式网络应用的前端组件，并在后台进行数据存储管理。</li>
+<li>使用JavaScript可以实现完整的分布式Web 应用。</li>
+</ol>
+</blockquote>
+</blockquote>
+<h3 id="javascript_1"><a name="user-content-javascript_1" href="#javascript_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>JavaScript 中的数据类型</h3>
+<p>JavaScript 提供三种元数据类型:<code>string</code>, <code>number</code>, <code>Boolean</code>,<br />
+可使用<code>typeof(type)</code> 测试变量type 的类型</p>
+<p>提供五种基本的引用类型：<code>Object</code>, <code>Array</code>, <code>Function</code>, <code>Date</code> 及<code>RegExp</code>。<br />
+数组，函数，日期和正则表达式是特殊类型，但是严格来讲，日期和正则表达式是元数据类型，可封装在其他对象中。</p>
+<p>JS 中变量类型，数组元素类型，函数参数以及返回值的类型不需要声明类型，类型之间的转换是自动执行的。</p>
+<p>变量值可以是:  </p>
+<ul>
+<li>数值：如字符串，数字或布尔值。</li>
+<li>对象引用： 可引用典型对象，也可以是数据，函数，日期或正则表达式。</li>
+<li>特殊数据值，Null,是典型的用于初始化对象的默认值。</li>
+<li>特殊数据undefined，常用于已被定义，但未赋值的变量。</li>
+</ul>
+<p><code>string</code> 是一系列的Unicode字符串，String 如“hello world”,’A3FO’或空字符串“”，字符串连接可通过+操作符来执行，也可以使用=号来验证两个字符串是否相等；</p>
+<p><code>number</code> 表示64位的浮点数，在JS中没有明显的区分整形和浮点数，如果一个表达式的值不等于某个数字，那么它的值可设为NaN,表示非数字，可联合isNaN使用。</p>
+<p>如下表是详细的类型测试和转换</p>
+<h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>变量作用域范围</h3>
+<p>目前，JavaScript，ES5提供两种作用域类型：全局变量及函数作用域，没有块作用域。块作用域的范围不太明确，所以应当避免块作用域的使用。如下代码，尽管是开发人员常用的Pattern,却是一个陷阱。<br />
+<pre><code class="js">function foo() {
+  for (var i=0; i &lt; 10; i++) {
+    ...  // do something with i
+  }
+</code></pre><br />
+所有的变量声明最好是在函数的开始位置。在JS，ES6版本中支持块作用域，采用关键字let 定义变量。</p>
+<p>严格模式（Strict Mode）<br />
+从ES5开始， 严格模式用于检测运行时的错误，在严格模式下，所有的变量必须声明，如果给未声明的变量赋值会抛出异常。<br />
+在JavaScript 文件或<code>&lt;Script&gt;</code>元素内，通过输入以下代码切换到严格模式：<code>use strict;</code><br />
+建议采用严格模式，除非项目依赖的库不兼容严格模式。</p>
+<h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>多种对象</h3>
+<p>JS中对象不需要实例化，也可以有自己的方法，不仅有property，也包含method。除此之外还包含key-value；因此他们总共有三种扩展。</p>
+<p>JS对象是由一系列的key-value组成的。而key可以是属性名称，函数名称，映射名称。</p>
+<p>对象可通过一种特定的方式创建，使用JS 对象声明语法（JSON），而不需要实例化一个类。<br />
+代码如下：<br />
+<pre><code class="js">var Object = { lastName:&quot;hello&quot;, firstName:&quot;word&quot; };
+</code></pre><br />
+Object 属性可以使用两种方法来访问：</p>
+<ul>
+<li>使用”.”(与C++ 和Java的类似)：<code>Object.key = val</code></li>
+<li>使用map：<code>Object[key] = val</code></li>
+</ul>
+<p>JS 对象能够用于各种途径，以下是3⃣️种常见情况：<br />
+1. Property集合；<br />
+2. map 如Hash map，数组，hash表；<br />
+3. 对象不需要实例化类，它可能包含property和function:<br />
+<pre><code class="js">var person1 = { 
+  lastName: &quot;hello&quot;, 
+  firstName: &quot;word&quot;,
+  getFullName: function () {
+    return this.firstName +&quot; &quot;+ this.lastName; 
+  }
+};
+</code></pre></p>
+<h3 id="array-list"><a name="user-content-array-list" href="#array-list" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Array List</h3>
+<p>JS array 即逻辑数据结构，通过数组下标访问。如数组初始化：<br />
+<pre><code class="js">var arr = [1,2,3];
+</code></pre><br />
+JS数组可动态增长，因此数组索引有可能比实际元素个数多，如下：<br />
+<pre><code class="js">arr[4] = 7;
+</code></pre><br />
+数组循环：<br />
+<pre><code class="js">for (i=0; i &lt; arr.length; i++) { ...}
+</code></pre><br />
+数组是特殊的对象类型，因此有很多情况下，需要判断变量是否为数组类型，使用IsArray方法：<br />
+<pre><code class="js">Array.isArray(arr)
+</code></pre><br />
+添加新元素到数组：<br />
+<pre><code class="js">arr.push(newArray);
+</code></pre><br />
+删除：<br />
+<pre><code class="js">arr.splice(i, 1);
+</code></pre><br />
+查找：<br />
+<pre><code class="js">if (arr.indexOf(v) &gt; -1)  ...
+</code></pre><br />
+循环：<br />
+<pre><code class="js">var i=0;
+for (i=0; i &lt; arr.length; i++) {
+  console.log(arr);
+}
+</code></pre><br />
+如果数组较小，可使用foreach 循环：<br />
+a.forEach( function (elem) {<br />
+  console.log( elem);<br />
+}) </p>
+<p>JS 也提供克隆数组的函数：<br />
+<pre><code class="js">var clone = arr.slice(0); 
+</code></pre></p>
+<h3 id="maps"><a name="user-content-maps" href="#maps" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Maps</h3>
+<p>map 提供key 到值得映射。JS map 是一串字符集，可包含空格：<br />
+<pre><code class="js">var map = { 
+    &quot;apple&quot;: &quot;red&quot;, 
+    &quot;orgin&quot;: &quot;yellow&quot; 
+}
+</code></pre><br />
+增加：<br />
+<pre><code class="js">map[&quot;banana&quot;] = &quot;yellow&quot;;
+</code></pre><br />
+删除：<br />
+<pre><code class="js">map[&quot;banana&quot;] = &quot;&quot;;
+</code></pre><br />
+查找：<br />
+<pre><code class="js">if (&quot;yellow&quot; in map)  ...
+</code></pre><br />
+循环：<br />
+<pre><code class="js">for (var i in map) {
+  console.log( map[i]);
+}
+</code></pre><br />
+如果map 较小可使用foreach 语句：<br />
+<pre><code class="js">Object.forEach(function (key) {
+  console.log(Object[key]);
+}) 
+</code></pre><br />
+复制map<br />
+<pre><code class="js">var clone = JSON.parse(JSON.stringify(map))
+</code></pre></p>
+<p>record，map，entity 在实际应用中没有明显的区分，只是概念上的区分。对JS 引擎而言，都是对象。但是从概念上是有区分的。</p>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>函数</h3>
+<p>函数定义：<br />
+<pre><code class="js">var myFunction = function functionName () {...}
+</code></pre><br />
+<code>functionName</code>是可选的，如果省略函数名称，则称该函数为匿名函数。通常，函数是通过变量来调用的，如上面的代码，则表示<br />
+<code>myFunction</code> 会调用<code>myFunction()</code>函数，而不是使用<code>functionName()</code>调用。<br />
+匿名函数表达式在其他编程语言中称为lambda 表达式。如下代码是匿名函数。可以与预定义的sort函数对比：<br />
+<pre><code class="js">var list = [[1,2],[1,3],[1,1],[2,1]]; 
+list.sort( function (x,y) { 
+  return ((x[0] === y[0]) ? x[1]-y[1] : x[0]-y[0]);
+});
+</code></pre><br />
+函数声明：<br />
+<pre><code class="js">function functionName () {...}
+</code></pre><br />
+与代码<br />
+<pre><code class="js">var functionName = function functionName () {...}
+</code></pre><br />
+等价；<br />
+声明了函数functionName ，并使用functionName 变量来引用函数。<br />
+JS 提供函数内联，closure机制允许JS 函数调用函数之外的使用变量。函数可以创建closure 来存储当前的环境。如下，不需要通过参数将外部变量的结果传给内部函数，它本身就是可用的。<br />
+<pre><code class="js">var sum = function (numbers) {
+  var result = 0;
+  numbers.forEach( function (n) {
+      result += n;
+  });
+  return result;
+};
+console.log( sum([1,2,3,4]));
+</code></pre><br />
+当执行一个方法时，可以使用内置arguments 对象访问函数内的参数，arguments 对象与数组使用方法类似，有长度属性，也有索引，并且可以使用For语句来循环迭代。但是由于它并不是Array 实例，因此JS arrary的部分方法无法应用如foreach。<br />
+arguments 对象的元素个数与函数参数个数相同，也可以定义方法的时候不指定参数个数，在调用时，可为函数赋多个参数，如：<br />
+<pre><code class="js">var sum = function () {
+  var result = 0, i=0;
+  for (i=0; i &lt; arguments.length; i++) {
+    result = result + arguments;
+  }
+  return result;
+};
+console.log( sum(0,1,1,2,3,5,8));  // 20
+</code></pre><br />
+方法是在构造函数的原型上定义的，可以通过对象创建的构造器调用，如<code>Array.prototype.forEach</code>；Array表示构造器，调用类的实例作为上下文对象参考的，如下： 在foreach中numbers表示上下文对象：<br />
+<pre><code class="js">var numbers = [1,2,3];  // create an instance of Array
+numbers.forEach( function (n) {
+  console.log( n);
+});
+</code></pre><br />
+无论原型方法是否被上下文对象调用，但是只要是参数为对象，可以使用JS函数的Call 方法来辅助调用对象。如下，我们可以使用foreach 循环方法：<br />
+<pre><code class="js">var sum = function () {
+  var result = 0;
+  Array.prototype.forEach.call( arguments, function (n) {
+    result = result + n;
+  });
+  return result;
+};
+</code></pre><br />
+<code>Function.prototype.call</code>方法和<code>Function.prototype.apply</code>都是为了改变某个函数运行时的 context 即上下文而存在的。</p>
+<h4 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>定义和使用类</h4>
+<p>类是面向对象中的基本概念，对象的实例化称为类。JS中定义类需要满足以下五个需求：<br />
++ 指定类的名称，实例级别的属性和方法，类级别的属性和方法。<br />
++ 是可预测的实力，能够用于验证是否是某一对象的实例。<br />
++ 实例级别的属性用于检测对象的直接类型。<br />
++ 属性继承<br />
++ 方法继承。<br />
+除此之外还支持对哦集成和多分类。<br />
+JS中对类没有统一的定义规范，可以使用不同代码模式来定义类，并应用于多种不同的框架。JS中最常用的定义类的方法如下：<br />
++  构造函数规范，可通过prototype chain实现方法继承，并支持创建新的类实例。<br />
++  factory 对象，用于预定义Object.create 方法来创建新实例。该方法中基于构造函数的继承机制可以被其他机制代替。<br />
+创建App都需要使用类，因此经常需要定义类之间的关系，所以必须保证，使用相同类</p>
+<h4 id="constructor-based-classeses6"><a name="user-content-constructor-based-classeses6" href="#constructor-based-classeses6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Constructor-based classes只有ES6引入了定义基于构造器的类。新语法支持定义一些简单的类继承，具体步骤如下：</h4>
+<h5 id="person-first-name-last-nametostringchecklastname"><a name="user-content-person-first-name-last-nametostringchecklastname" href="#person-first-name-last-nametostringchecklastname" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>定义一个基类Person 具有两个属性，<code>first Name</code> 和<code>Last Name</code>，实例层的方法<code>toString</code>和静态方法<code>checkLastName</code>；</h5>
+<pre><code class="js">class Person {
+  constructor( first, last) {
+    this.firstName = first;
+    this.lastName = last;
+  }
+  toString() {
+    return this.firstName + &quot; &quot; +
+        this.lastName;
+  }
+  static checkLastName( ln) {
+    if (typeof(ln)!==&quot;string&quot; || 
+        ln.trim()===&quot;&quot;) {
+      console.log(&quot;Error: &quot; +
+          &quot;invalid last name!&quot;);
+    }
+  }
+}
+</code></pre>
+
+<h5 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>定义一个带有其他属性和方法的子类，也有可能重写父类的相关方法：</h5>
+<pre><code class="js">class Student extends Person {  constructor( first, last, studNo) {
+    super.constructor( first, last);
+    this.studNo = studNo; 
+  }
+  // method overrides superclass method
+  toString() {
+    return super.toString() + &quot;(&quot; +
+        this.studNo +&quot;)&quot;;
+  }
+}
+</code></pre>
+
+<h4 id="es5"><a name="user-content-es5" href="#es5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ES5中，可以定义继承基于构造器类的子类。如下：</h4>
+<h5 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>首先定义构造函数，能够隐式的定义类的属性并赋值；</h5>
+<p><pre><code class="js">function Person( first, last) {
+  this.firstName = first; 
+  this.lastName = last; 
+}
+</code></pre><br />
+注意，上述代码中的this 指的是新生成的对象，当构造函数被调用时，该对象就已经生成了。</p>
+<h5 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>定义实例层的方法：</h5>
+<pre><code class="js">Person.prototype.toString = function () {
+  return this.firstName + &quot; &quot; + this.lastName;
+}
+</code></pre>
+
+<h5 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>定义静态方法：</h5>
+<pre><code class="js">Person.checkLastName = function (ln) {
+  if (typeof(ln)!==&quot;string&quot; || ln.trim()===&quot;&quot;) {
+    console.log(&quot;Error: invalid last name!&quot;);
+  }
+}
+</code></pre>
+
+<h5 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>定义子类：</h5>
+<p><pre><code class="js">function Student( first, last, studNo) {
+  // invoke superclass constructor
+  Person.call( this, first, last);
+  // define and assign additional properties
+  this.studNo = studNo;  
+}
+</code></pre><br />
+通过调用超类的构造函数Person.call( this, &hellip;)，来创建新对象。其中This指的是Student，Property Slots 在超类的构造函数中已经创建（(firstName 和lastName） 以及其他子类相关的属性。在这种情况下可使用Property Inheritance 机制保证所有的属性已经被定义且被创建。<br />
+Step2b,通过构造函数的prototype 属性安装method inheritance 。如下，分配了一个新对象创建子类型构造函数的Prototype 属性，并做出适当的调整：<br />
+// Student inherits from PersonStudent.prototype = Object.create(     Person.prototype);// adjust the subtype&rsquo;s constructor propertyStudent.prototype.constructor = Student;<br />
+Step2c， 重新定义子类方法重写超类方法：<br />
+// Student inherits from Person<br />
+Student.prototype = Object.create( <br />
+    Person.prototype);<br />
+// adjust the subtype&rsquo;s constructor property<br />
+Student.prototype.constructor = Student;<br />
+基于构造器类的实例化是通过应用new 操作符来创建的，并提供合适的构造参数：<br />
+Student.prototype.toString = function () {<br />
+  return Person.prototype.toString.call( this) +<br />
+      &ldquo;(&rdquo; + this.studNo + &ldquo;)&rdquo;;<br />
+};<br />
+方法toString 通过pers1. 来调用：<br />
+alert(&ldquo;The full name of the person are: &rdquo; +      pers1.toString());<br />
+在JS中，prototype 是具有method slots 的对象，可以通过JS方法或属性槽继承的。</p>
+<p>基于Factory 的类<br />
+在该方法中定义了JS 对象Person，含有特殊的Create 方法来调用预定义的Object.Create方法，创建Person类型的对象；<br />
+var Person = {<br />
+  name: &ldquo;Person&rdquo;,<br />
+  properties: {<br />
+    firstName: {range:&rdquo;NonEmptyString&rdquo;, label:&rdquo;First name&rdquo;, <br />
+        writable: true, enumerable: true},<br />
+    lastName: {range:&rdquo;NonEmptyString&rdquo;, label:&rdquo;Last name&rdquo;, <br />
+        writable: true, enumerable: true}<br />
+  },<br />
+  methods: {<br />
+    getFullName: function () {<br />
+      return this.firstName +&rdquo; &ldquo;+ this.lastName; <br />
+    }<br />
+  },<br />
+  create: function (slots) {<br />
+    // create object<br />
+    var obj = Object.create( this.methods, this.properties);<br />
+    // add special property for <em>direct type</em> of object<br />
+    Object.defineProperty( obj, &ldquo;type&rdquo;, <br />
+        {value: this, writable: false, enumerable: true});<br />
+    // initialize object<br />
+    Object.keys( slots).forEach( function (prop) {<br />
+      if (prop in this.properties) obj[prop] = slots[prop];<br />
+    })<br />
+    return obj;<br />
+  }<br />
+};<br />
+注意JS对象Person实际表示的是factory-based 类。factory-based类的实例化是通过调用它自己的Create方法实现的：<br />
+var pers1 = Person.create( {firstName:&rdquo;Tom&rdquo;, lastName:&rdquo;Smith&rdquo;});<br />
+getFullName 方法是通过pers1. 调用的，如下：<br />
+alert(&ldquo;The full name of the person are: &rdquo; + pers1.getFullName());<br />
+每个属性的声明都是使用Object.Create 声明的，其中包含三个参数及值，&rsquo;descriptors&rsquo;writable: true and enumerable: true；如上面第五行的。</p></article></body></html>
