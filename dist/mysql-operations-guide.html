@@ -1,0 +1,56 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=1490608747463"> <title>mysql常用操作指南</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="mysql-">mysql常用操作指南</h1>
+<blockquote>
+<p>集合一些常用的mysql操作，覆盖增删改查。</p>
+</blockquote>
+<h2 id="-">数据库&amp;表</h2>
+<h5 id="-">查看数据库</h5>
+<p><code>create database;</code></p>
+<h5 id="-">创建数据库</h5>
+<p><code>create database test;</code></p>
+<h5 id="-">选择数据库</h5>
+<p><code>use test;</code></p>
+<h5 id="-">查看当前数据库所有表</h5>
+<p><code>show tables;</code></p>
+<h5 id="-">创建数据表</h5>
+<p><code>create table person(id int, name varchar(20), sex char(1), birth date);</code></p>
+<h5 id="-">获取数据表结构</h5>
+<p><code>desc person;</code></p>
+<h5 id="-">查询表中的数据</h5>
+<p><code>select * from person;</code></p>
+<h5 id="-">插入数据</h5>
+<p><code>insert into person(id,name,sex,birth) values(1,&#39;test&#39;,&#39;1&#39;,&#39;1990-01-08&#39;);</code></p>
+<h5 id="-">更新表中的数据</h5>
+<p><code>update person set name=&#39;test1&#39;, sex=1, birth=1990-01-01 where id=1;</code></p>
+<h5 id="-">删除表中的数据</h5>
+<p><code>delete from person where id=1;</code></p>
+<h5 id="-">删除表中的全部数据</h5>
+<p><code>delete from person;</code></p>
+<h5 id="-">重命名表</h5>
+<p><code>alter table person rename person_test;</code></p>
+<h5 id="-">删除表</h5>
+<p><code>drop table person_test;</code></p>
+<h5 id="-">删除数据库</h5>
+<p><code>drop database test;</code></p>
+<h2 id="-">主键</h2>
+<h5 id="-">新增主键</h5>
+<p><code>alter table person_test add primary key(id);</code></p>
+<h5 id="-">删除主键</h5>
+<p><code>alter table person_test drop primary key;</code></p>
+<h2 id="-">字段</h2>
+<h5 id="-">新增字段</h5>
+<p><code>alter table person add(address varchar(50));</code> </p>
+<h5 id="-">修改字段名</h5>
+<p><code>alter table person CHANGE address newAddress varchar(50);</code></p>
+<h5 id="-">修改字段类型</h5>
+<p><code>alter table person modify newAddress varchar(50);</code></p>
+<h5 id="-">更新字段内容</h5>
+<p><code>update person set name=&#39;test1&#39; where id=1;</code></p>
+<h5 id="-">删除字段</h5>
+<p><code>alter table person drop column id;</code></p>
+<h5 id="-id-">新增id为自增主键</h5>
+<p><code>alter table card add id int auto_increment primary key;</code></p>
+<h5 id="-id-">修改id为自增主键</h5>
+<p><code>alter table card modify id int auto_increment primary key;</code></p>
+<h5 id="-id-1-">自增id从1开始</h5>
+<p>TRUNCATE TABLE card </p>
+</article><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
