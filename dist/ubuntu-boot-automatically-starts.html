@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time="> <title>ubuntu 开机自动启动</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="ubuntu-">ubuntu 开机自动启动</h1>
+<blockquote>
+<p>最近尝试自动化，遇到很多坑，今天写写ubuntu自动启动的问题。</p>
+</blockquote>
+<p>先从坑一ubuntu init系统程序说起吧。init初始化系统的工具，init的启动首先要知道系统的时的默认运行级别，有文章说是位于<code>/etc/inittab</code>,但是我在亚马逊EC2 (Ubuntu 16.04.1 LTS (GNU/Linux 4.4.0-66-generic x86_64)上并没有找到这个文件。我是google了好久找到的<code>runlevel</code>    命令:
+<img src="/static/img/ubuntu-boot/001.jpg" alt="过程图">
+知道默认运行级别就好办啦。根据级别<code>N 5</code>，找到<code>/etc/rc5.d/</code>，这里就是系统默认启动的程序目录。
+<img src="/static/img/ubuntu-boot/002.jpg" alt="过程图">
+这里说一下，ubuntu有8个启动级别，是0-6和S。分别对应<code>/etc/rcN.d/</code> 8个文件夹。</p>
+<p>然而，你以为找到<code>/etc/rcN.d/</code>目录久找到脚本啦，too young too simple。<code>/etc/rcN.d/</code>目录下的所有文件只是‘软连接’。😯
+执行<code>ls -lh /etc/rc5.d/</code> 命令:
+<img src="/static/img/ubuntu-boot/003.jpg" alt="过程图">
+自动启动需要的所有脚本都在<code>/etc/init.d/</code>文件夹里。<code>/etc/rcN.d/</code>只是控制启动关闭的软连接，文件夹下所有程序文件名的格式为： <code>S/K + NN + NAME</code>。系统进入默认运行级别时，init会杀掉所有以K开头的程序，启动以S开头的程序，按照NN的大小，从低到高开始启动/停止程序。NAME则是程序的名字，也是启动之后进程的名字。如果想详细了解init系统可以参： <a href="http://monklof.com/post/14/">总结 - Linux初始化过程（init系统）</a></p>
+<p>init在<code>/etc/rcN.d/</code>脚本执行完成后，所有的系统服务此时已经执行成功，之后会找<code>/etc/rc.local</code>脚本文件，我的理解这个脚本文件是用户自己启动的程序。所以，马上配置<code>/etc/rc.local</code>，重启系统。
+<img src="/static/img/ubuntu-boot/004.jpg" alt="过程图">
+然而并没有等到欣喜的启动成功。</p>
+<p>再了解了init系统程序之后我知道我的所有配置都是对的，但是，我的脚本还是启动不了。这个就很尴尬啦，既然还不对那肯定是出错啦，看看系统启动日志好了。然而万万没想到，系统启动日志也是个坑。我google查到的文章都把系统启动日志写成<code>/var/log/boot.log</code>，wtf，我在我的机器上怎么都找不到它。不知道是不是EC2的问题，还没查证。万般无奈之下，我只能去<code>/var/log/</code>里一个个log找。终于发现一个名字很符合的文件：
+<img src="/static/img/ubuntu-boot/005.jpg" alt="过程图">
+打开一看果然是启动日志，查看日志分析，找到了一处nginx报错：
+<img src="/static/img/ubuntu-boot/006.jpg" alt="过程图">
+这个错误很明显，是要输入密码，于是google查了一下，原来nginx是需要配置没有密码的key。对比脚本，猜测应该是我的再次执行nginx，导致<code>/etc/rc.local</code>报错，下面的shell都没有执行。于是注释掉nginx和jenkins，nginx的key换成不用输入密码的。
+<img src="/static/img/ubuntu-boot/007.jpg" alt="过程图">
+<code>sudo reboot</code>,脚本启动成功。 </p>
+</article><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>

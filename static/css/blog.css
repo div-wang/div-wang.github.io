@@ -411,6 +411,13 @@ body .markdown-body {
   margin-top: 0;
   margin-bottom: 16px; }
 
+.markdown-body p {
+  text-indent: 26px; }
+  .markdown-body p img {
+    width: 100%;
+    display: block;
+    margin: 5px auto; }
+
 .markdown-body hr {
   height: 4px;
   padding: 0;
