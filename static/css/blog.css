@@ -52,9 +52,19 @@ a {
   padding: 100px 0 50px 0;
   font-size: 15px;
   color: #999; }
+  .footer .weixin {
+    color: red;
+    font-weight: bold;
+    max-width: 50em;
+    margin: 0 auto;
+    text-align: center; }
+    .footer .weixin img {
+      max-width: 300px;
+      display: blocak;
+      margin: 0 auto; }
 
 body .markdown-body {
-  max-width: 45em;
+  max-width: 50em;
   border-bottom: 1px solid #ddd;
   margin: 16px auto;
   padding: 30px; }
