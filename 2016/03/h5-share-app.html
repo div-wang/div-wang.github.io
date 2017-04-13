@@ -1,4 +1,5 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time="> <title>手机网页实现分享到本地微信微博等应用中</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-">手机网页实现分享到本地微信微博等应用中</h1>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>手机网页实现分享到本地微信微博等应用中</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-">手机网页实现分享到本地微信微博等应用中</h1>
 <blockquote>
 <p>手机网页分享到微信和微博的见解。</p>
 </blockquote>
@@ -7,24 +8,24 @@
 <h5 id="google-">google也已经有动作了：</h5>
 <p><img src="/static/img/1c5ca088b262d06ce08f4bc25b95b0b4_r.jpg" alt="App Links"><br>我等骚年只能期待标准早日确定啦！<br>另外uc浏览器下分享请移步：<a href="http://www.zhihu.com/question/24577266/answer/41498951?group_id=564848166613225472">HTML5网页端如何调用手机浏览器分享功能？ - Div wang 的回答</a></p>
 <h5 id="-">这是代码实现</h5>
-<pre><code class="lang-javascript">/* 39yst.com：uc分享*/
-var weixinShareBtn//微信分享按钮，默认隐藏
-var weixin;//新建微信分享方法
-var Browser=new Object(); 
-Browser.ios=/iphone/.test(Browser.userAgent); //判断ios系统
-if(/UCBrowser/gi.test(navigator.userAgent)){  //判断uc浏览器
-    weixinShareBtn.style.display = &#39;block&#39;;   //微信分享按钮
-    weixin = function(){                      //微信分享方法
-        var title = shareData.desc;
-        var img = shareData.imgUrl;
-        var url = location.href+(location.search?&quot;&amp;&quot;:&quot;?&quot;)+&quot;uc_39yst&quot;;
-        if(Browser.ios){
-            ucbrowser.web_share(title, img, url, &#39;kWeixinFriend&#39;, &#39;&#39;, &#39;@39yst&#39;, &#39;&#39;);
-        }else{
-            ucweb.startRequest(&quot;shell.page_share&quot;,[title,img,url,&#39;WechatTimeline&#39;,&#39;&#39;,&#39;&#39;,&#39;&#39;])
+<pre><code class="lang-javascript"><span class="hljs-comment">/* 39yst.com：uc分享*/</span>
+<span class="hljs-built_in">var</span> weixinShareBtn<span class="hljs-comment">//微信分享按钮，默认隐藏</span>
+<span class="hljs-built_in">var</span> weixin;<span class="hljs-comment">//新建微信分享方法</span>
+<span class="hljs-built_in">var</span> Browser=<span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>(); 
+Browser.ios=<span class="hljs-regexp">/iphone/</span>.test(Browser.userAgent); <span class="hljs-comment">//判断ios系统</span>
+<span class="hljs-keyword">if</span>(<span class="hljs-regexp">/UCBrowser/gi</span>.test(navigator.userAgent)){  <span class="hljs-comment">//判断uc浏览器</span>
+    weixinShareBtn.style.display = <span class="hljs-string">'block'</span>;   <span class="hljs-comment">//微信分享按钮</span>
+    weixin = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{                      <span class="hljs-comment">//微信分享方法</span>
+        <span class="hljs-built_in">var</span> title = shareData.desc;
+        <span class="hljs-built_in">var</span> img = shareData.imgUrl;
+        <span class="hljs-built_in">var</span> <span class="hljs-built_in">url</span> = location.href+(location.search?<span class="hljs-string">"&amp;"</span>:<span class="hljs-string">"?"</span>)+<span class="hljs-string">"uc_39yst"</span>;
+        <span class="hljs-keyword">if</span>(Browser.ios){
+            ucbrowser.web_share(title, img, <span class="hljs-built_in">url</span>, <span class="hljs-string">'kWeixinFriend'</span>, <span class="hljs-string">''</span>, <span class="hljs-string">'@39yst'</span>, <span class="hljs-string">''</span>);
+        }<span class="hljs-title">else</span>{
+            ucweb.startRequest(<span class="hljs-string">"shell.page_share"</span>,[title,img,<span class="hljs-built_in">url</span>,<span class="hljs-string">'WechatTimeline'</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>,<span class="hljs-string">''</span>])
         };
-        // gaevent(&#39;event&#39;,&#39;uc_share&#39;,Browser.ios?&#39;ios&#39;:&#39;android&#39;);
+        <span class="hljs-comment">// gaevent('event','uc_share',Browser.ios?'ios':'android');</span>
     }
 };
 </code></pre>
-</article><footer class="footer"><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>

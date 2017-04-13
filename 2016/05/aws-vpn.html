@@ -1,4 +1,5 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time="> <title>使用AWS搭建自己的VPN</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-aws-vpn">使用AWS搭建自己的VPN</h1>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>使用AWS搭建自己的VPN</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-aws-vpn">使用AWS搭建自己的VPN</h1>
 <blockquote>
 <p>免费拥有自己的海外VPN服务器。</p>
 </blockquote>
@@ -13,68 +14,68 @@
 </ul>
 <h3 id="-root-">使用root账户，直接输入</h3>
 <p>EC2 ubuntu系统默认用户是<code>ubuntu</code><br>首先是启用root  </p>
-<pre><code class="lang-bash">sudo passwd
-#会让你输入2次密码
+<pre><code class="lang-bash"><span class="hljs-attribute">sudo</span> passwd
+<span class="hljs-comment">#会让你输入2次密码</span>
 </code></pre>
 <p>然后使用Root账户登录  </p>
 <pre><code class="lang-bash">su root
-#输入你刚才设置的密码会变成下面这样
-root@ip-172-31-20-144:/home/ubuntu#
+<span class="hljs-comment">#输入你刚才设置的密码会变成下面这样</span>
+root<span class="hljs-variable">@ip</span>-<span class="hljs-number">172</span>-<span class="hljs-number">31</span>-<span class="hljs-number">20</span>-<span class="hljs-number">144</span><span class="hljs-symbol">:/home/ubuntu</span><span class="hljs-comment">#</span>
 </code></pre>
 <h3 id="-pptpd">安装pptpd</h3>
-<pre><code class="lang-bash">apt-get install pptpd
+<pre><code class="lang-bash">apt-<span class="hljs-keyword">get</span> install pptpd
 </code></pre>
 <p>不获取root账户也可以</p>
-<pre><code class="lang-bash">sudo apt-get install pptpd
+<pre><code class="lang-bash">sudo apt-<span class="hljs-keyword">get</span> install pptpd
 </code></pre>
 <h3 id="-etc-pptpd-conf-vpn-">修改/etc/pptpd.conf文件，设置vpn代理地址</h3>
-<pre><code class="lang-bash">vi /etc/pptpd.conf
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/pptpd.<span class="hljs-keyword">conf</span>
 </code></pre>
 <p>移动到文件末尾，按i进入编辑模式
 输入</p>
-<pre><code class="lang-bash">localip 192.168.0.1
-remoteip 192.168.0.234-238,192.168.0.245
+<pre><code class="lang-bash">localip <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
+remoteip <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.234</span><span class="hljs-number">-238</span>,<span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.245</span>
 </code></pre>
 <p>按Esc键，输入<code>:wq</code> 退出
 (这里如果不小心删错了或者编辑错了，输入<code>:q!</code>退出就可以)</p>
 <h3 id="-etc-ppp-pptpd-options-dns">修改/etc/ppp/pptpd-options文件, 加上谷歌的dns</h3>
-<pre><code class="lang-bash">vi /etc/ppp/pptpd-options
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/ppp/pptpd-<span class="hljs-keyword">options</span>
 </code></pre>
 <p>还是和刚才一样，到文件末尾添加</p>
-<pre><code class="lang-bash">ms-dns    8.8.8.8 
-ms-dns    8.8.4.4
+<pre><code class="lang-bash"><span class="hljs-selector-tag">ms-dns</span>    8<span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.8</span> 
+<span class="hljs-selector-tag">ms-dns</span>    8<span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.4</span><span class="hljs-selector-class">.4</span>
 </code></pre>
 <p>退出保存</p>
 <h3 id="-etc-ppp-chap-secrets-">修改/etc/ppp/chap-secrets文件，设置用户名</h3>
-<pre><code class="lang-bash">vi /etc/ppp/chap-secrets
+<pre><code class="lang-bash">vi <span class="hljs-regexp">/etc/</span>ppp<span class="hljs-regexp">/chap-secrets</span>
 </code></pre>
 <p>配置你自己VPN的用户名/密码直接按i输入就行，格式见下方</p>
-<pre><code class="lang-bash">&lt;username&gt; pptpd &lt;passwd&gt; *
+<pre><code class="lang-bash"><span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span> pptpd <span class="hljs-tag">&lt;<span class="hljs-name">passwd</span>&gt;</span> *
 </code></pre>
 <p>举个例子</p>
-<pre><code class="lang-bash">user pptpd 123456 *
+<pre><code class="lang-bash"><span class="hljs-keyword">user</span> <span class="hljs-title">pptpd</span> <span class="hljs-number">123456</span> *
 </code></pre>
 <h3 id="-etc-sysctl-conf-ip-">修改/etc/sysctl.conf，打开ip转发</h3>
 <p>修改/etc/sysctl.conf文件</p>
-<pre><code class="lang-bash">vi /etc/sysctl.conf
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/sysctl.<span class="hljs-keyword">conf</span>
 </code></pre>
 <p>最后添加以下内容</p>
-<pre><code class="lang-bash">net.ipv4.ip_forward=1
+<pre><code class="lang-bash">net<span class="hljs-selector-class">.ipv4</span><span class="hljs-selector-class">.ip_forward</span>=<span class="hljs-number">1</span>
 </code></pre>
 <p>退出保存
 执行重新加载配置</p>
-<pre><code class="lang-bash">sudo /sbin/sysctl -p
+<pre><code class="lang-bash">sudo <span class="hljs-regexp">/sbin/</span>sysctl -p
 </code></pre>
 <h3 id="-iptables-nat-configuration">启用iptables的NAT configuration</h3>
-<pre><code class="lang-bash">sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+<pre><code class="lang-bash">sudo iptables -t nat -<span class="hljs-keyword">A</span> POSTROUTING -o eth0 -j MASQUERADE
 </code></pre>
 <h3 id="-ec2-nat-configuration-">为了保证每次EC2实例重启后NAT configuration能启动</h3>
 <p>修改/etc/rc.local文件</p>
-<pre><code class="lang-bash">vi /etc/rc.local
+<pre><code class="lang-bash">vi /etc/rc.<span class="hljs-keyword">local</span>
 </code></pre>
 <p>在exit 0这行上面加上</p>
-<pre><code class="lang-bash">iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+<pre><code class="lang-bash">iptables -t nat -<span class="hljs-keyword">A</span> POSTROUTING -o eth0 -j MASQUERADE
 </code></pre>
 <h3 id="vpn-">vpn如何连接</h3>
 <p><a href="http://jingyan.baidu.com/article/a3f121e4f9903cfc9052bb0b.html">怎么设置vpn连接_百度经验</a><br><a href="http://jingyan.baidu.com/article/d71306350b042713fdf4759e.html">安卓手机怎么设置VPN，安卓手机VPN怎么用_百度经验</a><br><a href="http://jingyan.baidu.com/article/86fae3469769403c48121a71.html">vpn在iphone上怎么用_百度经验</a><br><a href="https://support.apple.com/zh-cn/HT201550">iOS：设置 VPN - Apple 支持</a>  </p>
-</article><footer class="footer"><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>

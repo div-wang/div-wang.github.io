@@ -1,0 +1,28 @@
+.nav-right {
+  float: right;
+  font-size: 16px;
+  margin: 0;
+  padding-left: 0; }
+  .nav-right li {
+    list-style: none;
+    float: left; }
+    .nav-right li a {
+      display: block;
+      border-bottom: 2px solid transparent; }
+      .nav-right li a:hover {
+        border-color: #333; }
+      .nav-right li a.cur {
+        border-color: #333; }
+  .nav-right li + li {
+    margin-left: 30px; }
+
+.header {
+  background-color: #fff;
+  height: 50px;
+  line-height: 50px;
+  padding-top: 20px;
+  border-bottom: solid 2px #dd514c; }
+
+.sitename {
+  float: left;
+  margin: 0; }

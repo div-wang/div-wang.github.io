@@ -1,33 +1,34 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time="> <title>关于Git远程分支和本地分支统一的问题</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-git-">关于Git远程分支和本地分支统一的问题</h1>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>关于Git远程分支和本地分支统一的问题</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="-git-">关于Git远程分支和本地分支统一的问题</h1>
 <blockquote>
 <p>公司项目使用gitlab搭建，每次新功能开发总会新建分支，开发完成合并到master上之后，远程分支会删掉，但是本地缓存总是清不掉。google一下操作步骤，发篇文章记录一下。</p>
 </blockquote>
 <h3 id="-">解决办法：</h3>
 <p>fetch之后删除掉没有与远程分支对应的本地分支：</p>
-<pre><code class="lang-bash">git fetch -p
+<pre><code class="lang-bash"><span class="hljs-attribute">git fetch -p</span>
 </code></pre>
 <h3 id="-">查看本地缓存的远程分支：</h3>
-<pre><code class="lang-bash">git branch -a
+<pre><code class="lang-bash"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-a
 </code></pre>
 <h3 id="-">查看本地缓存的远程分支删除不是否已经删除：</h3>
-<pre><code class="lang-bash">git remote show origin
+<pre><code class="lang-bash">git remote <span class="hljs-built_in">show</span> <span class="hljs-built_in">origin</span>
 </code></pre>
 <h3 id="-">本地删除远程分支的方法</h3>
 <h5 id="-">推送一个空分支到远程分支，其实就相当于删除远程分支：</h5>
-<pre><code class="lang-bash">git push origin :&lt;branchName&gt;
+<pre><code class="lang-bash">git push origin <span class="hljs-symbol">:&lt;branchName&gt;</span>
 </code></pre>
 <h5 id="-delete-">可以使用<code>--delete</code>语法删除远程分支：</h5>
-<pre><code class="lang-bash">git push origin --delete &lt;branchName&gt;
+<pre><code class="lang-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> --<span class="hljs-built_in">delete</span> &lt;branchName&gt;
 </code></pre>
 <h3 id="-">重命名远程分支：</h3>
 <p>其实就是先删除远程分支，然后重命名本地分支，再重新提交一个远程分支。</p>
 <p>1、删除远程分支：</p>
-<pre><code class="lang-bash">git push origin --delete &lt;branchName&gt;
+<pre><code class="lang-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> --<span class="hljs-built_in">delete</span> &lt;branchName&gt;
 </code></pre>
 <p>2、重命名本地分支</p>
-<pre><code class="lang-bash">git branch -m &lt;branchName&gt; &lt;branchName2&gt;
+<pre><code class="lang-bash"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-m &lt;<span class="hljs-keyword">branchName&gt; </span>&lt;<span class="hljs-keyword">branchName2&gt;</span>
 </code></pre>
 <p>3、提交到远程分支</p>
-<pre><code class="lang-bash">git push origin &lt;branchName2&gt;
+<pre><code class="lang-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> &lt;branchName2&gt;
 </code></pre>
-</article><footer class="footer"><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
