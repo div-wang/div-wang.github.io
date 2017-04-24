@@ -4,6 +4,12 @@ div-wang的技术随想录😄
 
 ## 功能描述
 
+### 2.0.0 
+
+* 博客代码不在公开，只托管文章的静态文件
+* 列表按照时间排序
+* 按照时间保存目录
+
 ### 1.0.0 
 * 博客换成二级域名blog.div-wang.com
 * 文章页面标题修改，去除中文命名
@@ -17,14 +23,6 @@ div-wang的技术随想录😄
 * 模版文件自动引入
 * sass文件自动编译css
 * .md文件自动编译html
-
-## 如何开始
-请修改 `src` 目录里的对应文件
-
-* 本地有 Node.JS 和 Python 2.7 环境;  
-* 克隆本项目`https://github.com/div-wang/div-wang.github.io.git`; 
-* 进入项目目录执行 `npm install`;   
-* 终端输入 `gulp` 即可开始  
 
 ## 项目地址
 

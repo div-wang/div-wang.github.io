@@ -90,7 +90,11 @@ a {
   margin-top: 60px; }
 
 .member .member-name {
-  font-weight: bold; }
+  font-weight: bold;
+  color: #dd524d; }
+
+.member .member-name:hover {
+  text-decoration: underline; }
 
 .member .member-meta, .member .member-skills {
   color: #888;
@@ -99,6 +103,10 @@ a {
 
 .member .member-skills {
   color: #999; }
+  .member .member-skills .dateStr {
+    color: #555;
+    display: block;
+    margin-bottom: 5px; }
   .member .member-skills span + span:before {
     content: '路';
     margin: 0 3px; }
