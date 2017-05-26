@@ -1,0 +1,71 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>git shell 技巧</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="git-shell-">git shell 技巧</h1>
+<blockquote>
+<p>git作为常用的代码管理工具，有些shell脚本可以大大提高使用git的效率，本文主要介绍一下我常用的一些shell技巧。</p>
+</blockquote>
+<h3 id="git-shell-">git shell 自动补全</h3>
+<h5 id="-bash-shell-git-">如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本</h5>
+<ul>
+<li>git的源代码包里有个自动补全的shell脚本：
+<code>contrib/completion／git-completion.bash</code></li>
+<li>把这个文件保存到<code>~/.git-completion.bash</code>，</li>
+<li>然后在<code>.bash_profile</code>中加入一行<pre><code class="lang-bash">  source ~/<span class="hljs-selector-class">.git-completion</span><span class="hljs-selector-class">.bash</span>
+</code></pre>
+</li>
+<li>重启终端即可使用</li>
+</ul>
+<h5 id="-">也可以为系统上所有用户都设置默认使用此脚本。</h5>
+<ul>
+<li>脚本复制到本机<ul>
+<li>Mac <code>/opt/local/etc/bash_completion.d</code> 目录中，</li>
+<li>Linux 复制到 <code>/etc/bash_completion.d/</code> 目录中。<ul>
+<li>这两处目录中的脚本，都会在 Bash 启动时自动加载。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%8A%80%E5%B7%A7%E5%92%8C%E7%AA%8D%E9%97%A8">2.7 Git 基础 - 技巧和窍门</a></p>
+<h3 id="-git-">设置Git命令别名</h3>
+<h5 id="-bash_profile-">打开<code>.bash_profile</code>文件</h5>
+<pre><code class="lang-bash">    <span class="hljs-attribute">vi</span> ~/.bash_profile
+</code></pre>
+<h5 id="-">设置以下别名</h5>
+<pre><code class="lang-bash">    <span class="hljs-keyword">alias</span> <span class="hljs-title">gst</span>=<span class="hljs-comment">'git status'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcom</span>=<span class="hljs-comment">'git commit -m'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gadd</span>=<span class="hljs-comment">'git add .'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">push</span>=<span class="hljs-comment">'git push origin'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">pull</span>=<span class="hljs-comment">'git pull origin'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gb</span>=<span class="hljs-comment">'git branch'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gba</span>=<span class="hljs-comment">'git branch -a'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gbd</span>=<span class="hljs-comment">'git branch -D'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">glog</span>=<span class="hljs-comment">'git log'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gc</span>=<span class="hljs-comment">'git checkout'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcb</span>=<span class="hljs-comment">'git checkout -b'</span>
+
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcf</span>=<span class="hljs-comment">'git checkout -f'</span>
+</code></pre>
+<h5 id="-shel-">也可以设置其他shel命令别名</h5>
+<pre><code class="lang-bash"><span class="hljs-keyword">alias</span> pss=<span class="hljs-symbol">'ps</span> -ef|grep'
+
+<span class="hljs-keyword">alias</span> k9=<span class="hljs-symbol">'kill</span> -<span class="hljs-number">9</span>'
+
+<span class="hljs-keyword">alias</span> chmod7=<span class="hljs-symbol">'chmod</span> -R <span class="hljs-number">777</span>'
+
+<span class="hljs-keyword">alias</span> grep=<span class="hljs-symbol">'grep</span> <span class="hljs-comment">--color'</span>
+
+<span class="hljs-keyword">alias</span> ll=<span class="hljs-symbol">'ls</span> -l'
+
+<span class="hljs-keyword">alias</span> rm=<span class="hljs-symbol">'rm</span> -i'
+</code></pre>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
