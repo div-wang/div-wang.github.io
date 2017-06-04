@@ -1,0 +1,41 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>js操作剪切板复制粘贴</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="js-">js操作剪切板复制粘贴</h1>
+<blockquote>
+<p>最近写一个js复制文本内容的功能，在网上搜了一圈，发大部分文章都是比较老旧的，有的甚至是flash复制。</p>
+</blockquote>
+<p>截至2016年，clipboard API还在发展中，很多规范已经更新，市面上大部分文章都是比较老的API，很大一部分被抛弃。</p>
+<h3 id="-event-clipboarddata-setdata-">使用event.clipboardData.setData()复制到剪切板</h3>
+<p>在<code>copy</code>可以使用 event.clipboardData.setData() 更改剪贴板内容。</p>
+<p>请注意，为了防止event事件默认操作被浏览器覆盖，需要阻止默认事件：</p>
+<pre><code class="lang-js">  <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'copy'</span>，<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
+    e.clipboardData.setData(<span class="hljs-string">'text / plain'</span>，<span class="hljs-string">'foo'</span>);
+    e.preventDefault(); <span class="hljs-comment">//默认行为是复制所选文本</span>
+  });
+</code></pre>
+<h4 id="-execcommand-">使用execCommand触发复制事件</h4>
+<p>如果需要触发复制事件(而不仅仅是通过浏览器UI处理用户复制的请求)，则必须使用document.execCommand(&#39;copy&#39;)。</p>
+<pre><code class="lang-js">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"copyBtn"</span>).onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">'复制'</span>);
+  }
+</code></pre>
+<h4 id="-clipboard-api-">浏览器对clipboard API支持情况</h4>
+<ul>
+<li>Firefox支持<code>copy/cut/paste</code>事件(Firefox 22+)和<code>execCommand(&#39;copy&#39;)</code>用户操作(Firefox 41+)。</li>
+<li>Chrome也支持<code>copy/cut/paste</code>和<code>execCommand(&#39;copy&#39;)</code>(Chrome 42+)。</li>
+<li>caniuse.com声称Safari(截至9.1)不支持<code>execCommand(&#39;copy&#39;)</code>。</li>
+<li>微软的IE和Edge不支持clipboard API，可以使用微软自己的API:</li>
+</ul>
+<pre><code class="lang-js">  <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">'Text'</span>, <span class="hljs-built_in">url</span> || <span class="hljs-string">''</span>)
+</code></pre>
+<h4 id="-">完整代码</h4>
+<pre><code class="lang-js">  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.clipboardData) {
+    <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">'Text'</span>, copyTxt)
+  } <span class="hljs-keyword">else</span> {
+    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'copy'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{
+      e.clipboardData.setData(<span class="hljs-string">'text/plain'</span>, copyTxt)
+      e.preventDefault()
+    })
+    <span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">'copy'</span>)
+  }
+</code></pre>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
