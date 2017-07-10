@@ -240,4 +240,75 @@
 </tr>
 </tbody>
 </table>
+<h3 id="js-">js命令说明</h3>
+<blockquote>
+<p>ctrl+s是一个古老的shell控制键，在输入ctrl+q就可以恢复了
+```javascript
+// First Level
+i → Insert mode. Type ESC to return to Normal mode.
+x → Delete the char under the cursor
+:wq → Save and Quit (:w save, :q quit)
+dd → Delete (and copy) the current line
+p → Paste
+Recommended:</p>
+</blockquote>
+<p>hjkl (highly recommended but not mandatory) → basic cursor move (←↓↑→). Hint: j looks like a down arrow.
+:help <command> → Show help about <command>. You can use :help without a <command> to get general help.</p>
+<p>// Second Level</p>
+<p>/<strong><em> Insert mode variations: </em></strong>/</p>
+<p>a → insert after the cursor
+o → insert a new line after the current one
+O → insert a new line before the current one
+cw → replace from the cursor to the end of the word</p>
+<p>/<strong><em> Basic moves </em></strong>/
+0 → go to the first column(number zero)
+^ → go to the first non-blank character of the line
+$ → go to the end of line
+g_ → go to the last non-blank character of line
+/pattern → search for pattern</p>
+<p>/<strong><em> Copy/Paste </em></strong>/
+P → paste before, remember p is paste after current position.
+yy → copy the current line, easier but equivalent to ddP</p>
+<p>/<strong><em> Undo/Redo </em></strong>/
+u → undo</p>
+<p><C-r> → redo</p>
+<p>/<strong><em> Load/Save/Quit/Change File (Buffer) </em></strong>/
+:e <path/to/file> → open
+:w → save
+:saveas <path/to/file> → save to <path/to/file>
+:x, ZZ or :wq → save and quit (:x only save if necessary)
+:q! → quit without saving, also: :qa! to quit even if there are modified hidden buffers.
+:bn (resp. :bp) → show next (resp. previous) file (buffer)</p>
+<p>// 3rd Level – Better. Stronger. Faster.
+/<strong><em> Vim Command (normal Model)-help you to repeat </em></strong>/
+2dd → will delete 2 lines
+3p → will paste the text 3 times
+100idesu [ESC] → will write “desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu”
+. → Just after the last command will write again the 100 “desu”.</p>
+<ol>
+<li>→ Will write 3 “desu” (and not 300, how clever).</li>
+</ol>
+<p>/<strong><em> Vim Command (normal Model)-how to move efficiently with vim </em></strong>/
+NG → Go to line N
+gg → shortcut for 1G - go to the start of the file
+G → Go to last line</p>
+<p>/<strong><em> Vim Command (normal Model)-how to move word move efficiently with vim </em></strong>/</p>
+<p>w → go to the start of the following word,
+e → go to the end of this word.
+By default, words are composed of letters and the underscore character. Let’s call a WORD a group of letter separated by blank characters. If you want to consider WORDS, then just use uppercase characters:</p>
+<p>W → go to the start of the following WORD,
+E → go to the end of this WORD.</p>
+<p>/<strong><em> /Pattern find Next by #(</em>) or find ( then % to next ) *</strong>/
+% : Go to the corresponding (, {, [.</p>
+<ul>
+<li>(resp. #) : go to next (resp. previous) occurrence of the word under the cursor</li>
+</ul>
+<p>/<strong><em> <start position><command><end position> </em></strong>/</p>
+<p>For example : 0y$ means</p>
+<p>0 → go to the beginning of this line
+y → yank from here
+$ → up to the end of this line</p>
+<p>// Tip with postition-comand-position
+But what was true for y (yank), is also true for d (delete), v (visual select), gU (uppercase), gu (lowercase), etc…</p>
+<p>```</p>
 </article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
