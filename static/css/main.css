@@ -29,6 +29,7 @@ a {
     list-style: none;
     float: left; }
     .nav-right li a {
+      color: #333;
       display: block;
       border-bottom: 2px solid transparent; }
       .nav-right li a:hover {
@@ -48,6 +49,8 @@ a {
 .sitename {
   float: left;
   margin: 0; }
+  .sitename a {
+    color: #333; }
 
 .welcome {
   padding: 40px 0;

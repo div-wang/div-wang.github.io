@@ -37,18 +37,29 @@
 </ul>
 <pre><code class="lang-js">  <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">'Text'</span>, <span class="hljs-built_in">url</span> || <span class="hljs-string">''</span>)
 </code></pre>
+<h4 id="-2017-07-27-">------------ 2017-07-27 更新 ------------</h4>
+<p>最近发现在Safari中document.execCommand(&#39;copy&#39;)限制了必须由用户触发才有效，所以在Safari中document.execCommand(&#39;copy&#39;)一直返回false</p>
+<blockquote>
+<p>It looks like the copied text gets returned properly by the event, but the document.execCommand(&#39;copy&#39;) always returns false in Safari. Safari doesn&#39;t support the execCommand API as mentioned at the bottom of the <a href="https://clipboardjs.com/">Clipboard.js documentation</a>.</p>
+</blockquote>
+<p>于是经过反复试错，最终决定使用兼容性最好的input.select()</p>
 <h4 id="-">完整代码</h4>
-<pre><code class="lang-js">  <span class="hljs-keyword">if</span> (<span class="hljs-built_in">window</span>.clipboardData) {
-    <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">'Text'</span>, copyTxt)
-  } <span class="hljs-keyword">else</span> {
-    let copy = <span class="hljs-function"><span class="hljs-params">(e)</span> =&gt;</span> {
-      e.preventDefault()
-      e.clipboardData.setData(<span class="hljs-string">'text/plain'</span>, url || <span class="hljs-string">''</span>)
-      e.clipboardData.setData(<span class="hljs-string">'text/html'</span>, url || <span class="hljs-string">''</span>)
+<pre><code class="lang-html">&lt;input type=<span class="hljs-string">"text"</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">"copyInput"</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"copyInput"</span> style=<span class="hljs-string">"position:absolute;opacity: 0;"</span>&gt;
+</code></pre>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> copyUrl = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> {
+  <span class="hljs-keyword">try</span> {
+    <span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'copyInput'</span>)
+    input.value = text
+    input.focus()
+    input.select()
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">'copy'</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>)) {
+      alert(<span class="hljs-string">'复制成功'</span>)
+    } <span class="hljs-keyword">else</span> {
+      alert(<span class="hljs-string">'当前浏览器不支持复制操作，请使用Ctrl+c手动复制'</span>)
     }
-    <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'copy'</span>, copy, <span class="hljs-literal">false</span>)
-    <span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">'copy'</span>)
-    <span class="hljs-built_in">document</span>.removeEventListener(<span class="hljs-string">'copy'</span>, copy)
+  } <span class="hljs-keyword">catch</span> (e) {
+    alert(<span class="hljs-string">`复制出错：<span class="hljs-subst">${e}</span>`</span>)
   }
+}
 </code></pre>
 </article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
