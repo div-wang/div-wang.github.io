@@ -1,0 +1,209 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>Git Cheat Sheet 中文版</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="git-cheat-sheet-">Git Cheat Sheet 中文版</h1>
+<blockquote>
+<p>经常要用到git命令，但是又记不全，在网上找到一个项目<a href="https://github.com/flyhigher139/Git-Cheat-Sheet">flyhigher139</a>，做了些精简，方便速查！</p>
+</blockquote>
+<h2 id="-">索引</h2>
+<ul>
+<li><a href="#配置">配置</a></li>
+<li><a href="#配置文件">配置文件</a></li>
+<li><a href="#创建">创建</a></li>
+<li><a href="#本地修改">本地修改</a></li>
+<li><a href="#搜索">搜索</a></li>
+<li><a href="#提交历史">提交历史</a></li>
+<li><a href="#分支与标签">分支与标签</a></li>
+<li><a href="#更新与发布">更新与发布</a></li>
+<li><a href="#合并与重置">合并与重置</a></li>
+<li><a href="#撤销">撤销</a></li>
+</ul>
+<hr>
+<h2 id="-">配置</h2>
+<h4 id="-">列出当前配置：</h4>
+<pre><code>$ git <span class="hljs-built_in">config</span> <span class="hljs-comment">--list</span>
+</code></pre><h4 id="-repository-">列出repository配置：</h4>
+<pre><code><span class="hljs-comment">$</span> <span class="hljs-comment">git</span> <span class="hljs-comment">config</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">local</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">list</span>
+</code></pre><h4 id="-">列出全局配置：</h4>
+<pre><code><span class="hljs-comment">$</span> <span class="hljs-comment">git</span> <span class="hljs-comment">config</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">global</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">list</span>
+</code></pre><h4 id="-">列出系统配置：</h4>
+<pre><code><span class="hljs-comment">$</span> <span class="hljs-comment">git</span> <span class="hljs-comment">config</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">system</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">list</span>
+</code></pre><h4 id="-">设置用户名：</h4>
+<pre><code>$ git <span class="hljs-built_in">config</span> <span class="hljs-comment">--global user.name “[firstname lastname]”</span>
+</code></pre><h4 id="-">设置用户邮箱：</h4>
+<pre><code>$ git config --global user.<span class="hljs-section">email</span> “[valid-<span class="hljs-section">email</span>]”
+</code></pre><h4 id="-git-">设置git命令输出为彩色：</h4>
+<pre><code>$ git <span class="hljs-built_in">config</span> --global color.ui <span class="hljs-keyword">auto</span>
+</code></pre><h4 id="-git-">设置git使用的文本编辑器设：</h4>
+<pre><code>$ git <span class="hljs-built_in">config</span> <span class="hljs-comment">--global core.editor vi</span>
+</code></pre><hr>
+<h2 id="-">配置文件</h2>
+<h4 id="repository-local-">Repository配置对应的配置文件路径[--local]：</h4>
+<pre><code>&lt;repo&gt;/.git/<span class="hljs-built_in">config</span>
+</code></pre><h4 id="-global-">用户全局配置对应的配置文件路径[--global]：</h4>
+<pre><code>~/.gitconfig
+</code></pre><h4 id="-local-">系统配置对应的配置文件路径[--local]：</h4>
+<pre><code><span class="hljs-regexp">/etc/gi</span>tconfig
+</code></pre><hr>
+<h2 id="-">创建</h2>
+<h4 id="-">复制一个已创建的仓库:</h4>
+<pre><code class="lang-bash"><span class="hljs-comment"># 通过 SSH</span>
+$ git <span class="hljs-keyword">clone</span> <span class="hljs-title">ssh</span>://user@domain.com/repo.git
+
+<span class="hljs-comment"># 通过 HTTP</span>
+$ git <span class="hljs-keyword">clone</span> <span class="hljs-title">http</span>://domain.com/user/repo.git
+</code></pre>
+<h4 id="-">创建一个新的本地仓库:</h4>
+<pre><code><span class="hljs-variable">$ </span>git init
+</code></pre><hr>
+<h2 id="-">本地修改</h2>
+<h4 id="-">显示工作路径下已修改的文件：</h4>
+<pre><code><span class="hljs-variable">$ </span>git status
+</code></pre><h4 id="-">显示与上次提交版本文件的不同：</h4>
+<pre><code><span class="hljs-variable">$ </span>git diff
+</code></pre><h4 id="-">把当前所有修改添加到下次提交中：</h4>
+<pre><code>$ git <span class="hljs-keyword">add</span><span class="bash"> .</span>
+</code></pre><h4 id="-">把对某个文件的修改添加到下次提交中：</h4>
+<pre><code>$ git <span class="hljs-keyword">add</span><span class="bash"> -p &lt;file&gt;</span>
+</code></pre><h4 id="-">提交本地的所有修改：</h4>
+<pre><code>$ git commit <span class="hljs-_">-a</span>
+</code></pre><h4 id="-">提交之前已标记的变化：</h4>
+<pre><code><span class="hljs-variable">$ </span>git commit
+</code></pre><h4 id="-">附加消息提交：</h4>
+<pre><code><span class="hljs-variable">$ </span>git commit -m <span class="hljs-string">'message here'</span>
+</code></pre><h4 id="-">提交，并将提交时间设置为之前的某个日期:</h4>
+<pre><code>git commit --date=<span class="hljs-string">"`date --date='n day ago'`" -am "</span>Commit Message<span class="hljs-string">"</span>
+</code></pre><h4 id="-">修改上次提交</h4>
+<p><em><sub>请勿修改已发布的提交记录!</sub></em></p>
+<pre><code>$ git <span class="hljs-keyword">commit</span> <span class="hljs-comment">--amend</span>
+</code></pre><h4 id="-committer-date-">修改上次提交的committer date：</h4>
+<pre><code><span class="hljs-attr">GIT_COMMITTER_DATE</span>=<span class="hljs-string">"date"</span> git commit --amend
+</code></pre><h4 id="-author-date-">修改上次提交的author date：</h4>
+<pre><code>git commit --amend --<span class="hljs-keyword">date</span>=<span class="hljs-string">"date"</span>
+</code></pre><h4 id="-">把当前分支中未提交的修改移动到其他分支：</h4>
+<pre><code><span class="hljs-symbol">git</span> stash
+<span class="hljs-symbol">git</span> checkout <span class="hljs-keyword">branch2
+</span><span class="hljs-symbol">git</span> stash <span class="hljs-keyword">pop</span>
+</code></pre><h4 id="-stashed-changes-">将 stashed changes 应用到当前分支：</h4>
+<pre><code>git stash <span class="hljs-built_in">apply</span>
+</code></pre><h4 id="-stashed-changes-">删除最新一次的 stashed changes：</h4>
+<pre><code><span class="hljs-attribute">git stash drop</span>
+</code></pre><hr>
+<h2 id="-">搜索</h2>
+<h4 id="-">从当前目录的所有文件中查找文本内容：</h4>
+<pre><code><span class="hljs-variable">$ </span>git grep <span class="hljs-string">"Hello"</span>
+</code></pre><h4 id="-">在某一版本中搜索文本：</h4>
+<pre><code>$ git grep <span class="hljs-string">"Hello"</span> <span class="hljs-built_in">v2</span>.<span class="hljs-number">5</span>
+</code></pre><hr>
+<h2 id="-">提交历史</h2>
+<h4 id="-hash-">从最新提交开始，显示所有的提交记录（显示hash， 作者信息，提交的标题和时间）：</h4>
+<pre><code><span class="hljs-symbol">$</span> git <span class="hljs-built-in">log</span>
+</code></pre><h4 id="-hash-message-">显示所有提交（仅显示提交的hash和message）：</h4>
+<pre><code>$ git <span class="hljs-built_in">log</span> <span class="hljs-comment">--oneline</span>
+</code></pre><h4 id="-">显示某个用户的所有提交：</h4>
+<pre><code><span class="hljs-symbol">$</span> git <span class="hljs-built-in">log</span> --author=<span class="hljs-string">"username"</span>
+</code></pre><h4 id="-">显示某个文件的所有修改：</h4>
+<pre><code><span class="hljs-symbol">$</span> git <span class="hljs-built-in">log</span> -p &lt;<span class="hljs-keyword">file</span>&gt;
+</code></pre><h4 id="-remote-master-origin-master-">仅显示远端<remote/master>分支与远端<origin/master>分支提交记录的差集：</h4>
+<pre><code>$ git <span class="hljs-built_in">log</span> --oneline &lt;origin/master&gt;..&lt;remote/master&gt; --<span class="hljs-built_in">left</span>-<span class="hljs-built_in">right</span>
+</code></pre><h4 id="-">谁，在什么时间，修改了文件的什么内容：</h4>
+<pre><code><span class="hljs-symbol">$</span> git blame &lt;<span class="hljs-keyword">file</span>&gt;
+</code></pre><h4 id="-reflog-">显示reflog：</h4>
+<pre><code><span class="hljs-variable">$ </span>git reflog show
+</code></pre><h4 id="-reflog-">删除reflog：</h4>
+<pre><code>$ git reflog <span class="hljs-keyword">delete</span>
+</code></pre><hr>
+<h2 id="-">分支与标签</h2>
+<h4 id="-">列出所有的分支：</h4>
+<pre><code><span class="hljs-variable">$ </span>git branch
+</code></pre><h4 id="-">列出所有的远端分支：</h4>
+<pre><code>$ git <span class="hljs-keyword">branch </span>-r
+</code></pre><h4 id="-">切换分支：</h4>
+<pre><code>$ git checkout <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>
+</code></pre><h4 id="-">创建并切换到新分支:</h4>
+<pre><code>$ git checkout -<span class="hljs-selector-tag">b</span> &lt;branch&gt;
+</code></pre><h4 id="-">基于当前分支创建新分支：</h4>
+<pre><code>$ git branch &lt;<span class="hljs-keyword">new</span><span class="hljs-type"></span>-branch&gt;
+</code></pre><h4 id="-">基于远程分支创建新的可追溯的分支：</h4>
+<pre><code>$ git <span class="hljs-keyword">branch </span>--track &lt;new-<span class="hljs-keyword">branch&gt; </span>&lt;remote-<span class="hljs-keyword">branch&gt;</span>
+</code></pre><h4 id="-">删除本地分支:</h4>
+<pre><code>$ git <span class="hljs-keyword">branch </span>-d &lt;<span class="hljs-keyword">branch&gt;</span>
+</code></pre><h4 id="-br-">强制删除一个本地分支：<br></h4>
+<p><em><sub>将会丢失未合并的修改！</sub></em></p>
+<pre><code>$ git <span class="hljs-keyword">branch </span>-D &lt;<span class="hljs-keyword">branch&gt;</span>
+</code></pre><h4 id="-">给当前版本打标签：</h4>
+<pre><code>$ git <span class="hljs-keyword">tag</span> <span class="hljs-title">&lt;tag-name</span>&gt;
+</code></pre><h4 id="-">给当前版本打标签并附加消息：</h4>
+<pre><code>$ git <span class="hljs-keyword">tag</span> <span class="hljs-title">-a</span> <span class="hljs-tag">&lt;tag-name&gt;</span>
+</code></pre><hr>
+<h2 id="-">更新与发布</h2>
+<h4 id="-">列出当前配置的远程端：</h4>
+<pre><code><span class="hljs-variable">$ </span>git remote -v
+</code></pre><h4 id="-">显示远程端的信息：</h4>
+<pre><code>$ git remote show <span class="hljs-tag">&lt;<span class="hljs-name">remote</span>&gt;</span>
+</code></pre><h4 id="-">添加新的远程端：</h4>
+<pre><code>$ git remote <span class="hljs-built_in">add</span> <span class="hljs-symbol">&lt;remote&gt;</span> <span class="hljs-symbol">&lt;url&gt;</span>
+</code></pre><h4 id="-head-">下载远程端版本，但不合并到HEAD中：</h4>
+<pre><code>$ git fetch <span class="hljs-tag">&lt;<span class="hljs-name">remote</span>&gt;</span>
+</code></pre><h4 id="-head-">下载远程端版本，并自动与HEAD版本合并：</h4>
+<pre><code>$ git remote pull <span class="hljs-tag">&lt;<span class="hljs-name">remote</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">url</span>&gt;</span>
+</code></pre><h4 id="-">将远程端版本合并到本地版本中：</h4>
+<pre><code>$ git pull origin <span class="hljs-literal">master</span>
+</code></pre><h4 id="-rebase-">以rebase方式将远端分支与本地合并：</h4>
+<pre><code>git pull --rebase <span class="hljs-tag">&lt;<span class="hljs-name">remote</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>
+</code></pre><h4 id="-">将本地版本发布到远程端：</h4>
+<pre><code>$ git push remote <span class="hljs-tag">&lt;<span class="hljs-name">remote</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>
+</code></pre><h4 id="-">删除远程端分支：</h4>
+<pre><code>$ git <span class="hljs-keyword">push</span> &lt;remote&gt; :&lt;branch&gt; (since Git v1<span class="hljs-meta">.5</span><span class="hljs-meta">.0</span>)
+<span class="hljs-keyword">or</span>
+git <span class="hljs-keyword">push</span> &lt;remote&gt; --delete &lt;branch&gt; (since Git v1<span class="hljs-meta">.7</span><span class="hljs-meta">.0</span>)
+</code></pre><h4 id="-">发布标签:</h4>
+<pre><code>$ git push <span class="hljs-comment">--tags</span>
+</code></pre><hr>
+<p>###合并与重置(Rebase)</p>
+<h4 id="-head-">将分支合并到当前HEAD中：</h4>
+<pre><code>$ git merge <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>
+</code></pre><h4 id="-head-">将当前HEAD版本重置到分支中:</h4>
+<p><em><sub>请勿重置已发布的提交!</sub></em></p>
+<pre><code>$ git rebase <span class="hljs-tag">&lt;<span class="hljs-name">branch</span>&gt;</span>
+</code></pre><h4 id="-">退出重置:</h4>
+<pre><code><span class="hljs-symbol">$</span> git rebase --<span class="hljs-keyword">abort</span>
+</code></pre><h4 id="-">解决冲突后继续重置：</h4>
+<pre><code>$ git rebase --<span class="hljs-keyword">continue</span>
+</code></pre><h4 id="-merge-tool-">使用配置好的merge tool 解决冲突：</h4>
+<pre><code><span class="hljs-variable">$ </span>git mergetool
+</code></pre><h4 id="-">在编辑器中手动解决冲突后，标记文件为<code>已解决冲突</code>：</h4>
+<pre><code>$ git <span class="hljs-keyword">add</span><span class="bash"> &lt;resolved-file&gt;</span>
+</code></pre><pre><code><span class="hljs-symbol">$</span> git rm &lt;resolved-<span class="hljs-keyword">file</span>&gt;
+</code></pre><h4 id="-">合并提交：</h4>
+<pre><code>$ git rebase -i &lt;commit-just-<span class="hljs-keyword">before</span>-<span class="hljs-keyword">first</span>&gt;
+</code></pre><p>把上面的内容替换为下面的内容：</p>
+<p>原内容：</p>
+<pre><code>pick <span class="hljs-tag">&lt;<span class="hljs-name">commit_id</span>&gt;</span>
+pick <span class="hljs-tag">&lt;<span class="hljs-name">commit_id2</span>&gt;</span>
+pick <span class="hljs-tag">&lt;<span class="hljs-name">commit_id3</span>&gt;</span>
+</code></pre><p>替换为：</p>
+<pre><code>pick <span class="hljs-tag">&lt;<span class="hljs-name">commit_id</span>&gt;</span>
+squash <span class="hljs-tag">&lt;<span class="hljs-name">commit_id2</span>&gt;</span>
+squash <span class="hljs-tag">&lt;<span class="hljs-name">commit_id3</span>&gt;</span>
+</code></pre><hr>
+<h2 id="-">撤销</h2>
+<h4 id="-">放弃工作目录下的所有修改：</h4>
+<pre><code>$ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard HEAD</span>
+</code></pre><h4 id="-i-e-git-add-">移除缓存区的所有文件（i.e. 撤销上次<code>git add</code>）:</h4>
+<pre><code>$ git <span class="hljs-keyword">reset</span> <span class="hljs-keyword">HEAD</span>
+</code></pre><h4 id="-">放弃某个文件的所有本地修改：</h4>
+<pre><code><span class="hljs-symbol">$</span> git checkout HEAD &lt;<span class="hljs-keyword">file</span>&gt;
+</code></pre><h4 id="-">重置一个提交（通过创建一个截然不同的新提交）</h4>
+<pre><code>$ git <span class="hljs-keyword">revert </span>&lt;commit&gt;
+</code></pre><h4 id="-head-">将HEAD重置到指定的版本，并抛弃该版本之后的所有修改：</h4>
+<pre><code>$ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--hard &lt;commit&gt;</span>
+</code></pre><h4 id="-">用远端分支强制覆盖本地分支：</h4>
+<pre><code>git <span class="hljs-built_in">reset</span> --hard &lt;remote/branch&gt; e.g., upstream/master, <span class="hljs-built_in">origin</span>/my-<span class="hljs-built_in">feature</span>
+</code></pre><h4 id="-head-">将HEAD重置到上一次提交的版本，并将之后的修改标记为未添加到缓存区的修改：</h4>
+<pre><code>$ git <span class="hljs-keyword">reset</span> &lt;<span class="hljs-keyword">commit</span>&gt;
+</code></pre><h4 id="-head-">将HEAD重置到上一次提交的版本，并保留未提交的本地修改：</h4>
+<pre><code>$ git <span class="hljs-keyword">reset</span> <span class="hljs-comment">--keep &lt;commit&gt;</span>
+</code></pre><h4 id="-gitignore-">删除添加<code>.gitignore</code>文件前错误提交的文件：</h4>
+<pre><code>$ git rm -r --cached .
+$ git <span class="hljs-keyword">add</span><span class="bash"> .
+</span>$ git commit -m <span class="hljs-string">"remove xyz file"</span>
+</code></pre></article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
