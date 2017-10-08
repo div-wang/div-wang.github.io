@@ -148,7 +148,7 @@ a {
     font-family: Consolas, Monaco, Andale Mono, monospace;
     background-color: #FF9F9F;
     margin: 0 2px;
-    padding: 0 5px;
+    padding: 3px 5px 0;
     font-size: .95em;
     border-radius: 5px; }
   .markdown-body pre {

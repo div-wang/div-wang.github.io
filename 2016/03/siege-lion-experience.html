@@ -14,4 +14,35 @@
 <p>&emsp;&emsp;在39以后的日子里，因为业务需要我自学了seajs和php，seajs用在了两个项目上。php了解一些基础知识，算是会写接口会套页面。其实还接触了nodejs，nodejs是seajs打包用环境，当时并没有太刻意去学习nodejs，因为当时被seajs明显没有bug给唬住了，就一直觉得这就是前端最牛逼的东西（too young too naive）。去年5月份的时候我去了杭州，见到了玉伯，他亲口说seajs项目不再维护了。  </p>
 <p>&emsp;&emsp;也是去年5月份我从39离职，和朋友一起做海底捞的外包项目，那4个月算是比较痛苦的日子，因为些特殊的原因，海底捞拖了3个月的项目款，有两周我只花了100块钱。但是技术上的进步还是可以的，从杭州回来我就开始研究react和angular，最后还是把重心放在了nodejs上。买了本深入浅出nodejs，看了一遍，算是深入了解一下。项目吃紧的时候我开始做java的开发工作，对java算是有个初步的了解。在海底捞结清了项目款之后，我加入了朋友的创业公司，也就是我现在所在的公司。在新公司学了angular，这次因为有java的基础学的特别快，angular的有很多地方都是借鉴的java。因为公司业务还搞了一段时间shell自动化。  </p>
 <p>&emsp;&emsp;总结在北京这两年多来，自己从一个只会切图美工，成长到现在能独立完成一个网站的前端。善用搜索引擎：尤其是google（<a href="http://blog.div-wang.com/2016/03/hosts-to-google.html">hosts翻墙上google</a>），学点高级的搜索技巧，我一般搜索问题时都会site:zhihu.com或一些前端社区v2ex；经常浏览github的源码，借鉴别人的经验；最后就是看书：读书可以增长自己的知识储备，在遇到问题之后可以让自己更快的解决问题。</p>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var a_idx = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+  var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+  var $i = $("<span/>").text(a[a_idx]);
+          a_idx = (a_idx + 1) % a.length;
+  var x = e.pageX,
+          y = e.pageY;
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          });
+          $("body").append($i);
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          },
+          1500,
+          function() {
+              $i.remove();
+          });
+      });
+  });
+</script></body></html>

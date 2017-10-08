@@ -10,4 +10,35 @@
 <p>&emsp;&emsp;需要说一下，跑马拉松很危险，尤其是全程，35公里之后由于体能下降，出汗严重，很多人都抽筋了，那是非常痛苦的，有的几乎不能走路。在最后7公里兔子大哥拿着一瓶医用喷雾在跑，我拿着一瓶水在跑，我们一块帮助了很多受伤的选手，并鼓励他们坚持到完赛，这也是我首马最大的收获。</p>
 <p>&emsp;&emsp;但是马拉松的危险还是必须注意，在36公里的时候我们就看到一个人倒在地上抽搐，医护人员在掐他人中。经验丰富的兔子大哥说，这人不及时送医院可能会猝死。完赛后一位50岁的老人也躺地上了，但是他的情况稍微好一点，医护人员说是体力不支，有点虚脱而已。这些都是真实发生的事，所以如果你有跑马拉松的准备，一定要科学训练，注意补给，最好是找个有经验的跑者带你。</p>
 <p>&emsp;&emsp;这次秦马最大收获是跟兔子大哥一块帮助了那么多人，看着他们感激的神情，在我们鼓励后迈着腿继续向终点进发，我当时的心情比我全马完赛还要爽。跑马拉松不止有pb，还有快乐！</p>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer></body></html>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var a_idx = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+  var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+  var $i = $("<span/>").text(a[a_idx]);
+          a_idx = (a_idx + 1) % a.length;
+  var x = e.pageX,
+          y = e.pageY;
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          });
+          $("body").append($i);
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          },
+          1500,
+          function() {
+              $i.remove();
+          });
+      });
+  });
+</script></body></html>
