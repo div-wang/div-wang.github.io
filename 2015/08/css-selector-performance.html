@@ -4,19 +4,19 @@
 <p>关于css性能的详细探究。</p>
 </blockquote>
 <p>上周去360面试，有这么一个面试题：</p>
-<pre><code>写出下列最后输出文字的颜色的值? 
-<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">  
-<span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:<span class="hljs-number">#000</span>}  
-<span class="hljs-selector-id">#header</span> <span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:pink}  
-<span class="hljs-selector-class">.logo</span> <span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:pink}  
-<span class="hljs-selector-tag">h1</span> <span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:pink}  
+<pre><code>写出下列最后输出文字的颜色的值?
+<span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:<span class="hljs-number">#000</span>}
+<span class="hljs-selector-id">#header</span> <span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:pink}
+<span class="hljs-selector-class">.logo</span> <span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:pink}
+<span class="hljs-selector-tag">h1</span> <span class="hljs-selector-tag">a</span>{<span class="hljs-attribute">color</span>:pink}
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">clss</span>=<span class="hljs-string">"#header"</span>&gt;</span>  
-    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>360<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>  
+<span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">clss</span>=<span class="hljs-string">"#header"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span>&gt;</span>360<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
 </code></pre><p>这么简单的题，我顺手就回答出来了～～科科</p>
-<h3 id="-">优先级顺序</h3>
-<p>选择器列表优先级逐级增加：  </p>
+<h2 id="-">优先级顺序</h2>
+<p>选择器列表优先级逐级增加：</p>
 <ul>
 <li>通用选择器（*）</li>
 <li>元素(类型)选择器</li>
@@ -26,13 +26,16 @@
 <li>ID 选择器</li>
 <li>内联样式</li>
 </ul>
-<p>但是，接下来面试官提问又来了：优先级你知道，那他们的性能谁的最高你知道吗？<br>这下我就哔了个🐶了，css选择器也有性能一说，真实开眼界了！<br>回来马上开始查文档，看文章！</p>
-<h3 id="css-">CSS 选择器性能损耗来自哪里？</h3>
-<p>我们中的大多数人都是从左到右的阅读习惯，会习惯性的设定浏览器也是从左到右的方式进行匹配规则，推测这条规则的开销并不高。事实上，却恰恰相反，CSS选择器是从右到左进行规则匹配。<br>可怜我以前一直的写法都是左到右多级寻找:</p>
+<p>但是，接下来面试官提问又来了：优先级你知道，那他们的性能谁的最高你知道吗？
+这下我就哔了个🐶了，css选择器也有性能一说，真实开眼界了！
+回来马上开始查文档，看文章！</p>
+<h2 id="css-">CSS 选择器性能损耗来自哪里？</h2>
+<p>我们中的大多数人都是从左到右的阅读习惯，会习惯性的设定浏览器也是从左到右的方式进行匹配规则，推测这条规则的开销并不高。事实上，却恰恰相反，CSS选择器是从右到左进行规则匹配。
+可怜我以前一直的写法都是左到右多级寻找:</p>
 <pre><code class="lang-css">    <span class="hljs-selector-id">#header</span> <span class="hljs-selector-class">.shouc</span> <span class="hljs-selector-tag">a</span> {...}
     <span class="hljs-selector-id">#header</span> <span class="hljs-selector-class">.shouc</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-tag">i</span> {...}
 </code></pre>
-<h3 id="-css-">如何减少 CSS 选择器性能损耗？</h3>
+<h2 id="-css-">如何减少 CSS 选择器性能损耗？</h2>
 <p>Google 资深web开发工程师 <a href="http://stevesouders.com/">Steve Souders</a> 对 CSS 选择器的执行效率从高到低做了一个排序：</p>
 <ul>
 <li>id选择器（#myid）</li>
@@ -77,13 +80,13 @@
 <h5 id="5-">5、避免使用子选择器</h5>
 <pre><code class="lang-css">    不好的例子：
     treehead treerow <span class="hljs-keyword">treecell</span> {…}
-    <span class="hljs-keyword">BETTER</span>, BUT STILL 不好的例子： 
+    <span class="hljs-keyword">BETTER</span>, BUT STILL 不好的例子：
     treehead &gt; treerow &gt; <span class="hljs-keyword">treecell</span> {…}
     好的例子：
     .treecell-<span class="hljs-keyword">header</span> {…}
 </code></pre>
 <h5 id="6-">6、使用继承</h5>
-<pre><code class="lang-css">    不好的例子： 
+<pre><code class="lang-css">    不好的例子：
     <span class="hljs-selector-id">#bookmarkMenuItem</span> &gt; <span class="hljs-selector-class">.menu-left</span> { <span class="hljs-attribute">list-style-image</span>: <span class="hljs-built_in">url</span>(blah) }
     好的例子：
     <span class="hljs-selector-id">#bookmarkMenuItem</span> { <span class="hljs-attribute">list-style-image</span>: <span class="hljs-built_in">url</span>(blah) }
@@ -105,9 +108,9 @@
 <p>移除无匹配的样式，有两个好处：
 第一，删除无用的样式后可以缩减样式文件的体积，加快资源下载速度；
 第二，对于浏览器而言，所有的样式规则的都会被解析后索引起来，即使是当前页面无匹配的规则。移除无匹配的规则，减少索引项，加快浏览器查找速度；</p>
-<h3 id="-">总结:</h3>
+<h2 id="-">总结:</h2>
 <p>作为一名前端工程师，应该具有「提升 CSS 选择器性能」的意识，但实际应用中，是否需要完全贯彻这些原则呢？我认为在「可维护性」前提下，提升 CSS 选择器性能是有必要的，但绝不追求「高性能」而牺牲「可维护性」。</p>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */

@@ -8,17 +8,17 @@
 <p>最近提交commit指定数量的合并</p>
 <pre><code class="lang-bash">    git rebase -<span class="hljs-selector-tag">i</span> HEAD~<span class="hljs-number">3</span>
 </code></pre>
-<p><img src="/static/img/git-commits-merge/002.png" alt="002"> </p>
+<p><img src="/static/img/git-commits-merge/002.png" alt="002"></p>
 <p><code>HEAD~3</code>中的3指的是合并最近3次commit</p>
 <h3 id="-">方法二</h3>
 <p>指定的commit hash，hash之前的提交合并</p>
 <pre><code class="lang-bash">    git <span class="hljs-built_in">log</span>
 </code></pre>
-<p><img src="/static/img/git-commits-merge/001.png" alt="001"> </p>
+<p><img src="/static/img/git-commits-merge/001.png" alt="001"></p>
 <p>获取不需要合并的 commit 的 hash 值</p>
 <pre><code class="lang-bash">    git rebase -<span class="hljs-selector-tag">i</span> b09ce93e4bb
 </code></pre>
-<p><img src="/static/img/git-commits-merge/002.png" alt="002"> </p>
+<p><img src="/static/img/git-commits-merge/002.png" alt="002"></p>
 <h2 id="-commit">合并commit</h2>
 <p>可以看到其中分为两个部分，上方未注释的部分是填写要执行的指令，而下方注释的部分则是指令的提示说明。指令部分中由前方的命令名称、commit hash 和 commit message 组成。</p>
 <ul>
@@ -37,9 +37,9 @@
 </ul>
 <p>如果是输入的<code>squash</code>，会再次进入一个编辑页面，可以直接<code>:wq</code>保存退出。</p>
 <p>再次输入<code>git log</code></p>
-<p><img src="/static/img/git-commits-merge/003.png" alt="003"> </p>
+<p><img src="/static/img/git-commits-merge/003.png" alt="003"></p>
 <h4 id="-">合并成功！</h4>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */

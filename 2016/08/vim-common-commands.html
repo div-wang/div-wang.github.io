@@ -3,7 +3,7 @@
 <blockquote>
 <p>vi 是 unix/linux 下极为普遍的一种文本编辑器. 记录一些比较常用的命令</p>
 </blockquote>
-<h3 id="-">一般模式</h3>
+<h2 id="-">一般模式</h2>
 <table>
 <thead>
 <tr>
@@ -150,7 +150,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="-">末行模式</h3>
+<h2 id="-">末行模式</h2>
 <table>
 <thead>
 <tr>
@@ -209,7 +209,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="-">编辑模式命令</h3>
+<h2 id="-">编辑模式命令</h2>
 <table>
 <thead>
 <tr>
@@ -240,78 +240,93 @@
 </tr>
 </tbody>
 </table>
-<h3 id="js-">js命令说明</h3>
+<h2 id="js-">js命令说明</h2>
 <blockquote>
-<p>ctrl+s是一个古老的shell控制键，在输入ctrl+q就可以恢复了
-```javascript
-// First Level
-i → Insert mode. Type ESC to return to Normal mode.
-x → Delete the char under the cursor
-:wq → Save and Quit (:w save, :q quit)
-dd → Delete (and copy) the current line
-p → Paste
-Recommended:</p>
+<p>ctrl+s是一个古老的shell控制键，在输入ctrl+q就可以恢复了</p>
 </blockquote>
-<p>hjkl (highly recommended but not mandatory) → basic cursor move (←↓↑→). Hint: j looks like a down arrow.
-:help <command> → Show help about <command>. You can use :help without a <command> to get general help.</p>
-<p>// Second Level</p>
-<p>/<strong><em> Insert mode variations: </em></strong>/</p>
-<p>a → insert after the cursor
-o → insert a new line after the current one
-O → insert a new line before the current one
-cw → replace from the cursor to the end of the word</p>
-<p>/<strong><em> Basic moves </em></strong>/
-0 → go to the first column(number zero)
-^ → go to the first non-blank character of the line
-$ → go to the end of line
-g_ → go to the last non-blank character of line
-/pattern → search for pattern</p>
-<p>/<strong><em> Copy/Paste </em></strong>/
-P → paste before, remember p is paste after current position.
-yy → copy the current line, easier but equivalent to ddP</p>
-<p>/<strong><em> Undo/Redo </em></strong>/
-u → undo</p>
-<p><C-r> → redo</p>
-<p>/<strong><em> Load/Save/Quit/Change File (Buffer) </em></strong>/
-:e <path/to/file> → open
-:w → save
-:saveas <path/to/file> → save to <path/to/file>
-:x, ZZ or :wq → save and quit (:x only save if necessary)
-:q! → quit without saving, also: :qa! to quit even if there are modified hidden buffers.
-:bn (resp. :bp) → show next (resp. previous) file (buffer)</p>
-<p>// 3rd Level – Better. Stronger. Faster.
-/<strong><em> Vim Command (normal Model)-help you to repeat </em></strong>/
-2dd → will delete 2 lines
-3p → will paste the text 3 times
-100idesu [ESC] → will write “desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu”
-. → Just after the last command will write again the 100 “desu”.</p>
-<ol>
-<li>→ Will write 3 “desu” (and not 300, how clever).</li>
-</ol>
-<p>/<strong><em> Vim Command (normal Model)-how to move efficiently with vim </em></strong>/
-NG → Go to line N
-gg → shortcut for 1G - go to the start of the file
-G → Go to last line</p>
-<p>/<strong><em> Vim Command (normal Model)-how to move word move efficiently with vim </em></strong>/</p>
-<p>w → go to the start of the following word,
-e → go to the end of this word.
-By default, words are composed of letters and the underscore character. Let’s call a WORD a group of letter separated by blank characters. If you want to consider WORDS, then just use uppercase characters:</p>
-<p>W → go to the start of the following WORD,
-E → go to the end of this WORD.</p>
-<p>/<strong><em> /Pattern find Next by #(</em>) or find ( then % to next ) *</strong>/
-% : Go to the corresponding (, {, [.</p>
-<ul>
-<li>(resp. #) : go to next (resp. previous) occurrence of the word under the cursor</li>
-</ul>
-<p>/<strong><em> <start position><command><end position> </em></strong>/</p>
-<p>For example : 0y$ means</p>
-<p>0 → go to the beginning of this line
-y → yank from here
-$ → up to the end of this line</p>
-<p>// Tip with postition-comand-position
-But what was true for y (yank), is also true for d (delete), v (visual select), gU (uppercase), gu (lowercase), etc…</p>
-<p>```</p>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+<pre><code class="lang-javascript">// First Level
+i → <span class="hljs-keyword">Insert</span> mode. <span class="hljs-keyword">Type</span> ESC <span class="hljs-keyword">to</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">Normal</span> mode.
+x → <span class="hljs-keyword">Delete</span> the <span class="hljs-built_in">char</span> <span class="hljs-keyword">under</span> the <span class="hljs-keyword">cursor</span>
+:wq → <span class="hljs-keyword">Save</span> <span class="hljs-keyword">and</span> Quit (:w <span class="hljs-keyword">save</span>, :q quit)
+dd → <span class="hljs-keyword">Delete</span> (<span class="hljs-keyword">and</span> copy) the <span class="hljs-keyword">current</span> line
+p → Paste
+Recommended:
+
+hjkl (highly recommended but <span class="hljs-keyword">not</span> mandatory) → basic <span class="hljs-keyword">cursor</span> <span class="hljs-keyword">move</span> (←↓↑→). Hint: j looks <span class="hljs-keyword">like</span> a down arrow.
+:<span class="hljs-keyword">help</span> &lt;command&gt; → <span class="hljs-keyword">Show</span> <span class="hljs-keyword">help</span> about &lt;command&gt;. You can <span class="hljs-keyword">use</span> :<span class="hljs-keyword">help</span> <span class="hljs-keyword">without</span> a &lt;command&gt; <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-keyword">general</span> help.
+
+// <span class="hljs-keyword">Second</span> <span class="hljs-keyword">Level</span>
+
+<span class="hljs-comment">/*** Insert mode variations: ***/</span>
+
+a → <span class="hljs-keyword">insert</span> <span class="hljs-keyword">after</span> the <span class="hljs-keyword">cursor</span>
+o → <span class="hljs-keyword">insert</span> a <span class="hljs-keyword">new</span> line <span class="hljs-keyword">after</span> the <span class="hljs-keyword">current</span> one
+O → <span class="hljs-keyword">insert</span> a <span class="hljs-keyword">new</span> line <span class="hljs-keyword">before</span> the <span class="hljs-keyword">current</span> one
+cw → <span class="hljs-keyword">replace</span> <span class="hljs-keyword">from</span> the <span class="hljs-keyword">cursor</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> the word
+
+<span class="hljs-comment">/*** Basic moves ***/</span>
+<span class="hljs-number">0</span> → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">first</span> <span class="hljs-keyword">column</span>(<span class="hljs-built_in">number</span> zero)
+^ → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">first</span> non-blank <span class="hljs-built_in">character</span> <span class="hljs-keyword">of</span> the line
+$ → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> line
+g_ → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">last</span> non-blank <span class="hljs-built_in">character</span> <span class="hljs-keyword">of</span> line
+/pattern → <span class="hljs-keyword">search</span> <span class="hljs-keyword">for</span> pattern
+
+<span class="hljs-comment">/*** Copy/Paste ***/</span>
+P → paste <span class="hljs-keyword">before</span>, remember p <span class="hljs-keyword">is</span> paste <span class="hljs-keyword">after</span> <span class="hljs-keyword">current</span> position.
+yy → copy the <span class="hljs-keyword">current</span> line, easier but equivalent <span class="hljs-keyword">to</span> ddP
+
+<span class="hljs-comment">/*** Undo/Redo ***/</span>
+u → <span class="hljs-keyword">undo</span>
+&lt;C-r&gt; → <span class="hljs-keyword">redo</span>
+
+<span class="hljs-comment">/*** Load/Save/Quit/Change File (Buffer) ***/</span>
+:e &lt;<span class="hljs-keyword">path</span>/<span class="hljs-keyword">to</span>/<span class="hljs-keyword">file</span>&gt; → <span class="hljs-keyword">open</span>
+:w → <span class="hljs-keyword">save</span>
+:saveas &lt;<span class="hljs-keyword">path</span>/<span class="hljs-keyword">to</span>/<span class="hljs-keyword">file</span>&gt; → <span class="hljs-keyword">save</span> <span class="hljs-keyword">to</span> &lt;<span class="hljs-keyword">path</span>/<span class="hljs-keyword">to</span>/<span class="hljs-keyword">file</span>&gt;
+:x, ZZ <span class="hljs-keyword">or</span> :wq → <span class="hljs-keyword">save</span> <span class="hljs-keyword">and</span> quit (:x <span class="hljs-keyword">only</span> <span class="hljs-keyword">save</span> <span class="hljs-keyword">if</span> necessary)
+:q! → quit <span class="hljs-keyword">without</span> saving, also: :qa! <span class="hljs-keyword">to</span> quit even <span class="hljs-keyword">if</span> there <span class="hljs-keyword">are</span> modified hidden buffers.
+:bn (resp. :bp) → <span class="hljs-keyword">show</span> <span class="hljs-keyword">next</span> (resp. previous) <span class="hljs-keyword">file</span> (buffer)
+
+
+// <span class="hljs-number">3</span>rd <span class="hljs-keyword">Level</span> – Better. Stronger. Faster.
+<span class="hljs-comment">/*** Vim Command (normal Model)-help you to repeat ***/</span>
+<span class="hljs-number">2</span>dd → will <span class="hljs-keyword">delete</span> <span class="hljs-number">2</span> <span class="hljs-keyword">lines</span>
+<span class="hljs-number">3</span>p → will paste the <span class="hljs-built_in">text</span> <span class="hljs-number">3</span> times
+<span class="hljs-number">100</span>idesu [ESC] → will write “desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu desu”
+. → Just <span class="hljs-keyword">after</span> the <span class="hljs-keyword">last</span> command will write again the <span class="hljs-number">100</span> “desu”.
+<span class="hljs-number">3.</span> → Will write <span class="hljs-number">3</span> “desu” (<span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> <span class="hljs-number">300</span>, how clever).
+
+
+<span class="hljs-comment">/*** Vim Command (normal Model)-how to move efficiently with vim ***/</span>
+NG → <span class="hljs-keyword">Go</span> <span class="hljs-keyword">to</span> line N
+gg → shortcut <span class="hljs-keyword">for</span> <span class="hljs-number">1</span>G - <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">start</span> <span class="hljs-keyword">of</span> the <span class="hljs-keyword">file</span>
+G → <span class="hljs-keyword">Go</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">last</span> line
+
+<span class="hljs-comment">/*** Vim Command (normal Model)-how to move word move efficiently with vim ***/</span>
+
+w → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">start</span> <span class="hljs-keyword">of</span> the <span class="hljs-keyword">following</span> word,
+e → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> this word.
+<span class="hljs-keyword">By</span> <span class="hljs-keyword">default</span>, words <span class="hljs-keyword">are</span> composed <span class="hljs-keyword">of</span> letters <span class="hljs-keyword">and</span> the underscore character. Let’s <span class="hljs-keyword">call</span> a WORD a <span class="hljs-keyword">group</span> <span class="hljs-keyword">of</span> letter separated <span class="hljs-keyword">by</span> blank characters. <span class="hljs-keyword">If</span> you want <span class="hljs-keyword">to</span> <span class="hljs-keyword">consider</span> WORDS, <span class="hljs-keyword">then</span> just <span class="hljs-keyword">use</span> uppercase <span class="hljs-keyword">characters</span>:
+
+W → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">start</span> <span class="hljs-keyword">of</span> the <span class="hljs-keyword">following</span> WORD,
+E → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> this WORD.
+
+<span class="hljs-comment">/*** /Pattern find Next by #(*) or find ( then % to next ) ***/</span>
+% : <span class="hljs-keyword">Go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">corresponding</span> (, {, [.
+* (resp. #) : <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">next</span> (resp. previous) occurrence <span class="hljs-keyword">of</span> the word <span class="hljs-keyword">under</span> the <span class="hljs-keyword">cursor</span>
+
+<span class="hljs-comment">/*** &lt;start position&gt;&lt;command&gt;&lt;end position&gt; ***/</span>
+
+<span class="hljs-keyword">For</span> example : <span class="hljs-number">0</span>y$ means
+
+<span class="hljs-number">0</span> → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">beginning</span> <span class="hljs-keyword">of</span> this line
+y → yank <span class="hljs-keyword">from</span> here
+$ → up <span class="hljs-keyword">to</span> the <span class="hljs-keyword">end</span> <span class="hljs-keyword">of</span> this line
+
+// Tip <span class="hljs-keyword">with</span> postition-comand-<span class="hljs-keyword">position</span>
+But what was <span class="hljs-literal">true</span> <span class="hljs-keyword">for</span> y (yank), <span class="hljs-keyword">is</span> also <span class="hljs-literal">true</span> <span class="hljs-keyword">for</span> d (<span class="hljs-keyword">delete</span>), v (visual <span class="hljs-keyword">select</span>), gU (uppercase), gu (lowercase), etc…
+</code></pre>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */

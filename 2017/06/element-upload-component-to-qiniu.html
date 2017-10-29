@@ -3,13 +3,13 @@
 <blockquote>
 <p>最近基于element-ui开发管理平台，老的上传组件基于plupload官方推荐的，有点过于重了。自己写了一个基于element-ui的上传组件。</p>
 </blockquote>
-<h3 id="-token-">后端获取token实现</h3>
+<h2 id="-token-">后端获取token实现</h2>
 <p><a href="https://developer.qiniu.com/kodo/manual/1208/upload-token">获取上传token的文档</a>
 最下面有<a href="https://github.com/qiniu/nodejs-sdk.v6/blob/master/qiniu/rs.js?ref=developer.qiniu.com">Demo-nodejs</a></p>
 <p>填入ak,sk,以及bucketName(就是开始创建的对象存储空间的名字)，修改demo的key重新运行即可。</p>
 <p><img src="/static/img/element-upload-component-to-qiniu.png" alt="qiniu"></p>
 <p>还有个具体点的代码实现：<a href="https://smallpath.me/post/element-upload-qiniu#后端">Smallpath的小站</a></p>
-<h3 id="-">前端代码实现</h3>
+<h2 id="-">前端代码实现</h2>
 <h4 id="qiniuup-">QiniuUp控件</h4>
 <pre><code class="lang-html"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">el-upload</span>
@@ -95,7 +95,7 @@
   }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
 </code></pre>
-<h4 id="-">回调实现</h4>
+<h2 id="-">回调实现</h2>
 <p>七牛返回的<a href="https://developer.qiniu.com/kodo/api/1312/upload#3">响应报文</a></p>
 <pre><code class="lang-js">  /**
    * [upFileCallback 七牛上传文件的回调函数]
@@ -111,7 +111,7 @@
     <span class="hljs-keyword">let</span> <span class="hljs-built_in">type</span> = <span class="hljs-keyword">file</span>.raw.<span class="hljs-built_in">type</span>.<span class="hljs-keyword">split</span>(<span class="hljs-string">'/'</span>)[<span class="hljs-number">0</span>].toLowerCase()
   }
 </code></pre>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */

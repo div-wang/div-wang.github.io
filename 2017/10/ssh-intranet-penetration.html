@@ -1,0 +1,93 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>ssh 内网穿透</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="ssh-">ssh 内网穿透</h1>
+<blockquote>
+<p>网上的大部分 ssh 内网穿透文章都写的比较官方，对于初学者的我来说晦涩难懂，在踩了很多坑之后，决心写篇简单易懂的文章介绍下 ssh 内网穿透</p>
+</blockquote>
+<h2 id="-">实际状况</h2>
+<table>
+<thead>
+<tr>
+<th>机器号</th>
+<th>IP</th>
+<th>用户名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>192.168.1.1</td>
+<td>usr_a</td>
+<td>我的电脑，在局域网中，可以访问 B</td>
+</tr>
+<tr>
+<td>B</td>
+<td>8.8.8.8</td>
+<td>usr_b</td>
+<td>代理服务器，在外网中</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ssh-">SSH 参数解释</h2>
+<pre><code class="lang-bash">-<span class="ruby">f 后台运行
+</span>-<span class="ruby">C 允许压缩数据
+</span>-<span class="ruby">N 不执行任何命令
+</span>-<span class="ruby">R 将端口绑定到远程服务器，反向代理
+</span>-<span class="ruby">L 将端口绑定到本地客户端，正向代理</span>
+</code></pre>
+<h2 id="-ssh-">用ssh做正向连接</h2>
+<p>啥叫正向连接？就是client连上server，然后把server能访问的机器地址和端口（当然也包括server自己）镜像到client的端口上。</p>
+<pre><code class="lang-bash">ssh -fCNL <span class="hljs-string">[客户端IP或省略]</span>:<span class="hljs-string">[客户端端口]</span>:<span class="hljs-string">[服务器能访问的IP]</span>:<span class="hljs-string">[服务器能访问的IP的端口]</span> <span class="hljs-string">[登陆服务器的用户名@服务器IP]</span> -p <span class="hljs-string">[服务器ssh服务端口（默认22）]</span>
+</code></pre>
+<p>举例说明：
+你的本机A，可以ssh到服务器B，将本机A的8080端口映射到服务器B的80端口的http服务，那么可以执行：</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">-fCNL</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-pseudo">:8080</span><span class="hljs-selector-pseudo">:8.8.8.8</span><span class="hljs-selector-pseudo">:80</span> <span class="hljs-selector-tag">usr_b</span>@<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>
+</code></pre>
+<h2 id="-ssh-">用ssh做反向连接</h2>
+<p>啥叫反向连接？就是client连上server，然后把client能访问的机器地址和端口（也包括client自己）镜像到server的端口上</p>
+<pre><code class="lang-bash">ssh -fCNR <span class="hljs-string">[服务器IP或省略]</span>:<span class="hljs-string">[服务器端口]</span>:<span class="hljs-string">[客户端侧能访问的IP]</span>:<span class="hljs-string">[客户端侧能访问的IP的端口]</span> <span class="hljs-string">[登陆服务器的用户名@服务器IP]</span> -p <span class="hljs-string">[服务器ssh服务端口（默认22）]</span>
+</code></pre>
+<p>举例说明：
+你的本机A，你可以ssh到外网某台服务器B，如果你想让外网所有的能访问服务器B的IP都能访问你的的http服务，那么可以执行：</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">-fCNR</span> 8<span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.8</span><span class="hljs-selector-pseudo">:8080</span><span class="hljs-selector-pseudo">:192.168.1.1</span><span class="hljs-selector-pseudo">:80</span> <span class="hljs-selector-tag">usr_b</span>@<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>
+</code></pre>
+<h2 id="-ssh-socks-">用ssh做socks代理</h2>
+<p>假设你内网里某台机器可以上网，但是你不能上网，如果你有ssh到那台机器的权限，那么就可以利用ssh方式建立一个代理socks5，通过代理来上网。</p>
+<pre><code class="lang-bash">ssh --fCND <span class="hljs-string">[本地IP或省略]</span>:<span class="hljs-string">[本地端口]</span> <span class="hljs-string">[登陆服务器的用户名@服务器IP]</span> -p <span class="hljs-string">[服务器ssh服务端口（默认22）]</span>
+</code></pre>
+<p>举例说明：
+你的本机A，可以ssh到服务器B，这样你就可以通过服务器B来上网：</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">-fCND</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-pseudo">:8080</span> <span class="hljs-selector-tag">usr_b</span>@<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>
+</code></pre>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var a_idx = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+  var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+  var $i = $("<span/>").text(a[a_idx]);
+          a_idx = (a_idx + 1) % a.length;
+  var x = e.pageX,
+          y = e.pageY;
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          });
+          $("body").append($i);
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          },
+          1500,
+          function() {
+              $i.remove();
+          });
+      });
+  });
+</script></body></html>

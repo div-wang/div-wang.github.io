@@ -3,7 +3,7 @@
 <blockquote>
 <p>最近在做一个裁剪图片的需求，基于vue和elementui，裁剪完图片遇到一个坑，elementui的upload组件接受一个promise，要求promise resolve一个File对象才可以使用新文件上传，而canvas是转成了blob对象，我google查了好久，没有发现有blob对象转File的文章，所以今天来写一个吧！</p>
 </blockquote>
-<h3 id="-filereader-file-dataurl">使用FileReader 对象转换：File =&gt; DataURL</h3>
+<h2 id="-filereader-file-dataurl">使用FileReader 对象转换：File =&gt; DataURL</h2>
 <p>该对象用于读取文件（读取单个对象文件，所以，不能直接读取 Filelist 对象文件集合），即把文件内容读入内存。它接收 File 对象或 Blob 对象，作为参数。</p>
 <h5 id="-">生成该对象的构造函数方法如下：</h5>
 <pre><code class="lang-javascript">  <span class="hljs-keyword">var</span> reader = <span class="hljs-keyword">new</span> <span class="hljs-type">FileReader</span>(); <span class="hljs-comment">// 参数为 Blob 对象或 File 对象</span>
@@ -25,7 +25,7 @@
     <span class="hljs-comment">// 传入一个参数对象即可得到基于该参数对象的文本内容</span>
     reader.rederAsDataURL(file);
 </code></pre>
-<h3 id="-canvas-">利用canvas剪切图片</h3>
+<h2 id="-canvas-">利用canvas剪切图片</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">CanvasRenderingContext2D.drawImage()</a> 是 Canvas 2D API 中的方法，它提供了多种方式来在Canvas上绘制图像，我们使用drawImage方法节剪切图片。</p>
 <h5 id="-canvas-dataurl">先从canvas获取剪切过的图片DataURL</h5>
 <pre><code class="lang-javascript">    <span class="hljs-comment">// 获取canvas</span>
@@ -48,19 +48,19 @@
     }
     <span class="hljs-keyword">this</span>.blob = <span class="hljs-keyword">new</span> Blob([ia], {<span class="hljs-keyword">type</span>: mime})
 </code></pre>
-<h3 id="-file-api-blob-file-">利用File Api讲blob转成File对象</h3>
+<h2 id="-file-api-blob-file-">利用File Api讲blob转成File对象</h2>
 <p>其实我google找了一圈只有 File =&gt; Blob，没人写怎么用Blob =&gt; File
 最终我在<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File">File</a>中找到了<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File/File">File()构造函数</a></p>
 <pre><code class="lang-javascript">    <span class="hljs-keyword">let</span> <span class="hljs-keyword">files</span> = <span class="hljs-keyword">new</span> window.File([this.blob], <span class="hljs-keyword">file</span>.name, {<span class="hljs-built_in">type</span>: <span class="hljs-keyword">file</span>.<span class="hljs-built_in">type</span>})
 </code></pre>
 <p>File()构造函数的前两个参数为必传</p>
-<h3 id="-">参考：</h3>
+<h2 id="-">参考：</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Blob">Blob</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File">File</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/File/File">File.File()</a></p>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CanvasRenderingContext2D/drawImage">CanvasRenderingContext2D.drawImage()</a></p>
 <p><a href="http://javascript.ruanyifeng.com/htmlapi/file.html">文件和二进制数据的操作</a></p>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注"Div吐槽的地方" ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */

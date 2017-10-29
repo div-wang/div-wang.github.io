@@ -124,7 +124,7 @@ a {
   margin-top: 20px; }
 
 .footer {
-  padding: 100px 0 50px 0;
+  padding: 60px 0 50px 0;
   font-size: 15px;
   color: #999; }
 
@@ -133,7 +133,7 @@ a {
   font-weight: bold;
   font-size: 20px;
   max-width: 50em;
-  margin: 0 auto;
+  margin: 60px auto 0;
   text-align: center; }
   .weixin img {
     max-width: 300px;
