@@ -15,7 +15,7 @@ a {
   height: 0; }
 
 .container {
-  max-width: 980px;
+  max-width: 880px;
   padding: 0 10px;
   margin: 0 auto;
   position: relative; }
@@ -55,30 +55,52 @@ a {
 .footer {
   padding: 60px 0 50px 0;
   font-size: 15px;
-  color: #999; }
+  color: #999;
+  text-align: center; }
 
 .weixin {
-  color: red;
-  font-weight: bold;
-  font-size: 20px;
+  text-shadow: 0 1px 1px #aaa;
+  font-size: 14px;
   max-width: 50em;
-  margin: 60px auto 0;
-  text-align: center; }
-  .weixin img {
-    max-width: 300px;
-    margin: 0 auto; }
+  padding-top: 50px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden; }
+  .weixin div {
+    float: left;
+    width: 50%; }
+    .weixin div img {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 10px;
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.12); }
 
 @media screen and (min-width: 1000px) {
   .markdown-body {
-    width: 842px;
+    width: 750px;
     margin: 10px auto; } }
 
+body {
+  background-color: #f1f1f1; }
+
 .markdown-body {
+  max-width: 750px;
   margin: 0 auto;
   font-family: "ubuntu", "Tahoma", "Microsoft YaHei", arial,sans-serif;
   color: #444444;
   line-height: 1;
-  padding: 0 30px; }
+  padding: 1px 25px 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.12); }
+  .markdown-body .nav-list {
+    position: fixed;
+    top: 72px;
+    right: 0;
+    padding: 10px;
+    text-align: right; }
+    .markdown-body .nav-list a {
+      display: block;
+      padding-bottom: 5px; }
   .markdown-body img {
     max-width: 100%; }
   .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {

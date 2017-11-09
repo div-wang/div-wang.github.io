@@ -1,15 +1,22 @@
 .footer {
   padding: 60px 0 50px 0;
   font-size: 15px;
-  color: #999; }
+  color: #999;
+  text-align: center; }
 
 .weixin {
-  color: red;
-  font-weight: bold;
-  font-size: 20px;
+  text-shadow: 0 1px 1px #aaa;
+  font-size: 14px;
   max-width: 50em;
-  margin: 60px auto 0;
-  text-align: center; }
-  .weixin img {
-    max-width: 300px;
-    margin: 0 auto; }
+  padding-top: 50px;
+  margin: 0 auto;
+  text-align: center;
+  overflow: hidden; }
+  .weixin div {
+    float: left;
+    width: 50%; }
+    .weixin div img {
+      display: block;
+      max-width: 200px;
+      margin: 0 auto 10px;
+      box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.12); }

@@ -1,5 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
- <title>ubuntu 开机自动启动</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="ubuntu-">ubuntu 开机自动启动</h1>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.png"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>ubuntu 开机自动启动</title></head><body><header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+  </div>
+</header><article class="markdown-body"><h1 id="ubuntu-">ubuntu 开机自动启动</h1>
 <blockquote>
 <p>最近尝试自动化，遇到很多坑，今天写写ubuntu自动启动的问题。</p>
 </blockquote>
@@ -22,7 +32,21 @@
 <p>这个错误很明显，是要输入密码，于是google查了一下，原来nginx是需要配置没有密码的key。对比脚本，猜测应该是我的再次执行nginx，导致<code>/etc/rc.local</code>报错，下面的shell都没有执行。于是注释掉nginx和jenkins，nginx的key换成不用输入密码的。</p>
 <p><img src="/static/img/ubuntu-boot/007.jpg" alt="过程图"></p>
 <p><code>sudo reboot</code> 脚本启动成功。</p>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+</article><div class="weixin">
+  <div>
+    <img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg">
+    赞助我的博客
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div><footer class="footer">
+  <div class="container">
+    Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */

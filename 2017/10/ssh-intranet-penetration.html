@@ -1,5 +1,15 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="stylesheet" href="../../static/css/blog.css?time=">
- <title>ssh 内网穿透</title></head><body><header class="header animate"> <div class="container"> <h2 class="sitename"> <a href="/">Div-wang</a> </h2> <ul class="nav-right"> <li> <a href="/">Blog</a> </li>  <li> <a href="/about.html">About</a> </li> </ul> </div> </header><article class="markdown-body"><h1 id="ssh-">ssh 内网穿透</h1>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.png"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>ssh 内网穿透</title></head><body><header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+  </div>
+</header><article class="markdown-body"><h1 id="ssh-">ssh 内网穿透</h1>
 <blockquote>
 <p>网上的大部分 ssh 内网穿透文章都写的比较官方，对于初学者的我来说晦涩难懂，在踩了很多坑之后，决心写篇简单易懂的文章介绍下 ssh 内网穿透</p>
 </blockquote>
@@ -59,7 +69,21 @@
 你的本机A，可以ssh到服务器B，这样你就可以通过服务器B来上网：</p>
 <pre><code class="lang-bash"><span class="hljs-selector-tag">ssh</span> <span class="hljs-selector-tag">-fCND</span> 192<span class="hljs-selector-class">.168</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-class">.1</span><span class="hljs-selector-pseudo">:8080</span> <span class="hljs-selector-tag">usr_b</span>@<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>.<span class="hljs-keyword">8</span>
 </code></pre>
-</article><div class="weixin">↓↓↓↓↓ 扫描下方二维码，关注《Div吐槽的地方》 ↓↓↓↓↓<br><img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg"></div><footer class="footer"><div class="container"> Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>. </div> </footer>
+</article><div class="weixin">
+  <div>
+    <img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg">
+    赞助我的博客
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div><footer class="footer">
+  <div class="container">
+    Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */
