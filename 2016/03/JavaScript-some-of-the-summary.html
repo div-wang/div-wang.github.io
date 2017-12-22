@@ -324,30 +324,36 @@ propertyStudent.prototype.constructor = Student;</p>
 <p>每个属性的声明都是使用Object.Create 声明的，其中包含三个参数及值，&#39;descriptors&#39;writable: true and enumerable: true。</p>
 </article><div class="weixin">
   <div>
-    <img src="/static/img/qrcode_for_gh_f13c307045b7_430.jpg">
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
     关注我的公众号
   </div>
   <div>
-    <img src="/static/img/WX20171221-115728@2x.png">
-    领取红包
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
   </div>
   <div style="clear: both;height: 1px;"></div>
 </div><footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
   <div class="container">
-    Copyright © 2016 - 2017 <a href="https://github.com/div-wang">Div-wang</a>.
+    Copyright © 2016 - 20171 <a href="https://github.com/div-wang">Div-wang</a>.
   </div>
 </footer>
 <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
   /* 鼠标点击特效 */
-  var a_idx = 0;
+  var index = 0;
   jQuery(document).ready(function($) {
       $("body").click(function(e) {
-  var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
-  var $i = $("<span/>").text(a[a_idx]);
-          a_idx = (a_idx + 1) % a.length;
-  var x = e.pageX,
-          y = e.pageY;
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
           $i.css({
             "z-index": 99999,
             "top": y - 20,
@@ -355,16 +361,37 @@ propertyStudent.prototype.constructor = Student;</p>
             "position": "absolute",
             "font-weight": "bold",
             "color": "#ff6651"
-          });
-          $("body").append($i);
+          })
+          $("body").append($i)
           $i.animate({
             "top": y - 180,
             "opacity": 0
-          },
-          1500,
-          function() {
+          }, 1500, function() {
               $i.remove();
-          });
+          })
       });
   });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    },30);
+  }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
 </script></body></html>

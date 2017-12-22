@@ -1,8 +1,9 @@
 .nav-right {
   float: right;
-  font-size: 16px;
   margin: 0;
-  padding-left: 0; }
+  padding-left: 0;
+  font-size: 16px;
+  line-height: 50px; }
   .nav-right li {
     list-style: none;
     float: left; }
@@ -18,14 +19,15 @@
     margin-left: 30px; }
 
 .header {
-  background-color: #fff;
+  position: relative;
+  z-index: 2;
   height: 50px;
-  line-height: 50px;
   padding-top: 20px;
-  border-bottom: solid 2px #dd514c; }
+  border-bottom: solid 2px #dd514c;
+  background-color: #fff; }
 
 .sitename {
   float: left;
   margin: 0; }
   .sitename a {
-    color: #333; }
+    color: #dd514c; }

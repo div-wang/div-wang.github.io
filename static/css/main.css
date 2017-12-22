@@ -22,9 +22,10 @@ a {
 
 .nav-right {
   float: right;
-  font-size: 16px;
   margin: 0;
-  padding-left: 0; }
+  padding-left: 0;
+  font-size: 16px;
+  line-height: 50px; }
   .nav-right li {
     list-style: none;
     float: left; }
@@ -40,33 +41,41 @@ a {
     margin-left: 30px; }
 
 .header {
-  background-color: #fff;
+  position: relative;
+  z-index: 2;
   height: 50px;
-  line-height: 50px;
   padding-top: 20px;
-  border-bottom: solid 2px #dd514c; }
+  border-bottom: solid 2px #dd514c;
+  background-color: #fff; }
 
 .sitename {
   float: left;
   margin: 0; }
   .sitename a {
-    color: #333; }
+    color: #dd514c; }
 
 .welcome {
   padding: 40px 0;
-  margin-bottom: 20px; }
+  margin-bottom: 40px;
+  background-image: url(/static/img/common/bg1.jpg);
+  background-position: center center;
+  background-size: 100%;
+  color: #fff; }
   .welcome .container {
     max-width: 660px; }
   .welcome h2 {
     font: bold 60px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    line-height: 1.4; }
+    line-height: 1.4;
+    margin: 0; }
     .welcome h2 a {
-      padding: 6px;
-      border-radius: 6px;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      text-align: center;
       background-color: #dd514c;
       display: inline-block;
       margin-left: 10px;
-      line-height: 0px; }
+      line-height: 4px; }
       .welcome h2 a img {
         width: 18px;
         height: 18px; }
@@ -108,7 +117,7 @@ a {
     top: 0;
     left: -50px;
     content: ' ';
-    width: 1px;
+    width: 2px;
     height: 100%;
     display: block;
     background-color: #eee; }
@@ -172,6 +181,15 @@ a {
       margin: 0 auto 10px;
       border-radius: 5px;
       box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.12); }
+
+#top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px; }
+  #top img {
+    width: 100%; }
 
 #welcome {
   -webkit-animation-delay: .5s;

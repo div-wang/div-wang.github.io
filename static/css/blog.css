@@ -22,9 +22,10 @@ a {
 
 .nav-right {
   float: right;
-  font-size: 16px;
   margin: 0;
-  padding-left: 0; }
+  padding-left: 0;
+  font-size: 16px;
+  line-height: 50px; }
   .nav-right li {
     list-style: none;
     float: left; }
@@ -40,17 +41,18 @@ a {
     margin-left: 30px; }
 
 .header {
-  background-color: #fff;
+  position: relative;
+  z-index: 2;
   height: 50px;
-  line-height: 50px;
   padding-top: 20px;
-  border-bottom: solid 2px #dd514c; }
+  border-bottom: solid 2px #dd514c;
+  background-color: #fff; }
 
 .sitename {
   float: left;
   margin: 0; }
   .sitename a {
-    color: #333; }
+    color: #dd514c; }
 
 .footer {
   padding: 60px 0 50px 0;
@@ -76,13 +78,23 @@ a {
       border-radius: 5px;
       box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.12); }
 
+#top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 50px;
+  height: 50px; }
+  #top img {
+    width: 100%; }
+
 @media screen and (min-width: 1000px) {
   .markdown-body {
     width: 750px;
     margin: 10px auto; } }
 
 body {
-  background-color: #f1f1f1; }
+  background-image: url(http://www.cnblogs.com/skins/BlueSky/images/bg.gif);
+  background-color: #FFFDFA; }
 
 .markdown-body {
   max-width: 750px;
