@@ -1,0 +1,170 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.jpg"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>使用AWS搭建自己的VPN</title></head><body><header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+  </div>
+</header><article class="markdown-body"><h1 id="-aws-vpn">使用AWS搭建自己的VPN</h1>
+<blockquote>
+<p>免费拥有自己的海外VPN服务器。</p>
+</blockquote>
+<h2 id="-aws-">部署自己的AWS服务器</h2>
+<p>网上有很多教程：
+<a href="http://www.freehao123.com/amazon-ec2-vps/">新Amazon EC2免费VPS主机申请和使用方法:Linux和Windows</a>
+<a href="https://www.google.com.hk/search?q=%E7%94%B3%E8%AF%B7%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%8D%E5%8A%A1%E5%99%A8&amp;rlz=1C1CHWL_zh-CN__669__670&amp;oq=%E7%94%B3%E8%AF%B7%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%8D%E5%8A%A1%E5%99%A8&amp;aqs=chrome..69i57j0l5.9665j0j7&amp;sourceid=chrome&amp;es_sm=122&amp;ie=UTF-8">申请亚马逊服务器 - google 搜索</a>
+<a href="https://www.baidu.com/s?wd=%E7%94%B3%E8%AF%B7%E4%BA%9A%E9%A9%AC%E9%80%8A%E6%9C%8D%E5%8A%A1%E5%99%A8&amp;rsv_spt=1&amp;rsv_iqid=0xdfe5dd75000b3330&amp;issp=1&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=0&amp;inputT=894">申请亚马逊服务器_百度搜索</a></p>
+<h2 id="-putty-">使用putty软件，登录你的服务</h2>
+<ul>
+<li>首先准备好刚才下载的软件putty和puttygen，和key文件(就是那个后缀pem的文件)</li>
+<li>使用puttygen把pem转换成ppk</li>
+<li>使用ip登陆
+不会的参考：<a href="https://www.baidu.com/s?wd=putty%E7%99%BB%E9%99%86ec2&amp;rsv_spt=1&amp;rsv_iqid=0xdfe5dd75000b3330&amp;issp=1&amp;f=8&amp;rsv_bp=0&amp;rsv_idx=2&amp;ie=utf-8&amp;tn=baiduhome_pg&amp;rsv_enter=0&amp;inputT=12246">putty登陆ec2_百度搜索</a></li>
+</ul>
+<h2 id="-root-">使用root账户，直接输入</h2>
+<p>EC2 ubuntu系统默认用户是<code>ubuntu</code>
+首先是启用root</p>
+<pre><code class="lang-bash"><span class="hljs-attribute">sudo</span> passwd
+<span class="hljs-comment">#会让你输入2次密码</span>
+</code></pre>
+<p>然后使用Root账户登录</p>
+<pre><code class="lang-bash">su root
+<span class="hljs-comment">#输入你刚才设置的密码会变成下面这样</span>
+root<span class="hljs-variable">@ip</span>-<span class="hljs-number">172</span>-<span class="hljs-number">31</span>-<span class="hljs-number">20</span>-<span class="hljs-number">144</span><span class="hljs-symbol">:/home/ubuntu</span><span class="hljs-comment">#</span>
+</code></pre>
+<h2 id="-pptpd">安装pptpd</h2>
+<pre><code class="lang-bash">apt-<span class="hljs-keyword">get</span> install pptpd
+</code></pre>
+<p>不获取root账户也可以</p>
+<pre><code class="lang-bash">sudo apt-<span class="hljs-keyword">get</span> install pptpd
+</code></pre>
+<h2 id="-etc-pptpd-conf-vpn-">修改/etc/pptpd.conf文件，设置vpn代理地址</h2>
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/pptpd.<span class="hljs-keyword">conf</span>
+</code></pre>
+<p>移动到文件末尾，按i进入编辑模式
+输入</p>
+<pre><code class="lang-bash">localip <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>
+remoteip <span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.234</span><span class="hljs-number">-238</span>,<span class="hljs-number">192.168</span><span class="hljs-number">.0</span><span class="hljs-number">.245</span>
+</code></pre>
+<p>按Esc键，输入<code>:wq</code> 退出
+(这里如果不小心删错了或者编辑错了，输入<code>:q!</code>退出就可以)</p>
+<h2 id="-etc-ppp-pptpd-options-dns">修改/etc/ppp/pptpd-options文件, 加上谷歌的dns</h2>
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/ppp/pptpd-<span class="hljs-keyword">options</span>
+</code></pre>
+<p>还是和刚才一样，到文件末尾添加</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">ms-dns</span>    8<span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.8</span>
+<span class="hljs-selector-tag">ms-dns</span>    8<span class="hljs-selector-class">.8</span><span class="hljs-selector-class">.4</span><span class="hljs-selector-class">.4</span>
+</code></pre>
+<p>退出保存</p>
+<h2 id="-etc-ppp-chap-secrets-">修改/etc/ppp/chap-secrets文件，设置用户名</h2>
+<pre><code class="lang-bash">vi <span class="hljs-regexp">/etc/</span>ppp<span class="hljs-regexp">/chap-secrets</span>
+</code></pre>
+<p>配置你自己VPN的用户名/密码直接按i输入就行，格式见下方</p>
+<pre><code class="lang-bash"><span class="hljs-tag">&lt;<span class="hljs-name">username</span>&gt;</span> pptpd <span class="hljs-tag">&lt;<span class="hljs-name">passwd</span>&gt;</span> *
+</code></pre>
+<p>举个例子</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">user</span> <span class="hljs-title">pptpd</span> <span class="hljs-number">123456</span> *
+</code></pre>
+<h2 id="-etc-sysctl-conf-ip-">修改/etc/sysctl.conf，打开ip转发</h2>
+<p>修改/etc/sysctl.conf文件</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">vi</span> /etc/sysctl.<span class="hljs-keyword">conf</span>
+</code></pre>
+<p>最后添加以下内容</p>
+<pre><code class="lang-bash">net<span class="hljs-selector-class">.ipv4</span><span class="hljs-selector-class">.ip_forward</span>=<span class="hljs-number">1</span>
+</code></pre>
+<p>退出保存
+执行重新加载配置</p>
+<pre><code class="lang-bash">sudo <span class="hljs-regexp">/sbin/</span>sysctl -p
+</code></pre>
+<h2 id="-iptables-nat-configuration">启用iptables的NAT configuration</h2>
+<pre><code class="lang-bash">sudo iptables -t nat -<span class="hljs-keyword">A</span> POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+<h2 id="-ec2-nat-configuration-">为了保证每次EC2实例重启后NAT configuration能启动</h2>
+<p>修改/etc/rc.local文件</p>
+<pre><code class="lang-bash">vi /etc/rc.<span class="hljs-keyword">local</span>
+</code></pre>
+<p>在exit 0这行上面加上</p>
+<pre><code class="lang-bash">iptables -t nat -<span class="hljs-keyword">A</span> POSTROUTING -o eth0 -j MASQUERADE
+</code></pre>
+<h2 id="vpn-">vpn如何连接</h2>
+<p><a href="http://jingyan.baidu.com/article/a3f121e4f9903cfc9052bb0b.html">怎么设置vpn连接_百度经验</a>
+<a href="http://jingyan.baidu.com/article/d71306350b042713fdf4759e.html">安卓手机怎么设置VPN，安卓手机VPN怎么用_百度经验</a>
+<a href="http://jingyan.baidu.com/article/86fae3469769403c48121a71.html">vpn在iphone上怎么用_百度经验</a>
+<a href="https://support.apple.com/zh-cn/HT201550">iOS：设置 VPN - Apple 支持</a></p>
+</article><div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div><footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2016 - 20171 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    },30);
+  }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script></body></html>

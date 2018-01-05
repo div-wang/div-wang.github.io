@@ -1,0 +1,113 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.jpg"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>将网页变灰的CSS代码</title></head><body><header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+  </div>
+</header><article class="markdown-body"><h1 id="-css-">将网页变灰的CSS代码</h1>
+<p>今天无意之中看到了阿烈叔的<a href="https://www.baidufe.com/item/4eb2e626e62749df88e2.html">css filter</a>文章。</p>
+<blockquote>
+<p>IE中可以直接使用CSS Filter实现，但非IE浏览器，却没有直接的提供类似方法。
+好在CSS3出现了，可以通过filter:graysacle实现，但是目前仅支持chrome（18 dev+），
+其他浏览器好像暂时没有支持的打算！
+不过没关系，在中国，目前IE（6/7/8/9）+ Chrome（18 dev+）基本能覆盖了绝大部分浏览器（包括360、Maxthon、Sougou等）。
+<code>-webkit-filter</code>，严格意义上将，这个都不是CSS3的一部分，充其量算得上chrome浏览器的私有css，</p>
+</blockquote>
+<p>试了下，感觉效果碉堡了！</p>
+<p><strong> 代码: </strong>  </p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">html</span> {
+    <span class="hljs-attribute">filter</span>:progid:DXImageTransform.Microsoft.<span class="hljs-built_in">BasicImage</span>(grayscale=1);
+    <span class="hljs-attribute">-webkit-filter</span>:<span class="hljs-built_in">grayscale</span>(1.0);
+}
+</code></pre>
+<p><strong> effect可取下列值：</strong>  </p>
+<ul>
+<li><code>grayscale</code>           灰度，值为数值，x∈[0,1]  </li>
+<li><code>sepia</code>                  褐色，值为数值，x∈[0,1]  </li>
+<li><code>saturate</code>             饱和度，值为数值，默认是1，可以是小于1的小数，也可以大于1,x∈[0,+∞)  </li>
+<li><code>hue-rotate</code>         色相旋转，值为角度，x∈[0,360]，单位deg  </li>
+<li><code>invert</code>                  反色，值为数值，x∈[0,1]  </li>
+<li><code>opacity</code>               透明度，值为数值，x∈[0,1]  </li>
+<li><code>brightness</code>          亮度，值为数值，默认是1，可以小于1(变暗)，可以大于1(变亮)；  </li>
+<li><code>contrast</code>              对比度，值为数字，默认是1，可以大于1，也可以小于1；  </li>
+<li><code>blur</code>                     模糊，值为length，表示模糊半径，比如filter:blur(2px)  </li>
+<li><code>drop-shadow</code>     阴影，值为shadow()，写法类似css3 box-shadow，比如filter:drop-shadow(0,0,10px,black)  </li>
+</ul>
+</article><div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div><footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2016 - 20171 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    },30);
+  }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script></body></html>
