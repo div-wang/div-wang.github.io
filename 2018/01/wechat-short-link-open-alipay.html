@@ -102,16 +102,16 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
 </code></pre>
 <h2 id="-">分析一下代码</h2>
-<p>实现方式首先判断了是不是微信，在微信里再判断<code>WeixinJSBridge</code>是否注册, 接着根据安卓和ios平台调用代码。如果不是微信则直接跳转 url。</p>
-<p>从实现方式看，用<code>WeixinJSBridge</code>做了层跳板，绕过 webview，直接用 native 代码跳转url。</p>
-<p>这里不得不说有个地方我不明白，微信和支付宝正在支付领域争的你死我活，应该是不会那么轻易通过url 跳转到支付宝的。</p>
-<p>于是我请教了 ios 同学，他也做了实验，返现通过代码直接跳转<a href="https://qr.alipay.com/c1x09214odvs9va2cyg7vd2">https://qr.alipay.com/c1x09214odvs9va2cyg7vd2</a>是可以实现直接跳转支付宝并自动领红包的。</p>
-<p>我猜想这可能是微信的一个 bug 吧，于是我开始用淘宝客代码做实验，链接<a href="https://wx.loukx.com/wx_tz.html">https://wx.loukx.com/wx_tz.html</a>，结果是失败了</p>
+<p>实现方式: 首先判断了是不是在微信里，如果是在微信里再判断<code>WeixinJSBridge</code>是否注册, 注册过直接调用代码，没注册还是需要注册一下，紧接着判断安卓和ios平台调用不同方法。如果不是微信则直接跳转 url。</p>
+<p>从代码实现方式看，用<code>WeixinJSBridge</code>做了层跳板，绕过 webview，直接用 native 代码跳转url。</p>
+<p>这里有个地方我不明白，微信和支付宝正在支付领域争的你死我活，应该是不会那么轻易通过url 跳转到支付宝的。</p>
+<p>于是我请教了 ios 同学，他也同样很疑惑，于是做了个实验，通过代码直接跳转<a href="https://qr.alipay.com/c1x09214odvs9va2cyg7vd2">https://qr.alipay.com/c1x09214odvs9va2cyg7vd2</a>，发现是可以直接跳转到支付宝并自动领红包的。</p>
+<p>有这一重大发现，我就想试试能不能跳到淘宝客链接，于是找了个淘宝客的链接<a href="https://wx.loukx.com/wx_tz.html">https://wx.loukx.com/wx_tz.html</a>，结果是失败了。</p>
 <h2 id="-">目前的已知问题</h2>
 <p>1、目前已知只有<code>qr.alipay.com</code>可以打开，淘宝客链接无法跳转</p>
 <p>2、ios 11.2.1无法正常跳转到支付宝</p>
 <p>3、此代码有可能是微信 native bug，有随时被封的可能</p>
-<h3 id="-">另外，我准备做个小功能，上传图片自动生成短链接，会在随后发出来敬请期待吧！</h3>
+<h3 id="-">另外，我准备做个小功能，上传图片自动生成短链接，会在随后发出来，敬请期待吧！</h3>
 </article><div class="weixin">
   <div>
     <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
