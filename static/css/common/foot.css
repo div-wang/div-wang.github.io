@@ -1,5 +1,5 @@
 .footer {
-  padding: 60px 0 50px 0;
+  padding: 50px 0;
   font-size: 15px;
   color: #999;
   text-align: center; }
@@ -30,3 +30,9 @@
   height: 50px; }
   #top img {
     width: 100%; }
+
+@media screen and (max-width: 768px) {
+  .weixin > div > img {
+    max-width: 150px; }
+  .footer {
+    text-align: left; } }

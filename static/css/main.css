@@ -59,7 +59,7 @@ a {
   margin-bottom: 40px;
   background-image: url(/static/img/common/bg1.jpg);
   background-position: center center;
-  background-size: 100%;
+  background-size: cover;
   color: #fff; }
   .welcome .container {
     max-width: 660px; }
@@ -77,6 +77,7 @@ a {
       margin-left: 10px;
       line-height: 4px; }
       .welcome h2 a img {
+        display: inline-table;
         width: 18px;
         height: 18px; }
       .welcome h2 a .icon {
@@ -92,12 +93,11 @@ a {
     font-weight: bold;
     font-size: 16px; }
   .section .section-main {
+    line-height: 20px;
     padding-left: 100px;
     font-size: 16px; }
-    .section .section-main p {
-      margin: 0 0 20px 0; }
-      .section .section-main p:last-child {
-        margin-bottom: 0; }
+    .section .section-main li {
+      margin-top: 8px; }
 
 .section + .section {
   margin-top: 60px; }
@@ -159,7 +159,7 @@ a {
   padding-top: 20px; }
 
 .footer {
-  padding: 60px 0 50px 0;
+  padding: 50px 0;
   font-size: 15px;
   color: #999;
   text-align: center; }
@@ -190,6 +190,12 @@ a {
   height: 50px; }
   #top img {
     width: 100%; }
+
+@media screen and (max-width: 768px) {
+  .weixin > div > img {
+    max-width: 150px; }
+  .footer {
+    text-align: left; } }
 
 #welcome {
   -webkit-animation-delay: .5s;
@@ -232,10 +238,15 @@ a {
 @media screen and (max-width: 768px) {
   .welcome h2 {
     font-size: 24px; }
+    .welcome h2 a {
+      line-height: 28px; }
+  .welcome h3 {
+    font-size: 20px; }
   .section .section-left {
     float: none;
     border-bottom: 1px solid #eee;
     padding-bottom: 15px; }
   .section .section-main {
+    font-size: 14px;
     padding-left: 0;
     margin-top: 15px; } }

@@ -55,7 +55,7 @@ a {
     color: #dd514c; }
 
 .footer {
-  padding: 60px 0 50px 0;
+  padding: 50px 0;
   font-size: 15px;
   color: #999;
   text-align: center; }
@@ -87,6 +87,12 @@ a {
   #top img {
     width: 100%; }
 
+@media screen and (max-width: 768px) {
+  .weixin > div > img {
+    max-width: 150px; }
+  .footer {
+    text-align: left; } }
+
 @media screen and (min-width: 1000px) {
   .markdown-body {
     width: 750px;
@@ -97,6 +103,8 @@ body {
   background-color: #FFFDFA; }
 
 .markdown-body {
+  word-wrap: break-word;
+  white-space: pre-wrap;
   max-width: 750px;
   margin: 0 auto;
   font-family: "ubuntu", "Tahoma", "Microsoft YaHei", arial,sans-serif;
@@ -350,3 +358,15 @@ body {
 
 .tex .hljs-formula {
   background: #eee8d5; }
+
+@media screen and (max-width: 768px) {
+  .markdown-body h1 {
+    font-size: 24px; }
+  .markdown-body h2 {
+    font-size: 20px; }
+  .markdown-body h3 {
+    font-size: 18px; }
+  .markdown-body h4 {
+    font-size: 16px; }
+  .markdown-body h5 {
+    font-size: 14px; } }
