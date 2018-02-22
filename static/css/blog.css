@@ -20,39 +20,38 @@ a {
   margin: 0 auto;
   position: relative; }
 
-.nav-right {
-  float: right;
-  margin: 0;
-  padding-left: 0;
-  font-size: 16px;
-  line-height: 50px; }
-  .nav-right li {
-    list-style: none;
-    float: left; }
-    .nav-right li a {
-      color: #333;
-      display: block;
-      border-bottom: 2px solid transparent; }
-      .nav-right li a:hover {
-        border-color: #333; }
-      .nav-right li a.cur {
-        border-color: #333; }
-  .nav-right li + li {
-    margin-left: 30px; }
-
 .header {
   position: relative;
   z-index: 2;
-  height: 50px;
-  padding-top: 20px;
+  height: 80px;
   border-bottom: solid 2px #dd514c;
   background-color: #fff; }
-
-.sitename {
-  float: left;
-  margin: 0; }
-  .sitename a {
-    color: #dd514c; }
+  .header .container {
+    line-height: 80px; }
+    .header .container .sitename {
+      float: left;
+      margin: 0; }
+      .header .container .sitename a {
+        color: #dd514c; }
+    .header .container .nav-right {
+      float: right;
+      margin: 0;
+      padding-left: 0;
+      font-size: 16px;
+      line-height: 80px; }
+      .header .container .nav-right li {
+        list-style: none;
+        float: left; }
+        .header .container .nav-right li a {
+          color: #333;
+          display: block;
+          border-bottom: 2px solid transparent; }
+          .header .container .nav-right li a:hover {
+            border-color: #333; }
+          .header .container .nav-right li a.cur {
+            border-color: #333; }
+      .header .container .nav-right li + li {
+        margin-left: 30px; }
 
 .footer {
   padding: 50px 0;
