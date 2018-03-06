@@ -68,13 +68,13 @@ Options:
 </code></pre>
 </li>
 <li><p>增加用户test，有一点要注意的，useradd增加一个用户后，不要忘了给他设置密码，不然不能登录的。</p>
-<pre><code class="lang-bash">useradd <span class="hljs-built_in">test</span> &amp;&amp; passwd <span class="hljs-built_in">test</span>
+<pre><code class="lang-bash">useradd <span class="hljs-_">-d</span> <span class="hljs-string">'/home/test'</span> <span class="hljs-_">-s</span> <span class="hljs-string">'/bin/bash'</span> -g <span class="hljs-built_in">test</span>Group <span class="hljs-built_in">test</span>
 </code></pre>
 </li>
 </ul>
 <h3 id="2-">2、修改用户</h3>
 <ul>
-<li>将test用户的登录目录改成/home/test，并加入testGroup组，注意这里是大G。<pre><code class="lang-bash">usermod <span class="hljs-_">-d</span> /home/<span class="hljs-built_in">test</span> -G <span class="hljs-built_in">test</span>Group <span class="hljs-built_in">test</span>
+<li>将test用户的登录目录改成/home/test，并加入testGroup组，注意这里是大G。<pre><code class="lang-bash">usermod <span class="hljs-_">-d</span> <span class="hljs-string">'/home/test'</span> <span class="hljs-_">-s</span> <span class="hljs-string">'/bin/bash'</span> -g <span class="hljs-built_in">test</span>Group <span class="hljs-built_in">test</span>
 </code></pre>
 </li>
 <li>将用户test加入到testGroup组<pre><code class="lang-bash">gpasswd <span class="hljs-_">-a</span> <span class="hljs-built_in">test</span> <span class="hljs-built_in">test</span>Group
@@ -115,7 +115,6 @@ cat <span class="hljs-regexp">/etc/</span>passwd |awk -F \: <span class="hljs-st
 </li>
 </ul>
 <h2 id="-debian-sudo">安装好Debian后还不能使用sudo</h2>
-<h3 id="-">方法一</h3>
 <ul>
 <li>如果没有安装sudo，则在root用户下 <code>apt-get install sudo</code></li>
 <li>在root设置sudoers配制文件<pre><code class="lang-bash">chmod +w <span class="hljs-regexp">/etc/</span>sudoers
@@ -124,33 +123,15 @@ vim <span class="hljs-regexp">/etc/</span>sudoers
 </li>
 <li>添加一行并保存<pre><code class="lang-bash"><span class="hljs-comment"># username是你的用户名</span>
 <span class="hljs-attribute">username</span>  <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>) <span class="hljs-literal">ALL</span>
+<span class="hljs-comment"># 如果sudo时不想输入密码，可以把上句改成：</span>
+<span class="hljs-attribute">username</span>  <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>) NOPASSWD: <span class="hljs-literal">ALL</span>
 </code></pre>
 </li>
-<li>更改sudoers文件权限  <pre><code class="lang-bash">chmod <span class="hljs-number">0440</span> <span class="hljs-regexp">/etc/</span>sudoers
+<li>更改sudoers文件权限<pre><code class="lang-bash">chmod <span class="hljs-number">0440</span> <span class="hljs-regexp">/etc/</span>sudoers
 </code></pre>
 </li>
 <li>退出root</li>
 </ul>
-<h3 id="-">方法二</h3>
-<ul>
-<li><p>如果没有安装sudo，则在root用户下 <code>apt-get install sudo</code></p>
-</li>
-<li><p>执行 <code>visudo</code> 或 <code>sudoedit</code></p>
-</li>
-<li><p>查找</p>
-<pre><code class="lang-bash">root <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) <span class="hljs-keyword">ALL</span>
-</code></pre>
-</li>
-<li><p>在下面加入</p>
-<pre><code class="lang-bash">%adm <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) <span class="hljs-keyword">ALL</span>
-# 如果sudo时不想输入密码，可以把上句改成：
-%adm <span class="hljs-keyword">ALL</span>=(<span class="hljs-keyword">ALL</span>) NOPASSWD: <span class="hljs-keyword">ALL</span>
-</code></pre>
-</li>
-</ul>
-<p>保存文件，然後执行</p>
-<pre><code class="lang-bash">gpasswd -<span class="hljs-selector-tag">a</span> [username] adm
-</code></pre>
 </article><div class="weixin">
   <div>
     <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
