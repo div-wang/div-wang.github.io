@@ -157,6 +157,19 @@ a {
 .member + .member {
   padding-top: 20px; }
 
+#loadMore {
+  display: block;
+  color: #dd524d;
+  line-height: 50px;
+  width: 110px;
+  margin: 20px auto 0; }
+  #loadMore img {
+    display: block;
+    float: right;
+    width: 25px;
+    height: 25px;
+    margin: 11px 0; }
+
 .footer {
   padding: 50px 0;
   font-size: 15px;

@@ -1,0 +1,525 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.jpg"><link rel="stylesheet" href="../../static/css/blog.css?time=">
+ <title>接口文档</title></head><body><header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</header><article class="markdown-body"><h1 id="-">接口文档</h1>
+<blockquote>
+<p>11111</p>
+</blockquote>
+<h2 id="-">首页</h2>
+<h3 id="search">search</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  searchString:</span> String
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 商品点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 是否限量发售</span>
+<span class="hljs-symbol">    isRare:</span> Bool
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    title:</span> String,
+    <span class="hljs-comment">// 金额</span>
+<span class="hljs-symbol">    price:</span> Number,
+    <span class="hljs-comment">// 利润</span>
+<span class="hljs-symbol">    profit:</span> Number,
+  }]
+}
+</code></pre>
+<h3 id="banner">banner</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 图片 点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 图片 url</span>
+<span class="hljs-symbol">    imgUrl:</span> String
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    imgTit:</span> String
+  }]
+}
+</code></pre>
+<h3 id="-">推荐 &amp;&amp; 今日上新</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 1拼团区、2今日爆品&amp;&amp;热销商品、3今日上新</span>
+<span class="hljs-symbol">    type:</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>],
+    <span class="hljs-comment">// 名称</span>
+<span class="hljs-symbol">    name:</span> String,
+    <span class="hljs-comment">// 图片数组</span>
+<span class="hljs-symbol">    imgs:</span> [{
+      <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">      title:</span> String,
+      <span class="hljs-comment">// 图片链接</span>
+<span class="hljs-symbol">      url:</span> String,
+      <span class="hljs-comment">// 图片点击链接</span>
+<span class="hljs-symbol">      href:</span> String,
+    }]
+  }]
+}
+</code></pre>
+<h3 id="-">新手必推</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 商品点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 是否限量发售</span>
+<span class="hljs-symbol">    isRare:</span> Boolean,
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    title:</span> String,
+    <span class="hljs-comment">// 金额</span>
+<span class="hljs-symbol">    price:</span> Number,
+    <span class="hljs-comment">// 利润</span>
+<span class="hljs-symbol">    profit:</span> Number,
+  }],
+  <span class="hljs-comment">// 总数</span>
+<span class="hljs-symbol">  total:</span> Number,
+}
+</code></pre>
+<h2 id="-">拼团</h2>
+<h3 id="-">首页</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 是否上架</span>
+<span class="hljs-symbol">    isShelf:</span> Boolean,
+    <span class="hljs-comment">// 拼团链接</span>
+<span class="hljs-symbol">    groupHref:</span> String,
+    <span class="hljs-comment">// 拼团商品链接</span>
+<span class="hljs-symbol">    groupMallHref:</span> String,
+    <span class="hljs-comment">// 拼团图片url数组</span>
+<span class="hljs-symbol">    groupImgs:</span> [{
+<span class="hljs-symbol">      url:</span> String,
+<span class="hljs-symbol">      title:</span> String
+    }]
+    <span class="hljs-comment">// 拼团标题</span>
+<span class="hljs-symbol">    groupTitle:</span> String,
+    <span class="hljs-comment">// 原价</span>
+<span class="hljs-symbol">    OriginalPrice:</span> Number,
+    <span class="hljs-comment">// 拼团价格</span>
+<span class="hljs-symbol">    groupPrice:</span> Number,
+    <span class="hljs-comment">// 拼团人数</span>
+<span class="hljs-symbol">    groupNum:</span> Number,
+    <span class="hljs-comment">// 拼团人数限制</span>
+<span class="hljs-symbol">    groupNumLimit:</span> Number,
+    <span class="hljs-comment">// 拼团开始时间</span>
+<span class="hljs-symbol">    groupStartDate:</span> Date,
+    <span class="hljs-comment">// 拼团结束时间</span>
+<span class="hljs-symbol">    groupEndDate:</span> Date,
+    <span class="hljs-comment">// 拼团商品信息</span>
+<span class="hljs-symbol">    groupInfo:</span> Object
+  }]
+}
+</code></pre>
+<h3 id="-">拼团页面</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  groupId:</span> String
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> {
+    <span class="hljs-comment">// 是否上架</span>
+<span class="hljs-symbol">    isShelf:</span> Boolean,
+    <span class="hljs-comment">// 拼团链接</span>
+<span class="hljs-symbol">    groupHref:</span> String,
+    <span class="hljs-comment">// 拼团商品链接</span>
+<span class="hljs-symbol">    groupMallHref:</span> String,
+    <span class="hljs-comment">// 拼团图片url数组</span>
+<span class="hljs-symbol">    groupImgs:</span> [{
+<span class="hljs-symbol">      url:</span> String,
+<span class="hljs-symbol">      title:</span> String
+    }]
+    <span class="hljs-comment">// 拼团标题</span>
+<span class="hljs-symbol">    groupTitle:</span> String,
+    <span class="hljs-comment">// 原价</span>
+<span class="hljs-symbol">    OriginalPrice:</span> Number,
+    <span class="hljs-comment">// 拼团价格</span>
+<span class="hljs-symbol">    groupPrice:</span> Number,
+    <span class="hljs-comment">// 拼团人数</span>
+<span class="hljs-symbol">    groupNum:</span> Number,
+    <span class="hljs-comment">// 拼团人数限制</span>
+<span class="hljs-symbol">    groupNumLimit:</span> Number,
+    <span class="hljs-comment">// 拼团开始时间</span>
+<span class="hljs-symbol">    groupStartDate:</span> Date,
+    <span class="hljs-comment">// 拼团结束时间</span>
+<span class="hljs-symbol">    groupEndDate:</span> Date,
+    <span class="hljs-comment">// 拼团商品信息</span>
+<span class="hljs-symbol">    groupInfo:</span> Object
+  }
+}
+</code></pre>
+<h3 id="-">拼团商品页面</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  groupId:</span> String
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> {
+    <span class="hljs-comment">// 是否上架</span>
+<span class="hljs-symbol">    isShelf:</span> Boolean,
+    <span class="hljs-comment">// 拼团链接</span>
+<span class="hljs-symbol">    groupHref:</span> String,
+    <span class="hljs-comment">// 拼团商品链接</span>
+<span class="hljs-symbol">    groupMallHref:</span> String,
+    <span class="hljs-comment">// 拼团图片url数组</span>
+<span class="hljs-symbol">    groupImgs:</span> [{
+<span class="hljs-symbol">      url:</span> String,
+<span class="hljs-symbol">      title:</span> String
+    }]
+    <span class="hljs-comment">// 拼团标题</span>
+<span class="hljs-symbol">    groupTitle:</span> String,
+    <span class="hljs-comment">// 原价</span>
+<span class="hljs-symbol">    OriginalPrice:</span> Number,
+    <span class="hljs-comment">// 拼团价格</span>
+<span class="hljs-symbol">    groupPrice:</span> Number,
+    <span class="hljs-comment">// 拼团人数</span>
+<span class="hljs-symbol">    groupNum:</span> Number,
+    <span class="hljs-comment">// 拼团人数限制</span>
+<span class="hljs-symbol">    groupNumLimit:</span> Number,
+    <span class="hljs-comment">// 拼团开始时间</span>
+<span class="hljs-symbol">    groupStartDate:</span> Date,
+    <span class="hljs-comment">// 拼团结束时间</span>
+<span class="hljs-symbol">    groupEndDate:</span> Date,
+    <span class="hljs-comment">// 拼团商品信息</span>
+<span class="hljs-symbol">    groupInfo:</span> Object
+  }
+}
+</code></pre>
+<h4 id="-">拼团列表</h4>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  groupId:</span> String
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [<span class="hljs-comment">// 是否上架</span>
+<span class="hljs-symbol">    isShelf:</span> Boolean,
+    <span class="hljs-comment">// 拼团链接</span>
+<span class="hljs-symbol">    groupHref:</span> String,
+    <span class="hljs-comment">// 拼团商品链接</span>
+<span class="hljs-symbol">    groupMallHref:</span> String,
+    <span class="hljs-comment">// 拼团图片url数组</span>
+<span class="hljs-symbol">    groupImgs:</span> [{
+<span class="hljs-symbol">      url:</span> String,
+<span class="hljs-symbol">      title:</span> String
+    }]
+    <span class="hljs-comment">// 拼团标题</span>
+<span class="hljs-symbol">    groupTitle:</span> String,
+    <span class="hljs-comment">// 原价</span>
+<span class="hljs-symbol">    OriginalPrice:</span> Number,
+    <span class="hljs-comment">// 拼团价格</span>
+<span class="hljs-symbol">    groupPrice:</span> Number,
+    <span class="hljs-comment">// 拼团人数</span>
+<span class="hljs-symbol">    groupNum:</span> Number,
+    <span class="hljs-comment">// 拼团人数限制</span>
+<span class="hljs-symbol">    groupNumLimit:</span> Number,
+    <span class="hljs-comment">// 拼团开始时间</span>
+<span class="hljs-symbol">    groupStartDate:</span> Date,
+    <span class="hljs-comment">// 拼团结束时间</span>
+<span class="hljs-symbol">    groupEndDate:</span> Date,
+    <span class="hljs-comment">// 拼团商品信息</span>
+<span class="hljs-symbol">    groupDetail:</span> String,
+    <span class="hljs-comment">// 拼团须知</span>
+<span class="hljs-symbol">    groupInfo:</span> Object
+  }]
+}
+</code></pre>
+<h3 id="-">猜你喜欢</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  groupId:</span> String
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 商品点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 是否限量发售</span>
+<span class="hljs-symbol">    isRare:</span> Boolean,
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    title:</span> String,
+    <span class="hljs-comment">// 金额</span>
+<span class="hljs-symbol">    price:</span> Number,
+    <span class="hljs-comment">// 利润</span>
+<span class="hljs-symbol">    profit:</span> Number,
+  }]
+}
+</code></pre>
+<h2 id="-">分类</h2>
+<h3 id="-">分类首页</h3>
+<h4 id="banner">banner</h4>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 图片 点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 图片 url</span>
+<span class="hljs-symbol">    imgUrl:</span> String
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    imgTit:</span> String
+  }]
+}
+</code></pre>
+<h4 id="-">分类列表</h4>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 图片 点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 图片 url</span>
+<span class="hljs-symbol">    imgUrl:</span> String
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    imgTit:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h3 id="-">分类搜索</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+  <span class="hljs-comment">// 销量排序</span>
+<span class="hljs-symbol">  sale:</span> Boolean,
+  <span class="hljs-comment">// 价格排序</span>
+<span class="hljs-symbol">  price:</span> Boolean,
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 图片 点击链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 图片 url</span>
+<span class="hljs-symbol">    imgUrl:</span> String
+    <span class="hljs-comment">// 图片标题</span>
+<span class="hljs-symbol">    imgTit:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h2 id="vip">vip</h2>
+<h3 id="vip-">vip 用户基本数据</h3>
+<h3 id="-">余额&amp;&amp;交易记录</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  amount:</span> Number,
+<span class="hljs-symbol">  transaction:</span> [{
+    <span class="hljs-comment">// 交易时间</span>
+<span class="hljs-symbol">    date:</span> Date,
+    <span class="hljs-comment">// 交易金额</span>
+<span class="hljs-symbol">    amount:</span> Number,
+    <span class="hljs-comment">// 交易备注</span>
+<span class="hljs-symbol">    note:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h3 id="-">推广订单</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+  <span class="hljs-comment">// 订单时间</span>
+<span class="hljs-symbol">  orderDate:</span> Date,
+  <span class="hljs-comment">// 开始时间</span>
+<span class="hljs-symbol">  startDate:</span> Date,
+  <span class="hljs-comment">// 结束时间</span>
+<span class="hljs-symbol">  endDate:</span> Date,
+<span class="hljs-symbol">  search:</span> String,
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+  <span class="hljs-comment">// </span>
+<span class="hljs-symbol">  allowance:</span> Number,
+  <span class="hljs-comment">// 销售佣金</span>
+<span class="hljs-symbol">  commission:</span> Number,
+<span class="hljs-symbol">  transaction:</span> [{
+    <span class="hljs-comment">// 1培训津贴、2销售佣金</span>
+<span class="hljs-symbol">    type:</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],
+    <span class="hljs-comment">// 交易时间</span>
+<span class="hljs-symbol">    date:</span> Date,
+    <span class="hljs-comment">// 交易金额</span>
+<span class="hljs-symbol">    amount:</span> Number,
+    <span class="hljs-comment">// 交易备注</span>
+<span class="hljs-symbol">    note:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h3 id="-">规则</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 公告时间</span>
+<span class="hljs-symbol">    date:</span> Date,
+    <span class="hljs-comment">// 公告详细链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 公告图片url</span>
+<span class="hljs-symbol">    url:</span> String
+    <span class="hljs-comment">// 公告标题</span>
+<span class="hljs-symbol">    title:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h3 id="-">规则 &amp;&amp; 公告 &amp;&amp; 基本信息介绍 &amp;&amp; 大咖讲堂 &amp;&amp; 条例</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+  <span class="hljs-comment">// 1规则、2公告、3基本信息介绍、4大咖讲堂、5条例</span>
+<span class="hljs-symbol">  type:</span> [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>],
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 公告时间</span>
+<span class="hljs-symbol">    date:</span> Date,
+    <span class="hljs-comment">// 公告详细链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 公告图片url</span>
+<span class="hljs-symbol">    url:</span> String
+    <span class="hljs-comment">// 公告标题</span>
+<span class="hljs-symbol">    title:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h3 id="-">详情页面</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+  <span class="hljs-comment">// 规则 id 和 公告 id二选一</span>
+<span class="hljs-symbol">  ruleId:</span> Number,
+<span class="hljs-symbol">  notice:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> {
+    <span class="hljs-comment">// 详情时间</span>
+<span class="hljs-symbol">    date:</span> Date,
+    <span class="hljs-comment">// 性情详细链接</span>
+<span class="hljs-symbol">    href:</span> String,
+    <span class="hljs-comment">// 详情图片url</span>
+<span class="hljs-symbol">    url:</span> String
+    <span class="hljs-comment">// 详情标题</span>
+<span class="hljs-symbol">    title:</span> String,
+    <span class="hljs-comment">// 详情内容</span>
+<span class="hljs-symbol">    content:</span> String
+  },
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+<h3 id="-">买家管理</h3>
+<pre><code class="lang-js"><span class="hljs-symbol">req:</span> {
+  <span class="hljs-comment">// 开始时间</span>
+<span class="hljs-symbol">  startDate:</span> Date,
+  <span class="hljs-comment">// 结束时间</span>
+<span class="hljs-symbol">  endDate:</span> Date,
+  <span class="hljs-comment">// 搜索关键字</span>
+<span class="hljs-symbol">  search:</span> String,
+<span class="hljs-symbol">  page:</span> Number,
+<span class="hljs-symbol">  limit:</span> Number
+}
+<span class="hljs-symbol">res:</span> {
+<span class="hljs-symbol">  data:</span> [{
+    <span class="hljs-comment">// 交易时间</span>
+<span class="hljs-symbol">    date:</span> Date,
+    <span class="hljs-comment">// 微信头像</span>
+<span class="hljs-symbol">    wxAvatar:</span> String,
+    <span class="hljs-comment">// 微信昵称</span>
+<span class="hljs-symbol">    wxName:</span> String,
+    <span class="hljs-comment">// 收件人名字</span>
+<span class="hljs-symbol">    name:</span> String,
+    <span class="hljs-comment">// 收件人手机号</span>
+<span class="hljs-symbol">    phone:</span> String,
+    <span class="hljs-comment">// 收件人地址</span>
+<span class="hljs-symbol">    address:</span> String,
+    <span class="hljs-comment">// 收件人对应推广位</span>
+<span class="hljs-symbol">    source:</span> String
+  }],
+<span class="hljs-symbol">  total:</span> Number
+}
+</code></pre>
+</article><div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div><footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2015 - 2018 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    },30);
+  }
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script></body></html>

@@ -106,6 +106,10 @@
             scrllTop()
             return
           }
+          if (e.target.id === 'loadMore' || e.target.parentNode.id === 'loadMore') {
+            loadMore()
+            return
+          }
           var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
           var x = e.pageX, y = e.pageY
           var $i = $("<span/>").text(arr[index])
@@ -139,8 +143,25 @@
         if (top <= 0) {
             clearInterval(timer)
         }
-    },30);
+    }, 30);
   }
+  var page = 1
+  var limit = 10
+  var total = $('.member').length
+  function loadMore () {
+    $('#loadMore').find('img').show()
+    setTimeout(() => {
+      $('#loadMore').find('img').hide()
+      if (total <= (page * limit)) {
+        $('.member').hide().slice(0, page * limit).show()
+        $('#loadMore').hide()
+      } else {
+        $('.member').hide().slice(0, page * limit).show()
+        page += 1
+      }
+    }, 1000)
+  }
+  loadMore()
 </script>
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>

@@ -118,6 +118,8 @@ body {
     right: 0;
     padding: 10px;
     text-align: right; }
+    .markdown-body .nav-list p {
+      line-height: 1; }
     .markdown-body .nav-list a {
       display: block;
       padding-bottom: 5px; }
