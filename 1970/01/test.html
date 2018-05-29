@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+            <meta name="keywords" keywords="报价小程序需求整理">
+            <meta name="description" content="地区市动态选择，后台接口配置">
+            <title>报价小程序需求整理</title>
+            <link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.jpg">
+            <link rel="stylesheet" href="../../static/css/blog.css?time=">
+ 
+        </head>
+        <body>
+            <header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</header>
+            <article class="markdown-body">
+                <h1 id="-">报价小程序需求整理</h1>
+<h2 id="1-">1、车主信息和车牌信息</h2>
+<h4 id="-">地区市</h4>
+<blockquote>
+<p>地区市动态选择，后台接口配置</p>
+<h4 id="-">保险公司</h4>
+<p>保险公司根据地区市联动，不同地区市能够选择的保险公司不同</p>
+<h4 id="-">车牌号</h4>
+<p>根据地区市自动带出省份简称</p>
+<h4 id="-">车主信息</h4>
+<p>可ocr识别身份，让用户减少输入过程。</p>
+</blockquote>
+<ul>
+<li>车主姓名</li>
+<li>车主身份证</li>
+<li>车主电话号码</li>
+</ul>
+<h2 id="2-">2、车辆信息</h2>
+<h4 id="-ocr-">车辆信息自动ocr识别按钮</h4>
+<blockquote>
+<p>识别完成可以对比一下信息是否正确</p>
+</blockquote>
+<ul>
+<li>车架号</li>
+<li>发动机号</li>
+<li>品牌型号</li>
+<li>注册日期</li>
+<li>发证日期</li>
+</ul>
+<h4 id="-">品牌型号和车价详细信息</h4>
+<blockquote>
+<p>根据品牌型号查询，带出具体车价、排量、座位数、</p>
+</blockquote>
+<h4 id="-">是否过户</h4>
+<ul>
+<li>根据发证日期判断，如果发证日期和注册日期不是同一天，发证日期距离当前时间不足一年，可视为过户车。</li>
+<li>如用户不使用ocr识别，默认不过户，发证日期和注册日期为共一天</li>
+</ul>
+<h4 id="-">是否贷款</h4>
+<blockquote>
+<p>用户选择是贷款车，增加一个受益人信息填写</p>
+</blockquote>
+<h4 id="-">投保人和车主是否同一人</h4>
+<blockquote>
+<p>如不是同一人，增加一个投保人信息填写</p>
+</blockquote>
+<ul>
+<li>名字</li>
+<li>证件类型</li>
+<li>证件号码</li>
+<li>手机号</li>
+</ul>
+<h2 id="3-">3、选择保险</h2>
+<blockquote>
+<p>所有车险默认勾选不计免赔</p>
+<h4 id="-">车损险【不计免赔】</h4>
+<ul>
+<li>车损保额险默认是车价，可上下浮动30%，根据各地保险公司规定有一定出入。</li>
+<li>默认投保车价<h4 id="-">三者险【不计免赔】</h4>
+</li>
+<li>保额 [5,10,15,20,30,50,100,200]万</li>
+<li>默认投保30万<h4 id="-">盗抢险【不计免赔】</h4>
+</li>
+<li>没有保额，默认投保<h4 id="-">司机责任险【不计免赔】</h4>
+</li>
+<li>保额 [1,2,3,4,5,10]万/座</li>
+<li>默认不投保<h4 id="-">乘客责任险【不计免赔】</h4>
+</li>
+<li>保额 [1,2,3,4,5,10]万/座</li>
+<li>默认不投保<h4 id="-">玻璃险</h4>
+</li>
+<li>国产、进口两种</li>
+<li>默认不投保<h4 id="-">划痕险【不计免赔】</h4>
+</li>
+<li>保额 [2000,5000,10000,20000]</li>
+<li>默认不投保<h4 id="-">自燃险【不计免赔】</h4>
+</li>
+<li>没有保额，默认投保<h4 id="-">涉水险【不计免赔】</h4>
+</li>
+<li>没有保额，默认投保<h4 id="-">指定修理厂险</h4>
+</li>
+<li>没有保额，默认投保</li>
+</ul>
+</blockquote>
+<h2 id="4-">4、提交报价</h2>
+<blockquote>
+<p>默认计算所投保险价格，以表格形式展现</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>险种</th>
+<th style="text-align:center">保额</th>
+<th style="text-align:center">不计免赔</th>
+<th style="text-align:center">保费</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>车损险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>三者险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>盗抢险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>司机责任险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>乘客责任险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>玻璃险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>划痕险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>自燃险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>涉水险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+<tr>
+<td>指定修理厂险</td>
+<td style="text-align:center">Number</td>
+<td style="text-align:center">是/否</td>
+<td style="text-align:center">Number</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-">5、填写其他信息</h2>
+<h4 id="-">收件人信息</h4>
+<ul>
+<li>姓名</li>
+<li>电话</li>
+<li>省、市、县/区</li>
+<li>地址<h4 id="-">被保人信息</h4>
+<blockquote>
+<p>是否同投保人相同，不相同填写一下信息</p>
+</blockquote>
+</li>
+<li>姓名</li>
+<li>电话</li>
+<li>证件号</li>
+</ul>
+<h2 id="6-">6、支付</h2>
+<p>跳转支付收银台</p>
+
+            </article>
+            <div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div>
+            <footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2015 - 2018 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          if (e.target.id === 'loadMore' || e.target.parentNode.id === 'loadMore') {
+            loadMore()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    }, 30);
+  }
+  var page = 1
+  var limit = 10
+  var total = $('.member').length
+  function loadMore () {
+    $('#loadMore').find('img').show()
+    setTimeout(() => {
+      $('#loadMore').find('img').hide()
+      if (total <= (page * limit)) {
+        $('.member').hide().slice(0, page * limit).show()
+        $('#loadMore').hide()
+      } else {
+        $('.member').hide().slice(0, page * limit).show()
+        page += 1
+      }
+    }, 1000)
+  }
+  loadMore()
+</script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script>
+        </body>
+    </html>
