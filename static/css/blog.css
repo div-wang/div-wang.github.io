@@ -1,6 +1,6 @@
 @charset "UTF-8";
 body {
-  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  font: 13px/1.4  "PingFang SC", "Microsoft YaHei", sans-serif, arial;
   margin: 0; }
 
 a {
@@ -92,11 +92,6 @@ a {
   .footer {
     text-align: left; } }
 
-@media screen and (min-width: 1000px) {
-  .markdown-body {
-    width: 750px;
-    margin: 10px auto; } }
-
 body {
   background-image: url(http://www.cnblogs.com/skins/BlueSky/images/bg.gif);
   background-color: #FFFDFA; }
@@ -106,7 +101,7 @@ body {
   white-space: pre-wrap;
   max-width: 750px;
   margin: 0 auto;
-  font-family: "ubuntu", "Tahoma", "Microsoft YaHei", arial,sans-serif;
+  font-family: sans-serif, "PingFang SC", "Microsoft YaHei", arial;
   color: #444444;
   line-height: 1;
   padding: 1px 25px 30px;
@@ -128,11 +123,11 @@ body {
   .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4 {
     color: #111111;
     font-weight: 400;
-    margin-top: 1em; }
+    margin: 0px; }
   .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5 {
-    font-family: Georgia, Palatino, serif; }
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif, arial; }
   .markdown-body h1, .markdown-body h2, .markdown-body h3, .markdown-body h4, .markdown-body h5, .markdown-body dl {
-    margin-bottom: 16px;
+    margin: 0px;
     padding: 0; }
   .markdown-body p:frist-child {
     text-indent: 0; }
@@ -175,12 +170,11 @@ body {
   .markdown-body ul, .markdown-body ol {
     padding: 0;
     padding-left: 18px;
-    margin: 0; }
-  .markdown-body li {
-    line-height: 24px; }
-  .markdown-body p, .markdown-body ul, .markdown-body ol {
     font-size: 16px;
-    line-height: 24px; }
+    margin: 0; }
+  .markdown-body p, .markdown-body li {
+    line-height: 24px;
+    font-size: 16px; }
   .markdown-body ol ol, .markdown-body ul ol {
     list-style-type: lower-roman; }
   .markdown-body code, .markdown-body pre {
