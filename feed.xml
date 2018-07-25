@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <title><![CDATA[Div-wang的博客]]></title>
+        <link>https://blog.div-wang.com</link>
+        <description><![CDATA[ Div技术随想录 ]]></description>
+        <generator>Div-wang</generator>
+        <webMaster>826950544@qq.com</webMaster>
+        <language>zh-cn</language>
+        <image>
+            <url>https://div-wang.com/favicon.jpg</url>
+            <title><![CDATA[Div-wang的博客]]></title>
+            <link>https://blog.div-wang.com/</link>
+        </image>
+        <lastBuildDate>&#34;2018-07-25T04:01:46.480Z&#34;</lastBuildDate>
+        <ttl> 600 </ttl>
+        
+        <item>
+            <title><![CDATA[关于JavaScript的一些总结]]></title>
+            <link>https://blog.div-wang.com/2016/03/JavaScript-some-of-the-summary.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-18</pubDate>
+            <description><![CDATA[众所周知，JavaScript是动态的面向对象的编程语言，能够实现以下效果：]]></description>
+            <guid>https://blog.div-wang.com/2016/03/JavaScript-some-of-the-summary.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[JavaScript语言精粹]]></title>
+            <link>https://blog.div-wang.com/2017/12/JavaScript-the-good-parts.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-12-21</pubDate>
+            <description><![CDATA[这篇文章算是对《JavaScript语言精粹》的一个笔记，这本书对JavaScript中的精华比较深入，作者的目的是让大家知道js是一门很牛逼的的动态编程语言]]></description>
+            <guid>https://blog.div-wang.com/2017/12/JavaScript-the-good-parts.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[V2Ray 使用教程]]></title>
+            <link>https://blog.div-wang.com/2017/10/V2Ray-is-full-of-tutorials.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-10-27</pubDate>
+            <description><![CDATA[最近一段时间（某大召开），网络经常出现故障，导致严重影响到工作效率，其实就是 github 提交代码和 google 搜索技术问题。在不断搜索之后，决定使用V2Ray搭建 vpn]]></description>
+            <guid>https://blog.div-wang.com/2017/10/V2Ray-is-full-of-tutorials.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[使用AWS搭建自己的VPN]]></title>
+            <link>https://blog.div-wang.com/2016/05/aws-vpn.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-05-29</pubDate>
+            <description><![CDATA[免费拥有自己的海外VPN服务器。]]></description>
+            <guid>https://blog.div-wang.com/2016/05/aws-vpn.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[使用Gogs Docker镜像配置git服务器]]></title>
+            <link>https://blog.div-wang.com/2018/05/build-git-server-using-gogs-docker-image.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-05-16</pubDate>
+            <description><![CDATA[公司刚成立，急需要一台自己的git服务。之前使用Gitlab，不过搭建实在太过麻烦，在网上搜到Gogs有docker镜像，正好前两天学习了Docker，决定使用Docker+Gogs搞一搞。]]></description>
+            <guid>https://blog.div-wang.com/2018/05/build-git-server-using-gogs-docker-image.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[js操作剪切板复制粘贴]]></title>
+            <link>https://blog.div-wang.com/2017/06/clipboard.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-06-01</pubDate>
+            <description><![CDATA[最近写一个js复制文本内容的功能，在网上搜了一圈，发大部分文章都是比较老旧的，有的甚至是flash复制。]]></description>
+            <guid>https://blog.div-wang.com/2017/06/clipboard.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[常用的正则表达式]]></title>
+            <link>https://blog.div-wang.com/2016/08/common-regular-expression.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-08-08</pubDate>
+            <description><![CDATA[记录下常用的正则表达式，以后就不用搜索了。]]></description>
+            <guid>https://blog.div-wang.com/2016/08/common-regular-expression.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[破解钉钉打卡]]></title>
+            <link>https://blog.div-wang.com/2018/05/crack-dingding-punch.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-05-29</pubDate>
+            <description><![CDATA[本文利用Xcode模拟定位，随时随地打卡，只适用于ios系统。]]></description>
+            <guid>https://blog.div-wang.com/2018/05/crack-dingding-punch.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[将网页变灰的CSS代码]]></title>
+            <link>https://blog.div-wang.com/2016/03/css-filter.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-25</pubDate>
+            <description><![CDATA[今天无意之中看到了阿烈叔的&#60;a href=&#34;https://www.baidufe.com/item/4eb2e626e62749df88e2.html&#34;&#62;css filter&#60;/a&#62;文章。]]></description>
+            <guid>https://blog.div-wang.com/2016/03/css-filter.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[CSS 选择器性能求解]]></title>
+            <link>https://blog.div-wang.com/2015/08/css-selector-performance.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2015-08-11</pubDate>
+            <description><![CDATA[关于css性能的详细探究。]]></description>
+            <guid>https://blog.div-wang.com/2015/08/css-selector-performance.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[货币战争：相当不错的金融普及读本]]></title>
+            <link>https://blog.div-wang.com/2016/02/currency-war.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-02-29</pubDate>
+            <description><![CDATA[刚开始就像讲故事一样，到后面几章，讲金本位和信贷危机的时候就觉得挺有道理，最后还预测到了08年经济危机！挺不错的一本书，能够学到挺多的金融知识。]]></description>
+            <guid>https://blog.div-wang.com/2016/02/currency-war.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[使用element-ui的upload组件上传到七牛云]]></title>
+            <link>https://blog.div-wang.com/2017/06/element-upload-component-to-qiniu.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-06-15</pubDate>
+            <description><![CDATA[最近基于element-ui开发管理平台，老的上传组件基于plupload官方推荐的，有点过于重了。自己写了一个基于element-ui的上传组件。]]></description>
+            <guid>https://blog.div-wang.com/2017/06/element-upload-component-to-qiniu.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[我的第一次马拉松]]></title>
+            <link>https://blog.div-wang.com/2016/05/first-marathon.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-05-02</pubDate>
+            <description><![CDATA[跑马拉松不止有pb，还有快乐！]]></description>
+            <guid>https://blog.div-wang.com/2016/05/first-marathon.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[Git Cheat Sheet 中文版]]></title>
+            <link>https://blog.div-wang.com/2017/08/git-cheat-sheet-cn.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-08-17</pubDate>
+            <description><![CDATA[经常要用到git命令，但是又记不全，在网上找到一个项目&#60;a href=&#34;https://github.com/flyhigher139/Git-Cheat-Sheet&#34;&#62;flyhigher139&#60;/a&#62;，做了些精简，方便速查！]]></description>
+            <guid>https://blog.div-wang.com/2017/08/git-cheat-sheet-cn.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[git 合并多个 Commit]]></title>
+            <link>https://blog.div-wang.com/2017/04/git-commits-merge.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-04-12</pubDate>
+            <description><![CDATA[在使用 Git 作为版本控制的时候，我们可能会由于各种各样的原因提交了许多临时的 commit，而这些 commit 拼接起来才是完整的任务。那么我们为了保证Master主分支上提交注释的可读性，需要在本地分支Push远程server之前合并你自己的多次提交注释日志，原则上3条以上就需要合并。]]></description>
+            <guid>https://blog.div-wang.com/2017/04/git-commits-merge.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[关于Git远程分支和本地分支统一的问题]]></title>
+            <link>https://blog.div-wang.com/2016/12/git-remote-branch.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-12-13</pubDate>
+            <description><![CDATA[公司项目使用gitlab搭建，每次新功能开发总会新建分支，开发完成合并到master上之后，远程分支会删掉，但是本地缓存总是清不掉。google一下操作步骤，发篇文章记录一下。]]></description>
+            <guid>https://blog.div-wang.com/2016/12/git-remote-branch.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[git shell 技巧]]></title>
+            <link>https://blog.div-wang.com/2017/05/git-shell-skills.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-05-21</pubDate>
+            <description><![CDATA[git作为常用的代码管理工具，有些shell脚本可以大大提高使用git的效率，本文主要介绍一下我常用的一些shell技巧。]]></description>
+            <guid>https://blog.div-wang.com/2017/05/git-shell-skills.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[gulp-sass安装报错解决方法]]></title>
+            <link>https://blog.div-wang.com/2016/03/gulp-sass-install.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-18</pubDate>
+            <description><![CDATA[gulp-sass报错解决方案]]></description>
+            <guid>https://blog.div-wang.com/2016/03/gulp-sass-install.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[手机网页实现分享到微信和微博]]></title>
+            <link>https://blog.div-wang.com/2015/08/h5-share-app.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2015-08-16</pubDate>
+            <description><![CDATA[手机网页分享到微信和微博的见解。]]></description>
+            <guid>https://blog.div-wang.com/2015/08/h5-share-app.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[hosts翻墙上google]]></title>
+            <link>https://blog.div-wang.com/2015/10/hosts-to-google.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2015-10-14</pubDate>
+            <description><![CDATA[天朝的网络大家都懂的，有个万恶的墙一直在阻止攻城狮们翻山越岭。而对于用惯免费的我们来说，VPN代理是收费的，下面教大家一个免费翻墙的方法－hosts翻墙。]]></description>
+            <guid>https://blog.div-wang.com/2015/10/hosts-to-google.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[HTML5 file对象和blob对象的互相转换]]></title>
+            <link>https://blog.div-wang.com/2017/07/html5-file.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-07-18</pubDate>
+            <description><![CDATA[最近在做一个裁剪图片的需求，基于vue和elementui，裁剪完图片遇到一个坑，elementui的upload组件接受一个promise，要求promise resolve一个File对象才可以使用新文件上传，而canvas是转成了blob对象，我google查了好久，没有发现有blob对象转File的文章，所以今天来写一个吧！]]></description>
+            <guid>https://blog.div-wang.com/2017/07/html5-file.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[关于魏则西事件，我来谈谈百度]]></title>
+            <link>https://blog.div-wang.com/2016/05/i-think-baidu.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-05-03</pubDate>
+            <description><![CDATA[个人工作经历对百度带有感情，但本文本着客观的态度来讲讲我认识的百度。]]></description>
+            <guid>https://blog.div-wang.com/2016/05/i-think-baidu.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[JavaScript Array 常用操作]]></title>
+            <link>https://blog.div-wang.com/2016/03/javascript-array-operating.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-18</pubDate>
+            <description><![CDATA[基本数组的常用操作，做个备份。]]></description>
+            <guid>https://blog.div-wang.com/2016/03/javascript-array-operating.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[Javascript编码规范]]></title>
+            <link>https://blog.div-wang.com/2016/03/javascript-coding-standards.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-25</pubDate>
+            <description><![CDATA[&#60;strong&#62; 1、变量、方法命名必须匹配正则：/^[$_a-zA-Z]\w*$/ &#60;/strong&#62;]]></description>
+            <guid>https://blog.div-wang.com/2016/03/javascript-coding-standards.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[JavaScript DOM节点操作]]></title>
+            <link>https://blog.div-wang.com/2016/03/javascript-dom-operating.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-18</pubDate>
+            <description><![CDATA[javascript的操作dom的语法。]]></description>
+            <guid>https://blog.div-wang.com/2016/03/javascript-dom-operating.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[关于工作和学习的主动性]]></title>
+            <link>https://blog.div-wang.com/2016/08/learning-initiative.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-08-22</pubDate>
+            <description><![CDATA[人的惰性是天性，但是你想改变时绝对能战胜它，所以下定决心去改变，并不自我激励，剩下的只是时间问题。]]></description>
+            <guid>https://blog.div-wang.com/2016/08/learning-initiative.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[Linux 安装 Docker]]></title>
+            <link>https://blog.div-wang.com/2018/05/linux-install-docker-ce.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-05-16</pubDate>
+            <description><![CDATA[很早就听说了docker，以前一直把docker理解为单纯的虚拟机，最近在部署服务的时候深入了解了下docker，决定写一个系列文章作为学习记录。]]></description>
+            <guid>https://blog.div-wang.com/2018/05/linux-install-docker-ce.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[linux下用户操作指南]]></title>
+            <link>https://blog.div-wang.com/2018/02/linux-user-guide.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-02-27</pubDate>
+            <description><![CDATA[最近捋到腾讯云2000代金券羊毛，买了腾讯云的香港主机，安装了 Debian 系统，发现Linux用户要自己配置，就写一篇文章记录下学习的用户命令以及Debian新建用户不能sudo的问题解决方法]]></description>
+            <guid>https://blog.div-wang.com/2018/02/linux-user-guide.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[回首一下2016]]></title>
+            <link>https://blog.div-wang.com/2016/06/look-back-at-2106.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-06-12</pubDate>
+            <description><![CDATA[2016也是我的本命年，没有经历什么本命年的劫数，收获了很多，最大的收获当属跑出来的爱情，我们以跑步相识，因北马结情。]]></description>
+            <guid>https://blog.div-wang.com/2016/06/look-back-at-2106.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[2016年中总结]]></title>
+            <link>https://blog.div-wang.com/2016/06/mid-year-summary-2016.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-06-12</pubDate>
+            <description><![CDATA[2016年6月12号，16年过半的第12天，跑完兰马第一天，总结下上半年生活，调整下半年的计划。]]></description>
+            <guid>https://blog.div-wang.com/2016/06/mid-year-summary-2016.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[mysql常用操作指南]]></title>
+            <link>https://blog.div-wang.com/2016/03/mysql-operations-guide.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-25</pubDate>
+            <description><![CDATA[集合一些常用的mysql操作，覆盖增删改查。]]></description>
+            <guid>https://blog.div-wang.com/2016/03/mysql-operations-guide.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[搜索引擎命令]]></title>
+            <link>https://blog.div-wang.com/2016/05/search-command.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-05-02</pubDate>
+            <description><![CDATA[记录一些高级实用的搜索技巧。]]></description>
+            <guid>https://blog.div-wang.com/2016/05/search-command.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[一个攻城狮的经验总结]]></title>
+            <link>https://blog.div-wang.com/2016/03/siege-lion-experience.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-03-11</pubDate>
+            <description><![CDATA[总结在北京这两年多来，自己从一个只会切图美工，成长到现在 能独立完成一个网站前端的感想。]]></description>
+            <guid>https://blog.div-wang.com/2016/03/siege-lion-experience.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[ssh 内网穿透]]></title>
+            <link>https://blog.div-wang.com/2017/10/ssh-intranet-penetration.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-10-24</pubDate>
+            <description><![CDATA[网上的大部分 ssh 内网穿透文章都写的比较官方，对于初学者的我来说晦涩难懂，在踩了很多坑之后，决心写篇简单易懂的文章介绍下 ssh 内网穿透]]></description>
+            <guid>https://blog.div-wang.com/2017/10/ssh-intranet-penetration.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[js判断一个对象是否为空对象]]></title>
+            <link>https://blog.div-wang.com/2017/06/the-object-is-an-empty-object.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-06-15</pubDate>
+            <description><![CDATA[最近遇到一个问题，用vue循环一个数组，展示一些海报图片。数组为空的话是不会遍历的，为了不让能够出现默认图片，这也就需要在数组中增加一个默认空对象arr[{}]。问题来了，提交的时候怎么判断这个对象是空的呢？]]></description>
+            <guid>https://blog.div-wang.com/2017/06/the-object-is-an-empty-object.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[ubuntu下apt-get安装nodejs]]></title>
+            <link>https://blog.div-wang.com/2016/09/ubuntu-apt-get-install-nodejs.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-09-13</pubDate>
+            <description><![CDATA[最近在阿里云服务器上安装&#60;code&#62;nodejs&#60;/code&#62;，自己编译挺麻烦的，决定用&#60;code&#62;apt-get&#60;/code&#62;]]></description>
+            <guid>https://blog.div-wang.com/2016/09/ubuntu-apt-get-install-nodejs.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[ubuntu 开机自动启动]]></title>
+            <link>https://blog.div-wang.com/2017/03/ubuntu-boot-automatically-starts.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-03-31</pubDate>
+            <description><![CDATA[最近尝试自动化，遇到很多坑，今天写写ubuntu自动启动的问题。]]></description>
+            <guid>https://blog.div-wang.com/2017/03/ubuntu-boot-automatically-starts.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[利用acme.sh实现网站https]]></title>
+            <link>https://blog.div-wang.com/2017/11/use-acme-website-https.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-11-08</pubDate>
+            <description><![CDATA[&#60;strong&#62;acme.sh&#60;/strong&#62; 实现了 &#60;code&#62;acme&#60;/code&#62; 协议, 可以从 letsencrypt 生成免费的证书, 配置和管理相当方便.]]></description>
+            <guid>https://blog.div-wang.com/2017/11/use-acme-website-https.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[使用iTerm2代替mac默认终端]]></title>
+            <link>https://blog.div-wang.com/2017/06/use-iterm2.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2017-06-26</pubDate>
+            <description><![CDATA[其实我一直用的是mac默认终端，主要是觉得mac自带，不用下载多余软件，自己的配置也比较好，什么git自动提醒，vim高亮之类都可以实现。最近发现公司同事都在用iTerm2，仔细搜索了下iTerm2，发现可以完全导入我的bash配置，所以决定转向iTerm2。]]></description>
+            <guid>https://blog.div-wang.com/2017/06/use-iterm2.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[vim常用操作命令]]></title>
+            <link>https://blog.div-wang.com/2016/08/vim-common-commands.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-08-25</pubDate>
+            <description><![CDATA[vi 是 unix/linux 下极为普遍的一种文本编辑器. 记录一些比较常用的命令]]></description>
+            <guid>https://blog.div-wang.com/2016/08/vim-common-commands.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[微信短链接打开支付宝领红包]]></title>
+            <link>https://blog.div-wang.com/2018/01/wechat-short-link-open-alipay.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-01-05</pubDate>
+            <description><![CDATA[今天朋友在微信给我发来一个短连接 &#60;a href=&#34;http://t.cn/RHu4yXj&#34;&#62;http://t.cn/RHu4yXj&#60;/a&#62;，在微信打开之后，直接跳转到支付宝领红包页面，感觉非常新奇，决定研究下源码。]]></description>
+            <guid>https://blog.div-wang.com/2018/01/wechat-short-link-open-alipay.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[写给王广亚]]></title>
+            <link>https://blog.div-wang.com/2016/08/wrote-yaya.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2016-08-10</pubDate>
+            <description><![CDATA[给自己点压力，改变下自己，或许很多问题会迎刃而解，还会有异想不到的收获呢。]]></description>
+            <guid>https://blog.div-wang.com/2016/08/wrote-yaya.html</guid>
+        </item>
+        
+    </channel>
+</rss>
