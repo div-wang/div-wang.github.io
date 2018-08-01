@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+            <meta name="keywords" keywords="macOS,微信双开、撤回拦截">
+            <meta name="description" content="我门都知道安卓手机 root 后可以双开微信、撤回拦截微信消息这些功能，今天这些功能也被移植到 mac 上来了。">
+            <title>macOS 微信双开、撤回拦截</title>
+            <link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.jpg">
+            <link rel="stylesheet" href="../../static/css/blog.css?time=">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script> 
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script>
+        </head>
+        <body>
+            <header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</header>
+            <article class="markdown-body">
+                <h1 id="macos-">macOS 微信双开、撤回拦截</h1>
+<blockquote>
+<p>我门都知道安卓手机 root 后可以双开微信、撤回拦截微信消息这些功能，今天这些功能也被移植到 mac 上来了。</p>
+</blockquote>
+<h2 id="-">简单的介绍</h2>
+<p><strong>WeChatTweak</strong>不仅可以拦截微信消息，双开微信，还能够免手机认证登录，真是方便的一逼。
+<img src="/static/img/mac-os-wechat/WX20180801-111352@2x.png" alt=""></p>
+<p><strong>WeChatTweak</strong>亲测，macOS 10.14 Mojave系统可以正常使用。</p>
+<p>提供技术的大神是： <a href="https://github.com/Sunnyyoung">sunnyyoung</a></p>
+<blockquote>
+<p>iOS/macOS 开发者、开源爱好者、业余逆向开发，正在学习前/后端开发，走往全栈目标的路上。</p>
+</blockquote>
+<p>大神的反编译技术相当厉害，ios er 可以多看看他的blog <a href="https://blog.sunnyyoung.net/">「Sunnyyoung&#39;s Blog」</a> 
+项目地址：<a href="https://github.com/Sunnyyoung/WeChatTweak-macOS">WeChatTweak-macOS</a>
+还有个QQ的兄弟项目：<a href="https://github.com/Sunnyyoung/QQTweak-macOS">QQTweak-macOS</a></p>
+<h2 id="-">安装</h2>
+<h4 id="1-git-">1、通过git命令安装</h4>
+<p>打开终端窗口，执行以下命令：</p>
+<pre><code class="lang-bash">git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/Sunnyyoung/WeChatTweak-macOS.git \
+  &amp;&amp; <span class="hljs-keyword">cd</span> WeChatTweak-macOS \
+  &amp;&amp; sudo <span class="hljs-keyword">make</span> install
+</code></pre>
+<p>结果提示 Install successfully! 则安装成功！</p>
+<h4 id="2-zip-">2、下载zip包安装</h4>
+<p>直接点击下载 zip 文件： 
+<img src="https://camo.githubusercontent.com/921744c74963771cefaa9d0020b9897963134079/68747470733a2f2f692e6c6f6c692e6e65742f323031372f30392f30322f353961613864666365333434622e706e67" alt="下载zip">
+解压到当前指定文件夹，我是解压到<code>~/Downloads/</code>目录下，然后执行命令：</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">cd</span> ~/Downloads/WeChatTweak-macOS \
+    &amp;&amp; sudo <span class="hljs-keyword">make</span> install
+</code></pre>
+<p>结果提示 Install successfully! 则安装成功！</p>
+<h2 id="-">卸载</h2>
+<p>进入项目文件夹，然后执行：</p>
+<pre><code class="lang-bash"><span class="hljs-attribute">  sudo make uninstall</span>
+</code></pre>
+<p>即可卸载成功</p>
+<h2 id="-macos-alfred">微信 macOS 客户端支持 Alfred</h2>
+<h5 id="wechat-alfredworkflow">WeChat.alfredworkflow</h5>
+<p>Alfred 作为 macOS 平台上的效率神器，能够提升效率与体验， <a href="https://github.com/Sunnyyoung">sunnyyoung</a> 大神也写了一个 <a href="https://github.com/Sunnyyoung/WeChatTweak-macOS/blob/master/WeChat.alfredworkflow">WeChat.alfredworkflow</a>。  </p>
+<blockquote>
+<p>通过 Alfred 模糊搜索联系人并快速跳转到对应聊天界面</p>
+</blockquote>
+<p>使用命令打开项目中的 WeChat.alfredworkflow 文件：</p>
+<pre><code class="lang-bash">  <span class="hljs-built_in">open</span> WeChatTweak-macOS/WeChat.alfredworkflow
+</code></pre>
+<p>将 WeChat.alfredworkflow 添加到 Alfred</p>
+<h5 id="-">最终效果</h5>
+<p><img src="/static/img/mac-os-wechat/WX20180801-102554@2x.png" alt=""></p>
+
+            </article>
+            <div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div>
+            <footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2015 - 2018 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          if (e.target.id === 'loadMore' || e.target.parentNode.id === 'loadMore') {
+            loadMore()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    }, 30);
+  }
+  var page = 1
+  var limit = 10
+  var total = $('.member').length
+  function loadMore () {
+    $('#loadMore').find('img').show()
+    setTimeout(() => {
+      $('#loadMore').find('img').hide()
+      if (total <= (page * limit)) {
+        $('.member').hide().slice(0, page * limit).show()
+        $('#loadMore').hide()
+      } else {
+        $('.member').hide().slice(0, page * limit).show()
+        page += 1
+      }
+    }, 1000)
+  }
+  loadMore()
+</script>
+        </body>
+    </html>

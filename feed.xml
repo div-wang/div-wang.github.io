@@ -12,7 +12,7 @@
             <title><![CDATA[Div-wang的博客]]></title>
             <link>https://blog.div-wang.com/</link>
         </image>
-        <lastBuildDate>&#34;2018-07-31T07:42:47.163Z&#34;</lastBuildDate>
+        <lastBuildDate>&#34;2018-08-01T03:19:41.394Z&#34;</lastBuildDate>
         <ttl> 600 </ttl>
         
         <item>
@@ -283,6 +283,15 @@
             <pubDate>2018-07-31</pubDate>
             <description><![CDATA[macOS Mojave已经放出 beta 版好久了，在 v2ex 上看到好多帖子都说基本稳定，我也试着升级到了 Mac os Mojave 10.14 beta2，在这里吐槽下 Mojave。]]></description>
             <guid>https://blog.div-wang.com/2018/07/mac-os-mojave.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[macOS 微信双开、撤回拦截]]></title>
+            <link>https://blog.div-wang.com/2018/08/mac-os-wechat.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-08-01</pubDate>
+            <description><![CDATA[我门都知道安卓手机 root 后可以双开微信、撤回拦截微信消息这些功能，今天这些功能也被移植到 mac 上来了。]]></description>
+            <guid>https://blog.div-wang.com/2018/08/mac-os-wechat.html</guid>
         </item>
         
         <item>
