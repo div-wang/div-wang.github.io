@@ -12,7 +12,7 @@
             <title><![CDATA[Div-wang的博客]]></title>
             <link>https://blog.div-wang.com/</link>
         </image>
-        <lastBuildDate>&#34;2018-08-01T03:19:41.394Z&#34;</lastBuildDate>
+        <lastBuildDate>&#34;2018-08-10T15:26:16.063Z&#34;</lastBuildDate>
         <ttl> 600 </ttl>
         
         <item>
@@ -337,6 +337,15 @@
             <pubDate>2017-10-24</pubDate>
             <description><![CDATA[网上的大部分 ssh 内网穿透文章都写的比较官方，对于初学者的我来说晦涩难懂，在踩了很多坑之后，决心写篇简单易懂的文章介绍下 ssh 内网穿透]]></description>
             <guid>https://blog.div-wang.com/2017/10/ssh-intranet-penetration.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[谈一谈P2P和贫富差距]]></title>
+            <link>https://blog.div-wang.com/2018/08/talk-p2p.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-08-10</pubDate>
+            <description><![CDATA[吃一堑，长一智，今年雷了三个平台，也写下最近的感触吧。]]></description>
+            <guid>https://blog.div-wang.com/2018/08/talk-p2p.html</guid>
         </item>
         
         <item>
