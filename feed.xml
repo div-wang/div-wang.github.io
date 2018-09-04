@@ -12,7 +12,7 @@
             <title><![CDATA[Div-wang的博客]]></title>
             <link>https://blog.div-wang.com/</link>
         </image>
-        <lastBuildDate>&#34;2018-08-10T15:26:16.063Z&#34;</lastBuildDate>
+        <lastBuildDate>&#34;2018-09-04T09:12:26.454Z&#34;</lastBuildDate>
         <ttl> 600 </ttl>
         
         <item>
@@ -310,6 +310,15 @@
             <pubDate>2016-03-25</pubDate>
             <description><![CDATA[集合一些常用的mysql操作，覆盖增删改查。]]></description>
             <guid>https://blog.div-wang.com/2016/03/mysql-operations-guide.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[利用 Docker 运行 MongoDB]]></title>
+            <link>https://blog.div-wang.com/2018/09/run-mongoDB-with-docker.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2018-09-04</pubDate>
+            <description><![CDATA[在服务器上安装MongoDB很是繁琐，而通过 Docker 运行 MongoDB很是方便，数据迁移也变得更加简单，日常的运维和使用与本地安装基本没有区别。]]></description>
+            <guid>https://blog.div-wang.com/2018/09/run-mongoDB-with-docker.html</guid>
         </item>
         
         <item>

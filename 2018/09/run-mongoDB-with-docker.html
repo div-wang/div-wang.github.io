@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+            <meta name="keywords" keywords="利用,Docker 运行 MongoDB">
+            <meta name="description" content="在服务器上安装MongoDB很是繁琐，而通过 Docker 运行 MongoDB很是方便，数据迁移也变得更加简单，日常的运维和使用与本地安装基本没有区别。">
+            <title>利用 Docker 运行 MongoDB</title>
+            <link rel="icon" type="image/x-icon" href="//div-wang.com/favicon.jpg">
+            <link rel="stylesheet" href="../../static/css/blog.css?time=">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script> 
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script>
+        </head>
+        <body>
+            <header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</header>
+            <article class="markdown-body">
+                <h1 id="-docker-mongodb">利用 Docker 运行 MongoDB</h1>
+<blockquote>
+<p>在服务器上安装MongoDB很是繁琐，而通过 Docker 运行 MongoDB很是方便，数据迁移也变得更加简单，日常的运维和使用与本地安装基本没有区别。</p>
+</blockquote>
+<p><div class="nav-list"></p>
+<h3 id="docker-">Docker系列文章</h3>
+<p><a href="/2018/05/linux-install-docker-ce.html">Linux 安装 Docker</a>
+<a href="/2018/05/build-git-server-using-gogs-docker-image.html">使用Docker Gogs搭建git服务</a>
+<a href="/2018/05/run-mongoDB-with-docker.html">利用 Docker 运行 MongoDB</a></p>
+<h2 id="-div-"></div></h2>
+<h3 id="-">准备工作</h3>
+<p>安装docker，参考文章<a href="/2018/05/linux-install-docker-ce.html">Linux 安装 Docker</a></p>
+<h3 id="-">查找官方镜像</h3>
+<p>查找Docker Hub上的 mongo 镜像</p>
+<pre><code class="lang-bash">sudo docker search mongo
+<span class="hljs-built_in">NAME</span>                                DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+mongo                               MongoDB document databases provide high avai…   <span class="hljs-number">4916</span>                [OK]
+mongo-express                       Web-based MongoDB admin interface, written w…   <span class="hljs-number">288</span>                 [OK]
+tutum/mongodb                       MongoDB Docker <span class="hljs-built_in">image</span> – listens <span class="hljs-built_in">in</span> port <span class="hljs-number">27017</span>…   <span class="hljs-number">224</span>                                     [OK]
+mvertes/alpine-mongo                light MongoDB container                         <span class="hljs-number">79</span>                                      [OK]
+mongoclient/mongoclient             Official docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">for</span> Mongoclient, featu…   <span class="hljs-number">54</span>                                      [OK]
+bitnami/mongodb                     Bitnami MongoDB Docker <span class="hljs-built_in">Image</span>                    <span class="hljs-number">46</span>                                      [OK]
+frodenas/mongodb                    A Docker <span class="hljs-built_in">Image</span> <span class="hljs-keyword">for</span> MongoDB                      <span class="hljs-number">17</span>                                      [OK]
+mongooseim/mongooseim               Small docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">for</span> MongooseIM - robust a…   <span class="hljs-number">16</span>
+mongooseim/mongooseim-docker        MongooseIM server the latest stable version     <span class="hljs-number">11</span>                                      [OK]
+cvallance/mongo-k8s-sidecar         Kubernetes <span class="hljs-built_in">side</span> car <span class="hljs-keyword">to</span> setup <span class="hljs-built_in">and</span> maintain a …   <span class="hljs-number">8</span>                                       [OK]
+centos/mongodb-<span class="hljs-number">26</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">5</span>
+centos/mongodb-<span class="hljs-number">32</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">5</span>
+istepanov/mongodump                 Docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">with</span> mongodump running as a cro…   <span class="hljs-number">5</span>                                       [OK]
+eses/mongodb_exporter               mongodb exporter <span class="hljs-keyword">for</span> prometheus                 <span class="hljs-number">4</span>                                       [OK]
+khezen/mongo                        MongoDB Docker <span class="hljs-built_in">image</span> supporting RocksDB stor…   <span class="hljs-number">4</span>                                       [OK]
+neowaylabs/mongodb-mms-<span class="hljs-built_in">agent</span>        This Docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">with</span> MongoDB Monitoring Ag…   <span class="hljs-number">2</span>                                       [OK]
+centos/mongodb-<span class="hljs-number">36</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">2</span>
+centos/mongodb-<span class="hljs-number">34</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">1</span>
+openshift/mongodb-<span class="hljs-number">24</span>-centos7        DEPRECATED: A Centos7 based MongoDB v2.<span class="hljs-number">4</span> ima…   <span class="hljs-number">1</span>
+ekesken/mongo                       docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">for</span> mongo that is configurable …   <span class="hljs-number">1</span>                                       [OK]
+webhippie/mongodb                   Docker images <span class="hljs-keyword">for</span> mongodb                       <span class="hljs-number">1</span>                                       [OK]
+circleci/mongo                      CircleCI images <span class="hljs-keyword">for</span> MongoDB                     <span class="hljs-number">1</span>                                       [OK]
+amd64/mongo                         MongoDB document databases provide high avai…   <span class="hljs-number">0</span>
+quilt/mongo                         MongoDB container <span class="hljs-keyword">for</span> quilt.io                  <span class="hljs-number">0</span>                                       [OK]
+ansibleplaybookbundle/mongodb-apb   An APB <span class="hljs-keyword">to</span> deploy MongoDB.                       <span class="hljs-number">0</span>                                       [OK]
+</code></pre>
+<p>这里我们拉取官方的最新镜像</p>
+<pre><code class="lang-bash"><span class="hljs-attribute">docker pull mongo</span>
+</code></pre>
+<p>等待下载完成后，我们就可以在本地镜像列表里查到REPOSITORY为mongo的镜像。</p>
+<pre><code class="lang-bash">REPOSITORY          <span class="hljs-keyword">TAG</span>                 <span class="hljs-title">IMAGE</span> ID            CREATED             SIZE
+mongo               latest              a41c82c0998a        <span class="hljs-number">11</span> days ago         <span class="hljs-number">380M</span>B
+</code></pre>
+<h3 id="-mongo-">运行 mongo 镜像</h3>
+<p><a href="https://hub.docker.com/_/mongo/">mongo镜像官方文档</a></p>
+<pre><code class="lang-bash">docker <span class="hljs-keyword">run</span><span class="bash"> --name mongo -p 27017:27017 -v /data/db:/data/db <span class="hljs-_">-d</span> mongo --auth</span>
+</code></pre>
+<p><code>—-name</code> 指定镜像的名字，如果不指定会使用 Docker 镜像 ID。
+<code>-p 27018:27017</code> 官方的 mongo 镜像默认端口是27017，我们将它映射到主机的端口上27018。 27018端口可自定义，但是不能是在使用的接口。
+<code>-v /data/db:/data/db</code> -v 是挂载路径，将 mongo 镜像里的目录挂载到本地目录，mongo 镜像默认目录是/data/db。
+<code>-d</code> 在后台运行。
+<code>—auth</code> 以 auth 模式运行 mongo。</p>
+<p>然后执行一下 docker ps 确认一下库已经正常运行起来。</p>
+<pre><code class="lang-bash">CONTAINER ID    IMAGE      COMMAND                  CREATED        STATUS        PORTS                      NAMES
+20e0be4e4a7e    mongo      <span class="hljs-string">"docker-entrypoint.s…"</span>   <span class="hljs-number">7</span> days ago     <span class="hljs-meta">Up</span> <span class="hljs-number">7</span> days     <span class="hljs-number">0.0</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>:<span class="hljs-number">20188</span>-&gt;<span class="hljs-number">27017</span>/tcp   mongo
+</code></pre>
+<h3 id="-mongo-">连接 mongo 镜像</h3>
+<p>使用 <code>docker exec</code> 命令连接 mongo 镜像</p>
+<pre><code class="lang-bash">docker exec -<span class="hljs-keyword">it</span> mongo /bin/bash
+</code></pre>
+<p>更多的请看文档-<a href="http://www.runoob.com/docker/docker-exec-command.html">Docker exec 命令</a></p>
+<h3 id="-">创建用户和数据库</h3>
+<p>1、 切换到admin数据库</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">use</span> <span class="hljs-keyword">admin</span>
+</code></pre>
+<p>2、创建管理员账户</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createUser</span>({ <span class="hljs-attribute">user</span>: <span class="hljs-string">'admin'</span>, <span class="hljs-attribute">pwd</span>: <span class="hljs-string">'admin_password'</span>, <span class="hljs-attribute">roles</span>: [ { <span class="hljs-attribute">role</span>: <span class="hljs-string">"userAdminAnyDatabase"</span>, <span class="hljs-attribute">db</span>: <span class="hljs-string">"admin"</span> } ] });
+</code></pre>
+<p>3、为创建的管理员账户进行授权</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.auth</span>(<span class="hljs-string">"admin"</span>,<span class="hljs-string">"admin_password"</span>);
+</code></pre>
+<p>4、切换到指定数据库（如不存在会自动创建，默认是没有数据的，执行<code>show dbs</code>并不会显示出来）</p>
+<pre><code class="lang-bash"><span class="hljs-keyword">use</span> <span class="hljs-keyword">test</span>
+</code></pre>
+<p>5、创建test库下的用户</p>
+<pre><code class="lang-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createUser</span>({ <span class="hljs-attribute">user</span>: <span class="hljs-string">'test'</span>, <span class="hljs-attribute">pwd</span>: <span class="hljs-string">'test_password'</span>, <span class="hljs-attribute">roles</span>: [{ <span class="hljs-attribute">role</span>: <span class="hljs-string">"readWrite"</span>, <span class="hljs-attribute">db</span>: <span class="hljs-string">"test"</span> }] });
+</code></pre>
+<h3 id="-">链接数据库</h3>
+<p>shell链接数据库:</p>
+<pre><code class="lang-bash">mongo <span class="hljs-number">127.0</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>:<span class="hljs-number">27018</span>/<span class="hljs-keyword">test</span> -u <span class="hljs-keyword">test</span> -p test_password
+</code></pre>
+<p>标准 URI 连接语法：</p>
+<pre><code class="lang-bash"><span class="hljs-symbol">mongodb:</span>//<span class="hljs-keyword">test</span>:test_password@<span class="hljs-number">127.0</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>:<span class="hljs-number">27018</span>/<span class="hljs-keyword">test</span>
+</code></pre>
+<h3 id="-">参考资源</h3>
+<p><a href="http://www.runoob.com/docker/docker-install-mongodb.html">Docker 安装 MongoDB</a><br><a href="http://www.runoob.com/mongodb/mongodb-connections.html">MongoDB - 连接</a><br><a href="https://hub.docker.com/_/mongo/">mongo镜像官方文档</a></p>
+
+            </article>
+            <div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div>
+            <footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2015 - 2018 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          if (e.target.id === 'loadMore' || e.target.parentNode.id === 'loadMore') {
+            loadMore()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    }, 30);
+  }
+  var page = 1
+  var limit = 10
+  var total = $('.member').length
+  function loadMore () {
+    $('#loadMore').find('img').show()
+    setTimeout(() => {
+      $('#loadMore').find('img').hide()
+      if (total <= (page * limit)) {
+        $('.member').hide().slice(0, page * limit).show()
+        $('#loadMore').hide()
+      } else {
+        $('.member').hide().slice(0, page * limit).show()
+        page += 1
+      }
+    }, 1000)
+  }
+  loadMore()
+</script>
+        </body>
+    </html>

@@ -48,7 +48,8 @@
 <p><div class="nav-list"></p>
 <h3 id="docker-">Docker系列文章</h3>
 <p><a href="/2018/05/linux-install-docker-ce.html">Linux 安装 Docker</a>
-<a href="/2018/05/build-git-server-using-gogs-docker-image.html">使用Docker Gogs搭建git服务</a></p>
+<a href="/2018/05/build-git-server-using-gogs-docker-image.html">使用Docker Gogs搭建git服务</a>
+<a href="/2018/05/run-mongoDB-with-docker.html">利用 Docker 运行 MongoDB</a></p>
 <h2 id="-div-"></div></h2>
 <h2 id="debain-docker">debain如何安装docker</h2>
 <p>一如既往的使用debain + apt-get方式安装docker，这样做安装方便，容易升级，并随时跟进最新版本，也方便版本回滚。</p>
@@ -56,18 +57,21 @@
 <pre><code class="lang-bash"><span class="hljs-symbol">sudo</span> apt-<span class="hljs-meta">get</span> install apt-transport-https ca-certificates curl gnupg2 software-properties-<span class="hljs-meta">common</span>
 </code></pre>
 <h3 id="-docker-gpg-key">添加docker官方GPG KEY</h3>
-<pre><code class="lang-bash">curl -fsSL https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>$(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">"$ID"</span>)<span class="hljs-regexp">/gpg | sudo apt-key add -</span>
+<pre><code class="lang-bash"><span class="hljs-regexp">//</span> $(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">"$ID"</span>) 获取Linux发行版本
+curl -fsSL https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>$(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">"$ID"</span>)<span class="hljs-regexp">/gpg | sudo apt-key add -</span>
 </code></pre>
 <h3 id="-">指纹验证</h3>
-<pre><code class="lang-bash">sudo apt-<span class="hljs-type">key</span> fingerprint <span class="hljs-number">0</span>EBFCD88
+<pre><code class="lang-bash"><span class="hljs-comment">// 这里是Debian 9.0</span>
+sudo apt-<span class="hljs-type">key</span> fingerprint <span class="hljs-number">0</span>EBFCD88
 </code></pre>
 <p>是否输出：<code>9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88</code></p>
 <h3 id="-apt-">添加apt镜像仓库</h3>
 <h4 id="x86_64-">x86_64:</h4>
-<pre><code class="lang-bash">sudo <span class="hljs-keyword">add</span><span class="bash">-apt-repository\<span class="hljs-string">"deb [arch=amd64] https://download.docker.com/linux/<span class="hljs-variable">$(. /etc/os-release;echo"$ID")</span>\$(lsb_release -cs)\stable"</span></span>
+<pre><code class="lang-bash">  sudo<span class="hljs-built_in"> add-apt-repository </span>\ <span class="hljs-string">"deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release;echo"</span>$ID<span class="hljs-string">") \ $(lsb_release -cs) \ stable"</span>
 </code></pre>
 <h4 id="armhf-">armhf:</h4>
-<pre><code class="lang-bash"><span class="hljs-keyword">echo</span><span class="hljs-string">"deb [arch=armhf] https://download.docker.com/linux/$(. /etc/os-release;echo"</span>$ID<span class="hljs-string">")\$(lsb_release -cs)stable"</span>|\sudo  tee /etc/apt/sources.<span class="hljs-keyword">list</span>.d/docker.<span class="hljs-keyword">list</span>
+<pre><code class="lang-bash">  <span class="hljs-keyword">echo</span> <span class="hljs-string">"deb [arch=armhf] https://download.docker.com/linux/$(. /etc/os-release;echo"</span>$ID<span class="hljs-string">")\ $(lsb_release -cs) stable"</span> | \
+  sudo tee /etc/apt/sources.<span class="hljs-keyword">list</span>.d/docker.<span class="hljs-keyword">list</span>
 </code></pre>
 <h3 id="-docker-ce">安装docker CE</h3>
 <pre><code class="lang-bash">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span>

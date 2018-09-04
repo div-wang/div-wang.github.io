@@ -91,8 +91,8 @@
 </code></pre><p>等待解析完成之后, 使用<code>--renew</code>命令重新生成证书:</p>
 <pre><code><span class="hljs-selector-tag">acme</span><span class="hljs-selector-class">.sh</span> <span class="hljs-selector-tag">--renew</span> <span class="hljs-selector-tag">-d</span> <span class="hljs-selector-tag">mydomain</span><span class="hljs-selector-class">.com</span>
 </code></pre><h3 id="2-3-">2-3. 多级子域名支持</h3>
-<p><strong>acme.sh</strong>对于多个子域名的支持相当方便, 在执行命令后加上你所有的域名, 例如:</p>
-<pre><code>acme<span class="hljs-selector-class">.sh</span> --issue --dns -d mydomain<span class="hljs-selector-class">.com</span> -d *<span class="hljs-selector-class">.mydomain</span><span class="hljs-selector-class">.com</span>
+<p><strong>acme.sh</strong>对于多个域名或子域名的支持相当方便, 在执行命令后加上你所有的域名, 例如:</p>
+<pre><code>acme<span class="hljs-selector-class">.sh</span> --issue --dns dns_ali -d mydomain<span class="hljs-selector-class">.com</span> -d *<span class="hljs-selector-class">.mydomain</span><span class="hljs-selector-class">.com</span>
 </code></pre><h2 id="3-copy-">3. copy/安装 证书</h2>
 <p>默认生成的证书都放在安装目录下: <code>~/.acme.sh/</code>,  官方不建议直接使用此目录下的文件, 推荐使用 <code>--installcert</code> 命令, 指定目标位置, 然后自己配置目录:</p>
 <h4 id="apache-example-">Apache example:</h4>
