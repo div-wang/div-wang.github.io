@@ -7,16 +7,7 @@
             <meta name="description" content="最近在做一个裁剪图片的需求，基于vue和elementui，裁剪完图片遇到一个坑，elementui的upload组件接受一个promise，要求promise resolve一个File对象才可以使用新文件上传，而canvas是转成了blob对象，我google查了好久，没有发现有blob对象转File的文章，所以今天来写一个吧！">
             <title>HTML5 file对象和blob对象的互相转换</title>
             <link rel="icon" type="image/x-icon" href="//div-1255800596.cos.ap-beijing.myqcloud.com/logo.png">
-            <link rel="stylesheet" href="../../static/css/blog.css?time=">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'UA-111523348-1');
-</script> 
+            <link rel="stylesheet" href="../../static/css/blog.css?time="> 
             <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
 <script>
