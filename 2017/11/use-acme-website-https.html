@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,86 +42,94 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="-acme-sh-https">利用acme.sh实现网站https</h1>
+                <h1 id="利用acmesh实现网站https">利用acme.sh实现网站https</h1>
 <blockquote>
 <p><strong>acme.sh</strong> 实现了 <code>acme</code> 协议, 可以从 letsencrypt 生成免费的证书, 配置和管理相当方便.</p>
 </blockquote>
-<p><div class="nav-list"></p>
-<h3 id="-">目录</h3>
-<p><a href="#1-acme-sh-">安装 <strong>acme.sh</strong></a>
-<a href="#2-">生成证书</a>
-<a href="#3-copy-">copy/安装 证书</a>
-<a href="#4-">更新</a>
-<a href="#5-">参考</a></p>
-<h2 id="-div-"></div></h2>
-<h2 id="1-acme-sh-">1. 安装 <strong>acme.sh</strong></h2>
+<div class="nav-list">
+### 目录
+[安装 **acme.sh**](#1-acme-sh-)
+[生成证书](#2-)
+[copy/安装 证书](#3-copy-)
+[更新](#4-)
+[参考](#5-)
+</div>
+---
+
+<h2 id="1-安装-acmesh">1. 安装 <strong>acme.sh</strong></h2>
 <p>安装很简单, 一条命令搞定:</p>
-<pre><code>curl  http<span class="hljs-variable">s:</span>//<span class="hljs-built_in">get</span>.acme.<span class="hljs-keyword">sh</span> | <span class="hljs-keyword">sh</span>
-</code></pre><p>sh 文件将 <strong>acme.sh</strong> 安装目录在 <code>~/.acme.sh/</code> 下, 创建 一个 <code>acme.sh=~/.acme.sh/acme.sh</code> 的 alias, 方便你的使用, 再自动为你创建一个 job,  每天 0:00 点自动检测所有的证书, 如果快过期了, 需要更新, 则会自动更新证书.</p>
-<p><strong> 所有的修改都限制在安装目录中: <code>~/.acme.sh/</code>, 安装不会写入其他文件</strong></p>
-<h2 id="2-">2. 生成证书</h2>
+<pre><code>curl  http<span class="hljs-variable">s:</span>//<span class="hljs-built_in">get</span>.acme.<span class="hljs-keyword">sh</span> | <span class="hljs-keyword">sh</span></code></pre>
+<p>sh 文件将 <strong>acme.sh</strong> 安装目录在 <code>~/.acme.sh/</code> 下, 创建 一个 <code>acme.sh=~/.acme.sh/acme.sh</code> 的 alias, 方便你的使用, 再自动为你创建一个 job,  每天 0:00 点自动检测所有的证书, 如果快过期了, 需要更新, 则会自动更新证书.</p>
+<p>** 所有的修改都限制在安装目录中: <code>~/.acme.sh/</code>, 安装不会写入其他文件**</p>
+<h2 id="2-生成证书">2. 生成证书</h2>
 <p><strong>acme.sh</strong> 实现了 <strong>acme</strong> 协议支持的所有验证协议, 一般有两种方式验证: http 和 dns 验证.</p>
-<h3 id="2-1-http-">2-1. http 方式.</h3>
+<h3 id="2-1-http-方式">2-1. http 方式.</h3>
 <p>http 方式也根据使用服务不同为以下几种</p>
-<h4 id="2-1-1-http-">2-1-1. 正常 http 验证</h4>
+<h4 id="2-1-1-正常-http-验证">2-1-1. 正常 http 验证</h4>
 <p>只需要指定域名, 并指定域名所在的网站根目录. <strong>acme.sh</strong> 会全自动的生成验证文件, 并放到网站的根目录, 自动完成验证会删除验证文件.</p>
-<pre><code>acme<span class="hljs-selector-class">.sh</span>  --issue  -d mydomain<span class="hljs-selector-class">.com</span> -d www<span class="hljs-selector-class">.mydomain</span><span class="hljs-selector-class">.com</span>  --webroot  /home/wwwroot/mydomain.com/
-</code></pre><h4 id="2-1-2-apache-">2-1-2. <strong>apache</strong>服务器验证</h4>
+<pre><code>acme.sh  --issue  -d mydomain.com -d www.mydomain.com  --webroot  <span class="hljs-regexp">/home/</span>wwwroot<span class="hljs-regexp">/mydomain.com/</span></code></pre>
+<h4 id="2-1-2-apache服务器验证">2-1-2. <strong>apache</strong>服务器验证</h4>
 <p>如果你用的 <strong>apache</strong>服务器, <strong>acme.sh</strong> 还可以智能的从 <strong>apache</strong>的配置中自动完成验证, 你不需要指定网站根目录:</p>
-<pre><code>sudo acme<span class="hljs-selector-class">.sh</span> --issue  -d mydomain<span class="hljs-selector-class">.com</span>   --apache
-</code></pre><h4 id="2-1-3-nginx-">2-1-3. <strong>nginx</strong>服务器验证</h4>
+<pre><code><span class="hljs-comment">sudo</span> <span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> --<span class="hljs-comment">issue</span>  <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>   --<span class="hljs-comment">apache</span></code></pre>
+<h4 id="2-1-3-nginx服务器验证">2-1-3. <strong>nginx</strong>服务器验证</h4>
 <p>如果你用的 <strong>nginx</strong>服务器, 或者反代, <strong>acme.sh</strong> 还可以智能的从 <strong>nginx</strong>的配置中自动完成验证, 你不需要指定网站根目录:</p>
-<pre><code>sudo acme<span class="hljs-selector-class">.sh</span> --issue  -d mydomain<span class="hljs-selector-class">.com</span>   --nginx
-</code></pre><p><strong>注意, 无论是 apache 还是 nginx 模式, acme.sh会生成一个 config 文件, 并备份你的 nginx.config, 所以这里一般会用到 sudo, 验证完成acme.sh会自动回复你的 nginx.config</strong></p>
-<h4 id="2-1-4-standalone-">2-1-4.独立服务模式 <strong>--standalone</strong></h4>
+<pre><code><span class="hljs-comment">sudo</span> <span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> --<span class="hljs-comment">issue</span>  <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>   --<span class="hljs-comment">nginx</span></code></pre>
+<p><strong>注意, 无论是 apache 还是 nginx 模式, acme.sh会生成一个 config 文件, 并备份你的 nginx.config, 所以这里一般会用到 sudo, 验证完成acme.sh会自动回复你的 nginx.config</strong></p>
+<h4 id="2-1-4独立服务模式---standalone">2-1-4.独立服务模式 <strong>--standalone</strong></h4>
 <p>在 <strong>acme.sh</strong> 安装过程中会有一个 warning 提示</p>
-<pre><code>[Tue Nov  <span class="hljs-number">7</span> <span class="hljs-number">09</span>:<span class="hljs-number">17</span>:<span class="hljs-number">19</span> UTC <span class="hljs-number">2017</span>] It <span class="hljs-keyword">is</span> recommended <span class="hljs-keyword">to</span> install socat first.
-[Tue Nov  <span class="hljs-number">7</span> <span class="hljs-number">09</span>:<span class="hljs-number">17</span>:<span class="hljs-number">19</span> UTC <span class="hljs-number">2017</span>] We <span class="hljs-keyword">use</span> socat <span class="hljs-keyword">for</span> standalone server <span class="hljs-keyword">if</span> you <span class="hljs-keyword">use</span> standalone mode.
-[Tue Nov  <span class="hljs-number">7</span> <span class="hljs-number">09</span>:<span class="hljs-number">17</span>:<span class="hljs-number">19</span> UTC <span class="hljs-number">2017</span>] <span class="hljs-keyword">If</span> you don<span class="hljs-symbol">'t</span> <span class="hljs-keyword">use</span> standalone mode, just ignore this <span class="hljs-literal">warning</span>.
-</code></pre><p><code>-- standalone</code>是用来启动独立服务端的, 也就是你没有任何web 服务, <strong>acme.sh</strong> 可以启动一个webserver, 监听 <strong>80</strong> 端口, 完成验证</p>
-<pre><code><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">issue</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">standalone</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>
-</code></pre><h3 id="2-2-dns-">2-2.DNS 方式</h3>
+<pre><code>[Tue Nov  <span class="hljs-number">7</span> <span class="hljs-number">09</span>:<span class="hljs-number">17</span>:<span class="hljs-number">19</span> UTC <span class="hljs-number">2017</span>] It <span class="hljs-keyword">is</span> recommended to install socat first.
+[Tue Nov  <span class="hljs-number">7</span> <span class="hljs-number">09</span>:<span class="hljs-number">17</span>:<span class="hljs-number">19</span> UTC <span class="hljs-number">2017</span>] We use socat <span class="hljs-keyword">for</span> standalone server <span class="hljs-keyword">if</span> you use standalone mode.
+[Tue Nov  <span class="hljs-number">7</span> <span class="hljs-number">09</span>:<span class="hljs-number">17</span>:<span class="hljs-number">19</span> UTC <span class="hljs-number">2017</span>] If you don<span class="hljs-string">&#x27;t use standalone mode, just ignore this warning.</span></code></pre>
+<p><code>-- standalone</code>是用来启动独立服务端的, 也就是你没有任何web 服务, <strong>acme.sh</strong> 可以启动一个webserver, 监听 <strong>80</strong> 端口, 完成验证</p>
+<pre><code><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> --<span class="hljs-comment">issue</span> --<span class="hljs-comment">standalone</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span></code></pre>
+<h3 id="2-2dns-方式">2-2.DNS 方式</h3>
 <p>DNS 方式就是在域名上添加一条 txt 解析记录, 验证域名所有权, 分为自动和手动.</p>
-<h4 id="2-2-1-dns-">2-2-1.自动 DNS 解析</h4>
+<h4 id="2-2-1自动-dns-解析">2-2-1.自动 DNS 解析</h4>
 <p>DNS 方式的真正强大之处在于可以使用域名解析商提供的 api 自动添加 txt 记录完成验证.</p>
 <p><strong>acme.sh</strong> 目前支持 30 多种解析商的自动集成.</p>
 <p>详细的 api 用法: <a href="https://github.com/Neilpang/acme.sh/blob/master/dnsapi/README.md">How to use DNS API</a></p>
-<h4 id="2-2-2-dns-">2-2-2.手动 DNS 解析</h4>
+<h4 id="2-2-2手动-dns-解析">2-2-2.手动 DNS 解析</h4>
 <p>执行以下命令, <strong>acme.sh</strong> 会生成相应的解析记录显示出来, 你只需要在你的域名管理面板中添加这条 txt 记录即可.</p>
-<pre><code><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">issue</span> <span class="hljs-literal">-</span><span class="hljs-literal">-</span><span class="hljs-comment">dns</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span>
-</code></pre><p>等待解析完成之后, 使用<code>--renew</code>命令重新生成证书:</p>
-<pre><code><span class="hljs-selector-tag">acme</span><span class="hljs-selector-class">.sh</span> <span class="hljs-selector-tag">--renew</span> <span class="hljs-selector-tag">-d</span> <span class="hljs-selector-tag">mydomain</span><span class="hljs-selector-class">.com</span>
-</code></pre><h3 id="2-3-">2-3. 多级子域名支持</h3>
+<pre><code><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span> --<span class="hljs-comment">issue</span> --<span class="hljs-comment">dns</span> <span class="hljs-literal">-</span><span class="hljs-comment">d</span> <span class="hljs-comment">mydomain</span><span class="hljs-string">.</span><span class="hljs-comment">com</span></code></pre>
+<p>等待解析完成之后, 使用<code>--renew</code>命令重新生成证书:</p>
+<pre><code><span class="hljs-selector-tag">acme</span><span class="hljs-selector-class">.sh</span> <span class="hljs-selector-tag">--renew</span> <span class="hljs-selector-tag">-d</span> <span class="hljs-selector-tag">mydomain</span><span class="hljs-selector-class">.com</span></code></pre>
+<h3 id="2-3-多级子域名支持">2-3. 多级子域名支持</h3>
 <p><strong>acme.sh</strong>对于多个域名或子域名的支持相当方便, 在执行命令后加上你所有的域名, 例如:</p>
-<pre><code>acme<span class="hljs-selector-class">.sh</span> --issue --dns dns_ali -d mydomain<span class="hljs-selector-class">.com</span> -d *<span class="hljs-selector-class">.mydomain</span><span class="hljs-selector-class">.com</span>
-</code></pre><h2 id="3-copy-">3. copy/安装 证书</h2>
+<pre><code><span class="hljs-selector-tag">acme</span><span class="hljs-selector-class">.sh</span> <span class="hljs-selector-tag">--issue</span> <span class="hljs-selector-tag">--dns</span> <span class="hljs-selector-tag">dns_ali</span> <span class="hljs-selector-tag">-d</span> <span class="hljs-selector-tag">mydomain</span><span class="hljs-selector-class">.com</span> <span class="hljs-selector-tag">-d</span> *<span class="hljs-selector-class">.mydomain</span><span class="hljs-selector-class">.com</span></code></pre>
+<h2 id="3-copy安装-证书">3. copy/安装 证书</h2>
 <p>默认生成的证书都放在安装目录下: <code>~/.acme.sh/</code>,  官方不建议直接使用此目录下的文件, 推荐使用 <code>--installcert</code> 命令, 指定目标位置, 然后自己配置目录:</p>
-<h4 id="apache-example-">Apache example:</h4>
+<h4 id="apache-example">Apache example:</h4>
 <pre><code>acme.sh --install-cert -d example.com \
 --cert-<span class="hljs-keyword">file</span>      <span class="hljs-regexp">/path/</span>to<span class="hljs-regexp">/certfile/i</span>n<span class="hljs-regexp">/apache/</span>cert.pem  \
 --key-<span class="hljs-keyword">file</span>       <span class="hljs-regexp">/path/</span>to<span class="hljs-regexp">/keyfile/i</span>n<span class="hljs-regexp">/apache/</span>key.pem  \
 --fullchain-<span class="hljs-keyword">file</span> <span class="hljs-regexp">/path/</span>to<span class="hljs-regexp">/fullchain/</span>certfile<span class="hljs-regexp">/apache/</span>fullchain.pem \
---reloadcmd     <span class="hljs-string">"service apache2 force-reload"</span>
-</code></pre><h4 id="nginx-example-">Nginx example:</h4>
-<pre><code>acme<span class="hljs-selector-class">.sh</span> --install-cert -d example<span class="hljs-selector-class">.com</span> \
---key-file       /path/to/keyfile/<span class="hljs-keyword">in</span>/nginx/key<span class="hljs-selector-class">.pem</span>  \
---fullchain-file /path/to/fullchain/nginx/cert<span class="hljs-selector-class">.pem</span> \
---reloadcmd     <span class="hljs-string">"service nginx force-reload"</span>
-</code></pre><p>这里指定的所有参数都会被自动记录下来, 并在将来证书自动更新以后, 被再次自动调用.</p>
+--reloadcmd     <span class="hljs-string">&quot;service apache2 force-reload&quot;</span></code></pre>
+<h4 id="nginx-example">Nginx example:</h4>
+<pre><code>acme.sh --install-cert -d example.com \
+--key-<span class="hljs-keyword">file</span>       <span class="hljs-regexp">/path/</span>to<span class="hljs-regexp">/keyfile/i</span>n<span class="hljs-regexp">/nginx/</span>key.pem  \
+--fullchain-<span class="hljs-keyword">file</span> <span class="hljs-regexp">/path/</span>to<span class="hljs-regexp">/fullchain/</span>nginx/cert.pem \
+--reloadcmd     <span class="hljs-string">&quot;service nginx force-reload&quot;</span></code></pre>
+<p>这里指定的所有参数都会被自动记录下来, 并在将来证书自动更新以后, 被再次自动调用.</p>
 <p>详细参数请参考: <a href="https://github.com/Neilpang/acme.sh#3-install-the-issued-cert-to-apachenginx-etc">Install the issued cert to Apache/Nginx etc.</a></p>
-<h2 id="4-">4. 更新</h2>
-<h3 id="4-1-">4-1. 证书更新</h3>
+<h2 id="4-更新">4. 更新</h2>
+<h3 id="4-1-证书更新">4-1. 证书更新</h3>
 <p>目前证书在 60 天以后会自动更新, 你无需任何操作. 今后有可能会缩短这个时间, 不过都是自动的, 你不用关心.</p>
-<h3 id="4-2-acme-sh-">4-2. acme.sh 更新</h3>
+<p>如果您想强制更新，执行一下命令</p>
+<pre><code><span class="hljs-comment"># RSA</span>
+$ acme.sh <span class="hljs-params">--renew</span> -d example.com <span class="hljs-params">--force</span>
+
+<span class="hljs-comment"># ECC</span>
+acme.sh <span class="hljs-params">--renew</span> -d example.com <span class="hljs-params">--force</span> <span class="hljs-params">--ecc</span></code></pre>
+<h3 id="4-2-acmesh-更新">4-2. acme.sh 更新</h3>
 <p>升级 acme.sh 到最新版 :</p>
-<pre><code>acme<span class="hljs-selector-class">.sh</span> --upgrade
-</code></pre><p>开启自动升级:</p>
-<pre><code>acme<span class="hljs-selector-class">.sh</span>  --upgrade  --<span class="hljs-attribute">auto</span>-upgrade
-</code></pre><p>关闭自动更新:</p>
-<pre><code>acme<span class="hljs-selector-class">.sh</span> --upgrade  --<span class="hljs-attribute">auto</span>-upgrade  <span class="hljs-number">0</span>
-</code></pre><p>更多命令，请在终端执行</p>
-<pre><code><span class="hljs-selector-tag">acme</span><span class="hljs-selector-class">.sh</span>
-</code></pre><h2 id="-">参考</h2>
+<pre><code>acme.sh <span class="hljs-comment">--upgrade</span></code></pre>
+<p>开启自动升级:</p>
+<pre><code><span class="hljs-comment">acme</span><span class="hljs-string">.</span><span class="hljs-comment">sh</span>  --<span class="hljs-comment">upgrade</span>  --<span class="hljs-comment">auto</span><span class="hljs-literal">-</span><span class="hljs-comment">upgrade</span></code></pre>
+<p>关闭自动更新:</p>
+<pre><code>acme.sh --upgrade  --<span class="hljs-built_in">auto</span>-upgrade  <span class="hljs-number">0</span></code></pre>
+<p>更多命令，请在终端执行</p>
+<pre><code><span class="hljs-selector-tag">acme</span><span class="hljs-selector-class">.sh</span></code></pre>
+<h2 id="参考">参考</h2>
 <p><a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">中文说明</a></p>
 <p><a href="https://github.com/Neilpang/acme.sh/wiki">Wiki Home</a></p>
 <p><a href="https://github.com/Neilpang/acme.sh">An ACME Shell script: acme.sh</a></p>

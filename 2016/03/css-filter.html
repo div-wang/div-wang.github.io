@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,7 +42,7 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="-css-">将网页变灰的CSS代码</h1>
+                <h1 id="将网页变灰的css代码">将网页变灰的CSS代码</h1>
 <p>今天无意之中看到了阿烈叔的<a href="https://www.baidufe.com/item/4eb2e626e62749df88e2.html">css filter</a>文章。</p>
 <blockquote>
 <p>IE中可以直接使用CSS Filter实现，但非IE浏览器，却没有直接的提供类似方法。
@@ -51,13 +52,12 @@
 <code>-webkit-filter</code>，严格意义上将，这个都不是CSS3的一部分，充其量算得上chrome浏览器的私有css，</p>
 </blockquote>
 <p>试了下，感觉效果碉堡了！</p>
-<p><strong> 代码: </strong>  </p>
-<pre><code class="lang-css"><span class="hljs-selector-tag">html</span> {
-    <span class="hljs-attribute">filter</span>:progid:DXImageTransform.Microsoft.<span class="hljs-built_in">BasicImage</span>(grayscale=1);
-    <span class="hljs-attribute">-webkit-filter</span>:<span class="hljs-built_in">grayscale</span>(1.0);
-}
-</code></pre>
-<p><strong> effect可取下列值：</strong>  </p>
+<p>** 代码: **  </p>
+<pre><code class="language-css"><span class="hljs-selector-tag">html</span> {
+    <span class="hljs-attribute">filter</span>:progid:DXImageTransform.Microsoft.<span class="hljs-built_in">BasicImage</span>(grayscale=<span class="hljs-number">1</span>);
+    <span class="hljs-attribute">-webkit-filter</span>:<span class="hljs-built_in">grayscale</span>(<span class="hljs-number">1.0</span>);
+}</code></pre>
+<p>** effect可取下列值：**  </p>
 <ul>
 <li><code>grayscale</code>           灰度，值为数值，x∈[0,1]  </li>
 <li><code>sepia</code>                  褐色，值为数值，x∈[0,1]  </li>

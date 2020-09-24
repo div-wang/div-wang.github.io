@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,38 +42,30 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="-git-">关于Git远程分支和本地分支统一的问题</h1>
+                <h1 id="关于git远程分支和本地分支统一的问题">关于Git远程分支和本地分支统一的问题</h1>
 <blockquote>
 <p>公司项目使用gitlab搭建，每次新功能开发总会新建分支，开发完成合并到master上之后，远程分支会删掉，但是本地缓存总是清不掉。google一下操作步骤，发篇文章记录一下。</p>
 </blockquote>
-<h3 id="-">解决办法：</h3>
+<h3 id="解决办法：">解决办法：</h3>
 <p>fetch之后删除掉没有与远程分支对应的本地分支：</p>
-<pre><code class="lang-bash"><span class="hljs-attribute">git fetch -p</span>
-</code></pre>
-<h3 id="-">查看本地缓存的远程分支：</h3>
-<pre><code class="lang-bash"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-a
-</code></pre>
-<h3 id="-">查看本地缓存的远程分支删除不是否已经删除：</h3>
-<pre><code class="lang-bash">git remote <span class="hljs-built_in">show</span> <span class="hljs-built_in">origin</span>
-</code></pre>
-<h3 id="-">本地删除远程分支的方法</h3>
-<h5 id="-">推送一个空分支到远程分支，其实就相当于删除远程分支：</h5>
-<pre><code class="lang-bash">git push origin <span class="hljs-symbol">:&lt;branchName&gt;</span>
-</code></pre>
-<h5 id="-delete-">可以使用<code>--delete</code>语法删除远程分支：</h5>
-<pre><code class="lang-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> --<span class="hljs-built_in">delete</span> &lt;branchName&gt;
-</code></pre>
-<h3 id="-">重命名远程分支：</h3>
+<pre><code class="language-bash"><span class="hljs-attribute">git fetch -p</span></code></pre>
+<h3 id="查看本地缓存的远程分支：">查看本地缓存的远程分支：</h3>
+<pre><code class="language-bash"><span class="hljs-attribute">git branch -a</span></code></pre>
+<h3 id="查看本地缓存的远程分支删除不是否已经删除：">查看本地缓存的远程分支删除不是否已经删除：</h3>
+<pre><code class="language-bash">git remote <span class="hljs-built_in">show</span> <span class="hljs-built_in">origin</span></code></pre>
+<h3 id="本地删除远程分支的方法">本地删除远程分支的方法</h3>
+<h5 id="推送一个空分支到远程分支，其实就相当于删除远程分支：">推送一个空分支到远程分支，其实就相当于删除远程分支：</h5>
+<pre><code class="language-bash">git push origin <span class="hljs-symbol">:&lt;branchName&gt;</span></code></pre>
+<h5 id="可以使用--delete语法删除远程分支：">可以使用<code>--delete</code>语法删除远程分支：</h5>
+<pre><code class="language-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> --<span class="hljs-built_in">delete</span> &lt;branchName&gt;</code></pre>
+<h3 id="重命名远程分支：">重命名远程分支：</h3>
 <p>其实就是先删除远程分支，然后重命名本地分支，再重新提交一个远程分支。</p>
 <p>1、删除远程分支：</p>
-<pre><code class="lang-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> --<span class="hljs-built_in">delete</span> &lt;branchName&gt;
-</code></pre>
+<pre><code class="language-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> --<span class="hljs-built_in">delete</span> &lt;branchName&gt;</code></pre>
 <p>2、重命名本地分支</p>
-<pre><code class="lang-bash"><span class="hljs-symbol">git</span> <span class="hljs-keyword">branch </span>-m &lt;<span class="hljs-keyword">branchName&gt; </span>&lt;<span class="hljs-keyword">branchName2&gt;</span>
-</code></pre>
+<pre><code class="language-bash">git branch -m <span class="hljs-tag">&lt;<span class="hljs-name">branchName</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">branchName2</span>&gt;</span></code></pre>
 <p>3、提交到远程分支</p>
-<pre><code class="lang-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> &lt;branchName2&gt;
-</code></pre>
+<pre><code class="language-bash">git <span class="hljs-built_in">push</span> <span class="hljs-built_in">origin</span> &lt;branchName2&gt;</code></pre>
 
             </article>
             <div class="weixin">

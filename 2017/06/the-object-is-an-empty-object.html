@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,49 +42,44 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="js-">js判断一个对象是否为空对象</h1>
+                <h1 id="js判断一个对象是否为空对象">js判断一个对象是否为空对象</h1>
 <blockquote>
 <p>最近遇到一个问题，用vue循环一个数组，展示一些海报图片。数组为空的话是不会遍历的，为了不让能够出现默认图片，这也就需要在数组中增加一个默认空对象arr[{}]。问题来了，提交的时候怎么判断这个对象是空的呢？</p>
 </blockquote>
-<h2 id="-">简单粗暴的判断</h2>
+<h2 id="简单粗暴的判断">简单粗暴的判断</h2>
 <p>因为是展示海报图片，每个对象下都有url属性，所以最直接的判断当前object的url属性</p>
-<pre><code class="lang-js"><span class="hljs-keyword">if</span> (arr[<span class="hljs-number">0</span>].url) {
+<pre><code class="language-js">if (arr[<span class="hljs-number">0</span>].url) {
   ...
-}
-</code></pre>
+}</code></pre>
 <p>这个方法是无法判断arr为空的情况，如果arr[0]是个null，那么浏览器回抛出<code>Cannot read property &#39;url&#39; of undefined</code>的错误</p>
-<h2 id="-es5-getownpropertynames-">使用es5的getOwnPropertyNames属性</h2>
+<h2 id="使用es5的getownpropertynames属性">使用es5的getOwnPropertyNames属性</h2>
 <p>getOwnPropertyNames 方法可以获取所有的元素键。它的返回值是一个数组，当数组长度为零时，说明对象为空。</p>
-<pre><code class="lang-js">if (<span class="hljs-name">Object</span>.getOwnPropertyNames(<span class="hljs-name">arr</span>[<span class="hljs-number">0</span>]))
-</code></pre>
+<pre><code class="language-js">if (<span class="hljs-name">Object</span>.getOwnPropertyNames(<span class="hljs-name">arr</span>[<span class="hljs-number">0</span>]))</code></pre>
 <p>这个方法和第一个方法相同，如果arr是个空数组，会抛出<code>Cannot convert undefined or null to object</code></p>
-<h2 id="jquery-">jQuery的实现方法</h2>
+<h2 id="jquery的实现方法">jQuery的实现方法</h2>
 <p>Js判断object/json 是否为空，可以使用jQuery的isEmptyObject()方法。
 jquery的实现非常简单，就是for in循环对象，默认返回true，如果可以循环则return false
 代码如下：</p>
-<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmptyObject</span> (<span class="hljs-params">obj</span>) </span>{
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isEmptyObject</span> (<span class="hljs-params">obj</span>) </span>{
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> obj)
     <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-}
-</code></pre>
+}</code></pre>
 <p>该方法可以兼容到所有异常情况，下面是例子：</p>
-<pre><code class="lang-js"><span class="hljs-built_in">console</span>.log(isEmptyObject());           <span class="hljs-regexp">//</span><span class="hljs-literal">true</span>
-<span class="hljs-built_in">console</span>.log(isEmptyObject({}));         <span class="hljs-regexp">//</span><span class="hljs-literal">true</span>
-<span class="hljs-built_in">console</span>.log(isEmptyObject(<span class="hljs-literal">null</span>));       <span class="hljs-regexp">//</span><span class="hljs-literal">true</span>
-<span class="hljs-built_in">console</span>.log(isEmptyObject(<span class="hljs-number">111</span>));         <span class="hljs-regexp">//</span><span class="hljs-literal">true</span>
-<span class="hljs-built_in">console</span>.log(isEmptyObject({a: <span class="hljs-number">1</span>}));      <span class="hljs-regexp">//</span><span class="hljs-literal">false</span>
-</code></pre>
-<h2 id="-">过滤原型继承属性的方法</h2>
+<pre><code class="language-js">console.log(is<span class="hljs-constructor">EmptyObject()</span>);           <span class="hljs-comment">//true</span>
+console.log(is<span class="hljs-constructor">EmptyObject({})</span>);         <span class="hljs-comment">//true</span>
+console.log(is<span class="hljs-constructor">EmptyObject(<span class="hljs-params">null</span>)</span>);       <span class="hljs-comment">//true</span>
+console.log(is<span class="hljs-constructor">EmptyObject(111)</span>);         <span class="hljs-comment">//true</span>
+console.log(is<span class="hljs-constructor">EmptyObject({<span class="hljs-params">a</span>: 1})</span>);      <span class="hljs-comment">//false</span></code></pre>
+<h2 id="过滤原型继承属性的方法">过滤原型继承属性的方法</h2>
 <p>上面也是最简单的实现，其实我们实际生产中还面对很多问题，不如对象从别处继承的对象过滤。
 代码如下：</p>
-<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOwnEmpty</span> (<span class="hljs-params">obj</span>) </span>{
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isOwnEmpty</span> (<span class="hljs-params">obj</span>) </span>{
   <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> k <span class="hljs-keyword">in</span> obj) {
     <span class="hljs-keyword">if</span>(obj.hasOwnProperty(key)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
   }
   <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-};
-</code></pre>
+};</code></pre>
 
             </article>
             <div class="weixin">

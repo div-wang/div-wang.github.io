@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,7 +42,7 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="-javascript-">关于JavaScript的一些总结</h1>
+                <h1 id="关于javascript的一些总结">关于JavaScript的一些总结</h1>
 <blockquote>
 <p>众所周知，JavaScript是动态的面向对象的编程语言，能够实现以下效果：</p>
 <blockquote>
@@ -54,7 +55,7 @@
 </ol>
 </blockquote>
 </blockquote>
-<h2 id="javascript-">JavaScript 中的数据类型</h2>
+<h2 id="javascript-中的数据类型">JavaScript 中的数据类型</h2>
 <p>JavaScript 提供三种元数据类型:<code>string</code>, <code>number</code>, <code>Boolean</code>,
 可使用<code>typeof(type)</code> 测试变量type 的类型</p>
 <p>提供五种基本的引用类型：<code>Object</code>, <code>Array</code>, <code>Function</code>, <code>Date</code> 及<code>RegExp</code>。
@@ -70,25 +71,23 @@
 <p><code>string</code> 是一系列的Unicode字符串，String 如“hello world”,’A3FO’或空字符串“”，字符串连接可通过+操作符来执行，也可以使用=号来验证两个字符串是否相等；</p>
 <p><code>number</code> 表示64位的浮点数，在JS中没有明显的区分整形和浮点数，如果一个表达式的值不等于某个数字，那么它的值可设为NaN,表示非数字，可联合isNaN使用。</p>
 <p>如下表是详细的类型测试和转换</p>
-<h2 id="-">变量作用域范围</h2>
+<h2 id="变量作用域范围">变量作用域范围</h2>
 <p>目前，JavaScript，ES5提供两种作用域类型：全局变量及函数作用域，没有块作用域。块作用域的范围不太明确，所以应当避免块作用域的使用。如下代码，尽管是开发人员常用的Pattern,却是一个陷阱。</p>
-<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> {</span>
-  <span class="hljs-keyword">for</span> (var <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; <span class="hljs-number">10</span>; <span class="hljs-built_in">i</span>++) {
-    ...  // do something with i
-  }
-</code></pre>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span><span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=<span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++) {
+    ...  <span class="hljs-comment">// do something with i</span>
+  }</code></pre>
 <p>所有的变量声明最好是在函数的开始位置。在JS，ES6版本中支持块作用域，采用关键字let 定义变量。</p>
 <p>严格模式（Strict Mode）
 从ES5开始， 严格模式用于检测运行时的错误，在严格模式下，所有的变量必须声明，如果给未声明的变量赋值会抛出异常。
 在JavaScript 文件或<code>&lt;Script&gt;</code>元素内，通过输入以下代码切换到严格模式：<code>use strict;</code>
 建议采用严格模式，除非项目依赖的库不兼容严格模式。</p>
-<h2 id="-">多种对象</h2>
+<h2 id="多种对象">多种对象</h2>
 <p>JS中对象不需要实例化，也可以有自己的方法，不仅有property，也包含method。除此之外还包含key-value；因此他们总共有三种扩展。</p>
 <p>JS对象是由一系列的key-value组成的。而key可以是属性名称，函数名称，映射名称。</p>
 <p>对象可通过一种特定的方式创建，使用JS 对象声明语法（JSON），而不需要实例化一个类。
 代码如下：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> <span class="hljs-built_in">Object</span> = { lastName:<span class="hljs-string">"hello"</span>, firstName:<span class="hljs-string">"word"</span> };
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> <span class="hljs-built_in">Object</span> = { lastName:<span class="hljs-string">&quot;hello&quot;</span>, firstName:<span class="hljs-string">&quot;word&quot;</span> };</code></pre>
 <p>Object 属性可以使用两种方法来访问：</p>
 <ul>
 <li>使用”.”(与C++ 和Java的类似)：<code>Object.key = val</code></li>
@@ -98,130 +97,105 @@
 <ol>
 <li>Property集合；</li>
 <li>map 如Hash map，数组，hash表；</li>
-<li>对象不需要实例化类，它可能包含property和function:<pre><code class="lang-js"><span class="hljs-keyword">var</span> person1 = {
-lastName: <span class="hljs-string">"hello"</span>,
-firstName: <span class="hljs-string">"word"</span>,
+<li>对象不需要实例化类，它可能包含property和function:<pre><code class="language-js"><span class="hljs-keyword">var</span> person1 = {
+lastName: <span class="hljs-string">&quot;hello&quot;</span>,
+firstName: <span class="hljs-string">&quot;word&quot;</span>,
 getFullName: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
- <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName +<span class="hljs-string">" "</span>+ <span class="hljs-keyword">this</span>.lastName;
+ <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName +<span class="hljs-string">&quot; &quot;</span>+ <span class="hljs-keyword">this</span>.lastName;
 }
-};
-</code></pre>
+};</code></pre>
 <h2 id="array-list">Array List</h2>
-JS array 即逻辑数据结构，通过数组下标访问。如数组初始化：<pre><code class="lang-js">var arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];
-</code></pre>
-JS数组可动态增长，因此数组索引有可能比实际元素个数多，如下：<pre><code class="lang-js"><span class="hljs-attr">arr[4]</span> = <span class="hljs-number">7</span>;
-</code></pre>
-数组循环：<pre><code class="lang-js"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; arr.<span class="hljs-built_in">length</span>; <span class="hljs-built_in">i</span>++) { ...}
-</code></pre>
-数组是特殊的对象类型，因此有很多情况下，需要判断变量是否为数组类型，使用IsArray方法：<pre><code class="lang-js"><span class="hljs-built_in">Array</span>.<span class="hljs-built_in">isArray</span>(arr)
-</code></pre>
-添加新元素到数组：<pre><code class="lang-js">arr.push(<span class="hljs-keyword">new</span><span class="hljs-type">Array</span>);
-</code></pre>
-删除：<pre><code class="lang-js"><span class="hljs-selector-tag">arr</span><span class="hljs-selector-class">.splice</span>(<span class="hljs-selector-tag">i</span>, 1);
-</code></pre>
-查找：<pre><code class="lang-js"><span class="hljs-keyword">if</span> (arr.indexOf(v) &gt; <span class="hljs-number">-1</span>)  ...
-</code></pre>
-循环：<pre><code class="lang-js">var <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>;
+JS array 即逻辑数据结构，通过数组下标访问。如数组初始化：<pre><code class="language-js">var arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>];</code></pre>
+JS数组可动态增长，因此数组索引有可能比实际元素个数多，如下：<pre><code class="language-js">arr[<span class="hljs-number">4</span>] = <span class="hljs-number">7</span>;</code></pre>
+数组循环：<pre><code class="language-js"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; arr.<span class="hljs-built_in">length</span>; <span class="hljs-built_in">i</span>++) { ...}</code></pre>
+数组是特殊的对象类型，因此有很多情况下，需要判断变量是否为数组类型，使用IsArray方法：<pre><code class="language-js"><span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>is<span class="hljs-constructor">Array(<span class="hljs-params">arr</span>)</span></code></pre>
+添加新元素到数组：<pre><code class="language-js">arr.push(<span class="hljs-keyword">new</span><span class="hljs-type">Array</span>);</code></pre>
+删除：<pre><code class="language-js">arr.splice(i, <span class="hljs-number">1</span>);</code></pre>
+查找：<pre><code class="language-js"><span class="hljs-keyword">if</span> (arr.index<span class="hljs-constructor">Of(<span class="hljs-params">v</span>)</span> &gt; -<span class="hljs-number">1</span>)  ...</code></pre>
+循环：<pre><code class="language-js">var <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>;
 <span class="hljs-keyword">for</span> (<span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>; <span class="hljs-built_in">i</span> &lt; arr.<span class="hljs-built_in">length</span>; <span class="hljs-built_in">i</span>++) {
-console.log(arr);
-}
-</code></pre>
+console.<span class="hljs-built_in">log</span>(arr);
+}</code></pre>
 如果数组较小，可使用foreach 循环：
 a.forEach( function (elem) {
 console.log( elem);
 })</li>
 </ol>
 <p>JS 也提供克隆数组的函数：</p>
-<pre><code class="lang-js">var <span class="hljs-keyword">clone</span> <span class="hljs-title">= arr</span>.slice(<span class="hljs-number">0</span>);
-</code></pre>
+<pre><code class="language-js">var <span class="hljs-keyword">clone</span> <span class="hljs-title">= arr</span>.slice(<span class="hljs-number">0</span>);</code></pre>
 <h2 id="maps">Maps</h2>
 <p>map 提供key 到值得映射。JS map 是一串字符集，可包含空格：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> <span class="hljs-keyword">map</span> = {
-    <span class="hljs-string">"apple"</span>: <span class="hljs-string">"red"</span>,
-    <span class="hljs-string">"orgin"</span>: <span class="hljs-string">"yellow"</span>
-}
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> <span class="hljs-keyword">map</span> = {
+    <span class="hljs-string">&quot;apple&quot;</span>: <span class="hljs-string">&quot;red&quot;</span>,
+    <span class="hljs-string">&quot;orgin&quot;</span>: <span class="hljs-string">&quot;yellow&quot;</span>
+}</code></pre>
 <p>增加：</p>
-<pre><code class="lang-js">map[<span class="hljs-string">"banana"</span>] = <span class="hljs-string">"yellow"</span><span class="hljs-comment">;</span>
-</code></pre>
+<pre><code class="language-js">map[<span class="hljs-string">&quot;banana&quot;</span>] = <span class="hljs-string">&quot;yellow&quot;</span><span class="hljs-comment">;</span></code></pre>
 <p>删除：</p>
-<pre><code class="lang-js">map[<span class="hljs-string">"banana"</span>] = <span class="hljs-string">""</span><span class="hljs-comment">;</span>
-</code></pre>
+<pre><code class="language-js">map[<span class="hljs-string">&quot;banana&quot;</span>] = <span class="hljs-string">&quot;&quot;</span><span class="hljs-comment">;</span></code></pre>
 <p>查找：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">if</span> (<span class="hljs-string">"yellow"</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">map</span>)  <span class="hljs-params">...</span>
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">if</span> (<span class="hljs-string">&quot;yellow&quot;</span> <span class="hljs-keyword">in</span> <span class="hljs-built_in">map</span>)  <span class="hljs-params">...</span></code></pre>
 <p>循环：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">var</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">map</span>) {
-  console.<span class="hljs-built_in">log</span>( <span class="hljs-built_in">map</span>[i]);
-}
-</code></pre>
+<pre><code class="language-js">for (<span class="hljs-built_in">var</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">map</span>) {
+  console.<span class="hljs-keyword">log</span>( <span class="hljs-built_in">map</span><span class="hljs-meta">[</span>i<span class="hljs-meta">]</span>);
+}</code></pre>
 <p>如果map 较小可使用foreach 语句：</p>
-<pre><code class="lang-js"><span class="hljs-built_in">Object</span>.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>{
+<pre><code class="language-js"><span class="hljs-built_in">Object</span>.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">key</span>) </span>{
   <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">Object</span>[key]);
-})
-</code></pre>
+})</code></pre>
 <p>复制map</p>
-<pre><code class="lang-js">var <span class="hljs-keyword">clone</span> <span class="hljs-title">= JSON</span>.parse(JSON.stringify(map))
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> clone = <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(<span class="hljs-keyword">map</span>))</code></pre>
 <p>record，map，entity 在实际应用中没有明显的区分，只是概念上的区分。对JS 引擎而言，都是对象。但是从概念上是有区分的。</p>
-<h2 id="-">函数</h2>
+<h2 id="函数">函数</h2>
 <p>函数定义：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> myFunction = function functionName () <span class="hljs-meta">{...}</span>
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> myFunction = function functionName () <span class="hljs-meta">{...}</span></code></pre>
 <p><code>functionName</code>是可选的，如果省略函数名称，则称该函数为匿名函数。通常，函数是通过变量来调用的，如上面的代码，则表示
 <code>myFunction</code> 会调用<code>myFunction()</code>函数，而不是使用<code>functionName()</code>调用。
 匿名函数表达式在其他编程语言中称为lambda 表达式。如下代码是匿名函数。可以与预定义的sort函数对比：</p>
-<pre><code class="lang-js">var list = <span class="hljs-comment">[<span class="hljs-comment">[1,2]</span>,<span class="hljs-comment">[1,3]</span>,<span class="hljs-comment">[1,1]</span>,<span class="hljs-comment">[2,1]</span>]</span>;
-list.sort( function (x,y) {
-  return ((x<span class="hljs-comment">[0]</span> === y<span class="hljs-comment">[0]</span>) ? x<span class="hljs-comment">[1]</span>-y<span class="hljs-comment">[1]</span> : x<span class="hljs-comment">[0]</span>-y<span class="hljs-comment">[0]</span>);
-});
-</code></pre>
+<pre><code class="language-js"><span class="hljs-string">var</span> <span class="hljs-string">list</span> <span class="hljs-string">=</span> [[<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">3</span>],[<span class="hljs-number">1</span>,<span class="hljs-number">1</span>],[<span class="hljs-number">2</span>,<span class="hljs-number">1</span>]]<span class="hljs-string">;</span>
+<span class="hljs-string">list.sort(</span> <span class="hljs-string">function</span> <span class="hljs-string">(x,y)</span> {
+  <span class="hljs-string">return</span> <span class="hljs-string">((x</span>[<span class="hljs-number">0</span>] <span class="hljs-string">===</span> <span class="hljs-string">y</span>[<span class="hljs-number">0</span>]<span class="hljs-string">)</span> <span class="hljs-string">?</span> <span class="hljs-string">x</span>[<span class="hljs-number">1</span>]<span class="hljs-string">-y</span>[<span class="hljs-number">1</span>] <span class="hljs-string">:</span> <span class="hljs-string">x</span>[<span class="hljs-number">0</span>]<span class="hljs-string">-y</span>[<span class="hljs-number">0</span>]<span class="hljs-string">);</span>
+}<span class="hljs-string">);</span></code></pre>
 <p>函数声明：</p>
-<pre><code class="lang-js">function functionName () <span class="hljs-meta">{...}</span>
-</code></pre>
+<pre><code class="language-js">function functionName () <span class="hljs-meta">{...}</span></code></pre>
 <p>与代码</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> functionName = function functionName () <span class="hljs-meta">{...}</span>
-</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">var</span> functionName = function functionName () <span class="hljs-meta">{...}</span></code></pre>
 <p>等价；
 声明了函数functionName ，并使用functionName 变量来引用函数。
 JS 提供函数内联，closure机制允许JS 函数调用函数之外的使用变量。函数可以创建closure 来存储当前的环境。如下，不需要通过参数将外部变量的结果传给内部函数，它本身就是可用的。</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">numbers</span>) </span>{
+<pre><code class="language-js"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">numbers</span>) </span>{
   <span class="hljs-keyword">var</span> result = <span class="hljs-number">0</span>;
   numbers.forEach( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">n</span>) </span>{
       result += n;
   });
   <span class="hljs-keyword">return</span> result;
 };
-<span class="hljs-built_in">console</span>.log( sum([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]));
-</code></pre>
+<span class="hljs-built_in">console</span>.log( sum([<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>]));</code></pre>
 <p>当执行一个方法时，可以使用内置arguments 对象访问函数内的参数，arguments 对象与数组使用方法类似，有长度属性，也有索引，并且可以使用For语句来循环迭代。但是由于它并不是Array 实例，因此JS arrary的部分方法无法应用如foreach。
 arguments 对象的元素个数与函数参数个数相同，也可以定义方法的时候不指定参数个数，在调用时，可为函数赋多个参数，如：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<pre><code class="language-js"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> result = <span class="hljs-number">0</span>, i=<span class="hljs-number">0</span>;
   <span class="hljs-keyword">for</span> (i=<span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">arguments</span>.length; i++) {
     result = result + <span class="hljs-built_in">arguments</span>;
   }
   <span class="hljs-keyword">return</span> result;
 };
-<span class="hljs-built_in">console</span>.log( sum(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">8</span>));  <span class="hljs-comment">// 20</span>
-</code></pre>
+<span class="hljs-built_in">console</span>.log( sum(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">5</span>,<span class="hljs-number">8</span>));  <span class="hljs-comment">// 20</span></code></pre>
 <p>方法是在构造函数的原型上定义的，可以通过对象创建的构造器调用，如<code>Array.prototype.forEach</code>；Array表示构造器，调用类的实例作为上下文对象参考的，如下： 在foreach中numbers表示上下文对象：</p>
-<pre><code class="lang-js">var numbers = [1,2,3];  // create an<span class="hljs-built_in"> instance </span>of Array
+<pre><code class="language-js">var numbers = [1,2,3];  // create an<span class="hljs-built_in"> instance </span>of Array
 numbers.forEach( function (n) {
   console.log( n);
-});
-</code></pre>
+});</code></pre>
 <p>无论原型方法是否被上下文对象调用，但是只要是参数为对象，可以使用JS函数的Call 方法来辅助调用对象。如下，我们可以使用foreach 循环方法：</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+<pre><code class="language-js"><span class="hljs-keyword">var</span> sum = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
   <span class="hljs-keyword">var</span> result = <span class="hljs-number">0</span>;
   <span class="hljs-built_in">Array</span>.prototype.forEach.call( <span class="hljs-built_in">arguments</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">n</span>) </span>{
     result = result + n;
   });
   <span class="hljs-keyword">return</span> result;
-};
-</code></pre>
+};</code></pre>
 <p><code>Function.prototype.call</code>方法和<code>Function.prototype.apply</code>都是为了改变某个函数运行时的 context 即上下文而存在的。</p>
-<h4 id="-">定义和使用类</h4>
+<h4 id="定义和使用类">定义和使用类</h4>
 <p>类是面向对象中的基本概念，对象的实例化称为类。JS中定义类需要满足以下五个需求：</p>
 <ul>
 <li>指定类的名称，实例级别的属性和方法，类级别的属性和方法。</li>
@@ -235,124 +209,112 @@ JS中对类没有统一的定义规范，可以使用不同代码模式来定义
 <li>factory 对象，用于预定义Object.create 方法来创建新实例。该方法中基于构造函数的继承机制可以被其他机制代替。
 创建App都需要使用类，因此经常需要定义类之间的关系，所以必须保证，使用相同类</li>
 </ul>
-<h4 id="constructor-based-classes-es6-">Constructor-based classes只有ES6引入了定义基于构造器的类。新语法支持定义一些简单的类继承，具体步骤如下：</h4>
-<h5 id="-person-first-name-last-name-tostring-checklastname-">定义一个基类Person 具有两个属性，<code>first Name</code> 和<code>Last Name</code>，实例层的方法<code>toString</code>和静态方法<code>checkLastName</code>；</h5>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
+<h4 id="constructor-based-classes只有es6引入了定义基于构造器的类。新语法支持定义一些简单的类继承，具体步骤如下：">Constructor-based classes只有ES6引入了定义基于构造器的类。新语法支持定义一些简单的类继承，具体步骤如下：</h4>
+<h5 id="定义一个基类person-具有两个属性，first-name-和last-name，实例层的方法tostring和静态方法checklastname；">定义一个基类Person 具有两个属性，<code>first Name</code> 和<code>Last Name</code>，实例层的方法<code>toString</code>和静态方法<code>checkLastName</code>；</h5>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span> </span>{
   <span class="hljs-keyword">constructor</span>( first, last) {
     <span class="hljs-keyword">this</span>.firstName = first;
     <span class="hljs-keyword">this</span>.lastName = last;
   }
   toString() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">" "</span> +
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">&quot; &quot;</span> +
         <span class="hljs-keyword">this</span>.lastName;
   }
   static checkLastName( ln) {
-    <span class="hljs-keyword">if</span> (typeof(ln)!==<span class="hljs-string">"string"</span> ||
-        ln.trim()===<span class="hljs-string">""</span>) {
-      console.log(<span class="hljs-string">"Error: "</span> +
-          <span class="hljs-string">"invalid last name!"</span>);
+    <span class="hljs-keyword">if</span> (typeof(ln)!==<span class="hljs-string">&quot;string&quot;</span> ||
+        ln.trim()===<span class="hljs-string">&quot;&quot;</span>) {
+      console.log(<span class="hljs-string">&quot;Error: &quot;</span> +
+          <span class="hljs-string">&quot;invalid last name!&quot;</span>);
     }
   }
-}
-</code></pre>
-<h5 id="-">定义一个带有其他属性和方法的子类，也有可能重写父类的相关方法：</h5>
-<pre><code class="lang-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{  constructor( first, last, studNo) {
+}</code></pre>
+<h5 id="定义一个带有其他属性和方法的子类，也有可能重写父类的相关方法：">定义一个带有其他属性和方法的子类，也有可能重写父类的相关方法：</h5>
+<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Student</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Person</span> </span>{  constructor( first, last, studNo) {
     <span class="hljs-keyword">super</span>.constructor( first, last);
     <span class="hljs-keyword">this</span>.studNo = studNo;
   }
   <span class="hljs-comment">// method overrides superclass method</span>
   toString() {
-    <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.toString() + <span class="hljs-string">"("</span> +
-        <span class="hljs-keyword">this</span>.studNo +<span class="hljs-string">")"</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">super</span>.toString() + <span class="hljs-string">&quot;(&quot;</span> +
+        <span class="hljs-keyword">this</span>.studNo +<span class="hljs-string">&quot;)&quot;</span>;
   }
-}
-</code></pre>
-<h4 id="es5-">ES5中，可以定义继承基于构造器类的子类。如下：</h4>
-<h5 id="-">首先定义构造函数，能够隐式的定义类的属性并赋值；</h5>
-<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span><span class="hljs-params">( first, last)</span> </span>{
+}</code></pre>
+<h4 id="es5中，可以定义继承基于构造器类的子类。如下：">ES5中，可以定义继承基于构造器类的子类。如下：</h4>
+<h5 id="首先定义构造函数，能够隐式的定义类的属性并赋值；">首先定义构造函数，能够隐式的定义类的属性并赋值；</h5>
+<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span><span class="hljs-params">( first, last)</span> </span>{
   <span class="hljs-keyword">this</span>.firstName = first;
   <span class="hljs-keyword">this</span>.lastName = last;
-}
-</code></pre>
+}</code></pre>
 <p>注意，上述代码中的this 指的是新生成的对象，当构造函数被调用时，该对象就已经生成了。</p>
-<h5 id="-">定义实例层的方法：</h5>
-<pre><code class="lang-js">Person.prototype.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
-  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">" "</span> + <span class="hljs-keyword">this</span>.lastName;
-}
-</code></pre>
-<h5 id="-">定义静态方法：</h5>
-<pre><code class="lang-js">Person.checkLastName = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ln)</span> {</span>
-  <span class="hljs-keyword">if</span> (typeof(<span class="hljs-built_in">ln</span>)!==<span class="hljs-string">"string"</span> || <span class="hljs-built_in">ln</span>.trim()===<span class="hljs-string">""</span>) {
-    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">"Error: invalid last name!"</span>);
+<h5 id="定义实例层的方法：">定义实例层的方法：</h5>
+<pre><code class="language-js">Person.prototype.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName + <span class="hljs-string">&quot; &quot;</span> + <span class="hljs-keyword">this</span>.lastName;
+}</code></pre>
+<h5 id="定义静态方法：">定义静态方法：</h5>
+<pre><code class="language-js">Person.checkLastName = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(ln)</span> {</span>
+  <span class="hljs-keyword">if</span> (typeof(<span class="hljs-built_in">ln</span>)!==<span class="hljs-string">&quot;string&quot;</span> || <span class="hljs-built_in">ln</span>.trim()===<span class="hljs-string">&quot;&quot;</span>) {
+    console.<span class="hljs-built_in">log</span>(<span class="hljs-string">&quot;Error: invalid last name!&quot;</span>);
   }
-}
-</code></pre>
-<h5 id="-">定义子类：</h5>
-<pre><code class="lang-js">function Student( first, last, studNo) {
+}</code></pre>
+<h5 id="定义子类：">定义子类：</h5>
+<pre><code class="language-js">function Student( first, last, studNo) {
   //<span class="hljs-built_in"> invoke </span>superclass<span class="hljs-keyword"> constructor</span>
   Person.call( this, first, last);
   // define<span class="hljs-built_in"> and </span>assign additional properties
   this.studNo = studNo;
-}
-</code></pre>
+}</code></pre>
 <p>通过调用超类的构造函数Person.call( this, ...)，来创建新对象。其中This指的是Student，Property Slots 在超类的构造函数中已经创建（(firstName 和lastName） 以及其他子类相关的属性。在这种情况下可使用Property Inheritance 机制保证所有的属性已经被定义且被创建。</p>
-<h5 id="-prototype-method-inheritance-prototype-">通过构造函数的prototype 属性安装method inheritance 。如下，分配了一个新对象创建子类型构造函数的Prototype 属性，并做出适当的调整：</h5>
+<h5 id="通过构造函数的prototype-属性安装method-inheritance-。如下，分配了一个新对象创建子类型构造函数的prototype-属性，并做出适当的调整：">通过构造函数的prototype 属性安装method inheritance 。如下，分配了一个新对象创建子类型构造函数的Prototype 属性，并做出适当的调整：</h5>
 <p>// Student inherits from
 PersonStudent.prototype = Object.create(Person.prototype);
 // adjust the subtype&#39;s constructor
 propertyStudent.prototype.constructor = Student;</p>
-<h5 id="-">重新定义子类方法重写超类方法：</h5>
-<pre><code class="lang-js">// <span class="hljs-type">Student</span> inherits from <span class="hljs-type">Person</span>
-<span class="hljs-type">Student</span>.proto<span class="hljs-keyword">type</span> = <span class="hljs-type">Object</span>.create(
-    <span class="hljs-type">Person</span>.prototype);
-// adjust the sub<span class="hljs-keyword">type</span>'s constructor property
-<span class="hljs-type">Student</span>.proto<span class="hljs-keyword">type</span>.constructor = <span class="hljs-type">Student</span>;
-</code></pre>
-<h5 id="-new-">基于构造器类的实例化是通过应用new 操作符来创建的，并提供合适的构造参数：</h5>
-<pre><code class="lang-js">Student.prototype.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+<h5 id="重新定义子类方法重写超类方法：">重新定义子类方法重写超类方法：</h5>
+<pre><code class="language-js"><span class="hljs-comment">// Student inherits from Person</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Student</span>.</span></span>prototype = <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Object</span>.</span></span>create(
+    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Person</span>.</span></span>prototype);
+<span class="hljs-comment">// adjust the subtype&#x27;s constructor property</span>
+<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Student</span>.</span></span>prototype.constructor = Student;</code></pre>
+<h5 id="基于构造器类的实例化是通过应用new-操作符来创建的，并提供合适的构造参数：">基于构造器类的实例化是通过应用new 操作符来创建的，并提供合适的构造参数：</h5>
+<pre><code class="language-js">Student.prototype.toString = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
   <span class="hljs-keyword">return</span> Person.prototype.toString.call( <span class="hljs-keyword">this</span>) +
-      <span class="hljs-string">"("</span> + <span class="hljs-keyword">this</span>.studNo + <span class="hljs-string">")"</span>;
-};
-</code></pre>
+      <span class="hljs-string">&quot;(&quot;</span> + <span class="hljs-keyword">this</span>.studNo + <span class="hljs-string">&quot;)&quot;</span>;
+};</code></pre>
 <p>方法toString 通过pers1. 来调用：</p>
-<pre><code class="lang-js">alert<span class="hljs-comment">("The full name of the person are: " +      pers1.toString()</span>);
-</code></pre>
+<pre><code class="language-js">alert<span class="hljs-comment">(&quot;The full name of the person are: &quot; +      pers1.toString()</span>);</code></pre>
 <p>在JS中，prototype 是具有method slots 的对象，可以通过JS方法或属性槽继承的。</p>
-<h4 id="-factory-">基于Factory 的类</h4>
+<h4 id="基于factory-的类">基于Factory 的类</h4>
 <p>在该方法中定义了JS 对象Person，含有特殊的Create 方法来调用预定义的Object.Create方法，创建Person类型的对象；</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> Person = {
-  <span class="hljs-attr">name</span>: <span class="hljs-string">"Person"</span>,
+<pre><code class="language-js"><span class="hljs-keyword">var</span> Person = {
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&quot;Person&quot;</span>,
   <span class="hljs-attr">properties</span>: {
-    <span class="hljs-attr">firstName</span>: {<span class="hljs-attr">range</span>:<span class="hljs-string">"NonEmptyString"</span>, <span class="hljs-attr">label</span>:<span class="hljs-string">"First name"</span>,
+    <span class="hljs-attr">firstName</span>: {<span class="hljs-attr">range</span>:<span class="hljs-string">&quot;NonEmptyString&quot;</span>, <span class="hljs-attr">label</span>:<span class="hljs-string">&quot;First name&quot;</span>,
         <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>},
-    <span class="hljs-attr">lastName</span>: {<span class="hljs-attr">range</span>:<span class="hljs-string">"NonEmptyString"</span>, <span class="hljs-attr">label</span>:<span class="hljs-string">"Last name"</span>,
+    <span class="hljs-attr">lastName</span>: {<span class="hljs-attr">range</span>:<span class="hljs-string">&quot;NonEmptyString&quot;</span>, <span class="hljs-attr">label</span>:<span class="hljs-string">&quot;Last name&quot;</span>,
         <span class="hljs-attr">writable</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>}
   },
   <span class="hljs-attr">methods</span>: {
     <span class="hljs-attr">getFullName</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
-      <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.firstName +<span class="hljs-string">" "</span>+ <span class="hljs-keyword">this</span>.lastName;
+      <span class="hljs-keyword">return</span> <span class="hljs-built_in">this</span>.firstName +<span class="hljs-string">&quot; &quot;</span>+ <span class="hljs-built_in">this</span>.lastName;
     }
   },
   <span class="hljs-attr">create</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">slots</span>) </span>{
     <span class="hljs-comment">// create object</span>
-    <span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">Object</span>.create( <span class="hljs-keyword">this</span>.methods, <span class="hljs-keyword">this</span>.properties);
+    <span class="hljs-keyword">var</span> obj = <span class="hljs-built_in">Object</span>.create( <span class="hljs-built_in">this</span>.methods, <span class="hljs-built_in">this</span>.properties);
     <span class="hljs-comment">// add special property for *direct type* of object</span>
-    <span class="hljs-built_in">Object</span>.defineProperty( obj, <span class="hljs-string">"type"</span>,
-        {<span class="hljs-attr">value</span>: <span class="hljs-keyword">this</span>, <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>});
+    <span class="hljs-built_in">Object</span>.defineProperty( obj, <span class="hljs-string">&quot;type&quot;</span>,
+        {<span class="hljs-attr">value</span>: <span class="hljs-built_in">this</span>, <span class="hljs-attr">writable</span>: <span class="hljs-literal">false</span>, <span class="hljs-attr">enumerable</span>: <span class="hljs-literal">true</span>});
     <span class="hljs-comment">// initialize object</span>
     <span class="hljs-built_in">Object</span>.keys( slots).forEach( <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">prop</span>) </span>{
-      <span class="hljs-keyword">if</span> (prop <span class="hljs-keyword">in</span> <span class="hljs-keyword">this</span>.properties) obj[prop] = slots[prop];
+      <span class="hljs-keyword">if</span> (prop <span class="hljs-keyword">in</span> <span class="hljs-built_in">this</span>.properties) obj[prop] = slots[prop];
     })
     <span class="hljs-keyword">return</span> obj;
   }
-};
-</code></pre>
+};</code></pre>
 <p>注意JS对象Person实际表示的是factory-based 类。factory-based类的实例化是通过调用它自己的Create方法实现的：</p>
-<pre><code class="lang-js">var pers1 = Person.create( {<span class="hljs-string">firstName:</span><span class="hljs-string">"Tom"</span>, <span class="hljs-string">lastName:</span><span class="hljs-string">"Smith"</span>});
-</code></pre>
+<pre><code class="language-js">var pers1 = Person.create( {<span class="hljs-attr">firstName:</span><span class="hljs-string">&quot;Tom&quot;</span>, <span class="hljs-attr">lastName:</span><span class="hljs-string">&quot;Smith&quot;</span>});</code></pre>
 <p>getFullName 方法是通过pers1. 调用的，如下：</p>
-<pre><code class="lang-js">alert<span class="hljs-comment">("The full name of the person are: " + pers1.getFullName()</span>);
-</code></pre>
+<pre><code class="language-js">alert<span class="hljs-comment">(&quot;The full name of the person are: &quot; + pers1.getFullName()</span>);</code></pre>
 <p>每个属性的声明都是使用Object.Create 声明的，其中包含三个参数及值，&#39;descriptors&#39;writable: true and enumerable: true。</p>
 
             </article>

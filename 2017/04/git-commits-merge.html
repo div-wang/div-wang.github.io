@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,27 +42,24 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="git-commit">git 合并多个 Commit</h1>
+                <h1 id="git-合并多个-commit">git 合并多个 Commit</h1>
 <blockquote>
 <p>在使用 Git 作为版本控制的时候，我们可能会由于各种各样的原因提交了许多临时的 commit，而这些 commit 拼接起来才是完整的任务。那么我们为了保证Master主分支上提交注释的可读性，需要在本地分支Push远程server之前合并你自己的多次提交注释日志，原则上3条以上就需要合并。</p>
 </blockquote>
-<h2 id="-commit">指定合并commit</h2>
-<h3 id="-">方法一</h3>
+<h2 id="指定合并commit">指定合并commit</h2>
+<h3 id="方法一">方法一</h3>
 <p>最近提交commit指定数量的合并</p>
-<pre><code class="lang-bash">    git rebase -<span class="hljs-selector-tag">i</span> HEAD~<span class="hljs-number">3</span>
-</code></pre>
+<pre><code class="language-bash">    git rebase -i HEAD~<span class="hljs-number">3</span></code></pre>
 <p><img src="/static/img/git-commits-merge/002.png" alt="002"></p>
 <p><code>HEAD~3</code>中的3指的是合并最近3次commit</p>
-<h3 id="-">方法二</h3>
+<h3 id="方法二">方法二</h3>
 <p>指定的commit hash，hash之前的提交合并</p>
-<pre><code class="lang-bash">    git <span class="hljs-built_in">log</span>
-</code></pre>
+<pre><code class="language-bash">    git <span class="hljs-built_in">log</span></code></pre>
 <p><img src="/static/img/git-commits-merge/001.png" alt="001"></p>
 <p>获取不需要合并的 commit 的 hash 值</p>
-<pre><code class="lang-bash">    git rebase -<span class="hljs-selector-tag">i</span> b09ce93e4bb
-</code></pre>
+<pre><code class="language-bash">    <span class="hljs-attribute">git</span> rebase -i b<span class="hljs-number">09</span>ce<span class="hljs-number">93</span>e<span class="hljs-number">4</span>bb</code></pre>
 <p><img src="/static/img/git-commits-merge/002.png" alt="002"></p>
-<h2 id="-commit">合并commit</h2>
+<h2 id="合并commit">合并commit</h2>
 <p>可以看到其中分为两个部分，上方未注释的部分是填写要执行的指令，而下方注释的部分则是指令的提示说明。指令部分中由前方的命令名称、commit hash 和 commit message 组成。</p>
 <ul>
 <li><p><code>pick</code> 是最终合并后的 commit</p>
@@ -70,7 +68,7 @@
 </li>
 </ul>
 <p>我们将<code>cab88d7</code>和<code>fb8c714</code>前缀改成<code>squash</code>或<code>fixup</code>；按<code>esc</code>退出编辑，输入<code>:wq</code>保存</p>
-<h4 id="-">注意：</h4>
+<h4 id="注意：">注意：</h4>
 <ul>
 <li><code>fixup</code>会自动将当前commit与前一个合并，并放弃当前commit的注释等内容。</li>
 <li><code>squash</code> 会在退出当前编辑状态后，进入新的编辑状态，允许我们再次编辑注释等提交信息，再次退出才结束操作。</li>
@@ -80,7 +78,7 @@
 <p>如果是输入的<code>squash</code>，会再次进入一个编辑页面，可以直接<code>:wq</code>保存退出。</p>
 <p>再次输入<code>git log</code></p>
 <p><img src="/static/img/git-commits-merge/003.png" alt="003"></p>
-<h4 id="-">合并成功！</h4>
+<h4 id="合并成功！">合并成功！</h4>
 
             </article>
             <div class="weixin">

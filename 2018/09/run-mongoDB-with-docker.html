@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,97 +42,86 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="-docker-mongodb">利用 Docker 运行 MongoDB</h1>
+                <h1 id="利用-docker-运行-mongodb">利用 Docker 运行 MongoDB</h1>
 <blockquote>
 <p>在服务器上安装MongoDB很是繁琐，而通过 Docker 运行 MongoDB很是方便，数据迁移也变得更加简单，日常的运维和使用与本地安装基本没有区别。</p>
 </blockquote>
-<p><div class="nav-list"></p>
-<h3 id="docker-">Docker系列文章</h3>
-<p><a href="/2018/05/linux-install-docker-ce.html">Linux 安装 Docker</a>
-<a href="/2018/05/build-git-server-using-gogs-docker-image.html">使用Docker Gogs搭建git服务</a>
-<a href="/2018/05/run-mongoDB-with-docker.html">利用 Docker 运行 MongoDB</a></p>
-<h2 id="-div-"></div></h2>
-<h3 id="-">准备工作</h3>
+<div class="nav-list">
+### Docker系列文章
+[Linux 安装 Docker](/2018/05/linux-install-docker-ce.html)
+[使用Docker Gogs搭建git服务](/2018/05/build-git-server-using-gogs-docker-image.html)
+[利用 Docker 运行 MongoDB](/2018/05/run-mongoDB-with-docker.html)
+</div>
+---
+
+<h3 id="准备工作">准备工作</h3>
 <p>安装docker，参考文章<a href="/2018/05/linux-install-docker-ce.html">Linux 安装 Docker</a></p>
-<h3 id="-">查找官方镜像</h3>
+<h3 id="查找官方镜像">查找官方镜像</h3>
 <p>查找Docker Hub上的 mongo 镜像</p>
-<pre><code class="lang-bash">sudo docker search mongo
-<span class="hljs-built_in">NAME</span>                                DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-mongo                               MongoDB document databases provide high avai…   <span class="hljs-number">4916</span>                [OK]
-mongo-express                       Web-based MongoDB admin interface, written w…   <span class="hljs-number">288</span>                 [OK]
-tutum/mongodb                       MongoDB Docker <span class="hljs-built_in">image</span> – listens <span class="hljs-built_in">in</span> port <span class="hljs-number">27017</span>…   <span class="hljs-number">224</span>                                     [OK]
-mvertes/alpine-mongo                light MongoDB container                         <span class="hljs-number">79</span>                                      [OK]
-mongoclient/mongoclient             Official docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">for</span> Mongoclient, featu…   <span class="hljs-number">54</span>                                      [OK]
-bitnami/mongodb                     Bitnami MongoDB Docker <span class="hljs-built_in">Image</span>                    <span class="hljs-number">46</span>                                      [OK]
-frodenas/mongodb                    A Docker <span class="hljs-built_in">Image</span> <span class="hljs-keyword">for</span> MongoDB                      <span class="hljs-number">17</span>                                      [OK]
-mongooseim/mongooseim               Small docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">for</span> MongooseIM - robust a…   <span class="hljs-number">16</span>
-mongooseim/mongooseim-docker        MongooseIM server the latest stable version     <span class="hljs-number">11</span>                                      [OK]
-cvallance/mongo-k8s-sidecar         Kubernetes <span class="hljs-built_in">side</span> car <span class="hljs-keyword">to</span> setup <span class="hljs-built_in">and</span> maintain a …   <span class="hljs-number">8</span>                                       [OK]
-centos/mongodb-<span class="hljs-number">26</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">5</span>
-centos/mongodb-<span class="hljs-number">32</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">5</span>
-istepanov/mongodump                 Docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">with</span> mongodump running as a cro…   <span class="hljs-number">5</span>                                       [OK]
-eses/mongodb_exporter               mongodb exporter <span class="hljs-keyword">for</span> prometheus                 <span class="hljs-number">4</span>                                       [OK]
-khezen/mongo                        MongoDB Docker <span class="hljs-built_in">image</span> supporting RocksDB stor…   <span class="hljs-number">4</span>                                       [OK]
-neowaylabs/mongodb-mms-<span class="hljs-built_in">agent</span>        This Docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">with</span> MongoDB Monitoring Ag…   <span class="hljs-number">2</span>                                       [OK]
-centos/mongodb-<span class="hljs-number">36</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">2</span>
-centos/mongodb-<span class="hljs-number">34</span>-centos7           MongoDB NoSQL database server                   <span class="hljs-number">1</span>
-openshift/mongodb-<span class="hljs-number">24</span>-centos7        DEPRECATED: A Centos7 based MongoDB v2.<span class="hljs-number">4</span> ima…   <span class="hljs-number">1</span>
-ekesken/mongo                       docker <span class="hljs-built_in">image</span> <span class="hljs-keyword">for</span> mongo that is configurable …   <span class="hljs-number">1</span>                                       [OK]
-webhippie/mongodb                   Docker images <span class="hljs-keyword">for</span> mongodb                       <span class="hljs-number">1</span>                                       [OK]
-circleci/mongo                      CircleCI images <span class="hljs-keyword">for</span> MongoDB                     <span class="hljs-number">1</span>                                       [OK]
-amd64/mongo                         MongoDB document databases provide high avai…   <span class="hljs-number">0</span>
-quilt/mongo                         MongoDB container <span class="hljs-keyword">for</span> quilt.io                  <span class="hljs-number">0</span>                                       [OK]
-ansibleplaybookbundle/mongodb-apb   An APB <span class="hljs-keyword">to</span> deploy MongoDB.                       <span class="hljs-number">0</span>                                       [OK]
-</code></pre>
+<pre><code class="language-bash">sudo docker search mongo
+NAME                                DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+mongo                               MongoDB document databases provide high avai…   4916                [OK]
+mongo-express                       Web-based MongoDB admin interface, written w…   288                 [OK]
+tutum/mongodb                       MongoDB Docker image – listens <span class="hljs-keyword">in</span><span class="hljs-built_in"> port </span>27017…   224                                     [OK]
+mvertes/alpine-mongo                light MongoDB container                         79                                      [OK]
+mongoclient/mongoclient             Official docker image <span class="hljs-keyword">for</span> Mongoclient, featu…   54                                      [OK]
+bitnami/mongodb                     Bitnami MongoDB Docker Image                    46                                      [OK]
+frodenas/mongodb                    A Docker Image <span class="hljs-keyword">for</span> MongoDB                      17                                      [OK]
+mongooseim/mongooseim               Small docker image <span class="hljs-keyword">for</span> MongooseIM - robust a…   16
+mongooseim/mongooseim-docker        MongooseIM<span class="hljs-built_in"> server </span>the latest stable version     11                                      [OK]
+cvallance/mongo-k8s-sidecar         Kubernetes side car <span class="hljs-keyword">to</span> setup <span class="hljs-keyword">and</span> maintain a …   8                                       [OK]
+centos/mongodb-26-centos7           MongoDB NoSQL database<span class="hljs-built_in"> server </span>                  5
+centos/mongodb-32-centos7           MongoDB NoSQL database<span class="hljs-built_in"> server </span>                  5
+istepanov/mongodump                 Docker image with mongodump running as a cro…   5                                       [OK]
+eses/mongodb_exporter               mongodb exporter <span class="hljs-keyword">for</span> prometheus                 4                                       [OK]
+khezen/mongo                        MongoDB Docker image supporting RocksDB stor…   4                                       [OK]
+neowaylabs/mongodb-mms-agent        This Docker image with MongoDB Monitoring Ag…   2                                       [OK]
+centos/mongodb-36-centos7           MongoDB NoSQL database<span class="hljs-built_in"> server </span>                  2
+centos/mongodb-34-centos7           MongoDB NoSQL database<span class="hljs-built_in"> server </span>                  1
+openshift/mongodb-24-centos7        DEPRECATED: A Centos7 based MongoDB v2.4 ima…   1
+ekesken/mongo                       docker image <span class="hljs-keyword">for</span> mongo that is configurable …   1                                       [OK]
+webhippie/mongodb                   Docker images <span class="hljs-keyword">for</span> mongodb                       1                                       [OK]
+circleci/mongo                      CircleCI images <span class="hljs-keyword">for</span> MongoDB                     1                                       [OK]
+amd64/mongo                         MongoDB document databases provide high avai…   0
+quilt/mongo                         MongoDB container <span class="hljs-keyword">for</span> quilt.io                  0                                       [OK]
+ansibleplaybookbundle/mongodb-apb   An APB <span class="hljs-keyword">to</span> deploy MongoDB.                       0                                       [OK]</code></pre>
 <p>这里我们拉取官方的最新镜像</p>
-<pre><code class="lang-bash"><span class="hljs-attribute">docker pull mongo</span>
-</code></pre>
+<pre><code class="language-bash"><span class="hljs-attribute">docker pull mongo</span></code></pre>
 <p>等待下载完成后，我们就可以在本地镜像列表里查到REPOSITORY为mongo的镜像。</p>
-<pre><code class="lang-bash">REPOSITORY          <span class="hljs-keyword">TAG</span>                 <span class="hljs-title">IMAGE</span> ID            CREATED             SIZE
-mongo               latest              a41c82c0998a        <span class="hljs-number">11</span> days ago         <span class="hljs-number">380M</span>B
-</code></pre>
-<h3 id="-mongo-">运行 mongo 镜像</h3>
+<pre><code class="language-bash"><span class="hljs-attribute">REPOSITORY</span>          TAG                 IMAGE ID            CREATED             SIZE
+<span class="hljs-attribute">mongo</span>               latest              a<span class="hljs-number">41</span>c<span class="hljs-number">82</span>c<span class="hljs-number">0998</span>a        <span class="hljs-number">11</span> days ago         <span class="hljs-number">380</span>MB</code></pre>
+<h3 id="运行-mongo-镜像">运行 mongo 镜像</h3>
 <p><a href="https://hub.docker.com/_/mongo/">mongo镜像官方文档</a></p>
-<pre><code class="lang-bash">docker <span class="hljs-keyword">run</span><span class="bash"> --name mongo -p 27017:27017 -v /data/db:/data/db <span class="hljs-_">-d</span> mongo --auth</span>
-</code></pre>
+<pre><code class="language-bash">docker run --name mongo -p <span class="hljs-number">27017</span>:<span class="hljs-number">27017</span> -v <span class="hljs-regexp">/data/</span>db:<span class="hljs-regexp">/data/</span>db -d mongo --auth</code></pre>
 <p><code>—-name</code> 指定镜像的名字，如果不指定会使用 Docker 镜像 ID。
 <code>-p 27018:27017</code> 官方的 mongo 镜像默认端口是27017，我们将它映射到主机的端口上27018。 27018端口可自定义，但是不能是在使用的接口。
 <code>-v /data/db:/data/db</code> -v 是挂载路径，将 mongo 镜像里的目录挂载到本地目录，mongo 镜像默认目录是/data/db。
 <code>-d</code> 在后台运行。
 <code>—auth</code> 以 auth 模式运行 mongo。</p>
 <p>然后执行一下 docker ps 确认一下库已经正常运行起来。</p>
-<pre><code class="lang-bash">CONTAINER ID    IMAGE      COMMAND                  CREATED        STATUS        PORTS                      NAMES
-20e0be4e4a7e    mongo      <span class="hljs-string">"docker-entrypoint.s…"</span>   <span class="hljs-number">7</span> days ago     <span class="hljs-meta">Up</span> <span class="hljs-number">7</span> days     <span class="hljs-number">0.0</span><span class="hljs-meta">.0</span><span class="hljs-meta">.0</span>:<span class="hljs-number">20188</span>-&gt;<span class="hljs-number">27017</span>/tcp   mongo
-</code></pre>
-<h3 id="-mongo-">连接 mongo 镜像</h3>
+<pre><code class="language-bash">CONTAINER ID    IMAGE      COMMAND                  CREATED        STATUS        PORTS                      NAMES
+<span class="hljs-number">20e0</span>be4e4a7e    mongo      <span class="hljs-string">&quot;docker-entrypoint.s…&quot;</span>   <span class="hljs-number">7</span> days ago     Up <span class="hljs-number">7</span> days     <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">20188</span>-&gt;<span class="hljs-number">27017</span>/tcp   mongo</code></pre>
+<h3 id="连接-mongo-镜像">连接 mongo 镜像</h3>
 <p>使用 <code>docker exec</code> 命令连接 mongo 镜像</p>
-<pre><code class="lang-bash">docker exec -<span class="hljs-keyword">it</span> mongo /bin/bash
-</code></pre>
+<pre><code class="language-bash">docker exec -it mongo <span class="hljs-regexp">/bin/</span>bash</code></pre>
 <p>更多的请看文档-<a href="http://www.runoob.com/docker/docker-exec-command.html">Docker exec 命令</a></p>
-<h3 id="-">创建用户和数据库</h3>
+<h3 id="创建用户和数据库">创建用户和数据库</h3>
 <p>1、 切换到admin数据库</p>
-<pre><code class="lang-bash"><span class="hljs-keyword">use</span> <span class="hljs-keyword">admin</span>
-</code></pre>
+<pre><code class="language-bash"><span class="hljs-keyword">use</span> <span class="hljs-keyword">admin</span></code></pre>
 <p>2、创建管理员账户</p>
-<pre><code class="lang-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createUser</span>({ <span class="hljs-attribute">user</span>: <span class="hljs-string">'admin'</span>, <span class="hljs-attribute">pwd</span>: <span class="hljs-string">'admin_password'</span>, <span class="hljs-attribute">roles</span>: [ { <span class="hljs-attribute">role</span>: <span class="hljs-string">"userAdminAnyDatabase"</span>, <span class="hljs-attribute">db</span>: <span class="hljs-string">"admin"</span> } ] });
-</code></pre>
+<pre><code class="language-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createUser</span>({ <span class="hljs-attribute">user</span>: <span class="hljs-string">&#x27;admin&#x27;</span>, <span class="hljs-attribute">pwd</span>: <span class="hljs-string">&#x27;admin_password&#x27;</span>, <span class="hljs-attribute">roles</span>: [ { <span class="hljs-attribute">role</span>: <span class="hljs-string">&quot;userAdminAnyDatabase&quot;</span>, <span class="hljs-attribute">db</span>: <span class="hljs-string">&quot;admin&quot;</span> } ] });</code></pre>
 <p>3、为创建的管理员账户进行授权</p>
-<pre><code class="lang-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.auth</span>(<span class="hljs-string">"admin"</span>,<span class="hljs-string">"admin_password"</span>);
-</code></pre>
+<pre><code class="language-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.auth</span>(<span class="hljs-string">&quot;admin&quot;</span>,<span class="hljs-string">&quot;admin_password&quot;</span>);</code></pre>
 <p>4、切换到指定数据库（如不存在会自动创建，默认是没有数据的，执行<code>show dbs</code>并不会显示出来）</p>
-<pre><code class="lang-bash"><span class="hljs-keyword">use</span> <span class="hljs-keyword">test</span>
-</code></pre>
+<pre><code class="language-bash"><span class="hljs-keyword">use</span> <span class="hljs-keyword">test</span></code></pre>
 <p>5、创建test库下的用户</p>
-<pre><code class="lang-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createUser</span>({ <span class="hljs-attribute">user</span>: <span class="hljs-string">'test'</span>, <span class="hljs-attribute">pwd</span>: <span class="hljs-string">'test_password'</span>, <span class="hljs-attribute">roles</span>: [{ <span class="hljs-attribute">role</span>: <span class="hljs-string">"readWrite"</span>, <span class="hljs-attribute">db</span>: <span class="hljs-string">"test"</span> }] });
-</code></pre>
-<h3 id="-">链接数据库</h3>
+<pre><code class="language-bash"><span class="hljs-selector-tag">db</span><span class="hljs-selector-class">.createUser</span>({ <span class="hljs-attribute">user</span>: <span class="hljs-string">&#x27;test&#x27;</span>, <span class="hljs-attribute">pwd</span>: <span class="hljs-string">&#x27;test_password&#x27;</span>, <span class="hljs-attribute">roles</span>: [{ <span class="hljs-attribute">role</span>: <span class="hljs-string">&quot;readWrite&quot;</span>, <span class="hljs-attribute">db</span>: <span class="hljs-string">&quot;test&quot;</span> }] });</code></pre>
+<h3 id="链接数据库">链接数据库</h3>
 <p>shell链接数据库:</p>
-<pre><code class="lang-bash">mongo <span class="hljs-number">127.0</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>:<span class="hljs-number">27018</span>/<span class="hljs-keyword">test</span> -u <span class="hljs-keyword">test</span> -p test_password
-</code></pre>
+<pre><code class="language-bash">mongo <span class="hljs-number">127.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">27018</span>/test -u test -p test_password</code></pre>
 <p>标准 URI 连接语法：</p>
-<pre><code class="lang-bash"><span class="hljs-symbol">mongodb:</span>//<span class="hljs-keyword">test</span>:test_password@<span class="hljs-number">127.0</span><span class="hljs-meta">.0</span><span class="hljs-meta">.1</span>:<span class="hljs-number">27018</span>/<span class="hljs-keyword">test</span>
-</code></pre>
-<h3 id="-">参考资源</h3>
+<pre><code class="language-bash"><span class="hljs-symbol">mongodb:</span>//test:test_password<span class="hljs-subst">@127</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span><span class="hljs-number">.1</span>:<span class="hljs-number">27018</span>/test</code></pre>
+<h3 id="参考资源">参考资源</h3>
 <p><a href="http://www.runoob.com/docker/docker-install-mongodb.html">Docker 安装 MongoDB</a><br><a href="http://www.runoob.com/mongodb/mongodb-connections.html">MongoDB - 连接</a><br><a href="https://hub.docker.com/_/mongo/">mongo镜像官方文档</a></p>
 
             </article>

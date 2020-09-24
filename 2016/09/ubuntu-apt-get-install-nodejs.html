@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,100 +42,95 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="ubuntu-apt-get-nodejs">ubuntu下apt-get安装nodejs</h1>
+                <h1 id="ubuntu下apt-get安装nodejs">ubuntu下apt-get安装nodejs</h1>
 <blockquote>
 <p>最近在阿里云服务器上安装<code>nodejs</code>，自己编译挺麻烦的，决定用<code>apt-get</code></p>
 </blockquote>
-<h4 id="-apt-get-install-nodejs-">直接执行<code>apt-get install nodejs</code>遇到了问题，具体看下面命令：</h4>
-<pre><code class="lang-bash">    apt-get <span class="hljs-keyword">install</span> nodejs &amp;&amp; node -v
-    Reading <span class="hljs-keyword">package</span> lists... Done
+<h4 id="直接执行apt-get-install-nodejs遇到了问题，具体看下面命令：">直接执行<code>apt-get install nodejs</code>遇到了问题，具体看下面命令：</h4>
+<pre><code class="language-bash">    apt-<span class="hljs-keyword">get</span> install nodejs &amp;&amp; node -v
+    Reading package lists... Done
     Building dependency tree       
     Reading state information... Done
-    The <span class="hljs-keyword">following</span> extra packages will be installed:
+    The following extra packages will be installed:
       libc-ares2 libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span>
-    The <span class="hljs-keyword">following</span> <span class="hljs-keyword">NEW</span> packages will be installed:
+    The following NEW packages will be installed:
       libc-ares2 libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span> nodejs
-    <span class="hljs-number">0</span> upgraded, <span class="hljs-number">3</span> newly installed, <span class="hljs-number">0</span> <span class="hljs-keyword">to</span> remove <span class="hljs-keyword">and</span> <span class="hljs-number">186</span> <span class="hljs-keyword">not</span> upgraded.
-    Need <span class="hljs-keyword">to</span> <span class="hljs-keyword">get</span> <span class="hljs-number">1</span>,<span class="hljs-number">912</span> kB <span class="hljs-keyword">of</span> archives.
-    <span class="hljs-keyword">After</span> this operation, <span class="hljs-number">7</span>,<span class="hljs-number">538</span> kB <span class="hljs-keyword">of</span> additional disk <span class="hljs-keyword">space</span> will be used.
-    <span class="hljs-keyword">Do</span> you want <span class="hljs-keyword">to</span> continue? [Y/n] y
-    <span class="hljs-keyword">Get</span>:<span class="hljs-number">1</span> <span class="hljs-keyword">http</span>://mirrors.aliyun.com/ubuntu/ trusty/<span class="hljs-keyword">main</span> libc-ares2 amd64 <span class="hljs-number">1.10</span><span class="hljs-number">.0</span><span class="hljs-number">-2</span> [<span class="hljs-number">38.5</span> kB]
-    <span class="hljs-keyword">Get</span>:<span class="hljs-number">2</span> <span class="hljs-keyword">http</span>://mirrors.aliyun.com/ubuntu/ trusty/universe libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span> amd64 <span class="hljs-number">3.14</span><span class="hljs-number">.5</span><span class="hljs-number">.8</span><span class="hljs-number">-5</span>ubuntu2 [<span class="hljs-number">1</span>,<span class="hljs-number">189</span> kB]
-    <span class="hljs-keyword">Get</span>:<span class="hljs-number">3</span> <span class="hljs-keyword">http</span>://mirrors.aliyun.com/ubuntu/ trusty/universe nodejs amd64 <span class="hljs-number">0.10</span><span class="hljs-number">.25</span>~dfsg2<span class="hljs-number">-2</span>ubuntu1 [<span class="hljs-number">684</span> kB]
+    <span class="hljs-number">0</span> upgraded, <span class="hljs-number">3</span> newly installed, <span class="hljs-number">0</span> to remove <span class="hljs-keyword">and</span> <span class="hljs-number">186</span> <span class="hljs-keyword">not</span> upgraded.
+    Need to <span class="hljs-keyword">get</span> <span class="hljs-number">1</span>,<span class="hljs-number">912</span> kB of archives.
+    After <span class="hljs-keyword">this</span> operation, <span class="hljs-number">7</span>,<span class="hljs-number">538</span> kB of additional disk space will be used.
+    Do you want to <span class="hljs-keyword">continue</span>? [Y/n] y
+    Get:<span class="hljs-number">1</span> http:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ trusty/main libc-ares2 amd64 1.10.0-2 [38.5 kB]</span>
+    Get:<span class="hljs-number">2</span> http:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ trusty/universe libv8-3.14.5 amd64 3.14.5.8-5ubuntu2 [1,189 kB]</span>
+    Get:<span class="hljs-number">3</span> http:<span class="hljs-comment">//mirrors.aliyun.com/ubuntu/ trusty/universe nodejs amd64 0.10.25~dfsg2-2ubuntu1 [684 kB]</span>
     Fetched <span class="hljs-number">1</span>,<span class="hljs-number">912</span> kB <span class="hljs-keyword">in</span> <span class="hljs-number">1</span>s (<span class="hljs-number">1</span>,<span class="hljs-number">269</span> kB/s)
-    Selecting previously unselected <span class="hljs-keyword">package</span> libc-ares2:amd64.
-    (Reading <span class="hljs-keyword">database</span> ... <span class="hljs-number">75222</span> files <span class="hljs-keyword">and</span> directories currently installed.)
-    Preparing <span class="hljs-keyword">to</span> unpack .../libc-ares2_1<span class="hljs-number">.10</span><span class="hljs-number">.0</span><span class="hljs-number">-2</span>_amd64.deb ...
+    Selecting previously unselected package libc-ares2:amd64.
+    (Reading database ... <span class="hljs-number">75222</span> files <span class="hljs-keyword">and</span> directories currently installed.)
+    Preparing to unpack .../libc-ares2_1<span class="hljs-number">.10</span><span class="hljs-number">.0</span><span class="hljs-number">-2</span>_amd64.deb ...
     Unpacking libc-ares2:amd64 (<span class="hljs-number">1.10</span><span class="hljs-number">.0</span><span class="hljs-number">-2</span>) ...
-    Selecting previously unselected <span class="hljs-keyword">package</span> libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span>.
-    Preparing <span class="hljs-keyword">to</span> unpack .../libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span>_3<span class="hljs-number">.14</span><span class="hljs-number">.5</span><span class="hljs-number">.8</span><span class="hljs-number">-5</span>ubuntu2_amd64.deb ...
+    Selecting previously unselected package libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span>.
+    Preparing to unpack .../libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span>_3<span class="hljs-number">.14</span><span class="hljs-number">.5</span><span class="hljs-number">.8</span><span class="hljs-number">-5</span>ubuntu2_amd64.deb ...
     Unpacking libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span> (<span class="hljs-number">3.14</span><span class="hljs-number">.5</span><span class="hljs-number">.8</span><span class="hljs-number">-5</span>ubuntu2) ...
-    Selecting previously unselected <span class="hljs-keyword">package</span> nodejs.
-    Preparing <span class="hljs-keyword">to</span> unpack .../nodejs_0<span class="hljs-number">.10</span><span class="hljs-number">.25</span>~dfsg2<span class="hljs-number">-2</span>ubuntu1_amd64.deb ...
+    Selecting previously unselected package nodejs.
+    Preparing to unpack .../nodejs_0<span class="hljs-number">.10</span><span class="hljs-number">.25</span>~dfsg2<span class="hljs-number">-2</span>ubuntu1_amd64.deb ...
     Unpacking nodejs (<span class="hljs-number">0.10</span><span class="hljs-number">.25</span>~dfsg2<span class="hljs-number">-2</span>ubuntu1) ...
-    Processing <span class="hljs-keyword">triggers</span> <span class="hljs-keyword">for</span> man-db (<span class="hljs-number">2.6</span><span class="hljs-number">.7</span><span class="hljs-number">.1</span><span class="hljs-number">-1</span>ubuntu1) ...
+    Processing triggers <span class="hljs-keyword">for</span> man-db (<span class="hljs-number">2.6</span><span class="hljs-number">.7</span><span class="hljs-number">.1</span><span class="hljs-number">-1</span>ubuntu1) ...
     Setting up libc-ares2:amd64 (<span class="hljs-number">1.10</span><span class="hljs-number">.0</span><span class="hljs-number">-2</span>) ...
     Setting up libv8<span class="hljs-number">-3.14</span><span class="hljs-number">.5</span> (<span class="hljs-number">3.14</span><span class="hljs-number">.5</span><span class="hljs-number">.8</span><span class="hljs-number">-5</span>ubuntu2) ...
     Setting up nodejs (<span class="hljs-number">0.10</span><span class="hljs-number">.25</span>~dfsg2<span class="hljs-number">-2</span>ubuntu1) ...
-    <span class="hljs-keyword">update</span>-alternatives: <span class="hljs-keyword">using</span> /usr/<span class="hljs-keyword">bin</span>/nodejs <span class="hljs-keyword">to</span> provide /usr/<span class="hljs-keyword">bin</span>/js (js) <span class="hljs-keyword">in</span> <span class="hljs-keyword">auto</span> <span class="hljs-keyword">mode</span>
-    Processing <span class="hljs-keyword">triggers</span> <span class="hljs-keyword">for</span> libc-<span class="hljs-keyword">bin</span> (<span class="hljs-number">2.19</span><span class="hljs-number">-0</span>ubuntu6<span class="hljs-number">.6</span>) ...
-    The program <span class="hljs-string">'node'</span> can be <span class="hljs-keyword">found</span> <span class="hljs-keyword">in</span> the <span class="hljs-keyword">following</span> packages:
+    update-alternatives: using /usr/bin/nodejs to provide /usr/bin/js (js) <span class="hljs-keyword">in</span> <span class="hljs-built_in">auto</span> mode
+    Processing triggers <span class="hljs-keyword">for</span> libc-bin (<span class="hljs-number">2.19</span><span class="hljs-number">-0</span>ubuntu6<span class="hljs-number">.6</span>) ...
+    The program <span class="hljs-string">&#x27;node&#x27;</span> can be found <span class="hljs-keyword">in</span> the following packages:
      * node
      * nodejs-legacy
-    Try: apt-<span class="hljs-keyword">get</span> <span class="hljs-keyword">install</span> &lt;selected <span class="hljs-keyword">package</span>&gt;
-</code></pre>
+    Try: apt-<span class="hljs-keyword">get</span> install &lt;selected package&gt;</code></pre>
 <p>Google了一下是因为<code>ubuntu</code>默认的<code>apt-get</code>源<code>nodejs</code>版本是<code>0.10.25</code>。  </p>
-<h4 id="-apt-get-">查看<code>apt-get</code>源方法是：</h4>
-<pre><code class="lang-bash">    <span class="hljs-string">apt-cache</span> <span class="hljs-string">show</span> <span class="hljs-string">nodejs</span>
-<span class="hljs-attr">    Package:</span> <span class="hljs-string">nodejs</span>
-<span class="hljs-attr">    Priority:</span> <span class="hljs-string">extra</span>
-<span class="hljs-attr">    Section:</span> <span class="hljs-string">universe/web</span>
-<span class="hljs-attr">    Installed-Size:</span> <span class="hljs-number">3043</span>
-<span class="hljs-attr">    Maintainer:</span> <span class="hljs-string">Ubuntu</span> <span class="hljs-string">Developers</span> <span class="hljs-string">&lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;</span>
-<span class="hljs-attr">    Original-Maintainer:</span> <span class="hljs-string">Debian</span> <span class="hljs-string">Javascript</span> <span class="hljs-string">Maintainers</span> <span class="hljs-string">&lt;pkg-javascript-devel@lists.alioth.debian.org&gt;</span>
-<span class="hljs-attr">    Architecture:</span> <span class="hljs-string">amd64</span>
-<span class="hljs-attr">    Version:</span> <span class="hljs-number">0.10</span><span class="hljs-number">.25</span><span class="hljs-string">~dfsg2-2ubuntu1</span>
-<span class="hljs-attr">    Depends:</span> <span class="hljs-string">libc-ares2</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">1.8</span><span class="hljs-number">.0</span><span class="hljs-string">),</span> <span class="hljs-string">libc6</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">2.14</span><span class="hljs-string">),</span> <span class="hljs-string">libssl1.0.0</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">1.0</span><span class="hljs-number">.1</span><span class="hljs-string">),</span> <span class="hljs-string">libstdc++6</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">4.1</span><span class="hljs-number">.1</span><span class="hljs-string">),</span> <span class="hljs-string">libv8-3.14.5,</span> <span class="hljs-string">zlib1g</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">1</span><span class="hljs-string">:1.1.4)</span>
-<span class="hljs-attr">    Filename:</span> <span class="hljs-string">pool/universe/n/nodejs/nodejs_0.10.25~dfsg2-2ubuntu1_amd64.deb</span>
-<span class="hljs-attr">    Size:</span> <span class="hljs-number">683742</span>
-<span class="hljs-attr">    MD5sum:</span> <span class="hljs-number">8</span><span class="hljs-string">d3cdf0c2277eb19f8a8666a54eeeed8</span>
-<span class="hljs-attr">    SHA1:</span> <span class="hljs-string">b3c1f91229f2689141cc6d1a9a30dd355a444310</span>
-<span class="hljs-attr">    SHA256:</span> <span class="hljs-string">f2a3aa1f11fcc5e37d50d9ec0e1eb7e255105b79dcb268a9fd8624f5ddead15a</span>
-<span class="hljs-attr">    Description-en:</span> <span class="hljs-string">evented</span> <span class="hljs-string">I/O</span> <span class="hljs-string">for</span> <span class="hljs-string">V8</span> <span class="hljs-string">javascript</span>
-     <span class="hljs-string">Node.js</span> <span class="hljs-string">is</span> <span class="hljs-string">a</span> <span class="hljs-string">platform</span> <span class="hljs-string">built</span> <span class="hljs-string">on</span> <span class="hljs-string">Chrome's</span> <span class="hljs-string">JavaScript</span> <span class="hljs-string">runtime</span> <span class="hljs-string">for</span> <span class="hljs-string">easily</span>
+<h4 id="查看apt-get源方法是：">查看<code>apt-get</code>源方法是：</h4>
+<pre><code class="language-bash">    <span class="hljs-string">apt-cache</span> <span class="hljs-string">show</span> <span class="hljs-string">nodejs</span>
+    <span class="hljs-attr">Package:</span> <span class="hljs-string">nodejs</span>
+    <span class="hljs-attr">Priority:</span> <span class="hljs-string">extra</span>
+    <span class="hljs-attr">Section:</span> <span class="hljs-string">universe/web</span>
+    <span class="hljs-attr">Installed-Size:</span> <span class="hljs-number">3043</span>
+    <span class="hljs-attr">Maintainer:</span> <span class="hljs-string">Ubuntu</span> <span class="hljs-string">Developers</span> <span class="hljs-string">&lt;ubuntu-devel-discuss@lists.ubuntu.com&gt;</span>
+    <span class="hljs-attr">Original-Maintainer:</span> <span class="hljs-string">Debian</span> <span class="hljs-string">Javascript</span> <span class="hljs-string">Maintainers</span> <span class="hljs-string">&lt;pkg-javascript-devel@lists.alioth.debian.org&gt;</span>
+    <span class="hljs-attr">Architecture:</span> <span class="hljs-string">amd64</span>
+    <span class="hljs-attr">Version:</span> <span class="hljs-number">0.10</span><span class="hljs-number">.25</span><span class="hljs-string">~dfsg2-2ubuntu1</span>
+    <span class="hljs-attr">Depends:</span> <span class="hljs-string">libc-ares2</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">1.8</span><span class="hljs-number">.0</span><span class="hljs-string">),</span> <span class="hljs-string">libc6</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">2.14</span><span class="hljs-string">),</span> <span class="hljs-string">libssl1.0.0</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">1.0</span><span class="hljs-number">.1</span><span class="hljs-string">),</span> <span class="hljs-string">libstdc++6</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">4.1</span><span class="hljs-number">.1</span><span class="hljs-string">),</span> <span class="hljs-string">libv8-3.14.5,</span> <span class="hljs-string">zlib1g</span> <span class="hljs-string">(&gt;=</span> <span class="hljs-number">1</span><span class="hljs-string">:1.1.4)</span>
+    <span class="hljs-attr">Filename:</span> <span class="hljs-string">pool/universe/n/nodejs/nodejs_0.10.25~dfsg2-2ubuntu1_amd64.deb</span>
+    <span class="hljs-attr">Size:</span> <span class="hljs-number">683742</span>
+    <span class="hljs-attr">MD5sum:</span> <span class="hljs-string">8d3cdf0c2277eb19f8a8666a54eeeed8</span>
+    <span class="hljs-attr">SHA1:</span> <span class="hljs-string">b3c1f91229f2689141cc6d1a9a30dd355a444310</span>
+    <span class="hljs-attr">SHA256:</span> <span class="hljs-string">f2a3aa1f11fcc5e37d50d9ec0e1eb7e255105b79dcb268a9fd8624f5ddead15a</span>
+    <span class="hljs-attr">Description-en:</span> <span class="hljs-string">evented</span> <span class="hljs-string">I/O</span> <span class="hljs-string">for</span> <span class="hljs-string">V8</span> <span class="hljs-string">javascript</span>
+     <span class="hljs-string">Node.js</span> <span class="hljs-string">is</span> <span class="hljs-string">a</span> <span class="hljs-string">platform</span> <span class="hljs-string">built</span> <span class="hljs-string">on</span> <span class="hljs-string">Chrome&#x27;s</span> <span class="hljs-string">JavaScript</span> <span class="hljs-string">runtime</span> <span class="hljs-string">for</span> <span class="hljs-string">easily</span>
      <span class="hljs-string">building</span> <span class="hljs-string">fast,</span> <span class="hljs-string">scalable</span> <span class="hljs-string">network</span> <span class="hljs-string">applications.</span> <span class="hljs-string">Node.js</span> <span class="hljs-string">uses</span> <span class="hljs-string">an</span>
      <span class="hljs-string">event-driven,</span> <span class="hljs-string">non-blocking</span> <span class="hljs-string">I/O</span> <span class="hljs-string">model</span> <span class="hljs-string">that</span> <span class="hljs-string">makes</span> <span class="hljs-string">it</span> <span class="hljs-string">lightweight</span> <span class="hljs-string">and</span>
      <span class="hljs-string">efficient,</span> <span class="hljs-string">perfect</span> <span class="hljs-string">for</span> <span class="hljs-string">data-intensive</span> <span class="hljs-string">real-time</span> <span class="hljs-string">applications</span> <span class="hljs-string">that</span> <span class="hljs-string">run</span>
      <span class="hljs-string">across</span> <span class="hljs-string">distributed</span> <span class="hljs-string">devices.</span>
      <span class="hljs-string">.</span>
      <span class="hljs-string">Node.js</span> <span class="hljs-string">is</span> <span class="hljs-string">bundled</span> <span class="hljs-string">with</span> <span class="hljs-string">several</span> <span class="hljs-string">useful</span> <span class="hljs-string">libraries</span> <span class="hljs-string">to</span> <span class="hljs-string">handle</span> <span class="hljs-string">server</span>
-<span class="hljs-attr">     tasks:</span>
+     <span class="hljs-attr">tasks:</span>
      <span class="hljs-string">.</span>
      <span class="hljs-string">System,</span> <span class="hljs-string">Events,</span> <span class="hljs-string">Standard</span> <span class="hljs-string">I/O,</span> <span class="hljs-string">Modules,</span> <span class="hljs-string">Timers,</span> <span class="hljs-string">Child</span> <span class="hljs-string">Processes,</span> <span class="hljs-string">POSIX,</span>
      <span class="hljs-string">HTTP,</span> <span class="hljs-string">Multipart</span> <span class="hljs-string">Parsing,</span> <span class="hljs-string">TCP,</span> <span class="hljs-string">DNS,</span> <span class="hljs-string">Assert,</span> <span class="hljs-string">Path,</span> <span class="hljs-string">URL,</span> <span class="hljs-string">Query</span> <span class="hljs-string">Strings.</span>
-<span class="hljs-attr">    Description-md5:</span> <span class="hljs-string">e507fb472d7cdaceffc5b285a62d5c1b</span>
-<span class="hljs-attr">    Homepage:</span> <span class="hljs-attr">http://nodejs.org/</span>
-<span class="hljs-attr">    Bugs:</span> <span class="hljs-attr">https://bugs.launchpad.net/ubuntu/+filebug</span>
-<span class="hljs-attr">    Origin:</span> <span class="hljs-string">Ubuntu</span>
+    <span class="hljs-attr">Description-md5:</span> <span class="hljs-string">e507fb472d7cdaceffc5b285a62d5c1b</span>
+    <span class="hljs-attr">Homepage:</span> <span class="hljs-string">http://nodejs.org/</span>
+    <span class="hljs-attr">Bugs:</span> <span class="hljs-string">https://bugs.launchpad.net/ubuntu/+filebug</span>
+    <span class="hljs-attr">Origin:</span> <span class="hljs-string">Ubuntu</span>
 </code></pre>
-<h4 id="-apt-get-nodejs-nodesource-distributions-https-github-com-nodesource-distributions-">更新<code>apt-get</code>源的方法有好多，这里推荐<code>nodejs</code>官方的源：<a href="https://github.com/nodesource/distributions">nodesource/distributions</a></h4>
-<h4 id="-">介绍一下用法：</h4>
+<h4 id="更新apt-get源的方法有好多，这里推荐nodejs官方的源：nodesourcedistributions">更新<code>apt-get</code>源的方法有好多，这里推荐<code>nodejs</code>官方的源：<a href="https://github.com/nodesource/distributions">nodesource/distributions</a></h4>
+<h4 id="介绍一下用法：">介绍一下用法：</h4>
 <p>1、添加一个NodeSource签名密钥</p>
-<pre><code class="lang-bash">curl --<span class="hljs-keyword">silent</span> http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/gpgkey/nodesource.gpg.key | sudo apt-key <span class="hljs-built_in">add</span> -
-</code></pre>
+<pre><code class="language-bash">curl --<span class="hljs-keyword">silent</span> http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/gpgkey/nodesource.gpg.key | sudo apt-key <span class="hljs-built_in">add</span> -</code></pre>
 <p>2、在apt下增加一个<code>nodesource.list</code>文件</p>
-<pre><code class="lang-bash">    <span class="hljs-keyword">cd</span> /etc/apt/sources.<span class="hljs-keyword">list</span>.d/ &amp;&amp; <span class="hljs-keyword">vim</span> nodesource.<span class="hljs-keyword">list</span>
-</code></pre>
+<pre><code class="language-bash">    cd <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span> &amp;&amp; vim nodesource.list</code></pre>
 <p>3、编辑<code>nodesource.list</code>文件</p>
 <p>加入以下两行代码：</p>
-<pre><code class="lang-bash">    <span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/node_4.<span class="hljs-keyword">x</span> trusty main
-    <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/node_4.<span class="hljs-keyword">x</span> trusty main
-</code></pre>
+<pre><code class="language-bash">    <span class="hljs-keyword">deb</span> http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/node_4.<span class="hljs-keyword">x</span> trusty main
+    <span class="hljs-keyword">deb</span>-src http<span class="hljs-variable">s:</span>//<span class="hljs-keyword">deb</span>.nodesource.<span class="hljs-keyword">com</span>/node_4.<span class="hljs-keyword">x</span> trusty main</code></pre>
 <p><code>node_4.x</code>是版本号，可以指定安装版本。</p>
 <p>4、更新<code>apt-get</code>源&amp;&amp;安装<code>nodejs</code></p>
-<pre><code class="lang-bash">    sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span>
-    sudo apt-<span class="hljs-built_in">get</span> install nodejs
-</code></pre>
+<pre><code class="language-bash">    sudo apt-<span class="hljs-builtin-name">get</span> update
+    sudo apt-<span class="hljs-builtin-name">get</span> install nodejs</code></pre>
 
             </article>
             <div class="weixin">

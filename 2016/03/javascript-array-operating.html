@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,44 +42,39 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="javascript-array-">JavaScript Array 常用操作</h1>
+                <h1 id="javascript-array-常用操作">JavaScript Array 常用操作</h1>
 <blockquote>
 <p>基本数组的常用操作，做个备份。</p>
 </blockquote>
-<h2 id="-">概要</h2>
+<h2 id="概要">概要</h2>
 <p>在JavaScript中，数组以 Array 为构造函数，是一个高阶的类似有序列表的数据类型。</p>
-<h2 id="-">声明语法</h2>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr1 = []; <span class="hljs-comment">//建议使用［］声明数组对象;</span>
+<h2 id="声明语法">声明语法</h2>
+<pre><code class="language-javascript">    <span class="hljs-keyword">var</span> arr1 = []; <span class="hljs-comment">//建议使用［］声明数组对象;</span>
     <span class="hljs-keyword">var</span> arr2 = <span class="hljs-keyword">new</span> <span class="hljs-type">Array</span>();
-    <span class="hljs-keyword">var</span> arr3 = <span class="hljs-keyword">new</span> <span class="hljs-type">Array</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">//new个数组对象，length是5</span>
-</code></pre>
-<h5 id="-">元素列</h5>
+    <span class="hljs-keyword">var</span> arr3 = <span class="hljs-keyword">new</span> <span class="hljs-type">Array</span>(<span class="hljs-number">5</span>); <span class="hljs-comment">//new个数组对象，length是5</span></code></pre>
+<h5 id="元素列">元素列</h5>
 <p>向 Array 构造函数传递以 ”,“ 分号分割的一组数据（即元素列）时，将返回一个以这些数据为数组元素的数组对象（当元素列仅有一个数据且为数值时除外，这是接下来要说的内容）。数据的个数为元素个数，即数组长度。</p>
-<h5 id="-">数组长度</h5>
+<h5 id="数组长度">数组长度</h5>
 <p>向 Array 构造函数传递一个在 0 到 232-1 之间的整数，将返回一个以此为长度的数组对象。通过length属性可以访问这个值。如果传入的参数不是有效的数值，则抛出RangeError异常。如果传入的参数不是数值，则创建一个长度为1的数组，传入的参数即为数组的第一个元素。</p>
-<h5 id="-">数组索引</h5>
+<h5 id="数组索引">数组索引</h5>
 <p>每个元素列会有个单独的Length索引值，JavaScript 数组的索引值（index）从0开始，即数组第一个元素的索引值为0。最后一个元素的索引值等于该数组的长度减1（Array.length -1）。</p>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
+<pre><code class="language-javascript">    var arr = [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>];
     console.log(arr[<span class="hljs-number">0</span>]) <span class="hljs-comment">// 1</span>
-    console.log(arr[arr.length<span class="hljs-number">-1</span>]) <span class="hljs-comment">// 5</span>
-</code></pre>
-<h2 id="-">&gt;方法</h2>
-<h4 id="mutator-">Mutator 方法</h4>
+    console.log(arr[arr.length<span class="hljs-number">-1</span>]) <span class="hljs-comment">// 5</span></code></pre>
+<h2 id="方法">&gt;方法</h2>
+<h4 id="mutator-方法">Mutator 方法</h4>
 <p>这些方法可以改变数组自身:</p>
 <h4 id="pop">pop</h4>
 <p>移除数组的最后一个元素，返回值是被删除的元素。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.pop()
-</code></pre>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
-    arr.pop();
-    console.log(arr)  <span class="hljs-comment">// [1, 2]</span>
-</code></pre>
+<pre><code class="language-javascript">    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>pop<span class="hljs-literal">()</span></code></pre>
+<h6 id="javascript-代码示例：">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.pop();</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>]</code></pre>
 <h4 id="push">push</h4>
 <p>在数组的末尾添加一个或者多个元素，返回值是新的数组的长度。</p>
-<pre><code class="lang-javascript">    <span class="hljs-built_in">Array</span>.push(element1, element2, <span class="hljs-params">...</span>, elementN)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-attribute">Array</span>.push(element<span class="hljs-number">1</span>, element<span class="hljs-number">2</span>, ..., elementN)</code></pre>
+<h5 id=""><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -86,8 +82,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>必需。向数组添加的第一个元素。</td>
 </tr>
@@ -99,45 +94,36 @@
 <td>arguments[n]</td>
 <td>可选。可添加若干个元素</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-    arr.push(<span class="hljs-number">0</span>);
-    console.log(arr)  <span class="hljs-comment">// [2, 3, 4, 0]</span>
-</code></pre>
+</tbody></table>
+<h6 id="javascript-代码示例：-1">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.push(0);</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">0</span>]</code></pre>
 <h4 id="reverse">reverse</h4>
 <p>颠倒数组中元素的顺序，原先第一个元素现在变成最后一个，同样原先的最后一个元素变成了现在的第一个，也就是数组的索引发生了变化。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.<span class="hljs-keyword">reverse</span>()
-</code></pre>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-    arr.reverse();
-    console.log(arr)  <span class="hljs-comment">// [4, 3, 2, 1]</span>
-</code></pre>
+<pre><code class="language-javascript">    <span class="hljs-keyword">Array</span>.<span class="hljs-keyword">reverse</span>()</code></pre>
+<h6 id="javascript-代码示例：-2">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.reverse();</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">4</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>]</code></pre>
 <h4 id="shift">shift</h4>
 <p>删除数组的第一个元素，返回值是删除的元素。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.shift()
-</code></pre>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-    arr.shift();
-    console.log(arr)  <span class="hljs-comment">// [3, 4]</span>
-</code></pre>
+<pre><code class="language-javascript">    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>shift<span class="hljs-literal">()</span></code></pre>
+<h6 id="javascript-代码示例：-3">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.shift();</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</code></pre>
 <h4 id="sort">sort</h4>
 <p>对数组中的元素进行排序。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.<span class="hljs-built_in">sort</span>()
-</code></pre>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">1</span>, <span class="hljs-number">11</span>, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, <span class="hljs-number">67</span>, <span class="hljs-number">100</span>];
-    arr.sort();
-    console.log(arr)  <span class="hljs-comment">// [0, 1, 100, 11, 67, 99]</span>
-</code></pre>
+<pre><code class="language-javascript">    <span class="hljs-keyword">Array</span>.<span class="hljs-built_in">sort</span>()</code></pre>
+<h6 id="javascript-代码示例：-4">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">1</span>, <span class="hljs-number">11</span>, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, <span class="hljs-number">67</span>, <span class="hljs-number">100</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.sort();</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>, <span class="hljs-number">11</span>, <span class="hljs-number">67</span>, <span class="hljs-number">99</span>]</code></pre>
 <h4 id="splice">splice</h4>
 <p>添加或删除数组中的一个或多个元素。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.splice(<span class="hljs-keyword">index</span>, length, element1, element2, ..., elementN)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-meta">Array</span>.splice(<span class="hljs-meta">index</span>, <span class="hljs-meta">length</span>, element1, element2, ..., elementN)</code></pre>
+<h5 id="-1"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -145,8 +131,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>必需。从数组的哪一位开始修改内容。如果超出了数组的长度，则自动从数组末尾开始添加内容；如果是负值，则表示从数组末位开始的第几位。</td>
 </tr>
@@ -162,20 +147,17 @@
 <td>arguments[N]</td>
 <td>可选。要添加进数组的元素。如果不指定，则 splice 只删除数组元素。</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">1</span>, <span class="hljs-number">11</span>, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, <span class="hljs-number">67</span>, <span class="hljs-number">100</span>];
-    arr.splice(<span class="hljs-number">5</span>,<span class="hljs-number">1</span>);
-    console.log(arr)  <span class="hljs-comment">// [0, 1, 100, 11, 67, 99]</span>
-    arr.splice(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">2</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>);
-    console.log(arr)  <span class="hljs-comment">// [1, 11, 0, 2, 4, 5]</span>
-</code></pre>
+</tbody></table>
+<h6 id="javascript-代码示例：-5">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">1</span>, <span class="hljs-number">11</span>, <span class="hljs-number">0</span>, <span class="hljs-number">99</span>, <span class="hljs-number">67</span>, <span class="hljs-number">100</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.splice(5,1);</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">100</span>, <span class="hljs-number">11</span>, <span class="hljs-number">67</span>, <span class="hljs-number">99</span>]
+    <span class="hljs-string">arr.splice(3,3,2,4,5);</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">1</span>, <span class="hljs-number">11</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>]</code></pre>
 <h4 id="unshift">unshift</h4>
 <p>添加一个或者多个元素在数组的开头，返回值是新的数组的长度。</p>
-<pre><code class="lang-javascript">    <span class="hljs-built_in">Array</span>.unshift(element1, element2, <span class="hljs-params">...</span>, elementN)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-attribute">Array</span>.unshift(element<span class="hljs-number">1</span>, element<span class="hljs-number">2</span>, ..., elementN)</code></pre>
+<h5 id="-2"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -183,8 +165,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>必需。向数组添加的第一个元素。</td>
 </tr>
@@ -196,20 +177,17 @@
 <td>arguments[n]</td>
 <td>可选。可添加若干个元素</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    var arr = [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>];
-    arr.unshift(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">5</span>);
-    console.log(arr)  <span class="hljs-comment">// [0, 1, 5, 2, 3, 4]</span>
-</code></pre>
-<h2 id="accessor-">Accessor 方法</h2>
+</tbody></table>
+<h6 id="javascript-代码示例：-6">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-string">var</span> <span class="hljs-string">arr</span> <span class="hljs-string">=</span> [<span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]<span class="hljs-string">;</span>
+    <span class="hljs-string">arr.unshift(0,1,5);</span>
+    <span class="hljs-string">console.log(arr)</span>  <span class="hljs-string">//</span> [<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>]</code></pre>
+<h2 id="accessor-方法">Accessor 方法</h2>
 <p>这些过程不改变数组自身:</p>
 <h4 id="concat">concat</h4>
 <p>返回一个包含此数组和其他数组和/或值的结合的新数组</p>
-<pre><code class="lang-javascript">    <span class="hljs-built_in">Array</span>.concat(Array1, Array2, <span class="hljs-params">...</span>, ArrayN )
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-attribute">Array</span>.concat(Array<span class="hljs-number">1</span>, Array<span class="hljs-number">2</span>, ..., ArrayN )</code></pre>
+<h5 id="-3"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -217,8 +195,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>可选。向数组合并的第一个数组。</td>
 </tr>
@@ -230,21 +207,18 @@
 <td>arguments[n]</td>
 <td>可选。可添加若干个数组</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-built_in">var</span> arr1 = [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>];
+</tbody></table>
+<h6 id="javascript-代码示例示例：">javascript 代码示例示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-built_in">var</span> arr1 = [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>];
     <span class="hljs-built_in">var</span> arr2 = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];
     <span class="hljs-built_in">var</span> arr3 = arr1.<span class="hljs-built_in">concat</span>(arr2);
-    console.<span class="hljs-built_in">log</span>(arr3) //[<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
+    console.<span class="hljs-built_in">log</span>(arr3) //[<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
     <span class="hljs-built_in">var</span> arr4 = arr2.<span class="hljs-built_in">concat</span>(arr3);
-    console.<span class="hljs-built_in">log</span>(arr4) //[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]
-</code></pre>
+    console.<span class="hljs-built_in">log</span>(arr4) //[<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>]</code></pre>
 <h4 id="indexof">indexOf</h4>
 <p>返回第一个与给定参数相等的数组元素的索引，没有找到则返回-1。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.indexOf(searchElement,fromIndex)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>index<span class="hljs-constructor">Of(<span class="hljs-params">searchElement</span>,<span class="hljs-params">fromIndex</span>)</span></code></pre>
+<h5 id="-4"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -252,8 +226,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>必需。位于数组中的元素。</td>
 </tr>
@@ -261,24 +234,21 @@
 <td>arguments[1]</td>
 <td>可选。默认值: 0 (即在整个数组中查找指定元素)</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'b'</span>];
-    <span class="hljs-keyword">var</span> index1 = arr.indexOf(<span class="hljs-string">'a'</span>);
+</tbody></table>
+<h6 id="javascript-代码示例示例：-1">javascript 代码示例示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>];
+    <span class="hljs-keyword">var</span> index1 = arr.indexOf(<span class="hljs-string">&#x27;a&#x27;</span>);
     <span class="hljs-built_in">console</span>.log(index1); <span class="hljs-comment">// 0</span>
-    <span class="hljs-keyword">var</span> index2 = arr.indexOf(<span class="hljs-string">'b'</span>,<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">var</span> index2 = arr.indexOf(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">1</span>);
     <span class="hljs-built_in">console</span>.log(index2); <span class="hljs-comment">// 1</span>
-    <span class="hljs-keyword">var</span> index3 = arr.indexOf(<span class="hljs-string">'b'</span>,<span class="hljs-number">2</span>);
+    <span class="hljs-keyword">var</span> index3 = arr.indexOf(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">2</span>);
     <span class="hljs-built_in">console</span>.log(index3); <span class="hljs-comment">// 3</span>
-    <span class="hljs-keyword">var</span> index4 = arr.indexOf(<span class="hljs-string">'d'</span>);
-    <span class="hljs-built_in">console</span>.log(index4); <span class="hljs-comment">// -1</span>
-</code></pre>
+    <span class="hljs-keyword">var</span> index4 = arr.indexOf(<span class="hljs-string">&#x27;d&#x27;</span>);
+    <span class="hljs-built_in">console</span>.log(index4); <span class="hljs-comment">// -1</span></code></pre>
 <h4 id="join">join</h4>
 <p>将所有的数组元素连接成一个字符串。</p>
-<pre><code class="lang-javascript">    <span class="hljs-built_in">Array</span>.<span class="hljs-keyword">join</span>(<span class="hljs-built_in">string</span>)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-built_in">Array</span>.<span class="hljs-keyword">join</span>(<span class="hljs-built_in">string</span>)</code></pre>
+<h5 id="-5"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -286,27 +256,23 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>可选。于指定连接每个数组元素的分隔符。</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'b'</span>];
+</tbody></table>
+<h6 id="javascript-代码示例：-7">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>];
     <span class="hljs-keyword">var</span> str1 = arr.<span class="hljs-keyword">join</span>();
-    console.log(str1)  <span class="hljs-comment">// 'a,b,c,b'</span>
-    <span class="hljs-keyword">var</span> str2 = arr.<span class="hljs-keyword">join</span>(<span class="hljs-string">''</span>);
-    console.log(str2)  <span class="hljs-comment">// 'abcb'</span>
-    <span class="hljs-keyword">var</span> str3 = arr.<span class="hljs-keyword">join</span>(<span class="hljs-string">' + '</span>);
-    console.log(str3)  <span class="hljs-comment">// 'a + b + c + b'</span>
-</code></pre>
+    console.log(str1)  <span class="hljs-comment">// &#x27;a,b,c,b&#x27;</span>
+    <span class="hljs-keyword">var</span> str2 = arr.<span class="hljs-keyword">join</span>(<span class="hljs-string">&#x27;&#x27;</span>);
+    console.log(str2)  <span class="hljs-comment">// &#x27;abcb&#x27;</span>
+    <span class="hljs-keyword">var</span> str3 = arr.<span class="hljs-keyword">join</span>(<span class="hljs-string">&#x27; + &#x27;</span>);
+    console.log(str3)  <span class="hljs-comment">// &#x27;a + b + c + b&#x27;</span></code></pre>
 <h4 id="lastindexof">lastIndexOf</h4>
 <p>返回在数组中搜索到的与给定参数相等的元素的最后（最大）索引。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.lastIndexOf(searchElement,fromIndex)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>last<span class="hljs-constructor">IndexOf(<span class="hljs-params">searchElement</span>,<span class="hljs-params">fromIndex</span>)</span></code></pre>
+<h5 id="-6"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -314,8 +280,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>必需。位于数组中的元素。</td>
 </tr>
@@ -323,24 +288,21 @@
 <td>arguments[1]</td>
 <td>可选。默认值: arr.length - 1] (从此位置开始逆向查找)</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'b'</span>];
-    <span class="hljs-keyword">var</span> index1 = arr.lastIndexOf(<span class="hljs-string">'a'</span>);
+</tbody></table>
+<h6 id="javascript-代码示例示例：-2">javascript 代码示例示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>];
+    <span class="hljs-keyword">var</span> index1 = arr.lastIndexOf(<span class="hljs-string">&#x27;a&#x27;</span>);
     <span class="hljs-built_in">console</span>.log(index1); <span class="hljs-comment">// 0</span>
-    <span class="hljs-keyword">var</span> index2 = arr.lastIndexOf(<span class="hljs-string">'b'</span>,<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">var</span> index2 = arr.lastIndexOf(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">1</span>);
     <span class="hljs-built_in">console</span>.log(index2); <span class="hljs-comment">// 1</span>
-    <span class="hljs-keyword">var</span> index3 = arr.lastIndexOf(<span class="hljs-string">'b'</span>,<span class="hljs-number">3</span>);
+    <span class="hljs-keyword">var</span> index3 = arr.lastIndexOf(<span class="hljs-string">&#x27;b&#x27;</span>,<span class="hljs-number">3</span>);
     <span class="hljs-built_in">console</span>.log(index3); <span class="hljs-comment">// 3</span>
-    <span class="hljs-keyword">var</span> index4 = arr.lastIndexOf(<span class="hljs-string">'d'</span>);
-    <span class="hljs-built_in">console</span>.log(index4); <span class="hljs-comment">// -1</span>
-</code></pre>
+    <span class="hljs-keyword">var</span> index4 = arr.lastIndexOf(<span class="hljs-string">&#x27;d&#x27;</span>);
+    <span class="hljs-built_in">console</span>.log(index4); <span class="hljs-comment">// -1</span></code></pre>
 <h4 id="slice">slice</h4>
 <p>返回数组中的一段。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.slice(<span class="hljs-keyword">begin</span>,<span class="hljs-keyword">end</span>)
-</code></pre>
-<h5 id="-span-name-table-"><span name="table"/></h5>
+<pre><code class="language-javascript">    <span class="hljs-keyword">Array</span>.<span class="hljs-keyword">slice</span>(<span class="hljs-keyword">begin</span>,<span class="hljs-keyword">end</span>)</code></pre>
+<h5 id="-7"><span name="table"/></h5>
 <table>
 <thead>
 <tr>
@@ -348,8 +310,7 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>arguments[0]</td>
 <td>可选。从该索引处开始提取原数组中的元素（如果省略 arguments[0]从0开始，如果该参数为负数，则表示从原数组中的倒数第几个元素开始提取）</td>
 </tr>
@@ -357,37 +318,31 @@
 <td>arguments[1]</td>
 <td>可选。在该索引处结束提取原数组元素（从0开始，slice会提取原数组中索引不包含到arguments[1]）</td>
 </tr>
-</tbody>
-</table>
-<h6 id="javascript-">javascript 代码示例示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'b'</span>];
-    <span class="hljs-keyword">var</span> arr1 = arr.slice();
-    console.log(arr1); // [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"b"</span>]
-    <span class="hljs-keyword">var</span> arr2 = arr.slice(-<span class="hljs-number">2</span>);
-    console.log(arr2); // [<span class="hljs-string">"c"</span>, <span class="hljs-string">"b"</span>]
-    <span class="hljs-keyword">var</span> arr3 = arr.slice(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
-    console.log(arr3); // [<span class="hljs-string">"c"</span>]
-    <span class="hljs-keyword">var</span> arr4 = arr.slice(-<span class="hljs-number">3</span>,-<span class="hljs-number">1</span>);
-    console.log(arr4); // [<span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>]
-</code></pre>
+</tbody></table>
+<h6 id="javascript-代码示例示例：-3">javascript 代码示例示例：</h6>
+<pre><code class="language-javascript">    var arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>];
+    var arr1 = arr.slice();
+    console.log(arr1); <span class="hljs-regexp">//</span> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>]
+    var arr2 = arr.slice(-<span class="hljs-number">2</span>);
+    console.log(arr2); <span class="hljs-regexp">//</span> [<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>]
+    var arr3 = arr.slice(<span class="hljs-number">2</span>,<span class="hljs-number">3</span>);
+    console.log(arr3); <span class="hljs-regexp">//</span> [<span class="hljs-string">&quot;c&quot;</span>]
+    var arr4 = arr.slice(-<span class="hljs-number">3</span>,-<span class="hljs-number">1</span>);
+    console.log(arr4); <span class="hljs-regexp">//</span> [<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>]</code></pre>
 <h4 id="tostring">toString</h4>
 <p>返回代表该数组及其元素的字符,重写Object.toString 过程.</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.toString()
-</code></pre>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'b'</span>];
+<pre><code class="language-javascript">    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span><span class="hljs-keyword">to</span><span class="hljs-constructor">String()</span></code></pre>
+<h6 id="javascript-代码示例：-8">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>];
     <span class="hljs-keyword">var</span> str1 = arr.toString();
-    <span class="hljs-built_in">console</span>.log(str1)  <span class="hljs-comment">// 'a,b,c,b'</span>
-</code></pre>
+    <span class="hljs-built_in">console</span>.log(str1)  <span class="hljs-comment">// &#x27;a,b,c,b&#x27;</span></code></pre>
 <h4 id="valueof">valueOf</h4>
 <p>返回 Array 对象的原始值。</p>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">Array</span>.valueOf()
-</code></pre>
-<h6 id="javascript-">javascript 代码示例：</h6>
-<pre><code class="lang-javascript">    <span class="hljs-keyword">var</span> arr = [<span class="hljs-string">'a'</span>, <span class="hljs-string">'b'</span>, <span class="hljs-string">'c'</span>, <span class="hljs-string">'b'</span>];
-    <span class="hljs-keyword">var</span> str1 = arr.valueOf();
-    console.log(str1)  // [<span class="hljs-string">"a"</span>, <span class="hljs-string">"b"</span>, <span class="hljs-string">"c"</span>, <span class="hljs-string">"b"</span>]
-</code></pre>
+<pre><code class="language-javascript">    <span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">Array</span>.</span></span>value<span class="hljs-constructor">Of()</span></code></pre>
+<h6 id="javascript-代码示例：-9">javascript 代码示例：</h6>
+<pre><code class="language-javascript">    var arr = [<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>, <span class="hljs-string">&#x27;c&#x27;</span>, <span class="hljs-string">&#x27;b&#x27;</span>];
+    var str1 = arr.valueOf();
+    console.log(str1)  <span class="hljs-regexp">//</span> [<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-string">&quot;b&quot;</span>]</code></pre>
 
             </article>
             <div class="weixin">

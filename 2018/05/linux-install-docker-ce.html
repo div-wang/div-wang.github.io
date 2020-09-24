@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,82 +42,72 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="linux-docker">Linux 安装 Docker</h1>
+                <h1 id="linux-安装-docker">Linux 安装 Docker</h1>
 <blockquote>
 <p>很早就听说了docker，以前一直把docker理解为单纯的虚拟机，最近在部署服务的时候深入了解了下docker，决定写一个系列文章作为学习记录。</p>
 </blockquote>
-<p><div class="nav-list"></p>
-<h3 id="docker-">Docker系列文章</h3>
-<p><a href="/2018/05/linux-install-docker-ce.html">Linux 安装 Docker</a>
-<a href="/2018/05/build-git-server-using-gogs-docker-image.html">使用Docker Gogs搭建git服务</a>
-<a href="/2018/05/run-mongoDB-with-docker.html">利用 Docker 运行 MongoDB</a></p>
-<h2 id="-div-"></div></h2>
-<h2 id="debain-docker">debain如何安装docker</h2>
+<div class="nav-list">
+### Docker系列文章
+[Linux 安装 Docker](/2018/05/linux-install-docker-ce.html)
+[使用Docker Gogs搭建git服务](/2018/05/build-git-server-using-gogs-docker-image.html)
+[利用 Docker 运行 MongoDB](/2018/05/run-mongoDB-with-docker.html)
+</div>
+---
+
+<h2 id="debain如何安装docker">debain如何安装docker</h2>
 <p>一如既往的使用debain + apt-get方式安装docker，这样做安装方便，容易升级，并随时跟进最新版本，也方便版本回滚。</p>
-<h3 id="-apt-https">安装软件包让apt支持HTTPS</h3>
-<pre><code class="lang-bash"><span class="hljs-symbol">sudo</span> apt-<span class="hljs-meta">get</span> install apt-transport-https ca-certificates curl gnupg2 software-properties-<span class="hljs-meta">common</span>
-</code></pre>
-<h3 id="-docker-gpg-key">添加docker官方GPG KEY</h3>
-<pre><code class="lang-bash"><span class="hljs-regexp">//</span> $(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">"$ID"</span>) 获取Linux发行版本
-curl -fsSL https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>$(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">"$ID"</span>)<span class="hljs-regexp">/gpg | sudo apt-key add -</span>
-</code></pre>
-<h3 id="-">指纹验证</h3>
-<pre><code class="lang-bash"><span class="hljs-comment">// 这里是Debian 9.0</span>
-sudo apt-<span class="hljs-type">key</span> fingerprint <span class="hljs-number">0</span>EBFCD88
-</code></pre>
+<h3 id="安装软件包让apt支持https">安装软件包让apt支持HTTPS</h3>
+<pre><code class="language-bash"><span class="hljs-symbol">sudo</span> apt-<span class="hljs-meta">get</span> install apt-transport-https ca-certificates curl gnupg2 software-properties-<span class="hljs-meta">common</span></code></pre>
+<h3 id="添加docker官方gpg-key">添加docker官方GPG KEY</h3>
+<pre><code class="language-bash"><span class="hljs-regexp">//</span> $(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">&quot;$ID&quot;</span>) 获取Linux发行版本
+curl -fsSL https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>$(. <span class="hljs-regexp">/etc/</span>os-release;echo<span class="hljs-string">&quot;$ID&quot;</span>)/gpg | sudo apt-key add -</code></pre>
+<h3 id="指纹验证">指纹验证</h3>
+<pre><code class="language-bash"><span class="hljs-comment">// 这里是Debian 9.0</span>
+sudo apt-key fingerprint <span class="hljs-number">0</span>EBFCD88</code></pre>
 <p>是否输出：<code>9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88</code></p>
-<h3 id="-apt-">添加apt镜像仓库</h3>
-<h4 id="x86_64-">x86_64:</h4>
-<pre><code class="lang-bash">  sudo<span class="hljs-built_in"> add-apt-repository </span>\ <span class="hljs-string">"deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release;echo"</span>$ID<span class="hljs-string">") \ $(lsb_release -cs) \ stable"</span>
-</code></pre>
-<h4 id="armhf-">armhf:</h4>
-<pre><code class="lang-bash">  <span class="hljs-keyword">echo</span> <span class="hljs-string">"deb [arch=armhf] https://download.docker.com/linux/$(. /etc/os-release;echo"</span>$ID<span class="hljs-string">")\ $(lsb_release -cs) stable"</span> | \
-  sudo tee /etc/apt/sources.<span class="hljs-keyword">list</span>.d/docker.<span class="hljs-keyword">list</span>
-</code></pre>
-<h3 id="-docker-ce">安装docker CE</h3>
-<pre><code class="lang-bash">sudo apt-<span class="hljs-built_in">get</span> <span class="hljs-keyword">update</span>
-sudo apt-<span class="hljs-built_in">get</span> install docker-<span class="hljs-keyword">ce</span>
-</code></pre>
-<h4 id="docker-17-03-ce-community-edition-ee-enterprise-edition-">Docker 从 17.03版本之后分为 CE（Community Edition） 和 EE（Enterprise Edition））</h4>
+<h3 id="添加apt镜像仓库">添加apt镜像仓库</h3>
+<h4 id="x86_64">x86_64:</h4>
+<pre><code class="language-bash">  sudo<span class="hljs-built_in"> add-apt-repository </span>\ <span class="hljs-string">&quot;deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release;echo&quot;</span>$ID<span class="hljs-string">&quot;) \ $(lsb_release -cs) \ stable&quot;</span></code></pre>
+<h4 id="armhf">armhf:</h4>
+<pre><code class="language-bash">  echo <span class="hljs-string">&quot;deb [arch=armhf] https://download.docker.com/linux/$(. /etc/os-release;echo&quot;</span><span class="hljs-variable">$ID</span><span class="hljs-string">&quot;)\ $(lsb_release -cs) stable&quot;</span> | \
+  sudo tee <span class="hljs-regexp">/etc/</span>apt<span class="hljs-regexp">/sources.list.d/</span>docker.list</code></pre>
+<h3 id="安装docker-ce">安装docker CE</h3>
+<pre><code class="language-bash">sudo apt-<span class="hljs-builtin-name">get</span> update
+sudo apt-<span class="hljs-builtin-name">get</span> install docker-ce</code></pre>
+<h4 id="docker-从-1703版本之后分为-ce（community-edition）-和-ee（enterprise-edition））">Docker 从 17.03版本之后分为 CE（Community Edition） 和 EE（Enterprise Edition））</h4>
 <p>Docker以后会以CE（Community Edition）和EE（Enterprise Edition）的形式发布。其中，CE版本每个月发布一次，也就是说，随后的版本就是17.03、17.04、17.05等，而EE的版本是没三个月发布一次，对应的就是17.03、17.06等。对于发布的每个EE版本，Docker官网都会提供一年的技术支持。 </p>
-<h2 id="content-os-docker">contentOS 如何安装docker</h2>
+<h2 id="contentos-如何安装docker">contentOS 如何安装docker</h2>
 <p>因为最新的代码部署到了content os服务器上，所以这里也提供了yum的安装步骤。</p>
-<h3 id="yum-">yum 默认源安装</h3>
+<h3 id="yum-默认源安装">yum 默认源安装</h3>
 <p>Docker 软件包和依赖包已经包含在默认的 CentOS-Extras 软件源里，版本是1.13.1，不是最新版本。安装命令如下：</p>
-<pre><code class="lang-bash">yum -y <span class="hljs-keyword">install</span> docker-io
-</code></pre>
-<h3 id="docker-">docker官方推荐安装</h3>
+<pre><code class="language-bash">yum -y <span class="hljs-keyword">install</span> docker-io</code></pre>
+<h3 id="docker官方推荐安装">docker官方推荐安装</h3>
 <p>使用官方推荐安装方式可以更新到最新docker版本</p>
-<h4 id="-">卸载老版本:</h4>
-<pre><code class="lang-bash">  sudo yum remove docker <span class="hljs-string">\</span>
-                  docker-client <span class="hljs-string">\</span>
-                  docker-client-latest <span class="hljs-string">\</span>
-                  docker-common <span class="hljs-string">\</span>
-                  docker-latest <span class="hljs-string">\</span>
-                  docker-latest-logrotate <span class="hljs-string">\</span>
-                  docker-logrotate <span class="hljs-string">\</span>
-                  docker-selinux <span class="hljs-string">\</span>
-                  docker-engine-selinux <span class="hljs-string">\</span>
-                  docker-engine
-</code></pre>
-<h4 id="-">安装依赖包</h4>
+<h4 id="卸载老版本">卸载老版本:</h4>
+<pre><code class="language-bash">  <span class="hljs-attr">sudo</span> <span class="hljs-string">yum remove docker \
+                  docker-client \
+                  docker-client-latest \
+                  docker-common \
+                  docker-latest \
+                  docker-latest-logrotate \
+                  docker-logrotate \
+                  docker-selinux \
+                  docker-engine-selinux \
+                  docker-engine</span></code></pre>
+<h4 id="安装依赖包">安装依赖包</h4>
 <p><code>yum-utils</code>提供<code>yum-config-manager</code>实用程序，devicemapper-storage-driver驱动程序需要<code>device-mapper-persistent-data</code>和<code>lvm2</code></p>
-<pre><code class="lang-bash">  sudo yum install -y yum-utils \
-                      device-mapper-persistent-<span class="hljs-class"><span class="hljs-keyword">data</span> \</span>
-                      lvm2
-</code></pre>
-<h4 id="-docker-">更新docker稳定版本库</h4>
-<pre><code class="lang-bash">  sudo yum-config-manager --<span class="hljs-built_in">add</span>-repo http<span class="hljs-variable">s:</span>//download.docker.<span class="hljs-keyword">com</span>/linux/centos/docker-<span class="hljs-keyword">ce</span>.repo
-</code></pre>
-<h4 id="-">也可以开启或关闭最新测试版</h4>
-<pre><code class="lang-bash">  <span class="hljs-comment"># 开启最新测试版本库</span>
+<pre><code class="language-bash">  <span class="hljs-attr">sudo</span> <span class="hljs-string">yum install -y yum-utils \
+                      device-mapper-persistent-data \
+                      lvm2</span></code></pre>
+<h4 id="更新docker稳定版本库">更新docker稳定版本库</h4>
+<pre><code class="language-bash">  sudo yum-config-manager --add-repo https:<span class="hljs-regexp">//</span>download.docker.com<span class="hljs-regexp">/linux/</span>centos/docker-ce.repo</code></pre>
+<h4 id="也可以开启或关闭最新测试版">也可以开启或关闭最新测试版</h4>
+<pre><code class="language-bash">  <span class="hljs-comment"># 开启最新测试版本库</span>
   sudo yum-<span class="hljs-built_in">config</span>-manager --enable docker-ce-test
   <span class="hljs-comment"># 关闭最新测试版本库</span>
-  sudo yum-<span class="hljs-built_in">config</span>-manager --<span class="hljs-keyword">disable </span>docker-ce-test
-</code></pre>
-<h4 id="-docker-ce">安装最新版本的Docker CE</h4>
-<pre><code class="lang-bash">  sudo yum <span class="hljs-keyword">install</span> docker-ce
-</code></pre>
+  sudo yum-<span class="hljs-built_in">config</span>-manager --<span class="hljs-keyword">disable </span>docker-ce-test</code></pre>
+<h4 id="安装最新版本的docker-ce">安装最新版本的Docker CE</h4>
+<pre><code class="language-bash">  sudo yum <span class="hljs-keyword">install</span> docker-ce</code></pre>
 
             </article>
             <div class="weixin">

@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,11 +42,11 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="vim-">vim常用操作命令</h1>
+                <h1 id="vim常用操作命令">vim常用操作命令</h1>
 <blockquote>
 <p>vi 是 unix/linux 下极为普遍的一种文本编辑器. 记录一些比较常用的命令</p>
 </blockquote>
-<h2 id="-">一般模式</h2>
+<h2 id="一般模式">一般模式</h2>
 <table>
 <thead>
 <tr>
@@ -53,8 +54,7 @@
 <th>操作详情</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>x,X</code></td>
 <td><code>x</code>为向后删除一个字符，<code>X</code>为先前删除一个字符</td>
 </tr>
@@ -190,9 +190,8 @@
 <td><code>?word</code></td>
 <td>在光标之前查找word字符串</td>
 </tr>
-</tbody>
-</table>
-<h2 id="-">末行模式</h2>
+</tbody></table>
+<h2 id="末行模式">末行模式</h2>
 <table>
 <thead>
 <tr>
@@ -200,8 +199,7 @@
 <th>操作详情</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>:s/word1/word2/g</code></td>
 <td>在光标当前行查找word1，并替换成word2</td>
 </tr>
@@ -249,9 +247,8 @@
 <td><code>:n1,n2 w [filename]</code></td>
 <td>将n1到n2行的内容保存到名为filename的文件中</td>
 </tr>
-</tbody>
-</table>
-<h2 id="-">编辑模式命令</h2>
+</tbody></table>
+<h2 id="编辑模式命令">编辑模式命令</h2>
 <table>
 <thead>
 <tr>
@@ -259,8 +256,7 @@
 <th>操作详情</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td><code>i,I</code></td>
 <td><code>i</code>为在当前光标所在处插入输入的文字，<code>I</code>为在光标所在行第一个非空字符插入输入的文字</td>
 </tr>
@@ -280,13 +276,12 @@
 <td><code>Esc</code></td>
 <td>退出，回到一般模式</td>
 </tr>
-</tbody>
-</table>
-<h2 id="js-">js命令说明</h2>
+</tbody></table>
+<h2 id="js命令说明">js命令说明</h2>
 <blockquote>
 <p>ctrl+s是一个古老的shell控制键，在输入ctrl+q就可以恢复了</p>
 </blockquote>
-<pre><code class="lang-javascript">// First Level
+<pre><code class="language-javascript">// First Level
 i → <span class="hljs-keyword">Insert</span> mode. <span class="hljs-keyword">Type</span> ESC <span class="hljs-keyword">to</span> <span class="hljs-keyword">return</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">Normal</span> mode.
 x → <span class="hljs-keyword">Delete</span> the <span class="hljs-built_in">char</span> <span class="hljs-keyword">under</span> the <span class="hljs-keyword">cursor</span>
 :wq → <span class="hljs-keyword">Save</span> <span class="hljs-keyword">and</span> Quit (:w <span class="hljs-keyword">save</span>, :q quit)
@@ -355,7 +350,7 @@ E → <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> 
 
 <span class="hljs-comment">/*** /Pattern find Next by #(*) or find ( then % to next ) ***/</span>
 % : <span class="hljs-keyword">Go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">corresponding</span> (, {, [.
-* (resp. #) : <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">next</span> (resp. previous) occurrence <span class="hljs-keyword">of</span> the word <span class="hljs-keyword">under</span> the <span class="hljs-keyword">cursor</span>
+* (resp. <span class="hljs-comment">#) : go to next (resp. previous) occurrence of the word under the cursor</span>
 
 <span class="hljs-comment">/*** &lt;start position&gt;&lt;command&gt;&lt;end position&gt; ***/</span>
 
@@ -367,6 +362,7 @@ $ → up <span class="hljs-keyword">to</span> the <span class="hljs-keyword">end
 
 // Tip <span class="hljs-keyword">with</span> postition-comand-<span class="hljs-keyword">position</span>
 But what was <span class="hljs-literal">true</span> <span class="hljs-keyword">for</span> y (yank), <span class="hljs-keyword">is</span> also <span class="hljs-literal">true</span> <span class="hljs-keyword">for</span> d (<span class="hljs-keyword">delete</span>), v (visual <span class="hljs-keyword">select</span>), gU (uppercase), gu (lowercase), etc…
+
 </code></pre>
 
             </article>

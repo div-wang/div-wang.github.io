@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,69 +42,63 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="js-">js操作剪切板复制粘贴</h1>
+                <h1 id="js操作剪切板复制粘贴">js操作剪切板复制粘贴</h1>
 <blockquote>
 <p>最近写一个js复制文本内容的功能，在网上搜了一圈，发大部分文章都是比较老旧的，有的甚至是flash复制。</p>
 </blockquote>
 <p>截至2016年，clipboard API还在发展中，很多规范已经更新，市面上大部分文章都是比较老的API，很大一部分被抛弃。</p>
-<h2 id="-event-clipboarddata-setdata-">使用event.clipboardData.setData()复制到剪切板</h2>
+<h2 id="使用eventclipboarddatasetdata复制到剪切板">使用event.clipboardData.setData()复制到剪切板</h2>
 <p>在<code>copy</code>可以使用 event.clipboardData.setData() 更改剪贴板内容。</p>
 <p>请注意，为了防止event事件默认操作被浏览器覆盖，需要阻止默认事件：</p>
-<pre><code class="lang-js">  <span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">'copy'</span>，<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>)</span>{
-    e.preventDefault(); <span class="hljs-comment">//默认行为是复制所选文本</span>
-    e.clipboardData.setData(<span class="hljs-string">'text/plain'</span>，<span class="hljs-string">'foo'</span>);
-  });
-</code></pre>
-<h2 id="-execcommand-">使用execCommand触发复制事件</h2>
+<pre><code class="language-js">  document.add<span class="hljs-constructor">EventListener(&#x27;<span class="hljs-params">copy</span>&#x27;，<span class="hljs-params">function</span>(<span class="hljs-params">e</span>)</span>{
+    e.prevent<span class="hljs-constructor">Default()</span>; <span class="hljs-comment">//默认行为是复制所选文本</span>
+    e.clipboardData.set<span class="hljs-constructor">Data(&#x27;<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">plain</span>&#x27;，&#x27;<span class="hljs-params">foo</span>&#x27;)</span>;
+  });</code></pre>
+<h2 id="使用execcommand触发复制事件">使用execCommand触发复制事件</h2>
 <p>如果需要触发复制事件(而不仅仅是通过浏览器UI处理用户复制的请求)，则必须使用document.execCommand(&#39;copy&#39;)。</p>
-<pre><code class="lang-js">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"copyBtn"</span>).onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
-    <span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">'copy'</span>);
-  }
-</code></pre>
+<pre><code class="language-js">  <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&quot;copyBtn&quot;</span>).onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    <span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">&#x27;copy&#x27;</span>);
+  }</code></pre>
 <p>出发事件后还需要删除当前copy事件的绑定</p>
-<pre><code class="lang-js">  let <span class="hljs-keyword">copy</span><span class="bash"> = (e) =&gt; {
-</span>    e.preventDefault()
-    e.clipboardData.setData(<span class="hljs-string">'text/plain'</span>, url || <span class="hljs-string">''</span>)
-    e.clipboardData.setData(<span class="hljs-string">'text/html'</span>, url || <span class="hljs-string">''</span>)
+<pre><code class="language-js">  <span class="hljs-keyword">let</span> copy =<span class="hljs-function"> (<span class="hljs-params">e</span>) =&gt;</span> {
+    e.prevent<span class="hljs-constructor">Default()</span>
+    e.clipboardData.set<span class="hljs-constructor">Data(&#x27;<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">plain</span>&#x27;, <span class="hljs-params">url</span> <span class="hljs-operator">||</span> &#x27;&#x27;)</span>
+    e.clipboardData.set<span class="hljs-constructor">Data(&#x27;<span class="hljs-params">text</span><span class="hljs-operator">/</span><span class="hljs-params">html</span>&#x27;, <span class="hljs-params">url</span> <span class="hljs-operator">||</span> &#x27;&#x27;)</span>
   }
-  document.addEventListener(<span class="hljs-string">'copy'</span>, <span class="hljs-keyword">copy</span><span class="bash">, <span class="hljs-literal">false</span>)
-</span>  document.execCommand(<span class="hljs-string">'copy'</span>)
-  document.removeEventListener(<span class="hljs-string">'copy'</span>, <span class="hljs-keyword">copy</span><span class="bash">)</span>
-</code></pre>
-<h2 id="-clipboard-api-">浏览器对clipboard API支持情况</h2>
+  document.add<span class="hljs-constructor">EventListener(&#x27;<span class="hljs-params">copy</span>&#x27;, <span class="hljs-params">copy</span>, <span class="hljs-params">false</span>)</span>
+  document.exec<span class="hljs-constructor">Command(&#x27;<span class="hljs-params">copy</span>&#x27;)</span>
+  document.remove<span class="hljs-constructor">EventListener(&#x27;<span class="hljs-params">copy</span>&#x27;, <span class="hljs-params">copy</span>)</span></code></pre>
+<h2 id="浏览器对clipboard-api支持情况">浏览器对clipboard API支持情况</h2>
 <ul>
 <li>Firefox支持<code>copy/cut/paste</code>事件(Firefox 22+)和<code>execCommand(&#39;copy&#39;)</code>用户操作(Firefox 41+)。</li>
 <li>Chrome也支持<code>copy/cut/paste</code>和<code>execCommand(&#39;copy&#39;)</code>(Chrome 42+)。</li>
 <li>caniuse.com声称Safari(截至9.1)不支持<code>execCommand(&#39;copy&#39;)</code>。</li>
 <li>微软的IE和Edge不支持clipboard API，可以使用微软自己的API:</li>
 </ul>
-<pre><code class="lang-js">  <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">'Text'</span>, <span class="hljs-built_in">url</span> || <span class="hljs-string">''</span>)
-</code></pre>
-<h2 id="-2017-07-27-">------------ 2017-07-27 更新 ------------</h2>
+<pre><code class="language-js">  <span class="hljs-built_in">window</span>.clipboardData.setData(<span class="hljs-string">&#x27;Text&#x27;</span>, <span class="hljs-built_in">url</span> || <span class="hljs-string">&#x27;&#x27;</span>)</code></pre>
+<h2 id="-------------2017-07-27-更新-------------">------------ 2017-07-27 更新 ------------</h2>
 <p>最近发现在Safari中document.execCommand(&#39;copy&#39;)限制了必须由用户触发才有效，所以在Safari中document.execCommand(&#39;copy&#39;)一直返回false</p>
 <blockquote>
 <p>It looks like the copied text gets returned properly by the event, but the document.execCommand(&#39;copy&#39;) always returns false in Safari. Safari doesn&#39;t support the execCommand API as mentioned at the bottom of the <a href="https://clipboardjs.com/">Clipboard.js documentation</a>.</p>
 </blockquote>
 <p>于是经过反复试错，最终决定使用兼容性最好的input.select()</p>
-<h4 id="-">完整代码</h4>
-<pre><code class="lang-html">&lt;input type=<span class="hljs-string">"text"</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">"copyInput"</span> <span class="hljs-built_in">id</span>=<span class="hljs-string">"copyInput"</span> style=<span class="hljs-string">"position:absolute;opacity: 0;"</span>&gt;
-</code></pre>
-<pre><code class="lang-js"><span class="hljs-keyword">const</span> copyUrl = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> {
+<h4 id="完整代码">完整代码</h4>
+<pre><code class="language-html">&lt;input <span class="hljs-attribute">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attribute">name</span>=<span class="hljs-string">&quot;copyInput&quot;</span> <span class="hljs-attribute">id</span>=<span class="hljs-string">&quot;copyInput&quot;</span> <span class="hljs-attribute">style</span>=<span class="hljs-string">&quot;position:absolute;opacity: 0;&quot;</span>&gt;</code></pre>
+<pre><code class="language-js"><span class="hljs-keyword">const</span> copyUrl = <span class="hljs-function">(<span class="hljs-params">text</span>) =&gt;</span> {
   <span class="hljs-keyword">try</span> {
-    <span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'copyInput'</span>)
+    <span class="hljs-keyword">var</span> input = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">&#x27;copyInput&#x27;</span>)
     input.value = text
     input.focus()
     input.select()
-    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">'copy'</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>)) {
-      alert(<span class="hljs-string">'复制成功'</span>)
+    <span class="hljs-keyword">if</span> (<span class="hljs-built_in">document</span>.execCommand(<span class="hljs-string">&#x27;copy&#x27;</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">null</span>)) {
+      alert(<span class="hljs-string">&#x27;复制成功&#x27;</span>)
     } <span class="hljs-keyword">else</span> {
-      alert(<span class="hljs-string">'当前浏览器不支持复制操作，请使用Ctrl+c手动复制'</span>)
+      alert(<span class="hljs-string">&#x27;当前浏览器不支持复制操作，请使用Ctrl+c手动复制&#x27;</span>)
     }
   } <span class="hljs-keyword">catch</span> (e) {
     alert(<span class="hljs-string">`复制出错：<span class="hljs-subst">${e}</span>`</span>)
   }
-}
-</code></pre>
+}</code></pre>
 
             </article>
             <div class="weixin">

@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,11 +42,11 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="macos-">macOS 微信双开、撤回拦截</h1>
+                <h1 id="macos-微信双开、撤回拦截">macOS 微信双开、撤回拦截</h1>
 <blockquote>
 <p>我门都知道安卓手机 root 后可以双开微信、撤回拦截微信消息这些功能，今天这些功能也被移植到 mac 上来了。</p>
 </blockquote>
-<h2 id="-">简单的介绍</h2>
+<h2 id="简单的介绍">简单的介绍</h2>
 <p><strong>WeChatTweak</strong>不仅可以拦截微信消息，双开微信，还能够免手机认证登录，真是方便的一逼。
 <img src="/static/img/mac-os-wechat/WX20180801-111352@2x.png" alt=""></p>
 <p><strong>WeChatTweak</strong>亲测，macOS 10.14 Mojave系统可以正常使用。</p>
@@ -56,38 +57,34 @@
 <p>大神的反编译技术相当厉害，ios er 可以多看看他的blog <a href="https://blog.sunnyyoung.net/">「Sunnyyoung&#39;s Blog」</a> 
 项目地址：<a href="https://github.com/Sunnyyoung/WeChatTweak-macOS">WeChatTweak-macOS</a>
 还有个QQ的兄弟项目：<a href="https://github.com/Sunnyyoung/QQTweak-macOS">QQTweak-macOS</a></p>
-<h2 id="-">安装</h2>
-<h4 id="1-git-">1、通过git命令安装</h4>
+<h2 id="安装">安装</h2>
+<h4 id="1、通过git命令安装">1、通过git命令安装</h4>
 <p>打开终端窗口，执行以下命令：</p>
-<pre><code class="lang-bash">git clone http<span class="hljs-variable">s:</span>//github.<span class="hljs-keyword">com</span>/Sunnyyoung/WeChatTweak-macOS.git \
-  &amp;&amp; <span class="hljs-keyword">cd</span> WeChatTweak-macOS \
-  &amp;&amp; sudo <span class="hljs-keyword">make</span> install
-</code></pre>
+<pre><code class="language-bash">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/Sunnyyoung/</span>WeChatTweak-macOS.git \
+  &amp;&amp; cd WeChatTweak-macOS \
+  &amp;&amp; sudo make install</code></pre>
 <p>结果提示 Install successfully! 则安装成功！</p>
-<h4 id="2-zip-">2、下载zip包安装</h4>
+<h4 id="2、下载zip包安装">2、下载zip包安装</h4>
 <p>直接点击下载 zip 文件： 
 <img src="https://camo.githubusercontent.com/921744c74963771cefaa9d0020b9897963134079/68747470733a2f2f692e6c6f6c692e6e65742f323031372f30392f30322f353961613864666365333434622e706e67" alt="下载zip">
 解压到当前指定文件夹，我是解压到<code>~/Downloads/</code>目录下，然后执行命令：</p>
-<pre><code class="lang-bash"><span class="hljs-keyword">cd</span> ~/Downloads/WeChatTweak-macOS \
-    &amp;&amp; sudo <span class="hljs-keyword">make</span> install
-</code></pre>
+<pre><code class="language-bash">cd ~<span class="hljs-regexp">/Downloads/</span>WeChatTweak-macOS \
+    &amp;&amp; sudo make install</code></pre>
 <p>结果提示 Install successfully! 则安装成功！</p>
-<h2 id="-">卸载</h2>
+<h2 id="卸载">卸载</h2>
 <p>进入项目文件夹，然后执行：</p>
-<pre><code class="lang-bash"><span class="hljs-attribute">  sudo make uninstall</span>
-</code></pre>
+<pre><code class="language-bash"><span class="hljs-attribute">  sudo make uninstall</span></code></pre>
 <p>即可卸载成功</p>
-<h2 id="-macos-alfred">微信 macOS 客户端支持 Alfred</h2>
-<h5 id="wechat-alfredworkflow">WeChat.alfredworkflow</h5>
+<h2 id="微信-macos-客户端支持-alfred">微信 macOS 客户端支持 Alfred</h2>
+<h5 id="wechatalfredworkflow">WeChat.alfredworkflow</h5>
 <p>Alfred 作为 macOS 平台上的效率神器，能够提升效率与体验， <a href="https://github.com/Sunnyyoung">sunnyyoung</a> 大神也写了一个 <a href="https://github.com/Sunnyyoung/WeChatTweak-macOS/blob/master/WeChat.alfredworkflow">WeChat.alfredworkflow</a>。  </p>
 <blockquote>
 <p>通过 Alfred 模糊搜索联系人并快速跳转到对应聊天界面</p>
 </blockquote>
 <p>使用命令打开项目中的 WeChat.alfredworkflow 文件：</p>
-<pre><code class="lang-bash">  <span class="hljs-built_in">open</span> WeChatTweak-macOS/WeChat.alfredworkflow
-</code></pre>
+<pre><code class="language-bash">  <span class="hljs-keyword">open</span> WeChatTweak-macOS/<span class="hljs-module-access"><span class="hljs-module"><span class="hljs-identifier">WeChat</span>.</span></span>alfredworkflow</code></pre>
 <p>将 WeChat.alfredworkflow 添加到 Alfred</p>
-<h5 id="-">最终效果</h5>
+<h5 id="最终效果">最终效果</h5>
 <p><img src="/static/img/mac-os-wechat/WX20180801-102554@2x.png" alt=""></p>
 
             </article>

@@ -12,7 +12,7 @@
             <title><![CDATA[Div-wang的博客]]></title>
             <link>https://blog.div-wang.com/</link>
         </image>
-        <lastBuildDate>&#34;2018-09-18T11:50:25.783Z&#34;</lastBuildDate>
+        <lastBuildDate>&#34;2020-09-24T06:04:56.187Z&#34;</lastBuildDate>
         <ttl> 600 </ttl>
         
         <item>
@@ -227,7 +227,7 @@
             <link>https://blog.div-wang.com/2016/03/javascript-coding-standards.html</link>
             <author><![CDATA[Div]]></author>
             <pubDate>2016-03-25</pubDate>
-            <description><![CDATA[&#60;strong&#62; 1、变量、方法命名必须匹配正则：/^[$_a-zA-Z]\w*$/ &#60;/strong&#62;]]></description>
+            <description><![CDATA[** 1、变量、方法命名必须匹配正则：/^[$_a-zA-Z]\w*$/ **]]></description>
             <guid>https://blog.div-wang.com/2016/03/javascript-coding-standards.html</guid>
         </item>
         

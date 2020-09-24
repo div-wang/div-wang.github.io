@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,22 +42,21 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="git-shell-">git shell 技巧</h1>
+                <h1 id="git-shell-技巧">git shell 技巧</h1>
 <blockquote>
 <p>git作为常用的代码管理工具，有些shell脚本可以大大提高使用git的效率，本文主要介绍一下我常用的一些shell技巧。</p>
 </blockquote>
-<h2 id="git-shell-">git shell 自动补全</h2>
-<h5 id="-bash-shell-git-">如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本</h5>
+<h2 id="git-shell-自动补全">git shell 自动补全</h2>
+<h5 id="如果你用的是-bash-shell，可以试试看-git-提供的自动补全脚本">如果你用的是 Bash shell，可以试试看 Git 提供的自动补全脚本</h5>
 <ul>
 <li>git的源代码包里有个自动补全的shell脚本：
 <code>contrib/completion／git-completion.bash</code></li>
 <li>把这个文件保存到<code>~/.git-completion.bash</code>，</li>
-<li>然后在<code>.bash_profile</code>中加入一行<pre><code class="lang-bash">  source ~/<span class="hljs-selector-class">.git-completion</span><span class="hljs-selector-class">.bash</span>
-</code></pre>
+<li>然后在<code>.bash_profile</code>中加入一行<pre><code class="language-bash">  <span class="hljs-built_in">source</span> ~/.git-completion.bash</code></pre>
 </li>
 <li>重启终端即可使用</li>
 </ul>
-<h5 id="-">也可以为系统上所有用户都设置默认使用此脚本。</h5>
+<h5 id="也可以为系统上所有用户都设置默认使用此脚本。">也可以为系统上所有用户都设置默认使用此脚本。</h5>
 <ul>
 <li>脚本复制到本机<ul>
 <li>Mac <code>/opt/local/etc/bash_completion.d</code> 目录中，</li>
@@ -68,48 +68,45 @@
 </li>
 </ul>
 <p><a href="https://git-scm.com/book/zh/v1/Git-%E5%9F%BA%E7%A1%80-%E6%8A%80%E5%B7%A7%E5%92%8C%E7%AA%8D%E9%97%A8">2.7 Git 基础 - 技巧和窍门</a></p>
-<h2 id="-git-">设置Git命令别名</h2>
-<h5 id="-bash_profile-">打开<code>.bash_profile</code>文件</h5>
-<pre><code class="lang-bash">    <span class="hljs-attribute">vi</span> ~/.bash_profile
-</code></pre>
-<h5 id="-">设置以下别名</h5>
-<pre><code class="lang-bash">    <span class="hljs-keyword">alias</span> <span class="hljs-title">gst</span>=<span class="hljs-comment">'git status'</span>
+<h2 id="设置git命令别名">设置Git命令别名</h2>
+<h5 id="打开bash_profile-文件">打开<code>.bash_profile </code>文件</h5>
+<pre><code class="language-bash">    vi ~<span class="hljs-string">/.bash_profile</span></code></pre>
+<h5 id="设置以下别名">设置以下别名</h5>
+<pre><code class="language-bash">    <span class="hljs-keyword">alias</span> <span class="hljs-title">gst</span>=<span class="hljs-comment">&#x27;git status&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcom</span>=<span class="hljs-comment">'git commit -m'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcom</span>=<span class="hljs-comment">&#x27;git commit -m&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gadd</span>=<span class="hljs-comment">'git add .'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gadd</span>=<span class="hljs-comment">&#x27;git add .&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">push</span>=<span class="hljs-comment">'git push origin'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">push</span>=<span class="hljs-comment">&#x27;git push origin&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">pull</span>=<span class="hljs-comment">'git pull origin'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">pull</span>=<span class="hljs-comment">&#x27;git pull origin&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gb</span>=<span class="hljs-comment">'git branch'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gb</span>=<span class="hljs-comment">&#x27;git branch&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gba</span>=<span class="hljs-comment">'git branch -a'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gba</span>=<span class="hljs-comment">&#x27;git branch -a&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gbd</span>=<span class="hljs-comment">'git branch -D'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gbd</span>=<span class="hljs-comment">&#x27;git branch -D&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">glog</span>=<span class="hljs-comment">'git log'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">glog</span>=<span class="hljs-comment">&#x27;git log&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gc</span>=<span class="hljs-comment">'git checkout'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gc</span>=<span class="hljs-comment">&#x27;git checkout&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcb</span>=<span class="hljs-comment">'git checkout -b'</span>
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcb</span>=<span class="hljs-comment">&#x27;git checkout -b&#x27;</span>
 
-    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcf</span>=<span class="hljs-comment">'git checkout -f'</span>
-</code></pre>
-<h5 id="-shel-">也可以设置其他shel命令别名</h5>
-<pre><code class="lang-bash"><span class="hljs-keyword">alias</span> pss=<span class="hljs-symbol">'ps</span> -ef|grep'
+    <span class="hljs-keyword">alias</span> <span class="hljs-title">gcf</span>=<span class="hljs-comment">&#x27;git checkout -f&#x27;</span></code></pre>
+<h5 id="也可以设置其他shel命令别名">也可以设置其他shel命令别名</h5>
+<pre><code class="language-bash"><span class="hljs-keyword">alias</span> pss=<span class="hljs-symbol">&#x27;ps</span> -ef|grep&#x27;
 
-<span class="hljs-keyword">alias</span> k9=<span class="hljs-symbol">'kill</span> -<span class="hljs-number">9</span>'
+<span class="hljs-keyword">alias</span> k9=<span class="hljs-symbol">&#x27;kill</span> -<span class="hljs-number">9</span>&#x27;
 
-<span class="hljs-keyword">alias</span> chmod7=<span class="hljs-symbol">'chmod</span> -R <span class="hljs-number">777</span>'
+<span class="hljs-keyword">alias</span> chmod7=<span class="hljs-symbol">&#x27;chmod</span> -R <span class="hljs-number">777</span>&#x27;
 
-<span class="hljs-keyword">alias</span> grep=<span class="hljs-symbol">'grep</span> <span class="hljs-comment">--color'</span>
+<span class="hljs-keyword">alias</span> grep=<span class="hljs-symbol">&#x27;grep</span> <span class="hljs-comment">--color&#x27;</span>
 
-<span class="hljs-keyword">alias</span> ll=<span class="hljs-symbol">'ls</span> -l'
+<span class="hljs-keyword">alias</span> ll=<span class="hljs-symbol">&#x27;ls</span> -l&#x27;
 
-<span class="hljs-keyword">alias</span> rm=<span class="hljs-symbol">'rm</span> -i'
-</code></pre>
+<span class="hljs-keyword">alias</span> rm=<span class="hljs-symbol">&#x27;rm</span> -i&#x27;</code></pre>
 
             </article>
             <div class="weixin">

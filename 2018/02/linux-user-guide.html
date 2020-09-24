@@ -26,6 +26,7 @@
 
   gtag('config', 'UA-111523348-1');
 </script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         </head>
         <body>
             <header class="header animate">
@@ -41,125 +42,107 @@
   </div>
 </header>
             <article class="markdown-body">
-                <h1 id="linux-">linux下用户操作指南</h1>
+                <h1 id="linux下用户操作指南">linux下用户操作指南</h1>
 <blockquote>
 <p>最近捋到腾讯云2000代金券羊毛，买了腾讯云的香港主机，安装了 Debian 系统，发现Linux用户要自己配置，就写一篇文章记录下学习的用户命令以及Debian新建用户不能sudo的问题解决方法</p>
 </blockquote>
-<h2 id="-">组操作</h2>
-<h3 id="1-">1，创建组</h3>
+<h2 id="组操作">组操作</h2>
+<h3 id="1，创建组">1，创建组</h3>
 <p>增加一个test组</p>
-<pre><code class="lang-bash">groupadd  <span class="hljs-built_in">test</span>Group
-</code></pre>
-<h3 id="2-">2，修改组</h3>
+<pre><code class="language-bash"><span class="hljs-attribute">groupadd  testGroup</span></code></pre>
+<h3 id="2，修改组">2，修改组</h3>
 <p>将testGroup组的重命名成testGroup2</p>
-<pre><code class="lang-bash">groupmod -n <span class="hljs-built_in">test</span>Group2 <span class="hljs-built_in">test</span>Group
-</code></pre>
-<h3 id="3-">3，删除组</h3>
-<pre><code class="lang-bash">groupdel <span class="hljs-built_in">test</span>Group2
-</code></pre>
-<h3 id="4-">4，查看组</h3>
+<pre><code class="language-bash"><span class="hljs-attribute">groupmod</span> -n testGroup<span class="hljs-number">2</span> testGroup</code></pre>
+<h3 id="3，删除组">3，删除组</h3>
+<pre><code class="language-bash"><span class="hljs-attribute">groupdel</span> testGroup<span class="hljs-number">2</span></code></pre>
+<h3 id="4，查看组">4，查看组</h3>
 <ul>
 <li><p>查看当前登录用户所在的组 <code>groups</code></p>
 </li>
 <li><p>查看所有组 <code>cat /etc/group</code></p>
 </li>
 <li><p>有的linux系统没有/etc/group文件的，这个时候看下面的这个方法</p>
-<pre><code class="lang-bash">cat /etc/passwd |awk -F [:] <span class="hljs-string">'{print $4}'</span> |<span class="hljs-keyword">sort</span>|uni<span class="hljs-string">q | getent group |</span>awk -F [:] <span class="hljs-string">'{print $1}'</span>
-</code></pre>
+<pre><code class="language-bash">cat /etc/passwd |awk -F [:] <span class="hljs-string">&#x27;{print $4}&#x27;</span> |sort|uniq | getent<span class="hljs-built_in"> group </span>|awk -F [:] <span class="hljs-string">&#x27;{print $1}&#x27;</span></code></pre>
 <p>这里用到一个命令是getent,可以通过组ID来查找组信息,如果这个命令没有的话,那就很难查找,系统中所有的组了.</p>
 </li>
 </ul>
-<h2 id="-">用户操作</h2>
-<h3 id="1-">1、增加用户</h3>
+<h2 id="用户操作">用户操作</h2>
+<h3 id="1、增加用户">1、增加用户</h3>
 <ul>
 <li><p>查看useradd帮助信息</p>
-<pre><code class="lang-bash">div-mac:~ div$ useradd --help
+<pre><code class="language-bash"><span class="hljs-keyword">div</span>-mac:~ <span class="hljs-keyword">div</span>$ useradd <span class="hljs-comment">--help</span>
 Usage: useradd [options] LOGIN
 Options:
--<span class="ruby">b, --base-dir BASE_DIR       设置基本路径作为用户的登录目录
-</span>-<span class="ruby">c, --comment COMMENT         对用户的注释
-</span>-<span class="ruby">d, --home-dir HOME_DIR       设置用户的登录目录
-</span>-<span class="ruby">D, --defaults                改变设置
-</span>-<span class="ruby">e, --expiredate EXPIRE_DATE  设置用户的有效期
-</span>-<span class="ruby">f, --inactive INACTIVE       用户过期后，让密码无效
-</span>-<span class="ruby">g, --gid GROUP               使用户只属于某个组
-</span>-<span class="ruby">G, --groups GROUPS           使用户加入某个组
-</span>-<span class="ruby">h, --help                    帮助
-</span>-<span class="ruby">k, --skel SKEL_DIR           指定其他的skel目录
-</span>-<span class="ruby">K, --key KEY=VALUE           覆盖 /etc/login.defs 配置文件
-</span>-<span class="ruby">m, --create-home             自动创建登录目录
-</span>-<span class="ruby">l,                           不把用户加入到lastlog文件中
-</span>-<span class="ruby">M,                           不自动创建登录目录
-</span>-<span class="ruby">r,                           建立系统账号
-</span>-<span class="ruby">o, --non-unique              允许用户拥有相同的UID
-</span>-<span class="ruby">p, --password PASSWORD       为新用户使用加密密码
-</span>-<span class="ruby">s, --shell SHELL             登录时候的shell
-</span>-<span class="ruby">u, --uid UID                 为新用户指定一个UID
-</span>-<span class="ruby">Z, --selinux-user SEUSER     use a specific SEUSER <span class="hljs-keyword">for</span> the SELinux user mapping</span>
-</code></pre>
+-b, <span class="hljs-comment">--base-dir BASE_DIR       设置基本路径作为用户的登录目录</span>
+-c, <span class="hljs-comment">--comment COMMENT         对用户的注释</span>
+-d, <span class="hljs-comment">--home-dir HOME_DIR       设置用户的登录目录</span>
+-D, <span class="hljs-comment">--defaults                改变设置</span>
+-e, <span class="hljs-comment">--expiredate EXPIRE_DATE  设置用户的有效期</span>
+-f, <span class="hljs-comment">--inactive INACTIVE       用户过期后，让密码无效</span>
+-g, <span class="hljs-comment">--gid GROUP               使用户只属于某个组</span>
+-G, <span class="hljs-comment">--groups GROUPS           使用户加入某个组</span>
+-h, <span class="hljs-comment">--help                    帮助</span>
+-k, <span class="hljs-comment">--skel SKEL_DIR           指定其他的skel目录</span>
+-K, <span class="hljs-comment">--key KEY=VALUE           覆盖 /etc/login.defs 配置文件</span>
+-m, <span class="hljs-comment">--create-home             自动创建登录目录</span>
+-l,                           不把用户加入到lastlog文件中
+-M,                           不自动创建登录目录
+-r,                           建立系统账号
+-o, <span class="hljs-comment">--non-unique              允许用户拥有相同的UID</span>
+-p, <span class="hljs-comment">--password PASSWORD       为新用户使用加密密码</span>
+-s, <span class="hljs-comment">--shell SHELL             登录时候的shell</span>
+-u, <span class="hljs-comment">--uid UID                 为新用户指定一个UID</span>
+-Z, <span class="hljs-comment">--selinux-user SEUSER     use a specific SEUSER for the SELinux user mapping</span></code></pre>
 </li>
 <li><p>增加用户test，有一点要注意的，useradd增加一个用户后，不要忘了给他设置密码，不然不能登录的。</p>
-<pre><code class="lang-bash">useradd <span class="hljs-_">-d</span> <span class="hljs-string">'/home/test'</span> <span class="hljs-_">-s</span> <span class="hljs-string">'/bin/bash'</span> -g <span class="hljs-built_in">test</span>Group <span class="hljs-built_in">test</span>
-</code></pre>
+<pre><code class="language-bash">useradd -d <span class="hljs-string">&#x27;/home/test&#x27;</span> -s <span class="hljs-string">&#x27;/bin/bash&#x27;</span> -g testGroup <span class="hljs-built_in">test</span></code></pre>
 </li>
 </ul>
-<h3 id="2-">2、修改用户</h3>
+<h3 id="2、修改用户">2、修改用户</h3>
 <ul>
-<li>将test用户的登录目录改成/home/test，并加入testGroup组，注意这里是大G。<pre><code class="lang-bash">usermod <span class="hljs-_">-d</span> <span class="hljs-string">'/home/test'</span> <span class="hljs-_">-s</span> <span class="hljs-string">'/bin/bash'</span> -g <span class="hljs-built_in">test</span>Group <span class="hljs-built_in">test</span>
-</code></pre>
+<li>将test用户的登录目录改成/home/test，并加入testGroup组，注意这里是大G。<pre><code class="language-bash">usermod -d <span class="hljs-string">&#x27;/home/test&#x27;</span> -s <span class="hljs-string">&#x27;/bin/bash&#x27;</span> -g testGroup <span class="hljs-built_in">test</span></code></pre>
 </li>
-<li>将用户test加入到testGroup组<pre><code class="lang-bash">gpasswd <span class="hljs-_">-a</span> <span class="hljs-built_in">test</span> <span class="hljs-built_in">test</span>Group
-</code></pre>
+<li>将用户test加入到testGroup组<pre><code class="language-bash">gpasswd -a <span class="hljs-built_in">test</span> testGroup</code></pre>
 </li>
-<li>将用户test从testGroup组中移出<pre><code class="lang-bash">gpasswd <span class="hljs-_">-d</span> <span class="hljs-built_in">test</span> <span class="hljs-built_in">test</span>Group
-</code></pre>
+<li>将用户test从testGroup组中移出<pre><code class="language-bash">gpasswd -d <span class="hljs-built_in">test</span> testGroup</code></pre>
 </li>
 </ul>
-<h3 id="3-">3、删除用户</h3>
+<h3 id="3、删除用户">3、删除用户</h3>
 <ul>
-<li>将test用户删除<pre><code class="lang-bash">userdel <span class="hljs-built_in">test</span>
-</code></pre>
+<li>将test用户删除<pre><code class="language-bash">userdel <span class="hljs-built_in">test</span></code></pre>
 </li>
 </ul>
-<h3 id="4-">4、查看用户</h3>
+<h3 id="4、查看用户">4、查看用户</h3>
 <ul>
-<li>查看当前登录用户<pre><code class="lang-bash"><span class="hljs-attribute">w
-who</span>
-</code></pre>
+<li>查看当前登录用户<pre><code class="language-bash"><span class="hljs-attribute">w
+who</span></code></pre>
 </li>
-<li>查看自己的用户名<pre><code class="lang-bash"><span class="hljs-attribute">whoami</span>
-</code></pre>
+<li>查看自己的用户名<pre><code class="language-bash"><span class="hljs-attribute">whoami</span></code></pre>
 </li>
-<li>查看单个用户信息<pre><code class="lang-bash">finger <span class="hljs-string">[username]</span>
-id <span class="hljs-string">[username]</span>
-</code></pre>
+<li>查看单个用户信息<pre><code class="language-bash"><span class="hljs-attribute">finger</span><span class="hljs-meta"> [username]</span>
+<span class="hljs-attribute">id</span><span class="hljs-meta"> [username]</span></code></pre>
 </li>
-<li>查看用户登录记录<pre><code class="lang-bash"><span class="hljs-meta"># 查看登录成功的用户记录</span>
-last 
-<span class="hljs-meta"># 查看登录不成功的用户记录</span>
-lastb
-</code></pre>
+<li>查看用户登录记录<pre><code class="language-bash"><span class="hljs-comment"># 查看登录成功的用户记录</span>
+<span class="hljs-attr">last</span> <span class="hljs-string"></span>
+<span class="hljs-comment"># 查看登录不成功的用户记录</span>
+<span class="hljs-attr">lastb</span> <span class="hljs-string"></span></code></pre>
 </li>
-<li>查看所有用户<pre><code class="lang-bash">cut -<span class="hljs-string">d :</span> -f <span class="hljs-number">1</span> <span class="hljs-regexp">/etc/</span>passwd
-cat <span class="hljs-regexp">/etc/</span>passwd |awk -F \: <span class="hljs-string">'{print $1}'</span>
-</code></pre>
+<li>查看所有用户<pre><code class="language-bash">cut -d : -f <span class="hljs-number">1</span> <span class="hljs-regexp">/etc/</span>passwd
+cat <span class="hljs-regexp">/etc/</span>passwd |awk -F \: <span class="hljs-string">&#x27;{print $1}&#x27;</span></code></pre>
 </li>
 </ul>
-<h2 id="-debian-sudo">安装好Debian后还不能使用sudo</h2>
+<h2 id="安装好debian后还不能使用sudo">安装好Debian后还不能使用sudo</h2>
 <ul>
 <li>如果没有安装sudo，则在root用户下 <code>apt-get install sudo</code></li>
-<li>在root设置sudoers配制文件<pre><code class="lang-bash">chmod +w <span class="hljs-regexp">/etc/</span>sudoers
-vim <span class="hljs-regexp">/etc/</span>sudoers
-</code></pre>
+<li>在root设置sudoers配制文件<pre><code class="language-bash">chmod +w <span class="hljs-regexp">/etc/</span>sudoers
+vim <span class="hljs-regexp">/etc/</span>sudoers</code></pre>
 </li>
-<li>添加一行并保存<pre><code class="lang-bash"><span class="hljs-comment"># username是你的用户名</span>
+<li>添加一行并保存<pre><code class="language-bash"><span class="hljs-comment"># username是你的用户名</span>
 <span class="hljs-attribute">username</span>  <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>) <span class="hljs-literal">ALL</span>
 <span class="hljs-comment"># 如果sudo时不想输入密码，可以把上句改成：</span>
-<span class="hljs-attribute">username</span>  <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>) NOPASSWD: <span class="hljs-literal">ALL</span>
-</code></pre>
+<span class="hljs-attribute">username</span>  <span class="hljs-literal">ALL</span>=(<span class="hljs-literal">ALL</span>) NOPASSWD: <span class="hljs-literal">ALL</span></code></pre>
 </li>
-<li>更改sudoers文件权限<pre><code class="lang-bash">chmod <span class="hljs-number">0440</span> <span class="hljs-regexp">/etc/</span>sudoers
-</code></pre>
+<li>更改sudoers文件权限<pre><code class="language-bash">chmod <span class="hljs-number">0440</span> <span class="hljs-regexp">/etc/</span>sudoers</code></pre>
 </li>
 <li>退出root</li>
 </ul>
