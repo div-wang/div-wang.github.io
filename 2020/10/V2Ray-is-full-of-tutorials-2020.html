@@ -45,15 +45,14 @@
 <p>国外的免费vps路子已经不行了，我的免费vps全部到期了，目前再使用国内云场的<code>轻量应用服务器</code>，主要是价格便宜，1核2G、50G SSD、30M带宽、2T流量，每月只需要34元。速度上跟gcp和aws有点差距，不过自己用足够了。</p>
 <p>大家自行搜索就行这里不做推荐，</p>
 <h3 id="登录-vps-自动执行安装脚本">登录 vps 自动执行安装脚本</h3>
-<p>脚本地址有变化 <a href="https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh">https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh</a></p>
 <p>运行以上命令需要root权限，所以需要切换到root账户下，也可以使用<code>sudo</code>命令</p>
-<pre><code class="language-bash">  sudo curl -L -s https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/v2fly/</span>fhs-install-v2ray<span class="hljs-regexp">/master/i</span>nstall-release.sh | sudo bash</code></pre>
+<pre><code class="language-bash">  bash &lt;(curl -L https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/v2fly/</span>fhs-install-v2ray<span class="hljs-regexp">/master/i</span>nstall-release.sh)</code></pre>
 <p>该脚本会自动安装以下两个文件：</p>
 <pre><code class="language-js">  <span class="hljs-regexp">/usr/</span>bin<span class="hljs-regexp">/v2ray/</span>v2ray：V2Ray 程序；
-  <span class="hljs-regexp">/etc/</span>v2ray/config.json：配置文件；</code></pre>
+  <span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/etc/</span>v2ray/config.json：配置文件；</code></pre>
 <h5 id="官方说明：此脚本会配置开机自动运行脚本，仅适用于-sysv-模式，不支持-debian-7-的-systemd。">官方说明：此脚本会配置开机自动运行脚本，仅适用于 SysV 模式，不支持 Debian 7 的 systemd。</h5>
 <h3 id="v2ray配置配置">V2Ray配置配置</h3>
-<p>编辑 /etc/v2ray/config.json 文件来配置代理方式，这里给出新的配置，是最近3年来我绝得最稳定的配置</p>
+<h5 id="编辑-usrlocaletcv2rayconfigjson-文件来配置代理方式，这里给出新的配置，是最近3年来我绝得最稳定的配置">编辑 /usr/local/etc/v2ray/config.json 文件来配置代理方式，这里给出新的配置，是最近3年来我绝得最稳定的配置</h5>
 <pre><code class="language-json">{
   <span class="hljs-attr">&quot;log&quot;</span>: {
     <span class="hljs-attr">&quot;access&quot;</span>: <span class="hljs-string">&quot;/var/log/v2ray/access.log&quot;</span>,
@@ -121,6 +120,89 @@
   }
 }</code></pre>
 <p>ssr端口我试过很多，什么3001-3033、10086这些非系统流量端口总是被封tcp流量，换成3389之后就没有这个问题了。</p>
+<h4 id="国内服务器转发">国内服务器转发</h4>
+<h5 id="安装最新发行的-geoipdat-和-geositedat">安装最新发行的 geoip.dat 和 geosite.dat</h5>
+<pre><code class="language-bash">bash &lt;(curl -L https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/v2fly/</span>fhs-install-v2ray<span class="hljs-regexp">/master/i</span>nstall-dat-release.sh)</code></pre>
+<h5 id="转发配置">转发配置</h5>
+<pre><code class="language-json">{
+  <span class="hljs-attr">&quot;log&quot;</span> : {
+    <span class="hljs-attr">&quot;access&quot;</span>: <span class="hljs-string">&quot;/var/log/v2ray/access.log&quot;</span>,
+    <span class="hljs-attr">&quot;error&quot;</span>: <span class="hljs-string">&quot;/var/log/v2ray/error.log&quot;</span>,
+    <span class="hljs-attr">&quot;loglevel&quot;</span>: <span class="hljs-string">&quot;info&quot;</span>
+  },
+  <span class="hljs-attr">&quot;inbounds&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;protocol&quot;</span>: <span class="hljs-string">&quot;vmess&quot;</span>,
+      <span class="hljs-attr">&quot;port&quot;</span>: <span class="hljs-number">4443</span>,
+      <span class="hljs-attr">&quot;settings&quot;</span>: {
+        <span class="hljs-attr">&quot;clients&quot;</span>: [
+          {
+            <span class="hljs-attr">&quot;id&quot;</span>: <span class="hljs-string">&quot;25f8fa73-9468-4b6a-...&quot;</span>,
+            <span class="hljs-attr">&quot;level&quot;</span>: <span class="hljs-number">1</span>,
+            <span class="hljs-attr">&quot;alterId&quot;</span>: <span class="hljs-number">16</span>,
+            <span class="hljs-attr">&quot;security&quot;</span>: <span class="hljs-string">&quot;auto&quot;</span>
+          }
+        ]
+      }
+    },
+    {
+      <span class="hljs-attr">&quot;protocol&quot;</span>: <span class="hljs-string">&quot;shadowsocks&quot;</span>,
+      <span class="hljs-attr">&quot;port&quot;</span>: <span class="hljs-number">80</span>,
+      <span class="hljs-attr">&quot;settings&quot;</span>: {
+        <span class="hljs-attr">&quot;method&quot;</span>: <span class="hljs-string">&quot;aes-256-cfb&quot;</span>,
+        <span class="hljs-attr">&quot;password&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
+        <span class="hljs-attr">&quot;udp&quot;</span>: <span class="hljs-literal">true</span>
+      }
+    }
+  ],
+  <span class="hljs-attr">&quot;outbounds&quot;</span>: [
+    {
+      <span class="hljs-attr">&quot;protocol&quot;</span>: <span class="hljs-string">&quot;freedom&quot;</span>,
+      <span class="hljs-attr">&quot;settings&quot;</span>: {}
+    },
+    {
+      <span class="hljs-attr">&quot;protocol&quot;</span>: <span class="hljs-string">&quot;shadowsocks&quot;</span>,
+      <span class="hljs-attr">&quot;settings&quot;</span>: {
+        <span class="hljs-attr">&quot;servers&quot;</span>: [
+          {
+            <span class="hljs-attr">&quot;address&quot;</span>: <span class="hljs-string">&quot;国外VPS IP&quot;</span>,
+            <span class="hljs-attr">&quot;port&quot;</span>: <span class="hljs-number">3389</span>,
+            <span class="hljs-attr">&quot;method&quot;</span>: <span class="hljs-string">&quot;aes-256-cfb&quot;</span>,
+            <span class="hljs-attr">&quot;password&quot;</span>: <span class="hljs-string">&quot;123456&quot;</span>,
+            <span class="hljs-attr">&quot;level&quot;</span>: <span class="hljs-number">0</span>
+          }
+        ]
+      },
+      <span class="hljs-attr">&quot;tag&quot;</span>: <span class="hljs-string">&quot;test&quot;</span>
+    }
+  ],
+  <span class="hljs-attr">&quot;routing&quot;</span>: {
+    <span class="hljs-attr">&quot;domainStrategy&quot;</span>: <span class="hljs-string">&quot;IPIfNonMatch&quot;</span>,
+    <span class="hljs-attr">&quot;rules&quot;</span>: [
+      {
+        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,
+        <span class="hljs-attr">&quot;ip&quot;</span>: [
+          <span class="hljs-string">&quot;geoip:private&quot;</span>,
+          <span class="hljs-string">&quot;geoip:cn&quot;</span>
+        ],
+        <span class="hljs-attr">&quot;outboundTag&quot;</span>: <span class="hljs-string">&quot;blocked&quot;</span>
+      },
+      {
+        <span class="hljs-attr">&quot;type&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,
+        <span class="hljs-attr">&quot;domain&quot;</span>: [
+          <span class="hljs-string">&quot;ext:gfw.dat:gfw&quot;</span>,
+          <span class="hljs-string">&quot;geosite:google&quot;</span>,
+          <span class="hljs-string">&quot;geosite:geolocation-!cn&quot;</span>
+        ],
+        <span class="hljs-attr">&quot;network&quot;</span>: <span class="hljs-string">&quot;tcp,udp&quot;</span>,
+        <span class="hljs-attr">&quot;user&quot;</span>: [
+          <span class="hljs-string">&quot;gh110827@gmail.com&quot;</span>
+        ],
+        <span class="hljs-attr">&quot;outboundTag&quot;</span>: <span class="hljs-string">&quot;test&quot;</span>
+      }
+    ]
+  }
+}</code></pre>
 <h3 id="v2ray启动说明">V2Ray启动说明</h3>
 <p>运行 <code>service v2ray start</code> 来启动 V2Ray 进程</p>
 <table>
