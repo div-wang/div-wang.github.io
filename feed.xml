@@ -12,7 +12,7 @@
             <title><![CDATA[Div-wang的博客]]></title>
             <link>https://blog.div-wang.com/</link>
         </image>
-        <lastBuildDate>&#34;2020-10-22T03:40:06.982Z&#34;</lastBuildDate>
+        <lastBuildDate>&#34;2020-10-22T07:42:19.032Z&#34;</lastBuildDate>
         <ttl> 600 </ttl>
         
         <item>
@@ -40,6 +40,15 @@
             <pubDate>2017-12-21</pubDate>
             <description><![CDATA[这篇文章算是对《JavaScript语言精粹》的一个笔记，这本书对JavaScript中的精华比较深入，作者的目的是让大家知道js是一门很牛逼的的动态编程语言]]></description>
             <guid>https://blog.div-wang.com/2017/12/JavaScript-the-good-parts.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[V2Ray 使用教程]]></title>
+            <link>https://blog.div-wang.com/2020/10/V2Ray-is-full-of-tutorials-2020.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2020-10-22</pubDate>
+            <description><![CDATA[上一篇的V2Ray是2017年写的，至今已经3年了，V2Ray有很多不一样的地方，决定重新写一篇文章]]></description>
+            <guid>https://blog.div-wang.com/2020/10/V2Ray-is-full-of-tutorials-2020.html</guid>
         </item>
         
         <item>
