@@ -12,7 +12,7 @@
             <title><![CDATA[Div-wang的博客]]></title>
             <link>https://blog.div-wang.com/</link>
         </image>
-        <lastBuildDate>&#34;2020-10-23T06:41:56.471Z&#34;</lastBuildDate>
+        <lastBuildDate>&#34;2020-11-01T06:34:20.236Z&#34;</lastBuildDate>
         <ttl> 600 </ttl>
         
         <item>
@@ -409,6 +409,15 @@
             <pubDate>2017-11-08</pubDate>
             <description><![CDATA[&#60;strong&#62;acme.sh&#60;/strong&#62; 实现了 &#60;code&#62;acme&#60;/code&#62; 协议, 可以从 letsencrypt 生成免费的证书, 配置和管理相当方便.]]></description>
             <guid>https://blog.div-wang.com/2017/11/use-acme-website-https.html</guid>
+        </item>
+        
+        <item>
+            <title><![CDATA[使用docker-compose快速构建wordpress]]></title>
+            <link>https://blog.div-wang.com/2020/10/use-docker-to-quickly-deploy-wordPress.html</link>
+            <author><![CDATA[Div]]></author>
+            <pubDate>2020-10-22</pubDate>
+            <description><![CDATA[今天讲解一下超级简单方式搭建wordpress。使用 docker-compose 快速安装博客，顺带将nginx、mysql一起集成进去。]]></description>
+            <guid>https://blog.div-wang.com/2020/10/use-docker-to-quickly-deploy-wordPress.html</guid>
         </item>
         
         <item>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+            <meta name="keywords" keywords="使用docker-compose快速构建wordpress">
+            <meta name="description" content="今天讲解一下超级简单方式搭建wordpress。使用 docker-compose 快速安装博客，顺带将nginx、mysql一起集成进去。">
+            <title>使用docker-compose快速构建wordpress</title>
+            <link rel="icon" type="image/x-icon" href="//div-1255800596.cos.ap-beijing.myqcloud.com/logo.png">
+            <link rel="stylesheet" href="../../static/css/blog.css?time="> 
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-111523348-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'UA-111523348-1');
+</script>
+<script data-ad-client="ca-pub-4191880250339147" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        </head>
+        <body>
+            <header class="header animate">
+  <div class="container">
+    <h2 class="sitename">
+      <a href="/">Div-wang</a>
+    </h2>
+    <ul class="nav-right">
+      <li> <a href="/">Blog</a> </li>
+      <li> <a href="/about.html">About</a> </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</header>
+            <article class="markdown-body">
+                <h1 id="使用docker-compose快速构建wordpress">使用docker-compose快速构建wordpress</h1>
+<blockquote>
+<p>今天讲解一下超级简单方式搭建wordpress。使用 docker-compose 快速安装博客，顺带将nginx、mysql一起集成进去。</p>
+</blockquote>
+<h2 id="为什么使用docker-compose来构建">为什么使用docker-compose来构建</h2>
+<p>docker-composer 是 docker 的一种编排服务。就想本文的例子，你有一个wordpress镜像，一个mysql镜像，一个nginx镜像。如果没有docker-compose，那么每次启动的时候，你需要敲各个容器的启动参数，环境变量，容器命名，指定不同容器的链接参数等等一系列的操作，相当繁琐。而用了docker-composer之后，你就可以把这些命令一次性写在<code>docker-composer.yml</code>文件中，以后每次启动这一整个环境（含3个容器）的时候，你只要敲一个<code>docker-composer up</code>命令就ok了。</p>
+<h2 id="安装-docker">安装 docker</h2>
+<h3 id="centos-安装-docker">centos 安装 docker</h3>
+<h5 id="更新源地址">更新源地址</h5>
+<blockquote>
+<p>众所周知的原因，官方源国内访问太慢，需要替换源地址，下面两个源地址任选一个即可</p>
+</blockquote>
+<pre><code class="language-bash"><span class="hljs-comment"># 阿里云的源</span>
+sudo yum-config-manager \
+    --add-repo \
+    http:<span class="hljs-regexp">//mi</span>rrors.aliyun.com<span class="hljs-regexp">/docker-ce/</span>linux<span class="hljs-regexp">/centos/</span>docker-ce.repo</code></pre>
+<pre><code class="language-bash"><span class="hljs-comment"># 清华大学的源</span>
+sudo yum-config-manager \
+    --add-repo \
+    https:<span class="hljs-regexp">//mi</span>rrors.tuna.tsinghua.edu.cn<span class="hljs-regexp">/docker-ce/</span>linux<span class="hljs-regexp">/centos/</span>docker-ce.repo</code></pre>
+<h5 id="更新yum中的docker-ce为最新版本">更新yum中的docker-ce为最新版本</h5>
+<pre><code class="language-bash"><span class="hljs-attribute">sudo</span> yum update <span class="hljs-comment">#</span></code></pre>
+<h5 id="安装docker">安装docker</h5>
+<pre><code class="language-bash">sudo yum -y <span class="hljs-keyword">install</span> docker-ce <span class="hljs-comment">#安装 docker</span>
+sudo systemctl <span class="hljs-keyword">start</span> docker <span class="hljs-comment">#启动 docker 服务</span>
+docker <span class="hljs-keyword">version</span> <span class="hljs-comment">#查看 docker版本</span></code></pre>
+<h5 id="安装docker-compose">安装docker-compose</h5>
+<pre><code class="language-bash">sudo yum <span class="hljs-keyword">install</span> docker-compose <span class="hljs-comment">#安装 docker-compose</span>
+sudo docker-compose <span class="hljs-keyword">version</span> <span class="hljs-comment">#查看版本</span></code></pre>
+<h2 id="创建配置文件">创建配置文件</h2>
+<h4 id="创建-nginxconf">创建 nginx.conf</h4>
+<blockquote>
+<p>这是配合wordpress:php7.4-fpm-alpine镜像的nginx配置</p>
+</blockquote>
+<pre><code class="language-conf"><span class="hljs-section">server</span> {
+    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;
+    <span class="hljs-attribute">server_name</span> www.domain.com;
+    <span class="hljs-comment"># 配置wordpress目录为根目录</span>
+    <span class="hljs-attribute">root</span> /var/www/html;
+    <span class="hljs-attribute">index</span> index.php;
+    <span class="hljs-comment"># 配置日志目录</span>
+    <span class="hljs-attribute">access_log</span> /var/log/nginx/wordpress-access.log;
+    <span class="hljs-attribute">error_log</span> /var/log/nginx/wordpress-<span class="hljs-literal">error</span>.log;
+    <span class="hljs-attribute">location</span> / {
+        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.php?<span class="hljs-variable">$args</span>;
+    }
+    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ \.php$</span> {
+        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> =<span class="hljs-number">404</span>;
+        <span class="hljs-attribute">fastcgi_split_path_info</span><span class="hljs-regexp"> ^(.+\.php)(/.+)$</span>;
+        <span class="hljs-comment"># 配置访问转发到wordpress镜像9000接口</span>
+        <span class="hljs-attribute">fastcgi_pass</span> wordpress:<span class="hljs-number">9000</span>;
+        <span class="hljs-attribute">fastcgi_index</span> index.php;
+        <span class="hljs-attribute">include</span> fastcgi_params;
+        <span class="hljs-attribute">fastcgi_param</span> SCRIPT_FILENAME <span class="hljs-variable">$document_root</span><span class="hljs-variable">$fastcgi_script_name</span>;
+        <span class="hljs-attribute">fastcgi_param</span> PATH_INFO <span class="hljs-variable">$fastcgi_path_info</span>;
+    }
+}</code></pre>
+<h4 id="创建-docker-composeyml">创建 docker-compose.yml</h4>
+<pre><code class="language-yml">version: <span class="hljs-string">&#x27;3.7&#x27;</span> <span class="hljs-comment">#指定本 yml 依从的 compose 哪个版本制定的。</span>
+services:
+  nginx:
+    image: nginx:latest <span class="hljs-comment">#使用最新nginx镜像</span>
+    restart: always <span class="hljs-comment">#容器总是重新启动</span>
+    ports:
+      - <span class="hljs-string">&#x27;80:80&#x27;</span> <span class="hljs-comment">#将服务器8080端口映射到nginx镜像80端口</span>
+    volumes: <span class="hljs-comment">#将服务器的nginx相关文件夹挂载到nginx镜像中</span>
+      - .<span class="hljs-regexp">/nginx:/</span>etc<span class="hljs-regexp">/nginx/</span>conf.d <span class="hljs-comment">#配置</span>
+      - .<span class="hljs-regexp">/nginx/</span>logs:<span class="hljs-regexp">/var/</span>log/nginx <span class="hljs-comment">#日志</span>
+      - .<span class="hljs-regexp">/html:/</span>var<span class="hljs-regexp">/www/</span>html <span class="hljs-comment">#访问根目录，这个目录也是wordpress的根目录</span>
+    links: <span class="hljs-comment">#链接到wordpress镜像，设置内网访问</span>
+      - wordpress
+  db:
+    image: mysql:<span class="hljs-number">5.7</span> <span class="hljs-comment">#使用mysql:5.7镜像</span>
+    restart: always <span class="hljs-comment">#容器总是重新启动</span>
+    ports:
+      - <span class="hljs-string">&quot;3308:3306&quot;</span> <span class="hljs-comment">#将服务器3308端口映射到dbs镜像3306端口</span>
+    environment: <span class="hljs-comment">#db镜像的环境变量</span>
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes: <span class="hljs-comment">#将服务器的数据库文件夹挂载到db镜像中</span>
+      - .<span class="hljs-regexp">/db:/</span>var<span class="hljs-regexp">/lib/my</span>sql
+  wordpress:
+    image: wordpress:php7.<span class="hljs-number">4</span>-fpm <span class="hljs-comment">#使用wordpress:php7.4-fpm镜像，配合nginx使用</span>
+    restart: always <span class="hljs-comment">#容器总是重新启动</span>
+    depends_on: <span class="hljs-comment">#启动db镜像之后再启动wordpress镜像</span>
+      - db
+    environment: <span class="hljs-comment">#wordpress镜像的环境变量</span>
+      WORDPRESS_DB_HOST: db:<span class="hljs-number">3306</span>
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    volumes: <span class="hljs-comment">#将服务器的wordpress文件夹挂载到wordpress镜像中</span>
+      - .<span class="hljs-regexp">/html:/</span>var<span class="hljs-regexp">/www/</span>html
+      - .<span class="hljs-regexp">/config/u</span>ploads.ini:<span class="hljs-regexp">/usr/</span>local<span class="hljs-regexp">/etc/</span>php<span class="hljs-regexp">/conf.d/u</span>ploads.ini</code></pre>
+<h2 id="运行wordpress">运行wordpress</h2>
+<h4 id="启动服务">启动服务</h4>
+<pre><code class="language-bash">docker<span class="hljs-literal">-compose</span> <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.yml up <span class="hljs-literal">-d</span> <span class="hljs-comment">#后台运行</span></code></pre>
+<h4 id="访问地址：">访问地址：</h4>
+<p>浏览器输入<code>IP:8080</code>或<code>www.domain.com</code>直接访问</p>
+<h4 id="停止服务">停止服务</h4>
+<pre><code class="language-bash">docker<span class="hljs-literal">-compose</span> <span class="hljs-operator">-f</span> docker<span class="hljs-literal">-compose</span>.yml down <span class="hljs-comment">#停止并删除服务</span></code></pre>
+<h4 id="其他命令">其他命令</h4>
+<pre><code class="language-bash">docker-compose ps <span class="hljs-comment">#查看所有服务状态</span>
+docker-compose <span class="hljs-literal">stop</span> <span class="hljs-comment">#停止所有容器</span>
+docker-compose <span class="hljs-literal">stop</span> nginx <span class="hljs-comment">#停止指定容器（nginx）</span>
+docker-compose rm nginx <span class="hljs-comment">#删除容器</span></code></pre>
+
+            </article>
+            <div class="weixin">
+  <div>
+    <img src="/static/img/common/qrcode_for_gh_f13c307045b7_430.jpg">
+    关注我的公众号
+  </div>
+  <div>
+    <img src="/static/img/common/WX20171221-115728@2x.png">
+    支付宝领红包
+  </div>
+  <div style="clear: both;height: 1px;"></div>
+</div>
+            <footer class="footer">
+  <a href="javascript:;" id="top" title="返回顶部">
+    <img src="/static/img/common/top.png" alt="返回顶部" title="返回顶部">
+  </a>
+  <div class="container">
+    Copyright © 2015 - 2020 <a href="https://github.com/div-wang">Div-wang</a>.
+  </div>
+</footer>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript">
+  /* 鼠标点击特效 */
+  var index = 0;
+  jQuery(document).ready(function($) {
+      $("body").click(function(e) {
+          if (e.target.id === 'top' || e.target.parentNode.id === 'top' ) {
+            scrllTop()
+            return
+          }
+          if (e.target.id === 'loadMore' || e.target.parentNode.id === 'loadMore') {
+            loadMore()
+            return
+          }
+          var arr = ["富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善"]
+          var x = e.pageX, y = e.pageY
+          var $i = $("<span/>").text(arr[index])
+          index = (index + 1) % arr.length
+          $i.css({
+            "z-index": 99999,
+            "top": y - 20,
+            "left": x,
+            "position": "absolute",
+            "font-weight": "bold",
+            "color": "#ff6651"
+          })
+          $("body").append($i)
+          $i.animate({
+            "top": y - 180,
+            "opacity": 0
+          }, 1500, function() {
+              $i.remove();
+          })
+      });
+  });
+  function scrllTop () {
+    let timer = setInterval(function(){
+        //获取滚动条距离顶部的高度
+        var top = document.documentElement.scrollTop || document.body.scrollTop;  //同时兼容了ie和Chrome浏览器
+
+        //减小的速度
+        var isSpeed = Math.floor(-top / 6);
+        document.documentElement.scrollTop = document.body.scrollTop = top + isSpeed
+        //判断，然后清除定时器
+        if (top <= 0) {
+            clearInterval(timer)
+        }
+    }, 30);
+  }
+  var page = 1
+  var limit = 10
+  var total = $('.member').length
+  function loadMore () {
+    $('#loadMore').find('img').show()
+    setTimeout(() => {
+      $('#loadMore').find('img').hide()
+      if (total <= (page * limit)) {
+        $('.member').hide().slice(0, page * limit).show()
+        $('#loadMore').hide()
+      } else {
+        $('.member').hide().slice(0, page * limit).show()
+        page += 1
+      }
+    }, 1000)
+  }
+  loadMore()
+</script>
+        </body>
+    </html>
